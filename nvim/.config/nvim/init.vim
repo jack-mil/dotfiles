@@ -7,14 +7,13 @@
 :setglobal fileencoding=utf-8
 " Show whitspace characters
 set showbreak=↪\
-set list listchars=tab:│.,nbsp:␣,trail:∙,extends:⟩,precedes:⟨
+set list listchars=tab:│∙,nbsp:␣,trail:∙,extends:⟩,precedes:⟨
 set listchars+=eol:↲
 " set listchars+=space:·
 " configure tab options
-set tabstop=8 shiftwidth=8 noexpandtab
+set tabstop=4 shiftwidth=4 noexpandtab
 " Force saving files that require root permission
 cnoremap w!! w !sudo tee > /dev/null %
-
 " << BEGIN PLUGIN SETTINGS >> "
 " Plugins will be downloaded under the specified directory.
 call plug#begin('~/.local/share/nvim/plugged')
