@@ -1,4 +1,6 @@
 contains $fish_user_paths $HOME/bin; or set -Ua fish_user_paths $HOME/bin
+# Set Pure theme variables
+set -g pure_show_jobs true
 # Set BOB_THE_FISH theme variables
 set -g theme_color_scheme gruvbox
 set -g theme_nerd_fonts yes
