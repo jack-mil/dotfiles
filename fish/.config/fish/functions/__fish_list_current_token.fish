@@ -4,7 +4,7 @@
 function __fish_list_current_token -d "List contents of token under the cursor if it is a directory, otherwise list the contents of the current directory"
     # Detect if exa exists and use in instead of ls
     if type -fq exa
-        set prg exa -aF --icons
+        set prg exa -aF --icons --group-directories-first
     else
         set prg ls -AF
     end
