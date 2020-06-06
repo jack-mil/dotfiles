@@ -16,3 +16,5 @@
 	lol = log --graph --oneline --decorate --all
 	last = log -1 HEAD --format=medium
 	unstage = reset HEAD --
+	st = status
+	cm = commit
