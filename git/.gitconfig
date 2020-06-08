@@ -1,20 +1,21 @@
-[user]
-	name = jack-mil.rpi4
-	email = 
+[alias]
+	lol = log --graph --oneline --decorate --all
+	l = log --pretty=format:'%C(magenta)%h%Creset %C(bold blue)<%an> %C(cyan)-%C(yellow)%d%Creset %s %C(brightgreen)(%cr) %Creset' --abbrev-commit --date=relative --graph
+	last = log -1 HEAD --format=medium
+	unstage = reset HEAD --
+	s = status
+	cm = commit
+	amend = commit --amend
+	br = branch
+        co = checkout
 [color]
+	branch = auto
+	diff = auto
+	status = auto
 	ui = true
-[format]
-	pretty = oneline
 [log]
 	abbrevCommit = true
 	decorate = auto
 [credential]
 	helper = cache --timeout=86400
-[github]
-	user = jack-mil
-[alias]
-	lol = log --graph --oneline --decorate --all
-	last = log -1 HEAD --format=medium
-	unstage = reset HEAD --
-	st = status
-	cm = commit
+
