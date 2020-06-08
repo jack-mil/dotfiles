@@ -1,111 +1,142 @@
-" << PERSONAL SETTINGS >> "
-" TEST
-" Enable line numbers
-:set number
-" UTF-8 support
-:set encoding=utf-8
-:setglobal fileencoding=utf-8
+" Auto-install VimPlug "
+if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+  echom "Installing vim-plug at " . s:plugpath
+  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" << (Neo)vim settings >> "
+
+" Encoding and format
+  set fileencoding=utf-8
+  set fileencodings=ucs-bom,utf-8,gbk,cp936,latin-1
+  set fileformat=unix
+  set fileformats=unix,dos,mac
+
+" Looks
+  set colorcolumn=80    " Use a color column on the 80-character mark
+  set cursorline        "highlight the line of the cursor
+
+" Enable hybrid (ralative and absolute) line numbers and auto switching
+  set number relative number
+  augroup numbertoggle
+    autocmd!
+    autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+    autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+  augroup END
+
 " Show whitspace characters
-set showbreak=↪\
-set list listchars=tab:│∙,nbsp:␣,trail:∙,extends:⟩,precedes:⟨
-set listchars+=eol:↲
-" set listchars+=space:·
-" configure tab options
-set tabstop=4 shiftwidth=4 noexpandtab
+  set showbreak=↪\
+  set list listchars=tab:→\ ,nbsp:␣,trail:∙,extends:⟩,precedes:⟨
+  " set listchars+=eol:↲
+  " set listchars+=space:·
+
+" useful settings
+  set smartindent
+  set expandtab             "tabs to spaces
+  set tabstop=2             "width of tab
+  set shiftwidth=2          "width of indent
+  set foldenable
+  set foldmethod=indent     "folding by indent
+  set foldlevel=99
+  set ignorecase            "ignore the case when search texts
+  set smartcase             "if searching text contains uppercase case will not be ignored
+
+" Enable mouse mode
+  set mouse=a
+
+" Use the system clipboard
+  set clipboard=unnamed
+
 " Force saving files that require root permission
-cnoremap w!! w !sudo tee > /dev/null %
-" << BEGIN PLUGIN SETTINGS >> "
+  cnoremap w!! w !sudo tee > /dev/null %
+
 " Plugins will be downloaded under the specified directory.
 call plug#begin('~/.local/share/nvim/plugged')
 
-" Declare the list of plugins.
-"Plug 'tpope/vim-sensible'
-"Plug 'junegunn/seoul256.vim'
-
+" Color schemes
+  Plug 'mhinz/vim-janah'
+  Plug 'vim-airline/vim-airline-themes'
 " Python autocomplete
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-jedi'
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'zchee/deoplete-jedi'
 " Code formater
-Plug 'sbdchd/neoformat'
+  Plug 'sbdchd/neoformat'
 " Highlight copied regions
-Plug 'machakann/vim-highlightedyank'
+  Plug 'machakann/vim-highlightedyank'
 " Color scheme
-Plug 'morhetz/gruvbox'
+  Plug 'morhetz/gruvbox'
 " Comment \c<space>
-Plug 'scrooloose/nerdcommenter'
-" File sidebar
-Plug 'scrooloose/nerdtree'
+  Plug 'scrooloose/nerdcommenter'
 " Bracket/quote autocomplete
-Plug 'jiangmiao/auto-pairs'
+  Plug 'jiangmiao/auto-pairs'
 " Status bar
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'enricobacis/vim-airline-clock'
+  Plug 'vim-airline/vim-airline'
+  Plug 'enricobacis/vim-airline-clock'
 " Git plugin (:G)
-Plug 'tpope/vim-fugitive'
+  Plug 'tpope/vim-fugitive'
+" Sidebar diff
+  "TODO
+  "Plug 'airblade/vim-gitgutter'
 " File icons
-Plug 'ryanoasis/vim-devicons'
-
-" List ends here. Plugins become visible to Vim after this call.
+  Plug 'ryanoasis/vim-devicons'
+" Start splash screen
+  "Plug 'mhinz/vim-startify'
+" TODO
+" https://github.com/mhinz/vim-startify/wiki/Example-configurations
 call plug#end()
 
-" <<DEV-ICONS GLYPHS>> "
-" enable folder/directory glyph flag (disabled by default with 0)
-let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-" enable open and close folder/directory glyph flags (disabled by default with 0)
-let g:DevIconsEnableFoldersOpenClose = 1
-" add or override individual filetypes
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {}
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['ttf'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['ino'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['mp3'] = ''
+" Plugin Settings
 
-let g:WebDevIconsOS = 'Linux'
-" Enable autocomplete on startup
-let g:deoplete#enable_at_startup=1
-" Fix deoplete python version
-let g:deoplete#sources#jedi#python_path = 'python3'
-" Make the method preview window automatically disappear
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-" Navigate through suggestions with <TAB>
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+  " Airline
+    " let g:airline#extensions#whitespace#enabled = 0
+    let g:airline_powerline_fonts = 1
+    " Disable defualt mode indicator (in favor of airline)
+    set noshowmode
+    let g:airline#extensions#tabline#enabled = 1
+    colorscheme gruvbox
+    let g:airline_theme = 'base16_gruvbox_dark_hard'
+    " Change clock format
+    let g:airline#extensions#clock#format = '%l:%M %p'
 
-" CODE FORMATTING
-let g:neoformat_enabled_python = ['autopep8']
-" Format on save
-"augroup fmt
-"	autocmd!
-"	autocmd BufWritePre * undojoin | Neoformat
-" augroup END
-" Enable alignment
-let g:neoformat_basic_format_align = 1
+  " Devicons
+    " enable folder/directory glyph flag (disabled by default with 0)
+    let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+    " enable open and close folder/directory glyph flags (disabled by default with 0)
+    let g:DevIconsEnableFoldersOpenClose = 1
+    " add or override individual filetypes
+    let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {}
+    let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['ttf'] = ''
+    let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['ino'] = ''
+    let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['mp3'] = ''
+    let g:WebDevIconsOS = 'Linux'
+  
+  " Deoplete
+    " Enable autocomplete on startup
+    let g:deoplete#enable_at_startup=1
+    " Fix deoplete python version
+    let g:deoplete#sources#jedi#python_path = 'python3'
+    " Make the method preview window automatically disappear
+    autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+    " Navigate through suggestions with <TAB>
+    inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
-" Enable tab to spaces conversion
-let g:neoformat_basic_format_retab = 1
+  " NeoFormat
+    let g:neoformat_enabled_python = ['autopep8']
+    " Format on save
+    "augroup fmt
+    "	autocmd!
+    "	autocmd BufWritePre * undojoin | Neoformat
+    " augroup END
+    " Enable alignment
+    let g:neoformat_basic_format_align = 1
+    " Enable tab to spaces conversion
+    let g:neoformat_basic_format_retab = 1
+    " Enable trimmming of trailing whitespace
+    let g:neoformat_basic_format_trim = 1
+    " set highlight duration time to 1000 ms, i.e., 1 second
+    let g:highlightedyank_highlight_duration = 1000
 
-" Enable trimmming of trailing whitespace
-let g:neoformat_basic_format_trim = 1
-
-" set highlight duration time to 1000 ms, i.e., 1 second
-let g:highlightedyank_highlight_duration = 1000
-
-" Add spaces after comment delimiters by default
-let g:NERDSpaceDelims = 1
-" File tree filters
-let NERDTreeIgnore=['__pycache__[[dir]]']
-
-" << AIRLINE CONFIGURATION >> "
-" let g:airline#extensions#whitespace#enabled = 0
-" Enable powerline statusbar
-let g:airline_powerline_fonts = 1
-" Disable defualt mode indicator (in favor of airline)
-set noshowmode
-let g:airline#extensions#tabline#enabled = 1
-colorscheme gruvbox
-let g:airline_theme = 'base16_gruvbox_dark_hard'
-
-" let g:airline_statusline_ontop = 1
-" Change clock format
-let g:airline#extensions#clock#format = '%l:%M %p'
-" Syntax highlight .rofi files (rofi menu)
-au BufNewFile,BufRead /*.rasi setf css
+    " Syntax highlight .rofi files (rofi menu)
+    au BufNewFile,BufRead /*.rasi setf css
