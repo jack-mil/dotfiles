@@ -33,8 +33,6 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'morhetz/gruvbox'
 " Comment \c<space>
 Plug 'scrooloose/nerdcommenter'
-" File sidebar
-Plug 'scrooloose/nerdtree'
 " Bracket/quote autocomplete
 Plug 'jiangmiao/auto-pairs'
 " Status bar
@@ -43,6 +41,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'enricobacis/vim-airline-clock'
 " Git plugin (:G)
 Plug 'tpope/vim-fugitive'
+" nnn file browser
+Plug 'mcchrish/nnn.vim'
 " File icons
 Plug 'ryanoasis/vim-devicons'
 
@@ -91,8 +91,6 @@ let g:highlightedyank_highlight_duration = 1000
 
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
-" File tree filters
-let NERDTreeIgnore=['__pycache__[[dir]]']
 
 " << AIRLINE CONFIGURATION >> "
 " let g:airline#extensions#whitespace#enabled = 0
