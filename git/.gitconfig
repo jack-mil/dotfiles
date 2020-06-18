@@ -1,20 +1,43 @@
-[user]
-	name = jack-mil.rpi4
-	email = 
+[alias]
+	lol = log --graph --oneline --decorate --all
+	l = log --pretty=format:'%C(magenta)%h%Creset %C(bold blue)<%an> %C(cyan)-%C(auto)%d%Creset %s %C(green)(%ar) %Creset' --abbrev-commit --date=relative
+	l2 = log --pretty=format:'%C(green)%ad%Creset %C(cyan)- %Creset%<(50,trunc)%s %C(magenta)%h' --date=short
+	graph = -c core.pager='less -S' log --pretty='tformat:%C(bold magenta)%h %C(blue)%>(10,ltrunc)%aN %<(40,trunc)%Creset%s %C(auto)%d %C(dim green)%ar' --graph
+	last = log -1 HEAD --format=medium
+	unstage = reset HEAD --
+	s = status
+	cm = commit
+	amend = commit --amend
+	br = branch
+	co = checkout
 [color]
+	branch = auto
+	diff = auto
+	status = auto
 	ui = true
-[format]
-	pretty = oneline
 [log]
 	abbrevCommit = true
 	decorate = auto
 [credential]
 	helper = cache --timeout=86400
-[github]
-	user = jack-mil
-[alias]
-	lol = log --graph --oneline --decorate --all
-	last = log -1 HEAD --format=medium
-	unstage = reset HEAD --
-	st = status
-	cm = commit
+
+#Reference
+# %H  - Commit hash
+# %h  - Abbreviated commit hash
+# %T  - Tree hashes
+# %t  - Abbreviated tree hash
+# %P  - Parent hashes
+# %p  - Abbreviated parent hashes
+# %an - Author name
+# %ae - Author email
+# %ad - Author date (format respects the --date=option)
+# %ar - Author date, relative
+# %cn - Committer name
+# %ce - Committer email
+# %cd - Committer date
+# %cr - Committer date, relative
+# %s  - Subject
+# %B  - Message
+[user]
+	name = jackmil.rpi4
+  email =
