@@ -30,8 +30,8 @@ endif
 " Show whitspace characters
   set showbreak=↪\
   set list listchars=tab:→\ ,nbsp:␣,trail:∙,extends:⟩,precedes:⟨
-  " set listchars+=eol:↲
-  " set listchars+=space:·
+   "set listchars+=eol:↲
+   "set listchars+=space:·
 
 " useful settings
   set smartindent
@@ -99,7 +99,7 @@ call plug#end()
     set noshowmode
     let g:airline#extensions#tabline#enabled = 1
     "colorscheme gruvbox
-    "let g:airline_theme = 'base16_gruvbox_dark_hard'
+    let g:airline_theme = 'base16_default'
     " Change clock format
     let g:airline#extensions#clock#format = '%l:%M %p'
 
