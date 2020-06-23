@@ -2,6 +2,7 @@
 dotfiles used on RPI4
 
 My dotfiles for Rasbian, managed by GNU [`stow`](https://www.gnu.org/software/stow/). May be extended to other devices/distros if I ever upgrade.  
+Mostly for backup/sync purposes  
 More packages to come  
 
 ## Installing 
