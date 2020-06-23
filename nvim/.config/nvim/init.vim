@@ -17,6 +17,7 @@ endif
 
 " Looks
   set colorcolumn=80    " Use a color column on the 80-character mark
+  hi ColorColumn ctermbg=lightcyan
   set cursorline        "highlight the line of the cursor
 
 " Enable hybrid (ralative and absolute) line numbers and auto switching
@@ -53,42 +54,9 @@ endif
 " Force saving files that require root permission
   cnoremap w!! w !sudo tee > /dev/null %
 
-" Plugins will be downloaded under the specified directory.
-call plug#begin('~/.local/share/nvim/plugged')
+" Save history files in ~/.cache/nvim
+ let g:netrw_home=$XDA_CACHE_HOME.'/nvim'
 
-" Color schemes
-  Plug 'mhinz/vim-janah'
-  Plug 'vim-airline/vim-airline-themes'
-" Python autocomplete
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  Plug 'zchee/deoplete-jedi'
-" Code formater
-  Plug 'sbdchd/neoformat'
-" Highlight copied regions
-  Plug 'machakann/vim-highlightedyank'
-" Color scheme
-  Plug 'morhetz/gruvbox'
-" Comment \c<space>
-  Plug 'scrooloose/nerdcommenter'
-" Bracket/quote autocomplete
-  Plug 'jiangmiao/auto-pairs'
-" Status bar
-  Plug 'vim-airline/vim-airline'
-  Plug 'enricobacis/vim-airline-clock'
-" Git plugin (:G)
-  Plug 'tpope/vim-fugitive'
-" nnn file browser
-  Plug 'mcchrish/nnn.vim'
-" Sidebar diff
-  "TODO
-  "Plug 'airblade/vim-gitgutter'
-" File icons
-  Plug 'ryanoasis/vim-devicons'
-" Start splash screen
-  Plug 'mhinz/vim-startify'
-" TODO
-" https://github.com/mhinz/vim-startify/wiki/Example-configurations
-call plug#end()
 
 " Plugin Settings
 
@@ -143,3 +111,65 @@ call plug#end()
 
     " Syntax highlight .rofi files (rofi menu)
     au BufNewFile,BufRead /*.rasi setf css
+  " Startify
+    " returns all modified files of the current git repo
+    " `2>/dev/null` makes the command fail quietly, so that when we are not
+    " in a git repo, the list will be empty
+    function! s:gitModified()
+        let files = systemlist('git ls-files -m 2>/dev/null')
+        return map(files, "{'line': v:val, 'path': v:val}")
+    endfunction
+
+    " same as above, but show untracked files, honouring .gitignore
+    function! s:gitUntracked()
+        let files = systemlist('git ls-files -o --exclude-standard 2>/dev/null')
+        return map(files, "{'line': v:val, 'path': v:val}")
+    endfunction
+
+    let g:startify_lists = [
+            \ { 'type': 'files',     'header': ['  Recent']            },
+            \ { 'type': 'dir',       'header': ['   Recent in '. getcwd()] },
+            \ { 'type': 'sessions',  'header': ['   Sessions']       },
+            \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+            \ { 'type': function('s:gitModified'),  'header': ['   Git Modified']},
+            \ { 'type': function('s:gitUntracked'), 'header': ['   Git Untracked']},
+            \ { 'type': 'commands',  'header': ['   Commands']       },
+            \ ]
+    let g:startify_commands = [
+        \ {'h':'h ref'}
+        \ ]
+" Plugins will be downloaded under the specified directory.
+call plug#begin('~/.local/share/nvim/plugged')
+
+" Color schemes
+  Plug 'mhinz/vim-janah'
+  Plug 'vim-airline/vim-airline-themes'
+" Python autocomplete
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'zchee/deoplete-jedi'
+" Code formater
+  Plug 'sbdchd/neoformat'
+" Highlight copied regions
+  Plug 'machakann/vim-highlightedyank'
+" Color scheme
+  Plug 'morhetz/gruvbox'
+" Comment \c<space>
+  Plug 'scrooloose/nerdcommenter'
+" Bracket/quote autocomplete
+  Plug 'jiangmiao/auto-pairs'
+" Status bar
+  Plug 'vim-airline/vim-airline'
+  Plug 'enricobacis/vim-airline-clock'
+" Git plugin (:G)
+  Plug 'tpope/vim-fugitive'
+" nnn file browser
+  Plug 'mcchrish/nnn.vim'
+" Sidebar diff
+  "TODO
+  "Plug 'airblade/vim-gitgutter'
+" File icons
+  Plug 'ryanoasis/vim-devicons'
+" Start splash screen
+  Plug 'mhinz/vim-startify'
+call plug#end()
+
