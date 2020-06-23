@@ -2,7 +2,6 @@
 	lol = log --graph --oneline --decorate --all
 	l = log --pretty=format:'%C(magenta)%h%Creset %C(bold blue)<%an> %C(cyan)-%C(auto)%d%Creset %s %C(green)(%ar) %Creset' --abbrev-commit --date=relative
 	l2 = log --pretty=format:'%C(green)%ad%Creset %C(cyan)- %Creset%<(50,trunc)%s %C(magenta)%h' --date=short
-	graph = -c core.pager='less -S' log --pretty='tformat:%C(bold magenta)%h %C(blue)%>(10,ltrunc)%aN %<(40,trunc)%Creset%s %C(auto)%d %C(dim green)%ar' --graph
 	last = log -1 HEAD --format=medium
 	unstage = reset HEAD --
 	s = status
@@ -20,6 +19,9 @@
 	decorate = auto
 [credential]
 	helper = cache --timeout=86400
+[user]
+	name = jackmil.rpi4
+	email = 62065280+jack-mil@users.noreply.github.com
 
 #Reference
 # %H  - Commit hash
@@ -36,8 +38,6 @@
 # %ce - Committer email
 # %cd - Committer date
 # %cr - Committer date, relative
-# %s  - Subject
-# %B  - Message
-[user]
-	name = jackmil.rpi4
-  email =
+# %s	- Subject
+# %B	- Message
+
