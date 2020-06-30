@@ -55,8 +55,10 @@ endif
   cnoremap w!! w !sudo tee > /dev/null %
 
 " Save history files in ~/.cache/nvim
- let g:netrw_home=$XDA_CACHE_HOME.'/nvim'
+  let g:netrw_home=$XDA_CACHE_HOME.'/nvim'
 
+" Exit built in terminal
+  tnoremap <Esc> <C-\><C-n>
 
 " Plugin Settings
 
@@ -136,8 +138,8 @@ endif
             \ { 'type': 'commands',  'header': ['   Commands']       },
             \ ]
     let g:startify_commands = [
-        \ {'h':'h ref'}
-        \ ]
+        \ {'h':'h ref'},
+        \ {'c':'e $MYVIMRC' },]
 " Plugins will be downloaded under the specified directory.
 call plug#begin('~/.local/share/nvim/plugged')
 
