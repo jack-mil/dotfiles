@@ -4,7 +4,7 @@ configuration {
   /* drun-display-format: "{icon} {name}"; */
   window-format: "{i}{c}   {t}";
   color-window: "red";
-  drun-icon-theme: "Papirus-Dark";
+  drun-icon-theme: "Gruvbox";
   display-run: " ";
   display-drun: " ";
   display-window: " ";
