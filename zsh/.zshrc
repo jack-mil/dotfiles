@@ -57,6 +57,7 @@ source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export EDITOR=nvim
 export BAT_THEME="Monokai Extended"
 unset LESS # OMZ be dumb
+export LESSHISTFILE="/dev/null"
 
 # Configuration aliases
 alias ec="$EDITOR $HOME/.zshrc"
