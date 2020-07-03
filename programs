@@ -5,3 +5,9 @@ neofetch
 rofi
 git
 vis
+
+zsh
+  oh-my-zsh
+  zsh-syntax-highlighting
+  zsh-autosuggestions
+  fz
