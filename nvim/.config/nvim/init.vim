@@ -39,7 +39,6 @@ endif
   set expandtab             "tabs to spaces
   set tabstop=2             "width of tab
   set shiftwidth=2          "width of indent
-  set foldenable
   set foldmethod=indent     "folding by indent
   set foldlevel=99
   set ignorecase            "ignore the case when search texts
@@ -155,8 +154,8 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'machakann/vim-highlightedyank'
 " Color scheme
   Plug 'morhetz/gruvbox'
-" Comment \c<space>
-  Plug 'scrooloose/nerdcommenter'
+" Comment `gcc`
+  Plug 'tpope/vim-commentary'
 " Bracket/quote autocomplete
   Plug 'jiangmiao/auto-pairs'
 " Status bar
@@ -170,7 +169,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   "TODO
   "Plug 'airblade/vim-gitgutter'
 " File icons
-  Plug 'ryanoasis/vim-devicons'
+  " Plug 'ryanoasis/vim-devicons'
 " Start splash screen
   Plug 'mhinz/vim-startify'
 call plug#end()
