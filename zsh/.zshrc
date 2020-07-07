@@ -11,16 +11,28 @@ HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zsh_hist"
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
+    export PATH="$HOME/bin:$PATH"
 fi
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$HOME/.local/bin:$PATH"
+    export PATH="$HOME/.local/bin:$PATH"
 fi
 
-export PATH="$HOME/.cargo/bin:$PATH"
+# Rustup and Cargo
+if [ -d "$HOME/.cargo/bin" ] ; then
+    export PATH="$PATH:$HOME/.cargo/bin"
+fi
 
+# fzf and fuzzy git to path
+
+if [[ ! "$PATH" == */home/jackmil/local/fzf/bin* ]]; then
+  export PATH="${PATH:+${PATH}:}/home/jackmil/local/fzf/bin"
+fi
+
+if [ -d "$HOME/local/git-fuzzy/bin" ] ; then
+    export PATH="$PATH:$HOME/local/git-fuzzy/bin"
+fi
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -84,3 +96,7 @@ alias py="python3"
 
 # Open some files with vim
 alias -s md=$EDITOR
+
+alias gf="git fuzzy"
+
+

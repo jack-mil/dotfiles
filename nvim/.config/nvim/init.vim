@@ -142,8 +142,7 @@ endif
 " Plugins will be downloaded under the specified directory.
 call plug#begin('~/.local/share/nvim/plugged')
 
-" Color schemes
-  Plug 'mhinz/vim-janah'
+" Bar Color schemes
   Plug 'vim-airline/vim-airline-themes'
 " Python autocomplete
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -153,6 +152,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Highlight copied regions
   Plug 'machakann/vim-highlightedyank'
 " Color scheme
+  " Plug 'joshdick/onedark.vim'
   Plug 'morhetz/gruvbox'
 " Comment `gcc`
   Plug 'tpope/vim-commentary'

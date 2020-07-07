@@ -14,4 +14,4 @@ set -g theme_date_format "+%l:%M %p"
 set -g fish_prompt_pwd_dir_length 8
 set -g theme_newline_cursor yes
 
-set -x LESSHISTFILE="/dev/null"
+set -x LESSHISTFILE "/dev/null"
