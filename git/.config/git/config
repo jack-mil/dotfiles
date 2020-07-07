@@ -24,6 +24,13 @@
 [include]
   path = ./user
 
+# URL Shortcuts
+
+[url "https:github.com/"]
+  insteadOf = gh:
+
+[url "git@github.com:"]
+  insteadOf = gs:
 
 # Delta Diff Pager config
 # see https://github.com/dandavison/delta
