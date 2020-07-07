@@ -1,0 +1,45 @@
+#! /bin/sh
+
+# bspwmrc configuration file
+#
+# Run on startup by session selector
+
+# Autostart hotkey deamon
+# sxhkd &
+
+# xfsettingsd &
+
+# Set desktop background
+# feh --no-fehbg --bg-fill '$HOME/walls/pacman.png'
+
+
+# 10 Desktop tags
+bspc monitor -d I II III IV V VI VII VIII IX X
+
+# Border size and color
+bspc config focused_border_color "#98971a"
+bspc config normal_border_color  "3c3836"
+bspc config border_width         2
+bspc config window_gap           5
+bspc config bottom_padding       25
+
+bspc config split_ratio          0.52
+bspc config borderless_monocle   false
+bspc config gapless_monocle      false
+
+# Mouse Config
+bspc config pointer_modifier mod1
+
+bspc rule -a Xfce4-terminal:nnn desktop='^2'
+bspc rule -a Xfce4-terminal:neovim desktop='^2'
+bspc rule -a Xfce4-terminal:term1 desktop='^1'
+
+xfce4-terminal --name neovim -e vim &
+xfce4-terminal --name nnn -e nnn &
+xfce4-terminal --name term1 &
+# Window rules
+# bspc rule -a Gimp desktop='^8' state=floating follow=on
+# bspc rule -a Chromium desktop='^2'
+# bspc rule -a mplayer2 state=floating
+# bspc rule -a Kupfer.py focus=on
+# bspc rule -a Screenkey manage=off
