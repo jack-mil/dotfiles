@@ -24,20 +24,7 @@ if [ -d "$HOME/.cargo/bin" ] ; then
     export PATH="$PATH:$HOME/.cargo/bin"
 fi
 
-# fzf and fuzzy git to path
-
-if [[ ! "$PATH" == */home/jackmil/local/fzf/bin* ]]; then
-  export PATH="${PATH:+${PATH}:}/home/jackmil/local/fzf/bin"
-fi
-
-if [ -d "$HOME/local/git-fuzzy/bin" ] ; then
-    export PATH="$PATH:$HOME/local/git-fuzzy/bin"
-fi
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
+# Completion settings
 HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line if pasting URLs and other text is messed up.
@@ -67,15 +54,26 @@ source $ZSH/oh-my-zsh.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 source ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# Enable suggests and syntax highlighting
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+if [ $TERM = linux ]; then
+  source ~/.p10k-pty.zsh
+else
+  [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+  # Enable suggests and syntax highlighting
+  source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+  source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+  # fzf and fuzzy git to path
+  if [ -d "$HOME/local/git-fuzzy/bin" ] ; then
+      export PATH="$PATH:$HOME/local/git-fuzzy/bin"
+  fi
+  [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+fi
 
 # User config:
 
-# Enviroment stuff
+# Environment stuff
 export EDITOR=nvim
 export BAT_THEME="Monokai Extended"
 unset LESS # OMZ be dumb
@@ -98,5 +96,6 @@ alias py="python3"
 alias -s md=$EDITOR
 
 alias gf="git fuzzy"
+
 
 
