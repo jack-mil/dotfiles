@@ -1,42 +1,52 @@
 #! /bin/sh
 
 # bspwmrc configuration file
-#
 # Run on startup by session selector
 
-# Autostart hotkey deamon
-# sxhkd &
 
-# xfsettingsd &
+# desktop tags
+bspc monitor -d I II III IV V VI
 
-# Set desktop background
-# feh --no-fehbg --bg-fill '$HOME/walls/pacman.png'
+# expansion helper
+_() { bspc config "$@"; }
+
+# mouse config
+_ pointer_modifier          mod1
+_ pointer_motion_interval   10
+
+_ focus_follows_pointer     true
+_ point_follows_focus       false
 
 
-# 10 Desktop tags
-bspc monitor -d I II III IV V VI VII VIII IX X
+# border size and color
+_ window_gap           20
+_ bottom_padding       25       # padding for bar
 
-# Border size and color
-bspc config focused_border_color "#98971a"
-bspc config normal_border_color  "3c3836"
-bspc config border_width         2
-bspc config window_gap           5
-bspc config bottom_padding       25
+_ border_width         2
+_ focused_border_color "#98971a" # green
+_ normal_border_color  "#3c3836" # grey
 
-bspc config split_ratio          0.52
-bspc config borderless_monocle   false
-bspc config gapless_monocle      false
+_ split_ratio          0.52
 
-# Mouse Config
-bspc config pointer_modifier mod1
+
+# other
+_ gapless_monocle      true
+_ single_monocle
 
 bspc rule -a Xfce4-terminal:nnn desktop='^2'
 bspc rule -a Xfce4-terminal:neovim desktop='^2'
 bspc rule -a Xfce4-terminal:term1 desktop='^1'
 
-xfce4-terminal --name neovim -e vim &
-xfce4-terminal --name nnn -e nnn &
-xfce4-terminal --name term1 &
+#
+# autostart
+#
+
+s() {pkill "$1"; { sleep 0.1; "$@"; } & }
+
+s sxhkd
+s compton
+# s xfsettingd
+
 # Window rules
 # bspc rule -a Gimp desktop='^8' state=floating follow=on
 # bspc rule -a Chromium desktop='^2'
