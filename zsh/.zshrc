@@ -90,6 +90,7 @@ alias ll="exa -lhF --git --icons --color-scale --group-directories-first"
 
 # Useful defaults
 alias rm="rm -I"
+alias cp="cp -iv"
 alias py="python3"
 
 # Open some files with vim
