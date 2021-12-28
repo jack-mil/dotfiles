@@ -1,9 +1,10 @@
 # Defined in /home/jackmil/dotfiles/fish/.config/fish/functions/fish_greeting.fish @ line 1
 function fish_greeting --description What\'s\ up,\ fish\?
 
-    rainbar
+    command -q treefetch and; treefetch
+
     # uname with cow
-    uname -nmsr | cowsay | lolcat -r
+    #uname -nmsr | cowsay | lolcat -r
 
     # Display uptime
     set_color $fish_color_autosuggestion
