@@ -13,4 +13,5 @@ if status is-interactive
     alias l "exa -h --icons --color-scale --group-directories-first"
     alias la "exa -aFh --icons --color-scale --group-directories-first"
     alias ll "exa -lhF --git --icons --color-scale --group-directories-first"
+    alias icat "kitty +kitten icat"
 end
