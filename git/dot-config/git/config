@@ -1,0 +1,74 @@
+[alias]
+  lol = log --graph --oneline --decorate --all
+  l1 = log --pretty=format:'%C(green)%ad%Creset %C(cyan)- %G? - %Creset%<(50,trunc)%s %C(magenta)%h' --date=short
+  l2 = log --pretty=format:'%C(magenta)%h%Creset %C(bold blue)<%an> %C(cyan)-%C(auto)%d%Creset %s %C(green)(%ar) %Creset' --abbrev-commit --date=relative
+  last = log -1 HEAD --format=medium
+  unstage = reset HEAD --
+  s = status
+  cm = commit
+  br = branch
+  co = checkout
+  sw = switch
+  oops = "!f(){ \
+    if [ \"$1\" == '' ]; then \
+        git commit --amend --no-edit; \
+    else \
+        git commit --amend \"$@\"; \
+    fi;\
+  }; f"
+[color]
+  branch = auto
+  diff = auto
+  status = auto
+  ui = true
+[log]
+  abbrevCommit = true
+  decorate = auto
+[credential]
+  # helper = cache --timeout=86400
+[user]
+  # Set in seperate ./user file
+[include]
+  path = ./user
+
+# URL Shortcuts
+
+[url "https:github.com/"]
+  insteadOf = gh:
+
+[url "git@github.com:"]
+  insteadOf = gs:
+
+# Delta Diff Pager config
+# see https://github.com/dandavison/delta
+[include]
+  path = ./delta-themes
+[core]
+ pager = delta --line-numbers
+# [pager] # Disable delta pager for log and status
+#  status = less
+#  log = less
+[interactive]
+ diffFilter = delta --color-only
+[merge]
+  conflictstyle = diff3
+[diff]
+ colorMoved = default
+[delta]
+ # Set by $BAT_THEME
+ #theme = 'Monokai Extended'
+ # More config could go here
+ navigate = true
+ # Use a "theme" from included file
+ features = villsau decorations
+[delta "decorations"]
+  commit-decoration-style = bold yellow box ul
+  file-style = bold yellow ul
+  file-decoration-style = none
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[init]
+	defaultBranch = master
