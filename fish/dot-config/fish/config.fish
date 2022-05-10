@@ -2,7 +2,8 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
     set -gx MANPAGER "sh -c 'col -bx | bat -l man -p'"
     set -gx GPG_TTY (tty)
-
+    
+    __abbr_tips_init
     #ABBREVIATIONS
     abbr --add --global gco git checkout
     abbr --add --global gcm git commit -m
