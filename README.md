@@ -1,9 +1,10 @@
-# dotfiles
-dotfiles used on RPI4
+# Dotfiles #
+A very messy collection of configuration files for my Linux environments
 
-My dotfiles for Rasbian, managed by GNU [`stow`](https://www.gnu.org/software/stow/). May be extended to other devices/distros if I ever upgrade.  
+Somewhat outdated configs for Arch Linux.
+
+Managed by GNU [`stow`](https://www.gnu.org/software/stow/). May be extended to other devices/distros if I ever upgrade.  
 Mostly for backup/sync purposes  
-More packages to come  
 
 ## Installing 
 `stow` makes it easy to organize by application / topic. Each top level directory (eg, 'nvim') contains all necessary the config files relative to `$HOME`. Installing is as easy as:
