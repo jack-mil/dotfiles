@@ -27,8 +27,10 @@
 [credential]
   # helper = cache --timeout=86400
 [user]
-  # Set in seperate ./user file
+	name = jack-mil
+	email = 62065280+jack-mil@users.noreply.github.com
 [include]
+  # keys set in seperate ./user file
   path = ./user
 
 # URL Shortcuts
