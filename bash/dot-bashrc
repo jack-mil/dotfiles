@@ -1,0 +1,109 @@
+# ~/.bashrc: executed by bash(1) for non-login shells.
+
+# [[ -f $HOME/.local/bin ]] && export PATH=$PATH:$HOME/.local/bin
+
+for bindir in $HOME/.local/bin $HOME/bin; do
+    if [ -d $bindir ]; then
+        PATH=${bindir}:$PATH
+    fi
+done
+
+export PATH
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+# don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+HISTCONTROL=ignoreboth
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# correct minor spelling (case) when using cd
+shopt -s cdspell
+# cd to path if command doesn't exists
+shopt -s autocd
+
+# expand paths when using tab completion
+shopt -s direxpand
+
+# prevent exit when background jobs running, list them
+shopt -s checkjobs
+
+# preview history shortcut commands before running
+shopt -s histverify
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=1000
+HISTFILESIZE=2000
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+# If set, the pattern "**" used in a pathname expansion context will
+# match all files and zero or more directories and subdirectories.
+#shopt -s globstar
+
+[[ -z "$FUNCNEST" ]] && export FUNCNEST=100          # limits recursive functions, see 'man bash'
+
+## Use the up and down arrow keys for finding a command in history
+## (you can write some initial letters of the command first).
+bind '"\e[A":history-search-backward'
+bind '"\e[B":history-search-forward'
+
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+
+# Set custom prompt that uses git-prompt.sh from git distribution
+if [ -f ~/.config/bash/prompt.sh ]; then
+    source ~/.config/bash/prompt.sh
+else
+    PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+fi
+
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto --hyperlink=auto'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+# colored GCC warnings and errors
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+# Alias definitions.
+[ -f ~/.bash_aliases ] && source ~/.bash_aliases
+
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+
+# Enable github-cli completions
+command -v gh >/dev/null 2>&1 && eval "$(gh completion -s bash)"
+
+
+if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.bash ]; then
+    . "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.bash
+fi
+
+source "$HOME/.cargo/env"

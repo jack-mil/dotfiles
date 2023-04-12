@@ -1,0 +1,6 @@
+#
+# This is only exected for login shells
+# Simply source the basrc for consistent experience 
+#
+
+[[ -f ~/.bashrc ]] && . ~/.bashrc
