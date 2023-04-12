@@ -1,0 +1,4 @@
+# Set the rest of zsh configuration here
+export ZDOTDIR="$HOME/.config/zsh"
+# and source an additional env file if exists
+[[ -f $ZDOTDIR/env ]] && . $ZDOTDIR/env
