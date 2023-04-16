@@ -1,0 +1,45 @@
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+export XDG_DOWNLOAD_DIR="$HOME/downloads"
+export XDG_DOCUMENTS_DIR="$HOME/documents"
+export XDG_MUSIC_DIR="$HOME/music"
+export XDG_PICTURES_DIR="$HOME/pictures"
+export XDG_VIDEOS_DIR="$HOME/videos"
+
+# export PATH=$HOME/bin:$HOME/.local/bin:$PATH
+
+export LANG=en_US.UTF-8
+
+export TERMINAL="kitty"
+export BROWSER="brave"
+
+export VISUAL="nvim"
+# Preferred editor for local and remote sessions
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='nvim'
+fi
+
+# # Set bat as man pager
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+
+# # colored GCC warnings and errors
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
+# # FZF options
+export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border --inline-info"
+export FZF_CTRL_R_OPTS="
+  --preview 'echo {}' --preview-window up:2:hidden:wrap
+  --bind 'ctrl-/:toggle-preview'
+  --bind 'ctrl-y:execute-silent(echo -n {2..} | xsel -b)+abort'
+  --color header:italic
+  --header 'Press CTRL-Y to copy command into clipboard'"
+export FZF_CTRL_T_OPTS="
+  --height 100%
+  --preview 'bat -n --color=always {}'
+  --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+
+# export PROFILE_SOURCED=1

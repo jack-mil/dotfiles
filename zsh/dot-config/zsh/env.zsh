@@ -19,4 +19,4 @@ if [ -d "$HOME/.local/bin" ] ; then
     export PATH="$HOME/.local/bin:$PATH"
 fi
 
-FILE="$HOME/.cargo/env" ; [ -f $FILE ] && source $FILE
+[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
