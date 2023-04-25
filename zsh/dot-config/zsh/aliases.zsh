@@ -8,7 +8,7 @@ alias del='trash-put'
 
 alias ls='ls -F --color=auto'
 alias l='exa --icons --group-directories-first'
-alias ll='exa -l --header --icons --group-directories-first'
+alias ll='exa -l --git --header --icons --group-directories-first'
 alias la='exa -a --icons --group-directories-first'
 alias lt='exa --icons --tree'
 
