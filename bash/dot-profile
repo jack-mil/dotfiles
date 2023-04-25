@@ -23,6 +23,8 @@ else
   export EDITOR='nvim'
 fi
 
+export SUDO_PROMPT=$'\a[sudo] system password: '
+
 # # Set bat as man pager
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
