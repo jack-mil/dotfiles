@@ -20,3 +20,5 @@ alias icat='kitty +kitten icat'
 alias copy='xclip <'
 alias fd='fd --one-file-system'
 alias rg='rg --one-file-system'
+
+alias pactree='pactree --color'
