@@ -1,0 +1,18 @@
+[general]
+cpus = 16
+editor = 'nvim'
+
+[aur]
+build = '~/.cache/aura/builds'
+cache = '~/.cache/aura/cache'
+clones = '~/.cache/aura/packages'
+hashes = '~/.cache/aura/hashes'
+ignores = []
+git = false
+hotedit = false
+diff = false
+delmakedeps = false
+
+[backups]
+snapshots = '~/.cache/aura/snapshots'
+
