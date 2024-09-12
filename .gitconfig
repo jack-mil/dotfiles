@@ -1,0 +1,21 @@
+[user]
+	useConfigOnly = true
+[core]
+	editor = nvim -f
+	symlinks = true
+	fsmonitor = true
+	untrackedCache = true
+	pager = delta
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+	side-by-side = true
+[merge]
+	conflictsyle = diff3
+[diff]
+	colorMoved = default
+[pull]
+	rebase = true
+[rerere]
+	enabled = true
