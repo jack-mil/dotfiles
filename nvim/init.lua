@@ -1,4 +1,5 @@
-require("config.settings")
-require("config.lazy")
+require("jackmil.lazy")
+require("jackmil.keymaps")
+require("jackmil.settings")
 
-vim.cmd.colorscheme "catppuccin"
+vim.cmd.colorscheme("catppuccin-frappe")
