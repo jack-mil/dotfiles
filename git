@@ -34,6 +34,9 @@
   insteadOf = gs:
 
 [core]
+  editor = nvim -f
+  symlinks = true
+  untrackedCache = true
   pager = delta
   eol = lf
   autocrlf = false
@@ -43,10 +46,13 @@
 [interactive]
   diffFilter = delta --color-only
 [delta]
+  navigate = true
   line-numbers = true
   side-by-side = true
 [merge]
   conflictstyle = diff3
+[pull]
+  rebase = true
 [diff]
   colorMoved = default
 [filter "lfs"]
