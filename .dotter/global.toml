@@ -4,8 +4,11 @@
 [settings]
 default_target_type = "automatic"
 
+[git.files]
+gitconfig = "~/.config/git/config"
+jj = {type="symbolic", target = "~/.config/jj", if = '(is_executable "jj")'}
+
 [shell.files]
-git = "~/.config/git/config"
 ripgrep = { type = "symbolic", target = "~/.ripgreprc", if = '(is_executable "rg")'}
 
 [bash]

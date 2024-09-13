@@ -1,0 +1,79 @@
+{{#if (and email git_username)}}
+[user]
+  email = {{email}}
+  name = {{git_username}}
+
+[credential]
+  helper = store
+{{else}}
+[user]
+  useConfigOnly = true
+{{/if}}
+[core]
+  editor = nvim -f
+  untrackedCache = true
+  {{#if (is_executable "delta")}}
+  pager = delta
+  {{/if}}
+  {{#if (eq dotter.os "windows")}}
+  symlinks = true
+  autocrlf = true
+  {{else}}
+  autocrlf = input
+  {{/if}}
+[merge]
+  conflictstyle = diff3
+[pull]
+  rebase = true
+[diff]
+  colorMoved = default
+[rerere]
+  enabled = true
+[log]
+  abbrevCommit = true
+  decorate = auto
+[pager]
+  # Disable delta pager for log and status
+  status = less
+  log = less
+[alias]
+  lol = log --graph --oneline --decorate --all
+  l1 = log --pretty=format:'%C(green)%ad%Creset %C(cyan)- %G? - %Creset%<(50,trunc)%s %C(magenta)%h' --date=short
+  l2 = log --pretty=format:'%C(magenta)%h%Creset %C(bold blue)<%an> %C(cyan)-%C(auto)%d%Creset %s %C(green)(%ar) %Creset' --abbrev-commit --date=relative
+  last = log -1 HEAD --format=medium
+  unstage = reset HEAD --
+  s = status
+  cm = commit
+  br = branch
+  co = checkout
+  sw = switch
+  oops = "!f(){ \
+    if [ \"$1\" == '' ]; then \
+        git commit --amend --no-edit; \
+    else \
+        git commit --amend \"$@\"; \
+    fi;\
+  }; f"
+
+# URL Shortcuts
+[url "https:github.com/"]
+  insteadOf = gh:
+
+[url "git@github.com:"]
+  insteadOf = gs:
+
+{{#if (is_executable "delta")}}
+[interactive]
+  diffFilter = delta --color-only
+
+[delta]
+  navigate = true
+  line-numbers = true
+  side-by-side = true
+{{/if}}
+
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
