@@ -1,0 +1,13 @@
+{{#if (is_executable "eza")}}
+alias l='eza --icons --group-directories-first --sort Extension'
+alias ll='eza -l --icons --header --group --sort Extension --no-permissions'
+alias ltl='eza -l --tree --header --group --no-time --links --no-permissions --no-filesize'
+alias lt='eza --tree'
+alias la='eza -a --group-directories-first'
+{{/if}}
+
+{{#if (is_executable "bat")}}
+alias cat="bat"
+{{/if}}
+
+alias rm='rm -I'

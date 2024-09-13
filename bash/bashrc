@@ -1,0 +1,46 @@
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
+mkdir -p "${XDG_CACHE_HOME:-$HOME/.cache}"/bash
+export HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}"/bash/history
+
+# don't put duplicate lines or lines starting with space in the history.
+HISTCONTROL=ignoreboth
+HISTSIZE=1000
+HISTFILESIZE=2000
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+if [ -d "$HOME/.local/bin" ] ; then
+    export PATH="$HOME/.local/bin:$PATH"
+fi
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+export XDG_CONFIG_HOME=~/.config
+export YAZI_FILE_ONE=/usr/bin/file.exe
+export YAZI_CONFIG_HOME=~/.config/yazi
+
+export LESSHISTFILE="/dev/null"
+
+export EDITOR=nvim
+export VISUAL=nvim
+export PIP_REQUIRE_VIRTUALENV=true
+export BAT_THEME=base16
+
+{{#if (is_executable "zoxide")}}
+eval "$(zoxide init --cmd cd bash)"
+{{/if}}
+
+{{#if (is_executable "fzf")}}
+eval "$(fzf --bash)"
+{{/if}}
+
+{{#if (is_executable "starship")}}
+eval "$(starship init bash)"
+{{/if}}
