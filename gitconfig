@@ -1,3 +1,6 @@
+# -*- mode: gitconfig -*-
+# vim: ft=gitconfig
+
 [user]
 {{#if (and email username)}}
   email = {{email}}
@@ -10,6 +13,8 @@
   {{#if (eq (extension signing_key) "pub")}}
 [gpg]
   format = ssh
+[gpg "ssh"]
+  allowedSignersFile = "~/.ssh/allowed_signers"
   {{/if}}
 [commit]
   gpgsign = true
