@@ -10,6 +10,7 @@ return {
             dark = "mocha",
         },
         transparent_background = true,
+        compile_path = vim.fn.stdpath "cache" .. "/catppuccin",
         integrations = {
             barbecue = {
                 dim_dirname = true, -- directory name is dimmed by default
