@@ -1,0 +1,15 @@
+[helpers]
+
+[shell.files]
+git = "~/.config/git/config"
+ripgrep = { type = "symbolic", target = "~/.ripgreprc", if = '(is_executable "rg")'}
+
+[bash]
+depends = ["shell"]
+files = { bashrc = "~/.bashrc", profile = "~/.profile" }
+
+[nvim.files]
+nvim = "~/.config/nvim"
+
+[settings]
+default_target_type = "automatic"
