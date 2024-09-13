@@ -1,25 +1,24 @@
 [[manager.prepend_keymap]]
-on   = "<A-p>"
-run  = "plugin --sync hide-preview"
-desc = "Hide or show preview"
+    desc = "Hide or show preview"
+    on   = "<A-p>"
+    run  = "plugin --sync hide-preview"
 
 [[manager.prepend_keymap]]
-on   = "<A-P>"
-run  = "plugin --sync max-preview"
-desc = "Maximize or restore preview"
+    desc = "Maximize or restore preview"
+    on   = "<A-P>"
+    run  = "plugin --sync max-preview"
 
 [[manager.prepend_keymap]]
-on = "T"
-run = "plugin eza-preview"
-desc = "Toggle tree/list dir preview"
+    desc = "Toggle tree/list dir preview"
+    on   = "T"
+    run  = "plugin eza-preview"
 
 [[manager.prepend_keymap]]
-on = "f"
-run = "plugin jump-to-char"
-desc = "Jump to char"
+    desc = "Jump to char"
+    on   = "f"
+    run  = "plugin jump-to-char"
 
 [[manager.prepend_keymap]]
-on = "F"
-run = "filter --smart"
-desc = "Filer files"
-
+    desc = "Filer files"
+    on   = "F"
+    run  = "filter --smart"

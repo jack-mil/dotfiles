@@ -1,14 +1,17 @@
 [plugin]
-deps = [
-    { use = "Reledia/glow", rev = "4e016fa" },
-    { use = "yazi-rs/plugins:full-border", rev = "0b9f325" },
-    { use = "yazi-rs/plugins:hide-preview", rev = "0b9f325" },
-    { use = "yazi-rs/plugins:max-preview", rev = "0b9f325" },
-    { use = "sharklasers996/eza-preview", rev = "7ca4c25" },
-    { use = "yazi-rs/plugins:jump-to-char", rev = "0b9f325" },
-    { use = "Reledia/miller", rev = "40e0265" }]
+    deps = [
+        { use = "Reledia/glow", rev = "4e016fa" },
+        { use = "Reledia/miller", rev = "40e0265" },
+        { use = "sharklasers996/eza-preview", rev = "7ca4c25" },
+        { use = "yazi-rs/plugins:full-border", rev = "0b9f325" },
+        { use = "yazi-rs/plugins:hide-preview", rev = "0b9f325" },
+        { use = "yazi-rs/plugins:jump-to-char", rev = "0b9f325" },
+        { use = "yazi-rs/plugins:max-preview", rev = "0b9f325" },
+    ]
 
 [flavor]
-deps = [{ use = "dangooddd/kanagawa", rev = "b32f205" },
+    deps = [
+        { use = "dangooddd/kanagawa", rev = "b32f205" },
+        { use = "yazi-rs/flavors:catppuccin-frappe", rev = "d479f67" },
         { use = "yazi-rs/flavors:catppuccin-mocha", rev = "d479f67" },
-        { use = "yazi-rs/flavors:catppuccin-frappe", rev = "d479f67" }]
+    ]

@@ -3,21 +3,21 @@
 "$schema" = "https://yazi-rs.github.io/schemas/yazi.json"
 
 [manager]
-ratio = [1, 2, 4]
-sort_sensitive = false
+  ratio          = [1, 2, 4]
+  sort_sensitive = false
 [preview]
-wrap = "no"
+  wrap = "no"
 [opener]
-edit = [
-    { run = 'nvim "$@"', block = true, for = "unix" },
+  edit = [
     { run = "nvim %*", block = true, for = "windows" },
-]
+    { run = 'nvim "$@"', block = true, for = "unix" },
+  ]
 [plugin]
-prepend_previewers = [
-  { name = "*/", run = "eza-preview" },
-  { name = "*.md", run = "glow" },
-  { mime = "image/{avif,hei?,jxl}", run = "noop" },
-  { mime = "image/{svg+xml}", run = "code"},
-  { mime = "image/*", run = "file" },
-  { mime = "text/csv", run = "miller" }
-]
+  prepend_previewers = [
+    { mime = "image/*", run = "file" },
+    { mime = "image/{avif,hei?,jxl}", run = "noop" },
+    { mime = "image/{svg+xml}", run = "code" },
+    { mime = "text/csv", run = "miller" },
+    { name = "*.md", run = "glow" },
+    { name = "*/", run = "eza-preview" },
+  ]
