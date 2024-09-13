@@ -1,5 +1,6 @@
 [git.variables]
-# unset at work to force per-repo setting
-email = ""
-username = ""
-signing_key = "~/.ssh/id_ed25519.pub"
+  # unset at work to force per-repo setting
+  email    = ""
+  username = ""
+
+  signing_key = "~/.ssh/id_ed25519.pub"

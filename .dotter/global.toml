@@ -2,25 +2,31 @@
 
 # special dotter settings
 [settings]
-default_target_type = "automatic"
+  default_target_type = "automatic"
 
 [git.files]
-gitconfig = "~/.config/git/config"
-jj = {type="symbolic", target = "~/.config/jj", if = '(is_executable "jj")'}
+  gitconfig = "~/.config/git/config"
+  jj        = { type = "symbolic", target = "~/.config/jj", if = '(is_executable "jj")' }
 
 [git.variables]
-username = "jack-mil"
-email = "62065280+jack-mil@users.noreply.github.com"
+  email    = "62065280+jack-mil@users.noreply.github.com"
+  username = "jack-mil"
 
 [shell.files]
-ripgrep = { type = "symbolic", target = "~/.ripgreprc", if = '(is_executable "rg")'}
+  # other interactive stuff here? install utils?
+  ripgrep = { type = "symbolic", target = "~/.ripgreprc", if = '(is_executable "rg")' }
 
 [bash]
-depends = ["shell"]
-files = { bashrc = "~/.bashrc", profile = "~/.profile" }
+  depends = ["shell"]
+  [bash.files]
+    "bash/bash_aliases" = "~/.bash_aliases"
+    "bash/bashrc"       = "~/.bashrc"
 
 [nvim.files]
-nvim = "~/.config/nvim"
+  nvim = "~/.config/nvim"
 
 [sioyek.files]
-sioyek = "~/.config/sioyek"
+  sioyek = "~/.config/sioyek"
+
+[yazi.files]
+  yazi = "~/.config/yazi"
