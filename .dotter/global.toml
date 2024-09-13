@@ -8,6 +8,10 @@ default_target_type = "automatic"
 gitconfig = "~/.config/git/config"
 jj = {type="symbolic", target = "~/.config/jj", if = '(is_executable "jj")'}
 
+[git.variables]
+username = "jack-mil"
+email = "62065280+jack-mil@users.noreply.github.com"
+
 [shell.files]
 ripgrep = { type = "symbolic", target = "~/.ripgreprc", if = '(is_executable "rg")'}
 

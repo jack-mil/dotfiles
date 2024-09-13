@@ -3,16 +3,20 @@ paginate = "auto"
 pager = ":builtin"
 default-command = "log"
 editor = "nvim"
-merge-editor = "vscode"
+merge-editor = "code"
 
 [user]
 name = "jack-mil"
 email = "62065280+jack-mil@users.noreply.github.com"
 
+{{#if signing_key}}
 [signing]
-sign-all = true
-backend = "ssh"
-key = "~/.ssh/id_ed25519.pub"
+  key = "{{signing_key}}"
+  sign-all = true
+  {{#if (eq (extension signing_key) "pub")}}
+  backend = "ssh"
+  {{/if}}
+{{/if}}
 
 [template-aliases]
 'format_short_signature(signature)' = 'signature.name()'

@@ -1,14 +1,20 @@
-{{#if (and email git_username)}}
 [user]
+{{#if (and email username)}}
   email = {{email}}
-  name = {{git_username}}
-
-[credential]
-  helper = store
+  name = {{username}}
 {{else}}
-[user]
   useConfigOnly = true
 {{/if}}
+{{#if signing_key}}
+  signingkey = "{{signing_key}}"
+  {{#if (eq (extension signing_key) "pub")}}
+[gpg]
+  format = ssh
+  {{/if}}
+[commit]
+  gpgsign = true
+{{/if}}
+
 [core]
   editor = nvim -f
   untrackedCache = true
