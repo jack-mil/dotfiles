@@ -1,2 +1,5 @@
 [sioyek.files]
 sioyek = "~/scoop/persist/sioyek"
+
+[git.files]
+jj = "~/AppData/Roaming/jj"
