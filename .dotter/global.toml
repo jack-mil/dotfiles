@@ -4,13 +4,18 @@
 [settings]
   default_target_type = "automatic"
 
-[git.files]
-  gitconfig = "~/.config/git/config"
-  jj        = { type = "symbolic", target = "~/.config/jj", if = '(is_executable "jj")' }
+[ssh]
+  # meta package for now
 
-[git.variables]
-  email    = "62065280+jack-mil@users.noreply.github.com"
-  username = "jack-mil"
+[git]
+  depends = ["ssh"]
+  [git.files]
+    gitconfig = "~/.config/git/config"
+    jj        = { type = "symbolic", target = "~/.config/jj", if = '(is_executable "jj")' }
+
+  [git.variables]
+    email    = "62065280+jack-mil@users.noreply.github.com"
+    username = "jack-mil"
 
 [shell.files]
   # other interactive stuff here? install utils?
@@ -30,3 +35,9 @@
 
 [yazi.files]
   yazi = "~/.config/yazi"
+
+# meta package(s) for now
+[graphics]
+
+[media]
+  depends = ["graphics"]

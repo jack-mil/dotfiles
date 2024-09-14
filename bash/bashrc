@@ -1,3 +1,6 @@
+{{#if (eq dotter.os "windows")}}
+export PATH="/c/Windows/System32/OpenSSH/":$PATH
+{{/if}}
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -5,12 +8,13 @@ case $- in
 esac
 
 mkdir -p "${XDG_CACHE_HOME:-$HOME/.cache}"/bash
-export HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}"/bash/history
+HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}"/bash/history
+export LESSHISTFILE="/dev/null"
 
 # don't put duplicate lines or lines starting with space in the history.
 HISTCONTROL=ignoreboth
 HISTSIZE=1000
-HISTFILESIZE=2000
+HISTFILESIZE=10000
 # append to the history file, don't overwrite it
 shopt -s histappend
 
@@ -23,10 +27,6 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 export XDG_CONFIG_HOME=~/.config
-export YAZI_FILE_ONE=/usr/bin/file.exe
-export YAZI_CONFIG_HOME=~/.config/yazi
-
-export LESSHISTFILE="/dev/null"
 
 export EDITOR=nvim
 export VISUAL=nvim
@@ -37,10 +37,45 @@ export BAT_THEME=base16
 eval "$(zoxide init --cmd cd bash)"
 {{/if}}
 
-{{#if (is_executable "fzf")}}
-eval "$(fzf --bash)"
+{{#if (is_executable "yazi")}}
+export YAZI_FILE_ONE=/usr/bin/file.exe
+export YAZI_CONFIG_HOME=~/.config/yazi
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
 {{/if}}
 
+{{#if (and (is_executable "fzf") (is_executable "fd"))}}
+eval "$(fzf --bash)"
+export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers --color=always --line-range :500 {}' --preview-window right,50,border-horizontal"
+export FZF_DEFAULT_COMMAND='fd --type f'
+export FZF_DEFAULT_OPTS='--info=inline'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+# Use fd (https://github.com/sharkdp/fd) instead of the default find
+# command for listing path candidates.
+# - The first argument to the function ($1) is the base path to start traversal
+# - See the source code (completion.{bash,zsh}) for the details.
+_fzf_compgen_path() {
+  fd --hidden --follow --exclude ".git" . "$1"
+}
+
+# Use fd to generate the list for directory completion
+_fzf_compgen_dir() {
+  fd --type d --hidden --follow --exclude ".git" . "$1"
+}
+{{/if}}
+
+# Prompt setup
 {{#if (is_executable "starship")}}
 eval "$(starship init bash)"
+{{/if}}
+
+# Completions
+{{#if (is_executable "gh")}}
+eval "$(gh completion -s bash)"
 {{/if}}
