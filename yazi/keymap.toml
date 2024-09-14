@@ -1,24 +1,26 @@
-[[manager.prepend_keymap]]
-    desc = "Hide or show preview"
-    on   = "<A-p>"
-    run  = "plugin --sync hide-preview"
+"$schema" = "https://yazi-rs.github.io/schemas/keymap.json"
 
 [[manager.prepend_keymap]]
-    desc = "Maximize or restore preview"
-    on   = "<A-P>"
-    run  = "plugin --sync max-preview"
+  desc = "Hide or show preview"
+  on   = "<A-p>"
+  run  = "plugin --sync hide-preview"
 
 [[manager.prepend_keymap]]
-    desc = "Toggle tree/list dir preview"
-    on   = "T"
-    run  = "plugin eza-preview"
+  desc = "Maximize or restore preview"
+  on   = "<A-P>"
+  run  = "plugin --sync max-preview"
 
 [[manager.prepend_keymap]]
-    desc = "Jump to char"
-    on   = "f"
-    run  = "plugin jump-to-char"
+  desc = "Toggle tree/list dir preview"
+  on   = "T"
+  run  = "plugin eza-preview"
 
 [[manager.prepend_keymap]]
-    desc = "Filer files"
-    on   = "F"
-    run  = "filter --smart"
+  desc = "Jump to char"
+  on   = "f"
+  run  = "plugin jump-to-char"
+
+[[manager.prepend_keymap]]
+  desc = "Filer files"
+  on   = "F"
+  run  = "filter --smart"
