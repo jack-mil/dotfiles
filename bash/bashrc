@@ -27,6 +27,10 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+{{#if (is_executable "vivid")}}
+export LS_COLORS="$(vivid generate catppuccin-mocha)"
+{{/if}}
+
 export XDG_CONFIG_HOME=~/.config
 
 export EDITOR=nvim
