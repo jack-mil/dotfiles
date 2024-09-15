@@ -1,6 +1,7 @@
 {{#if (eq dotter.os "windows")}}
 export PATH="/c/Windows/System32/OpenSSH/":$PATH
 {{/if}}
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -33,12 +34,23 @@ export VISUAL=nvim
 export PIP_REQUIRE_VIRTUALENV=true
 export BAT_THEME=base16
 
+# source cargo environment
+if [ -f $HOME/.cargo/env ]; then
+  export BINSTALL_DISABLE_TELEMETRY=true
+  . $HOME/.cargo/env
+fi
+
+# Optional utility section
+# ------------------------
+
 {{#if (is_executable "zoxide")}}
 eval "$(zoxide init --cmd cd bash)"
 {{/if}}
 
 {{#if (is_executable "yazi")}}
+{{#if (eq dotter.os "windows")}}
 export YAZI_FILE_ONE=/usr/bin/file.exe
+{{/if}}
 export YAZI_CONFIG_HOME=~/.config/yazi
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"

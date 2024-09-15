@@ -9,17 +9,24 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
+# interactive if lots of files deleted
 alias rm='rm -I'
 
-# LS ignore list
+# Move up quickly
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+
 {{#if (eq dotter.os "windows")}}
+# LS ignore list for Windows
 LS_COMMON=$LS_COMMON" -I NTUSER.DAT\* -I ntuser.dat\*"
 LS_COMMON=$LS_COMMON" -I ntuser.ini -I Recent -I SendTo -I \"Start Menu\" -I \"My Documents\""
 LS_COMMON=$LS_COMMON" -I ntuser.pol -I NetHood -I Cookies -I Templates -I PrintHood -I Local\ Settings"
 {{/if}}
-
 alias ls="command ls $LS_COMMON"
-{{#if (is_executable "fzf")}}
+
+{{#if (is_executable "eza")}}
+# use eza for file listing if available
   {{#if (eq dotter.os "windows")}}
 # Eza ignore list for windows
 IGNORE="-I 'NTUSER.*|ntuser.*|Recent|SendTo|Start Menu|My Documents|NetHood|Cookies|Templates|PrintHood|Local Settings|Application Data|OneDrive*|Contacts|Saved Games|Searches|'"
@@ -31,7 +38,9 @@ alias ll="eza -l -a --header --group $EZA_COMMON $IGNORE"
 alias lt="eza --tree $EZA_COMMON $IGNORE"
 alias ltl="eza -l --tree --header --no-time --group --sort Extension $IGNORE"
 {{/if}}
+
 {{#if (is_executable "docker")}}
+# Docker shortcuts
 alias dc='docker compose'
 alias dcup='docker compose up'
 alias dcupd='docker compose up -d'
@@ -44,6 +53,28 @@ alias dcstart='docker compose start'
 {{/if}}
 
 alias fixperms='chmod a=,a+rX,u+w,g+w'
+
+# utility function to unarchive anything
+extract () {
+     if [ -f $1 ] ; then
+         case $1 in
+             *.tar.bz2)   tar xjf $1     ;;
+             *.tar.gz)    tar xzf $1     ;;
+             *.bz2)       bunzip2 $1     ;;
+             *.rar)       rar x $1       ;;
+             *.gz)        gunzip $1      ;;
+             *.tar)       tar xf $1      ;;
+             *.tbz2)      tar xjf $1     ;;
+             *.tgz)       tar xzf $1     ;;
+             *.zip)       unzip $1       ;;
+             *.Z)         uncompress $1  ;;
+             *.7z)        7z x $1    ;;
+             *)           echo "'$1' cannot be extracted via extract()" ;;
+         esac
+     else
+         echo "'$1' is not a valid file"
+     fi
+}
 
 {{#if dotter.packages.media}}
 function webm2gif() {
