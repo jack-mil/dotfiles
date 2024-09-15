@@ -20,6 +20,7 @@
 
 [shell.files]
   # other interactive stuff here? install utils?
+  glow    = { type = "symbolic", target = "~/.config/glow", if = '(is_executable "glow")' }
   ripgrep = { type = "symbolic", target = "~/.ripgreprc", if = '(is_executable "rg")' }
 
 [bash]

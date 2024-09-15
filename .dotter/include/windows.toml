@@ -3,3 +3,6 @@
 
 [git.files]
   jj = "~/AppData/Roaming/jj"
+
+[shell.files]
+  glow = "~/AppData/Local/glow/Config/"
