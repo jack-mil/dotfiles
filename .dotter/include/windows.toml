@@ -5,4 +5,4 @@
   jj = "~/AppData/Roaming/jj"
 
 [shell.files]
-  glow = "~/AppData/Local/glow/Config/"
+  glow    = { type = "symbolic", target = "~/.config/glow", if = '(is_executable "glow")' }
