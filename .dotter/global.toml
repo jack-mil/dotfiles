@@ -14,6 +14,7 @@
     jj        = { type = "symbolic", target = "~/.config/jj", if = '(is_executable "jj")' }
 
   [git.variables]
+    #optional: signing_key
     email    = "62065280+jack-mil@users.noreply.github.com"
     username = "jack-mil"
 

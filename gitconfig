@@ -32,6 +32,8 @@
   {{else}}
   autocrlf = input
   {{/if}}
+[init]
+	defaultBranch = master
 [merge]
   conflictstyle = diff3
 [pull]
