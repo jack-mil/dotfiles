@@ -18,10 +18,11 @@
     email    = "62065280+jack-mil@users.noreply.github.com"
     username = "jack-mil"
 
+# other interactive stuff here? install utils?
 [shell.files]
-  # other interactive stuff here? install utils?
-  glow    = { type = "symbolic", target = "~/.config/glow", if = '(is_executable "glow")' }
-  ripgrep = { type = "symbolic", target = "~/.ripgreprc", if = '(is_executable "rg")' }
+  glow     = { type = "symbolic", target = "~/.config/glow", if = '(is_executable "glow")' }
+  ripgrep  = { type = "symbolic", target = "~/.ripgreprc", if = '(is_executable "rg")' }
+  starship = { type = "symbolic", target = "~/.config", if = '(is_executable "starship")' }
 
 [bash]
   depends = ["shell"]
