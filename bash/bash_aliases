@@ -14,6 +14,12 @@ fi
 # interactive if lots of files deleted
 alias rm='rm -I'
 
+alias bh='bat --plain --language=cmd-help'  # meant for piping <cmd> --help output to
+help() (
+    set -o pipefail
+    "$@" --help 2>&1 | bh
+)
+
 # Move up quickly
 alias ..="cd .."
 alias ...="cd ../.."
