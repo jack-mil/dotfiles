@@ -12,6 +12,8 @@ palette = "catppuccin_frappe"
 
 [git_branch]
   style = "bold mauve"
+  symbol = " "
+  truncation_length = 20 
 
 [git_status]
   # actually yellow
@@ -30,6 +32,14 @@ palette = "catppuccin_frappe"
   #     "Downloads" = " "
   #     "Music"     = " "
   #     "Pictures"  = " "
+
+[username]
+format = '[\[](red)[$user]($style)'
+style_user = "italic teal" # actually yellow
+
+[hostname]
+format = '[@](red)[$hostname]($style)[\]](red) '
+style = "bold yellow"
 
 [lua]
   disabled = true
