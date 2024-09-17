@@ -8,7 +8,7 @@
   # meta package for now
 
 [git]
-  depends = ["ssh"]
+  depends = ["ssh", "shell"]
   [git.files]
     gitconfig = "~/.config/git/config"
     delta = "~/.config/delta"
@@ -24,7 +24,7 @@
   glow     = { type = "symbolic", target = "~/.config/glow", if = '(is_executable "glow")' }
   ripgrep  = { type = "symbolic", target = "~/.ripgreprc", if = '(is_executable "rg")' }
   starship = { type = "symbolic", target = "~/.config", if = '(is_executable "starship")' }
-  bat = {type = "symbolic", target = "~/.config", if = '(is_executable "bat")'}
+  bat = {type = "symbolic", target = "~/.config/bat", if = '(is_executable "bat")'}
 
 [bash]
   depends = ["shell"]
