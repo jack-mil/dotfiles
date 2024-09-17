@@ -1,3 +1,5 @@
+# vim: ft=sh
+
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     LS_COMMON="-hGF --color=auto"
