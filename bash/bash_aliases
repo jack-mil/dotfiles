@@ -31,7 +31,7 @@ alias ls="command ls $LS_COMMON"
 # use eza for file listing if available
   {{#if (eq dotter.os "windows")}}
 # Eza ignore list for windows
-IGNORE="--no-permissions -I 'NTUSER.*|ntuser.*|Recent|SendTo|Start Menu|My Documents|NetHood|Cookies|Templates|PrintHood|Local Settings|Application Data|OneDrive*|Contacts|Saved Games|Searches|'"
+IGNORE='--no-permissions -I "NTUSER.*|ntuser.*|Recent|SendTo|Start Menu|My Documents|NetHood|Cookies|Templates|PrintHood|Local Settings|Application Data|OneDrive*|Contacts|Saved Games|Searches"'
   {{/if}}
 EZA_COMMON="--group-directories-first --icons --sort Extension"
 alias l="eza $EZA_COMMON $IGNORE"

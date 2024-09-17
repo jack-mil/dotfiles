@@ -1,18 +1,23 @@
+[pwsh.files]
+  pwsh = '~\Documents\PowerShell'
+
+[powershell.files]
+  pwsh = '~\Documents\WindowsPowerShell'
+
 [sioyek.files]
-  sioyek = "~/scoop/persist/sioyek"
+  sioyek = '~\scoop\persist\sioyek'
 
 [git.files]
-  jj = "~/AppData/Roaming/jj"
+  jj = '~\AppData\Roaming\jj'
 
 [shell.files]
-  bat  = { type = "symbolic", target = "~\\AppData\\Roaming\\bat", if = '(is_executable "bat")' }
-  glow = { type = "symbolic", target = "~\\AppData\\Local\\glow\\Config", if = '(is_executable "glow")' }
+  bat  = { type = "symbolic", target = '~\AppData\Roaming\bat', if = '(is_executable "bat")' }
+  glow = { type = "symbolic", target = '~\AppData\Local\glow\Config', if = '(is_executable "glow")' }
 
 [bash.files."bash/bashrc"]
-target = "~/.bashrc"
-type = "template"
-append = """
+  append = """
 # use builtin ssh on windows (not from git-for-windows)
 export PATH="/c/Windows/System32/OpenSSH/":$PATH
 """
-
+  target = '~\.bashrc'
+  type = "template"
