@@ -60,7 +60,7 @@ $character"""
 
 [git_branch]
   format = '[$symbol$branch(:$remote_branch)]($style) '
-  style  = "bold mauve"
+  style  = "bold pink"
   symbol = " "
   truncation_length = 20
 
@@ -95,6 +95,9 @@ $character"""
   format     = '[@](red)[$ssh_symbole$hostname]($style)[\]](red) '
   ssh_symbol = " "
   style      = "bold teal"
+
+[cmake]
+  symbol = "󰔷 "
 
 [package]
   format = '\[[$symbol $version]($style)\] '
