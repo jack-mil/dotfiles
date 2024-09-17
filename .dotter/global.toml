@@ -11,6 +11,7 @@
   depends = ["ssh"]
   [git.files]
     gitconfig = "~/.config/git/config"
+    delta = "~/.config/delta"
     jj        = { type = "symbolic", target = "~/.config/jj", if = '(is_executable "jj")' }
 
   [git.variables]

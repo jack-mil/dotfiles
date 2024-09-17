@@ -80,9 +80,12 @@
   diffFilter = delta --color-only
 
 [delta]
+  features = catppuccin-frappe
   navigate = true
   line-numbers = true
   side-by-side = true
+[include]
+  path = ~/.config/delta/catppuccin.gitconfig
 {{/if}}
 
 [filter "lfs"]
