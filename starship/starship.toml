@@ -66,11 +66,11 @@ $character"""
 
 [git_status]
   # actually yellow
-  style = "bold teal"
+  style = "bold yellow"
 
 [git_metrics]
   # too slow...
-  disabled = false
+  disabled = true
 
 [directory]
   before_repo_root_style    = "bold sapphire"
@@ -89,12 +89,21 @@ $character"""
 
 [username]
   format     = '[\[](red)[$user]($style)'
-  style_user = "italic teal"              # actually yellow
+  style_user = "italic yellow"
 
 [hostname]
   format     = '[@](red)[$ssh_symbole$hostname]($style)[\]](red) '
   ssh_symbol = " "
-  style      = "bold yellow"
+  style      = "bold teal"
+
+[package]
+  format = '\[[$symbol $version]($style)\] '
+  style = "bold peach"
+  symbol = "󰏗"
+
+[python]
+  symbol = " "
+  style = "bold yellow"
 
 [os.symbols]
   Arch        = " "
@@ -109,10 +118,6 @@ $character"""
   Unknown     = " "
   Windows     = "󰍲 "
 
-[package]
-  symbol = "󰏗 "
-[python]
-  symbol = " "
 [rust]
   symbol = "󱘗 "
 
@@ -125,8 +130,8 @@ $character"""
   red       = "#e78284"
   maroon    = "#ea999c"
   peach     = "#ef9f76"
-  teal      = "#e5c890" # swapped yellow and teal
-  yellow    = "#81c8be" # because lots of default modules use yellow, and I want them teal
+  yellow    = "#e5c890"
+  teal      = "#81c8be"
   green     = "#a6d189"
   sky       = "#99d1db"
   sapphire  = "#85c1dc"
