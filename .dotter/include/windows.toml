@@ -7,3 +7,12 @@
 [shell.files]
   bat  = { type = "symbolic", target = "~\\AppData\\Roaming\\bat", if = '(is_executable "bat")' }
   glow = { type = "symbolic", target = "~\\AppData\\Local\\glow\\Config", if = '(is_executable "glow")' }
+
+[bash.files."bash/bashrc"]
+target = "~/.bashrc"
+type = "template"
+append = """
+# use builtin ssh on windows (not from git-for-windows)
+export PATH="/c/Windows/System32/OpenSSH/":$PATH
+"""
+
