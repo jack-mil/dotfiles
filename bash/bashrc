@@ -8,7 +8,6 @@ esac
 
 mkdir -p "${XDG_CACHE_HOME:-$HOME/.cache}"/bash
 HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}"/bash/history
-export LESSHISTFILE="/dev/null"
 
 # don't put duplicate lines or lines starting with space in the history.
 HISTCONTROL=ignoreboth
