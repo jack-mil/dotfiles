@@ -97,7 +97,7 @@ _fzf_compgen_dir() {
 
 {{#if (is_executable "starship")}}
 # Prompt setup
-eval "$(starship init bash)"
+eval -- "$(starship init bash --print-full-init)"
 {{/if}}
 
 {{#if (is_executable "gh")}}
