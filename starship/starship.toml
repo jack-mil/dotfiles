@@ -3,6 +3,54 @@
 # Almost default (yellow & teal are swapped)
 palette = "catppuccin_frappe"
 
+# shorter limit for scaning filesystem
+scan_timeout = 10
+
+# wrap if gets too long
+add_newline = true
+
+# ├─
+format = """
+[╭ ](bold subtext0)\
+$username\
+$hostname\
+$localip\
+$shlvl\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$docker_context\
+$fill\
+$package\
+$c\
+$cmake\
+$golang\
+$java\
+$julia\
+$kotlin\
+$nodejs\
+$python\
+$rust\
+$vagrant\
+$conda\
+$memory_usage\
+$env_var\
+$custom\
+$sudo\
+$cmd_duration\
+$line_break\
+[╰](bold subtext0)\
+$jobs\
+$time\
+$status\
+$os\
+$container\
+$shell\
+$character"""
+
 # Starship modules
 [character]
   error_symbol   = "[❯](bold red)"
@@ -11,41 +59,64 @@ palette = "catppuccin_frappe"
   vimcmd_symbol = "[❮](bold peach)"
 
 [git_branch]
-  style = "bold mauve"
+  format = '[$symbol$branch(:$remote_branch)]($style) '
+  style  = "bold mauve"
   symbol = " "
-  truncation_length = 20 
+  truncation_length = 20
 
 [git_status]
   # actually yellow
   style = "bold teal"
 
+[git_metrics]
+  # too slow...
+  disabled = false
+
 [directory]
   before_repo_root_style    = "bold sapphire"
   fish_style_pwd_dir_length = 4
+  read_only                 = " 󰌾"
   repo_root_style           = "bold italic flamingo"
   style                     = "bold lavender"
   truncation_length         = 4
   use_os_path_sep           = false
   #   [directory.substitutions]
-  # Cant be used with fish_style_path :\
+  # Can't be used with fish_style_path :\
   #     "Documents" = " "
   #     "Downloads" = " "
   #     "Music"     = " "
   #     "Pictures"  = " "
 
 [username]
-format = '[\[](red)[$user]($style)'
-style_user = "italic teal" # actually yellow
+  format     = '[\[](red)[$user]($style)'
+  style_user = "italic teal"              # actually yellow
 
 [hostname]
-format = '[@](red)[$hostname]($style)[\]](red) '
-style = "bold yellow"
+  format     = '[@](red)[$ssh_symbole$hostname]($style)[\]](red) '
+  ssh_symbol = " "
+  style      = "bold yellow"
 
-[lua]
-  disabled = true
+[os.symbols]
+  Arch        = " "
+  Artix       = " "
+  Debian      = " "
+  EndeavourOS = " "
+  Linux       = " "
+  Manjaro     = " "
+  Pop         = " "
+  Raspbian    = " "
+  Ubuntu      = " "
+  Unknown     = " "
+  Windows     = "󰍲 "
 
-  # Palette definitions
+[package]
+  symbol = "󰏗 "
+[python]
+  symbol = " "
+[rust]
+  symbol = "󱘗 "
 
+# Palette definitions
 [palettes.catppuccin_frappe]
   rosewater = "#f2d5cf"
   flamingo  = "#eebebe"
