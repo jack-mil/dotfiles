@@ -1,9 +1,5 @@
 # vim: ft=sh
 
-{{#if (eq dotter.os "windows")}}
-export PATH="/c/Windows/System32/OpenSSH/":$PATH
-{{/if}}
-
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -74,14 +70,22 @@ function y() {
 
 {{#if (and (is_executable "fzf") (is_executable "fd"))}}
 eval "$(fzf --bash)"
-export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers --color=always --line-range :500 {}' --preview-window right,75,border-horizontal"
-export FZF_DEFAULT_COMMAND='fd --type f'
-export FZF_DEFAULT_OPTS='--info=inline'
+export FZF_CTRL_T_OPTS="--preview 'bat --color=always --style=plain --line-range :300 {}' --preview-window right,60%,border-vertical"
+export FZF_DEFAULT_COMMAND="fd --type f --strip-cwd-prefix --hidden --exclude .git"
+FZF_MOVEMENT="--bind='ctrl-s:preview-page-down' \
+              --bind='ctrl-a:preview-page-up' \
+              --bind='alt-p:toggle-preview'"
+# Catppuccin colors
+FZF_COLORS=" \
+--color=bg+:#414559,spinner:#f2d5cf,hl:#a6d189 \
+--color=fg:#c6d0f5,header:#e78284,info:#85c1dc,pointer:#ef9f76 \
+--color=marker:#babbf1,fg+:#c6d0f5,prompt:#ef9f76,hl+:#e78284 \
+--color=selected-bg:#51576d"
+export FZF_DEFAULT_OPTS="$FZF_MOVEMENT $FZF_COLORS --height=50% --info=inline --border=rounded --cycle --multi"
+
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # Use fd (https://github.com/sharkdp/fd) instead of the default find
 # command for listing path candidates.
-# - The first argument to the function ($1) is the base path to start traversal
-# - See the source code (completion.{bash,zsh}) for the details.
 _fzf_compgen_path() {
   fd --hidden --follow --exclude ".git" . "$1"
 }
@@ -92,12 +96,12 @@ _fzf_compgen_dir() {
 }
 {{/if}}
 
-# Prompt setup
 {{#if (is_executable "starship")}}
+# Prompt setup
 eval "$(starship init bash)"
 {{/if}}
 
-# Completions
 {{#if (is_executable "gh")}}
+# github-cli completions
 eval "$(gh completion -s bash)"
 {{/if}}
