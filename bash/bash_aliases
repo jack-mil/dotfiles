@@ -11,6 +11,9 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
+# weird hack to use sudo with aliases...
+alias sudo='sudo '
+
 # interactive if lots of files deleted
 alias rm='rm -I'
 
