@@ -33,7 +33,7 @@
     "bash/bashrc"       = "~/.bashrc"
 
 [nvim.files]
-  nvim = "~/.config/nvim"
+  nvim = { target = "~/.config/nvim", recurse = false, type = "symbolic" }
 
 [sioyek.files]
   sioyek = "~/.config/sioyek"
