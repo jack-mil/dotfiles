@@ -17,6 +17,7 @@ alias sudo='sudo '
 # interactive if lots of files deleted
 alias rm='rm -I'
 
+alias b='bat'
 alias bh='bat --plain --language=cmd-help'  # meant for piping <cmd> --help output to
 help() (
     set -o pipefail
