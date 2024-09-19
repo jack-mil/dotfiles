@@ -56,11 +56,12 @@ nmap("<leader>os", ":set invspell<cr>", { desc = "Toggle Spell Check" })
 nmap("<leader>op", ":pwd<cr>", { desc = "Current Working Directory", silent = false })
 
 -- =========================
--- plugin keymaps
+-- PLUGIN KEYMAPS
 -- =========================
 
--- Markdown Preview
-nmap( "<leader>om", ":MarkdownPreviewToggle<cr>", { desc = "Toggle Markdown Preview"} )
 nmap("<leader>oZ", ":Trim<cr>", { desc = "Trim Trailing Whitespace" })
+nmap("<leader>oc", ":ColorizerToggle<cr>", { desc = "Preview Colors (toggle)" })
 nmap("<leader>L", ":Lazy<cr>", { desc = "Lazy Dashboard" }) 
+-- Markdown Preview (disabled)
+nmap( "<leader>om", ":MarkdownPreviewToggle<cr>", { desc = "Toggle Markdown Preview"} )
 
