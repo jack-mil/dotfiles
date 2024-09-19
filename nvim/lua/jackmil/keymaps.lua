@@ -61,4 +61,6 @@ nmap("<leader>op", ":pwd<cr>", { desc = "Current Working Directory", silent = fa
 
 -- Markdown Preview
 nmap( "<leader>om", ":MarkdownPreviewToggle<cr>", { desc = "Toggle Markdown Preview"} )
--- nmap ("<leader>oZ", ":Trim", {desc = "Trim Trailing Whitespace" })
+nmap("<leader>oZ", ":Trim<cr>", { desc = "Trim Trailing Whitespace" })
+nmap("<leader>L", ":Lazy<cr>", { desc = "Lazy Dashboard" }) 
+
