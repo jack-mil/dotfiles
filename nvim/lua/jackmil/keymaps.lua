@@ -17,8 +17,8 @@ function imap(shortcut, command, opts)
   map('i', shortcut, command, opts)
 end
 
--- use jk to exit insert mode (not present in English)
-imap('jk','<Esc>')
+-- use jj to exit insert mode (not present in English)
+imap('jj','<Esc>')
 
 -- mapping to insert newline above/below in normal mode
 nmap('<C-J>', 'mao<Esc>`a')

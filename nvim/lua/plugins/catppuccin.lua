@@ -1,8 +1,8 @@
+-- Colortheme
 return {
     "catppuccin/nvim",
     name = "catppuccin",
     priority = 1000,
-    lazy = false,
     opts = {
         flavour = "auto",   -- latte, frappe, macchiato, mocha
         background = {      -- :h background
@@ -20,4 +20,7 @@ return {
             },
         },
     },
+    config = function ()
+        vim.cmd.colorscheme("catppuccin-frappe")
+    end,
 }

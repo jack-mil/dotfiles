@@ -63,7 +63,7 @@ o.showmode  = false     -- Don't show the Insert/Replace/Visual mode, because we
 o.cmdheight = 0         -- Save some space on the bottom below the LuaLine
 
 -- Options based on filetypes
--- markdown
+-- Wrap markdown files by default
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "markdown",
 	callback = function()
@@ -73,4 +73,4 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- load other stuff (trailing whitespace auto_cmd)
-require("jackmil.extra")
+require("jackmil.autocmd")

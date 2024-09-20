@@ -1,3 +1,4 @@
+-- Preview hex color codes in the editor
 return {
     "norcalli/nvim-colorizer.lua",
     cmd = { "ColorizerToggle", "ColorizerReloadAllBuffers", "ColorizerDetachFromBuffer", "ColorizerAttachToBuffer"},
