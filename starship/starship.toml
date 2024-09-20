@@ -9,47 +9,14 @@ scan_timeout = 10
 # wrap if gets too long
 add_newline = true
 
-# ├─
 format = """
-[╭ ](bold subtext0)\
-$username\
-$hostname\
-$localip\
-$shlvl\
-$directory\
-$git_branch\
-$git_commit\
-$git_state\
-$git_metrics\
-$git_status\
-$docker_context\
+[╭ ](bold subtext0)$username$hostname$shlvl\
+$directory$git_branch$git_commit$git_state$git_metrics$git_status\
 $fill\
-$package\
-$c\
-$cmake\
-$golang\
-$java\
-$julia\
-$kotlin\
-$nodejs\
-$python\
-$rust\
-$vagrant\
-$conda\
-$memory_usage\
-$env_var\
-$custom\
-$sudo\
-$cmd_duration\
+$c$cmake$julia$kotlin$python$rust$package\
+$env_var$custom$sudo$cmd_duration\
 $line_break\
-[╰](bold subtext0)\
-$jobs\
-$time\
-$status\
-$os\
-$container\
-$shell\
-$character"""
+[╰](bold subtext0)$jobs$time$status$os$container$shell$character"""
 
 # Starship modules
 [character]
@@ -57,20 +24,6 @@ $character"""
   success_symbol = "[❯](bold peach)"
   # For use with zsh-vi-mode
   vimcmd_symbol = "[❮](bold peach)"
-
-[git_branch]
-  format = '[$symbol$branch(:$remote_branch)]($style) '
-  style  = "bold pink"
-  symbol = " "
-  truncation_length = 20
-
-[git_status]
-  # actually yellow
-  style = "bold yellow"
-
-[git_metrics]
-  # too slow...
-  disabled = true
 
 [directory]
   before_repo_root_style    = "bold sapphire"
@@ -86,6 +39,22 @@ $character"""
   #     "Downloads" = " "
   #     "Music"     = " "
   #     "Pictures"  = " "
+[shlvl]
+disabled = false
+
+[git_branch]
+  format            = '[$symbol$branch(:$remote_branch)]($style) '
+  style             = "bold pink"
+  symbol            = " "
+  truncation_length = 20
+
+[git_status]
+  # actually yellow
+  style = "bold yellow"
+
+[git_metrics]
+  # too slow...
+  disabled = true
 
 [username]
   format     = '[\[](red)[$user]($style)'
@@ -101,12 +70,12 @@ $character"""
 
 [package]
   format = '\[[$symbol $version]($style)\] '
-  style = "bold peach"
+  style  = "bold peach"
   symbol = "󰏗"
 
 [python]
+  style  = "bold yellow"
   symbol = " "
-  style = "bold yellow"
 
 [os.symbols]
   Arch        = " "
