@@ -9,15 +9,14 @@ return {
             light = "latte",
             dark = "mocha",
         },
+        dim_inactive = { enabled = false },
+        term_colors = true,
         transparent_background = true,
         compile_path = vim.fn.stdpath "cache" .. "/catppuccin",
+        default_integrations = false,
         integrations = {
-            barbecue = {
-                dim_dirname = true, -- directory name is dimmed by default
-                bold_basename = true,
-                dim_context = false,
-                alt_background = false,
-            },
+            which_key = true,
+            leap = true,
         },
     },
     init = function()
