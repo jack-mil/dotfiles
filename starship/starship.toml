@@ -13,7 +13,7 @@ format = """
 [╭ ](bold subtext0)$username$hostname$shlvl\
 $directory$git_branch$git_commit$git_state$git_metrics$git_status\
 $fill\
-$c$cmake$julia$kotlin$python$rust$package\
+$package$c$cmake$julia$kotlin$python$rust\
 $env_var$custom$sudo$cmd_duration\
 $line_break\
 [╰](bold subtext0)$jobs$time$status$os$container$shell$character"""
@@ -49,7 +49,6 @@ disabled = false
   truncation_length = 20
 
 [git_status]
-  # actually yellow
   style = "bold yellow"
 
 [git_metrics]
@@ -69,11 +68,12 @@ disabled = false
   symbol = "󰔷 "
 
 [package]
-  format = '\[[$symbol $version]($style)\] '
+  format = '[\[$symbol $version\]]($style)'
   style  = "bold peach"
   symbol = "󰏗"
 
 [python]
+  format = '[${symbol}(${version} )[(\($virtualenv\))](italic $style)]($style)'
   style  = "bold yellow"
   symbol = " "
 
