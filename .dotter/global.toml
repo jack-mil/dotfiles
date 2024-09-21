@@ -19,6 +19,11 @@
     email    = "62065280+jack-mil@users.noreply.github.com"
     username = "jack-mil"
 
+[scripts]
+  depends = ["shell"]
+  [scripts.files]
+    scripts = "~/.local/bin"
+
 # other interactive stuff here? install utils?
 [shell.files]
   glow     = { type = "symbolic", target = "~/.config/glow", if = '(is_executable "glow")' }

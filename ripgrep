@@ -1,4 +1,14 @@
+# use color
+--color=always
+# Don't let ripgrep vomit really long lines to my terminal, and show a preview.
+--max-columns=150
+--max-columns-preview
+# only case-sensetive when search containers UPPERCASE
 --smart-case
+# Search hidden files / directories (e.g. dotfiles) by default
 --hidden
---glob
-!.git
+# Add custom web type
+--type-add
+web:*.{html,css,js}*
+# ignore .git directories 
+--glob=!.git/*
