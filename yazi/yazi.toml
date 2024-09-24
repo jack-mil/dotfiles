@@ -1,10 +1,10 @@
 "$schema" = "https://yazi-rs.github.io/schemas/yazi.json"
 
 [manager]
+  line_mode      = "size"
   ratio          = [1, 2, 4]
-  sort_by = "natural"
+  sort_by        = "natural"
   sort_sensitive = false
-  line_mode = "size"
 [preview]
   wrap = "no"
 [opener]

@@ -33,12 +33,12 @@ $line_break\
   style                     = "bold lavender"
   truncation_length         = 4
   use_os_path_sep           = false
-#   [directory.substitutions]
-# Can't be used with fish_style_path :\
-#     "Documents" = " "
-#     "Downloads" = " "
-#     "Music"     = " "
-#     "Pictures"  = " "
+  #   [directory.substitutions]
+  # Can't be used with fish_style_path :\
+  #     "Documents" = " "
+  #     "Downloads" = " "
+  #     "Music"     = " "
+  #     "Pictures"  = " "
 
 [shlvl]
   disabled = false
