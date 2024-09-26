@@ -64,6 +64,8 @@ alias dcstop='docker compose stop'
 alias dcstart='docker compose start'
 {{/if}}
 
+alias dotter='dotter -v'
+
 alias fixperms='chmod a=,a+rX,u+w,g+w'
 
 # utility function to unarchive anything
