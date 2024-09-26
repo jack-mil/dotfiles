@@ -15,3 +15,4 @@ https://github.com/sxyazi/yazi
 https://github.com/XAMPPRocky/tokei
 https://github.com/cargo-bins/cargo-binstall
 https://github.com/nabijaczleweli/cargo-update
+https://github.com/charmbracelet/glow
