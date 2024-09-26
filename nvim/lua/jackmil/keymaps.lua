@@ -20,6 +20,9 @@ end
 -- use jj to exit insert mode (not present in English)
 imap('jj','<Esc>')
 
+-- when forget to open with sudo
+map('c', 'w!!', 'execute "write !sudo tee % > /dev/null" <bar> edit!', { noremap = true, silent = false })
+
 -- mapping to insert newline above/below in normal mode
 nmap('<C-J>', 'mao<Esc>`a')
 nmap('<C-K>', 'maO<Esc>`a')
