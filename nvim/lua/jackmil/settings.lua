@@ -6,7 +6,7 @@ local o = vim.opt
 -- o.syntax = "on"      -- When this option is set, the syntax with this name is loaded.
 o.mouse = "a"           -- Enable the use of the mouse. "a" you can use on all modes
 
--- Tabs
+-- Inserting Tabs
 o.tabstop     = 2       -- Number of spaces that a <Tab> in the file counts for.
 o.softtabstop = 2       -- Number of spaces that a <Tab> counts for when performing editing operations.
 o.shiftwidth  = 2       -- Number of spaces to use for each step of (auto)indent.
