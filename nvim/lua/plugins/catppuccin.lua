@@ -17,6 +17,7 @@ return {
         integrations = {
             which_key = true,
             leap = true,
+            dashboard = true,
         },
     },
     init = function()

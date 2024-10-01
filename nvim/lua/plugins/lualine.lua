@@ -2,11 +2,13 @@
 -- TODO: configure more
 return {
     'nvim-lualine/lualine.nvim',
-    event = "VeryLazy",
+    event = 'VeryLazy',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     opts = {
         options = {
-            theme = "catppuccin"
+            theme = 'catppuccin',
+            disabled_filetypes = { 'dashboard' },
         },
     },
 }
+
