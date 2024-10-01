@@ -26,7 +26,7 @@ return {
       },
     },
   },
-  init = function()
+  init = function()   -- loads the colorscheme
     vim.cmd.colorscheme('catppuccin-frappe')
   end,
 }

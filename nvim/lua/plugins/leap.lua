@@ -1,4 +1,5 @@
 -- Novel navigation plugin. Get anywhere with `s<char><char>`
+-- Docs say not use use lazy loading
 return {
   "ggandor/leap.nvim",
   lazy = false,

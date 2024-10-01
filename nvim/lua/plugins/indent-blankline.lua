@@ -1,3 +1,16 @@
+-- Plugin to show indentation levels
+
+-- These groups set by catppuccin color scheme
+local color_order = { 
+  "RainbowRed",
+  "RainbowYellow",
+  "RainbowViolet",
+  "RainbowOrange",
+  "RainbowGreen",
+  "RainbowBlue",
+  "RainbowCyan"
+}
+
 return {
   'lukas-reineke/indent-blankline.nvim',
   main = 'ibl',
@@ -5,23 +18,10 @@ return {
   opts = {
     indent = {
       char = '┊',
-      highlight = { -- These groups set by catppuccin color scheme
-        "RainbowRed",
-        "RainbowYellow",
-        "RainbowViolet",
-        "RainbowOrange",
-        "RainbowGreen",
-        "RainbowBlue",
-        "RainbowCyan",
-      },
+      highlight = color_order
     },
     exclude = {
-      filetypes = {
-        'help',
-        'dashboard',
-        'lazy',
-        ''
-      },
+      filetypes = { 'help', 'dashboard', 'lazy', '', },
     },
   },
 }

@@ -1,7 +1,8 @@
+-- Smooth buffer scrolling
+-- (bindings conflict with which-key scrolling, may disable)
 return {
-  "karb94/neoscroll.nvim",
-  event = { "BufReadPre", "BufNewFile" },
-  config = function ()
-    require('neoscroll').setup({ easing = "cubic" })
-  end
+  'karb94/neoscroll.nvim',
+  -- enabled = false
+  event = { 'BufReadPre', 'BufNewFile' },
+  opts = { easing = 'cubic' },
 }

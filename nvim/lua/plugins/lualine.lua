@@ -1,5 +1,4 @@
 -- Statusline plugin
--- TODO: configure more
 return {
   'nvim-lualine/lualine.nvim',
   event = 'VeryLazy',

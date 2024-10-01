@@ -1,6 +1,7 @@
--- LEADER set in lazy.lua because... required?
--- vim.g.mapleader = " " -- <space>
--- vim.g.maplocalleader = "\\"
+-- Set `mapleader` and `maplocalleader` before
+-- running lazy.nvim so that mappings are correct.
+vim.g.mapleader = " " -- <space>
+vim.g.maplocalleader = "\\"
 
 function map(mode, shortcut, command, opts)
   opts = opts or {}  -- Use an empty table if no options are provided
@@ -20,6 +21,11 @@ end
 -- use jj to exit insert mode (not present in English)
 imap('jj','<Esc>')
 
+imap('<C-H>', '<C-W>')    -- Ctrl-Backspace that I am used to (learn to use <C-W?)
+imap('<C-b>', '<C-o>db')  -- Delete word backward (same as above)
+imap('<C-e>', '<C-o>de')  -- Delete word forward
+
+
 -- when forget to open with sudo
 map('c', 'w!!', 'execute "write !sudo tee % > /dev/null" <bar> edit!', { noremap = true, silent = false })
 
@@ -27,7 +33,7 @@ map('c', 'w!!', 'execute "write !sudo tee % > /dev/null" <bar> edit!', { noremap
 nmap('<C-J>', 'mao<Esc>`a')
 nmap('<C-K>', 'maO<Esc>`a')
 
--- Editing Keymaps
+-- buffer save/write Keymaps
 nmap("<leader>q", ":q<cr>", { desc = "QUIT FILE" })
 nmap("<leader>Q", ":confirm qa<cr>", { desc = "FORCE QUIT FILE" })
 nmap("<leader>w", ":w<cr>", { desc = "Write File" })
