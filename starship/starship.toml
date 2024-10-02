@@ -10,13 +10,13 @@ scan_timeout = 10
 add_newline = true
 
 format = """
-[╭ ](bold subtext0)$username$hostname$shlvl\
+[╭ ](bold subtext0)$os$username$hostname$shlvl\
 $directory$git_branch$git_commit$git_state$git_metrics$git_status\
 $fill\
 $package$c$cmake$julia$kotlin$python$rust\
 $sudo$cmd_duration\
 $line_break\
-[╰](bold subtext0)$jobs$time$status$os$container$shell$character"""
+[╰](bold subtext0)$jobs$time$status$container$shell$character"""
 
 # Starship modules
 [character]
@@ -84,6 +84,7 @@ $line_break\
 
 [os]
   disabled = false
+  style    = "bold rosewater"
 
 [os.symbols]
   Arch        = " "
