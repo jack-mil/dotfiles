@@ -21,6 +21,7 @@ o.smartcase  = true     -- Override 'ignorecase' if the search patter containers
 -- File
 o.fenc   = 'UTF-8'      -- File-content encoding for the current buffer.
 o.ff     = 'unix'       -- Always use LF eol.
+o.ffs    = 'unix,dos'   -- Try these EOL in order.
 o.hidden = true         -- When on a buffer becomes hidden when it is abandoned.
 
 o.ttimeoutlen = 0       -- The time in milliseconds that is waited for a key code or mapped key sequence to complete.
