@@ -6,15 +6,14 @@ return {
   priority = 1000,
   opts = {
     flavour = 'frappe',   -- latte, frappe, macchiato, mocha
-    background = {    -- :h background
+    transparent_background = true,  -- important
+    dim_inactive = { enabled = false },   -- doesn't work with transparent bg
+    background = {        -- :h background
       light = 'latte',
       dark = 'frappe',
     },
     show_end_of_buffer = false, -- seems to be bugged??
-    dim_inactive = { enabled = false },
     term_colors = true,
-    transparent_background = true,
-    compile_path = vim.fn.stdpath 'cache' .. '/catppuccin',
     default_integrations = false,
     integrations = {
       which_key = true,
@@ -24,6 +23,11 @@ return {
         enabled = true,
         colored_indent_levels = true,
       },
+      colorful_winsep = {
+        enabled = true,
+        color = "yellow"
+      },
+      compile_path = vim.fn.stdpath 'cache' .. '/catppuccin',   -- enable compiling theme
     },
   },
   init = function()   -- loads the colorscheme
