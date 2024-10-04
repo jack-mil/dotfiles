@@ -1,4 +1,4 @@
-"$schema" = 'https://starship.rs/config-schema.json'
+schema = 'https://starship.rs/config-schema.json'
 
 # Almost default (yellow & teal are swapped)
 palette = "catppuccin_frappe"
@@ -66,7 +66,7 @@ $line_break\
   style      = "bold teal"
 
 [cmd_duration]
-  format = "[󱦟 $duration]($style) "
+  format = "[󱦟 $duration]($style)"
   style  = "bold sky"
 
 [cmake]
@@ -78,7 +78,7 @@ $line_break\
   symbol = "󰏗"
 
 [python]
-  format = '[${symbol}(${version} )[(\($virtualenv\))](italic $style)]($style)'
+  format = '[${symbol}(${version} )[(\($virtualenv\))](italic $style)]($style) '
   style  = "bold yellow"
   symbol = " "
 
