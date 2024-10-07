@@ -4,6 +4,9 @@
 [powershell.files]
   pwsh = '~\Documents\WindowsPowerShell'
 
+[terminal.files]
+  terminal = '~\scoop\apps\windows-terminal-preview\current\settings'
+
 [sioyek.files]
   sioyek = '~\scoop\persist\sioyek'
 
