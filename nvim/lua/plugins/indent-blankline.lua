@@ -1,14 +1,14 @@
 -- Plugin to show indentation levels
 
 -- These groups set by catppuccin color scheme
-local color_order = { 
-  "RainbowRed",
-  "RainbowYellow",
-  "RainbowViolet",
-  "RainbowOrange",
-  "RainbowGreen",
-  "RainbowBlue",
-  "RainbowCyan"
+local color_order = {
+  'RainbowRed',
+  'RainbowYellow',
+  'RainbowViolet',
+  'RainbowOrange',
+  'RainbowGreen',
+  'RainbowBlue',
+  'RainbowCyan',
 }
 
 return {
@@ -18,10 +18,10 @@ return {
   opts = {
     indent = {
       char = '┊',
-      highlight = color_order
+      highlight = color_order,
     },
     exclude = {
-      filetypes = { 'help', 'dashboard', 'lazy', '', },
+      filetypes = { 'help', 'dashboard', 'lazy', '' },
     },
   },
 }

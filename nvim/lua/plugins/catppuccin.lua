@@ -5,10 +5,10 @@ return {
   lazy = false,
   priority = 1000,
   opts = {
-    flavour = 'frappe',   -- latte, frappe, macchiato, mocha
-    transparent_background = true,  -- important
-    dim_inactive = { enabled = false },   -- doesn't work with transparent bg
-    background = {        -- :h background
+    flavour = 'frappe', -- latte, frappe, macchiato, mocha
+    transparent_background = true, -- important
+    dim_inactive = { enabled = false }, -- doesn't work with transparent bg
+    background = { -- :h background
       light = 'latte',
       dark = 'frappe',
     },
@@ -25,12 +25,12 @@ return {
       },
       colorful_winsep = {
         enabled = true,
-        color = "yellow"
+        color = 'yellow',
       },
-      compile_path = vim.fn.stdpath 'cache' .. '/catppuccin',   -- enable compiling theme
+      compile_path = vim.fn.stdpath('cache') .. '/catppuccin', -- enable compiling theme
     },
   },
-  init = function()   -- loads the colorscheme
+  init = function() -- loads the colorscheme
     vim.cmd.colorscheme('catppuccin-frappe')
   end,
 }

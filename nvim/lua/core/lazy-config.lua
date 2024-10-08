@@ -4,9 +4,7 @@
 local config = {} -- to return
 
 -- import plugins from subdirectory
-config.spec = {
-  { import = 'plugins' }
-}
+config.spec = { { import = 'plugins' } }
 
 -- I don't know what lua rocks are, disable it (undocumented (?))
 config.rocks = { enabled = false }
@@ -24,12 +22,10 @@ config.checker = { enabled = false }
 config.change_detection = { enabled = false }
 
 -- Lazy UI options
-config.ui = {
-  border = 'rounded',
-  backdrop = 80
-}
+config.ui = { border = 'rounded', backdrop = 80 }
 
 -- disable a bunch of neovim builtin plugins I don't use
+-- stylua: ignore
 config.performance = {
   rtp = {
     disabled_plugins = {

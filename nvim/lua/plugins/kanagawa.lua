@@ -6,5 +6,5 @@ return {
     compile = true,
     transparent = false,
     dimInactive = true,
-  }
+  },
 }

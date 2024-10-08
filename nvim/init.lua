@@ -1,4 +1,4 @@
-vim.loader.enable()   -- experimental loader (?)
+vim.loader.enable() -- experimental loader (?)
 
 require('core.lazy-bootstrap') -- download lazy plugin loader
 
