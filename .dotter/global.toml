@@ -27,10 +27,10 @@
 # other interactive stuff here? install utils?
 [shell.files]
   bat      = { type = "symbolic", target = "~/.config/bat", if = '(is_executable "bat")' }
+  bottom   = { type = "symbolic", target = "~/.config/bottom", if = '(is_executable "btm")' }
   glow     = { type = "symbolic", target = "~/.config/glow", if = '(is_executable "glow")' }
   ripgrep  = { type = "symbolic", target = "~/.ripgreprc", if = '(is_executable "rg")' }
   starship = { type = "symbolic", target = "~/.config", if = '(is_executable "starship")' }
-  bottom   = { type = "symbolic", target = "~/.config/bottom", if = '(is_executable "btm")' }
 
 [bash]
   depends = ["shell"]

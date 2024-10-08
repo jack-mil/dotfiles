@@ -86,18 +86,18 @@ $line_break\
   disabled = false
   style    = "bold rosewater"
 
-[os.symbols]
-  Arch        = " "
-  Artix       = " "
-  Debian      = " "
-  EndeavourOS = " "
-  Linux       = " "
-  Manjaro     = " "
-  Pop         = " "
-  Raspbian    = " "
-  Ubuntu      = " "
-  Unknown     = " "
-  Windows     = "󰍲 "
+  [os.symbols]
+    Arch        = " "
+    Artix       = " "
+    Debian      = " "
+    EndeavourOS = " "
+    Linux       = " "
+    Manjaro     = " "
+    Pop         = " "
+    Raspbian    = " "
+    Ubuntu      = " "
+    Unknown     = " "
+    Windows     = "󰍲 "
 
 [rust]
   symbol = "󱘗 "

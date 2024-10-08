@@ -1,17 +1,20 @@
 "$schema" = "https://yazi-rs.github.io/schemas/yazi.json"
 
 [manager]
-  line_mode      = "size"
+  linemode       = "size"
   ratio          = [1, 2, 4]
   sort_by        = "natural"
   sort_sensitive = false
+
 [preview]
   wrap = "no"
+
 [opener]
   edit = [
     { run = "nvim %*", block = true, for = "windows" },
     { run = 'nvim "$@"', block = true, for = "unix" },
   ]
+
 [plugin]
   prepend_previewers = [
     { mime = "image/*", run = "image" },
