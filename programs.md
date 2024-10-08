@@ -1,75 +1,26 @@
-Names in the form of github urls. `user/repository`
-
-Selection from [My Star Lists](https://github.com/jack-mil?tab=stars)
-# WM #
-- **baskerville/bspwm**
-  - tiling window manager
-- **baskerville/sxhkd**
-  - hot key deamon
-
-- **tryone144/compton**
-  - compton fork with dual kawase blur and rounded corners
-- **polybar/polybar**
-  - info bar
-
-Try out:
-- `awesomewm`
-
-# Neat Programs #
-
-## Multimedia ##
-- **dpayne/cli-visualizer**
-  - music visualizer in terminal
-- **karlstav/cava**
-  - Another CLI visulaizer
-- [**ncmpcpp**](https://rybczak.net/ncmpcpp/)
-  - ncurses mpd client
-- **pystardust/ani-cli**
-  - anime stream into mpv
-
-## Utility ##
-- **kovidgoyal/kitty**
-  - Cross-platform, fast, feature-rich, GPU based terminal 
-- **jarun/nnn**
-  - Blazing fast, lite file browser
+On Windows, almost everything can be installed with [Scoop](https://scoop.sh/).
 
 
-# TOOLS #
-- **ogham/exa**
-  - colorful + fancy `ls`
-- **sharkdp/bat**
-  - fancy `cat` replacement + pager
-- **sharkdp/fd**
-  - faster, easier `find`
-- **junegunn/fzf**
-  - general purpose fuzzy finder
-- **dandavision/delta**
-  - git diff highlighting
-- **bigH/git-fuzzy**
-  - git fuzzy integrations
+## Rust Utilities
+- [SuperCuber/dotter](https://github.com/SuperCuber/dotter)
+- [starship/starship](https://github.com/starship/starship)
+- [sharkdp/bat](https://github.com/sharkdp/bat)
+- [ajeetdsouza/zoxide](https://github.com/ajeetdsouza/zoxide)
+- [eza-community/eza](https://github.com/eza-community/eza)
+- [sharkdp/fd](https://github.com/sharkdp/fd)
+- [BurntSushi/ripgrep](https://github.com/BurntSushi/ripgrep)
+- [Canop/dysk](https://github.com/Canop/dysk)
+- [dandavison/delta](https://github.com/dandavison/delta)
+- [charmbracelet/glow](https://github.com/charmbracelet/glow)
+- [sharkdp/vivid](https://github.com/sharkdp/vivid)
+- [o2sh/onefetch](https://github.com/o2sh/onefetch)
+- [sxyazi/yazi](https://github.com/sxyazi/yazi)
+- [XAMPPRocky/tokei](https://github.com/XAMPPRocky/tokei)
+- [svenstaro/genact](https://github.com/svenstaro/genact)
+- [aome510/spotify-player](https://github.com/aome510/spotify-player)
 
+## Rust apps installed and managed on Linux with:
+- [cargo-bins/cargo-binstall](https://github.com/cargo-bins/cargo-binstall)
+- [nabijaczleweli/cargoupdate](https://github.com/nabijaczleweli/cargo-update)
 
-# SHELL #
-### **zsh** ###
-- ohmyzsh/ohmyzsh
-  - plugins and defaults
-- changyuheng/fz
-  - fuzzy replacemnt for OMZ `z` plugin
-- romkatv/powerlevel10k
-  - configurable and *fast* prompt
-- zsh-users/zsh-syntax-highlighting
-- zsh-users/zsh-autosuggestions
-  
-### **fish** ###
-- `fisher` plugin manager
-- `tide` prompt
-
-# FUN  #
-- **jaseg/lolcat**
-  - C version of lolcat
-
-
-#  OTHERS  #
-# AUR #
-- [`GNU stow` with dotfiles patch](https://aur.archlinux.org/packages/stow-dotfiles-git/)
-
+#### I need better system to manage the Go apps on Linux, right now manually downloading releases from Github

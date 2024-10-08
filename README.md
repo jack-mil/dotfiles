@@ -7,3 +7,5 @@ Managed with [`dotter`](https://github.com/SuperCuber/dotter)
 
 - Deploy after configuring `.dotter/local.toml`
 - `$> dotter`
+
+Links for some cli utilities: [programs.md](./programs.md)
