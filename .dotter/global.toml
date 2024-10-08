@@ -10,9 +10,9 @@
 [git]
   depends = ["shell", "ssh"]
   [git.files]
-    delta     = "~/.config/delta"
-    gitconfig = "~/.config/git/config"
-    jj        = { type = "symbolic", target = "~/.config/jj", if = '(is_executable "jj")' }
+    delta = "~/.config/delta"
+    git   = "~/.config/git/"
+    jj    = { type = "symbolic", target = "~/.config/jj", if = '(is_executable "jj")' }
 
   [git.variables]
     #optional: signing_key
