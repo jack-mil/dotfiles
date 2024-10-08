@@ -13,7 +13,6 @@ scripts=(
 	"https://raw.githubusercontent.com/occivink/mpv-scripts/master/scripts/seek-to.lua"
 	"https://raw.githubusercontent.com/occivink/mpv-scripts/master/scripts/misc.lua"
 	"https://raw.githubusercontent.com/occivink/mpv-scripts/master/scripts/blur-edges.lua"
-	"https://raw.githubusercontent.com/occivink/mpv-scripts/master/scripts/crop.lua"
 	"https://raw.githubusercontent.com/Dudemanguy/mpv-manga-reader/master/manga-reader.lua"
 	#"https://raw.githubusercontent.com/po5/trackselect/master/trackselect.lua"
 )
