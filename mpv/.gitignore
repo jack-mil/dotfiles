@@ -1,0 +1,2 @@
+# ensure not to commit jellyfin authentication
+cred.json

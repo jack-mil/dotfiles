@@ -24,3 +24,6 @@ export PATH="/c/Windows/System32/OpenSSH/":$PATH
 """
   target = '~\.bashrc'
   type = "template"
+
+[media.files]
+  mpv = '~\AppData\Roaming\mpv'

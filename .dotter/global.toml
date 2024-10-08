@@ -53,3 +53,5 @@
 
 [media]
   depends = ["graphics"]
+  [media.files]
+    mpv = "~/.config/mpv"
