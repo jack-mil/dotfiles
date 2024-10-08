@@ -10,5 +10,5 @@
 # Add custom web type
 --type-add
 web:*.{html,css,js}*
-# ignore .git directories 
+# ignore .git directories
 --glob=!.git/*
