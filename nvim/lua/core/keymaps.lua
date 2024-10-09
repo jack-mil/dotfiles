@@ -39,7 +39,7 @@ nmap('<leader>w', ':w<cr>', { desc = 'Write File' })
 nmap('<leader>W', ':wa<cr>', { desc = 'Force Write File' })
 nmap('<leader>M', ':messages<cr>', { desc = 'Show Messages' })
 
--- Splits and Panes
+-- Splits and Windows
 nmap('<leader>pv', '<C-w>v', { desc = 'Split Vertically', silent = false })
 nmap('<leader>ph', '<C-w>s', { desc = 'Split Horizontally', silent = false })
 nmap('<leader>pe', '<C-w>=', { desc = 'Equal Split', silent = false })
@@ -54,6 +54,12 @@ nmap('<leader>bp', ':bprevious<cr>', { desc = 'Previous Buffer' })
 nmap('<leader>bl', ':blast<cr>', { desc = 'Last Buffer' })
 nmap('<leader>bx', ':bdelete<cr>', { desc = 'Last Buffer' })
 nmap('<leader>bs', ':source %<cr>', { desc = 'Source Buffer' })
+
+-- Tabs
+nmap('<leader>tn', ':tabnew<cr>', { desc = 'Open new tab' })
+nmap('<leader>tx', ':tabclose<cr>', { desc = 'Close current tab' })
+nmap('<leader>tf', ':tabnew %<cr>', { desc= 'Open current buffer in new tab' })
+-- g<Tab>, gt, and gT already navigate between tabs
 
 -- Nvim Options and Commands
 nmap('<leader>ow', ':set invwrap<cr>', { desc = 'Toggle Wrap Lines' })
