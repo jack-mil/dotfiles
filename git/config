@@ -1,5 +1,4 @@
 # vim: ft=gitconfig
-#
 
 [user]
 {{#if (and email username)}}
@@ -79,7 +78,9 @@
   diffFilter = delta --color-only
 
 [delta]
-  features = catppuccin-frappe
+  features = catppuccin-mocha
+  syntax-theme = Catppuccin Mocha
+  true-color = always
   navigate = true
   line-numbers = true
   side-by-side = false
