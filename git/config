@@ -46,8 +46,6 @@
   decorate = auto
 [pager]
   # Disable delta pager for log and status
-  status = less
-  log = less
 [alias]
   lol = log --graph --oneline --decorate --all
   l1 = log --pretty=format:'%C(green)%ad%Creset %C(cyan)- %G? - %Creset%<(50,trunc)%s %C(magenta)%h' --date=short
@@ -71,15 +69,16 @@
   insteadOf = gs:
 
 {{#if (is_executable "delta")}}
-[include]
-  path = ~/.config/delta/catppuccin.gitconfig
 
 [interactive]
   diffFilter = delta --color-only
 
+# include custom git-delta color theme
+[include]
+  path = catppuccin.gitconfig
+
 [delta]
-  features = catppuccin-mocha
-  syntax-theme = Catppuccin Mocha
+  features = my-catppuccin
   true-color = always
   navigate = true
   line-numbers = true
