@@ -1,15 +1,15 @@
 # vim: ft=sh
 
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    LS_COMMON="-hGF --color=auto"
-    alias dir='dir --color=auto'
-    alias vdir='vdir --color=auto'
+# auto color common utilities
+alias dir='dir --color=auto'
+alias vdir='vdir --color=auto'
 
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+# always display diff when deploying dotfiles
+alias dotter='dotter -v'
 
 # weird hack to use sudo with aliases...
 alias sudo='sudo '
@@ -29,12 +29,16 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 
+# configure default ls (and eza) arguments
+LS_COMMON="-hGF --color=auto"
+
 {{#if (eq dotter.os "windows")}}
 # LS ignore list for Windows
 LS_COMMON=$LS_COMMON" -I NTUSER.DAT\* -I ntuser.dat\*"
 LS_COMMON=$LS_COMMON" -I ntuser.ini -I Recent -I SendTo -I \"Start Menu\" -I \"My Documents\""
 LS_COMMON=$LS_COMMON" -I ntuser.pol -I NetHood -I Cookies -I Templates -I PrintHood -I Local\ Settings"
 {{/if}}
+
 alias ls="command ls $LS_COMMON"
 
 {{#if (is_executable "eza")}}
@@ -64,9 +68,9 @@ alias dcstop='docker compose stop'
 alias dcstart='docker compose start'
 {{/if}}
 
-alias dotter='dotter -v'
-
+# utility for home-lab machine management
 alias fixperms='chmod a=,a+rX,u+w,g+w'
+alias hgit='GIT_DIR=$HOME/.home GIT_WORK_TREE=$HOME git'
 
 # utility function to unarchive anything
 extract () {
