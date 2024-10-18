@@ -27,3 +27,4 @@ export PATH="/c/Windows/System32/OpenSSH/":$PATH
 
 [media.files]
   mpv = '~\AppData\Roaming\mpv'
+  jpegview = '~\scoop\persist\jpegview-fork'
