@@ -26,18 +26,18 @@ config.ui = { border = 'rounded', backdrop = 80 }
 
 -- disable a bunch of neovim builtin plugins I don't use
 -- stylua: ignore
-config.performance = {
-  rtp = {
-    disabled_plugins = {
-      '2html_plugin', 'getscript', 'getscriptPlugin', 'gzip',
-      'logipat', 'man', 'matchit', 'matchparen', 'netrw',
-      'netrwFileHandlers', 'netrwPlugin', 'netrwSettings',
-      'rplugin', 'rrhelper', 'shada', 'spellfile_plugin',
-      'tar', 'tarPlugin', 'tohtml', 'tutor', 'vimball',
-      'vimballPlugin', 'zip', 'zipPlugin',
-    }
-  }
-}
+-- config.performance = {
+--   rtp = {
+--     disabled_plugins = {
+--       '2html_plugin', 'getscript', 'getscriptPlugin', 'gzip',
+--       'logipat', 'man', 'matchit', 'matchparen', 'netrw',
+--       'netrwFileHandlers', 'netrwPlugin', 'netrwSettings',
+--       'rplugin', 'rrhelper', 'shada', 'spellfile_plugin',
+--       'tar', 'tarPlugin', 'tohtml', 'tutor', 'vimball',
+--       'vimballPlugin', 'zip', 'zipPlugin',
+--     }
+--   }
+-- }
 
 -- config.profiling = { require = true }
 
