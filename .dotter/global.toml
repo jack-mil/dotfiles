@@ -50,7 +50,8 @@
 # meta package(s) for now
 [graphics]
 
+[mpv.files]
+  mpv = "~/.config/mpv"
+
 [media]
-  depends = ["graphics"]
-  [media.files]
-    mpv = "~/.config/mpv"
+  depends = ["mpv"]
