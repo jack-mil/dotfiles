@@ -14,14 +14,16 @@ local color_order = {
 return {
   'lukas-reineke/indent-blankline.nvim',
   main = 'ibl',
-  event = 'BufReadPre',
+  event = 'BufReadPost',
+  cmd = { "IBLEnable", "IBLDisable", "IBLToggle", "IBLEnableScope", "IBLDisableScope", "IBLToggleScope" },
   opts = {
     indent = {
       char = '┊',
       highlight = color_order,
     },
     exclude = {
-      filetypes = { 'help', 'dashboard', 'lazy', '' },
+      filetypes = { 'help', 'dashboard', 'lazy', 'neo-tree', 'NvimTree', 'notify', 'toggleterm' },
+      buftypes = { 'nofile', 'prompt', 'quickfix', 'terminal' }
     },
   },
 }
