@@ -12,7 +12,7 @@ return {
       light = 'latte',
       dark = 'frappe',
     },
-    show_end_of_buffer = false, -- seems to be bugged??
+    show_end_of_buffer = true, -- seems to be bugged??
     term_colors = true,
     default_integrations = false,
     integrations = {

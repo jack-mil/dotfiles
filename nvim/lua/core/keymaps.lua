@@ -76,5 +76,16 @@ nmap('<leader>op', ':pwd<cr>', { desc = 'Current Working Directory', silent = fa
 nmap('<leader>oZ', ':Trim<cr>', { desc = 'Trim Trailing Whitespace' })
 nmap('<leader>oc', ':ColorizerToggle<cr>', { desc = 'Preview Colors (toggle)' })
 nmap('<leader>L', ':Lazy<cr>', { desc = 'Lazy Dashboard' })
+
 -- Markdown Preview (disabled)
 nmap('<leader>om', ':MarkdownPreviewToggle<cr>', { desc = 'Toggle Markdown Preview' })
+
+-- Neo-tree file browser panel
+nmap('<leader>e', ':Neotree reveal toggle<cr>', { desc = 'Toggle Explorer' })
+nmap('<leader>n', function()
+  if vim.bo.filetype == 'neo-tree' then
+    vim.cmd.wincmd('p')
+  else
+    vim.cmd.Neotree('focus')
+  end
+end, { desc = 'Toggle Explorer Focus' })
