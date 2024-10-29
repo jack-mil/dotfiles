@@ -1,0 +1,3 @@
+*.lua
+!show-folder-screenshot.lua
+

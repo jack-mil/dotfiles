@@ -15,7 +15,7 @@ return {
   'lukas-reineke/indent-blankline.nvim',
   main = 'ibl',
   event = 'BufReadPost',
-  cmd = { "IBLEnable", "IBLDisable", "IBLToggle", "IBLEnableScope", "IBLDisableScope", "IBLToggleScope" },
+  cmd = { 'IBLEnable', 'IBLDisable', 'IBLToggle', 'IBLEnableScope', 'IBLDisableScope', 'IBLToggleScope' },
   opts = {
     indent = {
       char = '┊',
@@ -23,7 +23,7 @@ return {
     },
     exclude = {
       filetypes = { 'help', 'dashboard', 'lazy', 'neo-tree', 'NvimTree', 'notify', 'toggleterm' },
-      buftypes = { 'nofile', 'prompt', 'quickfix', 'terminal' }
+      buftypes = { 'nofile', 'prompt', 'quickfix', 'terminal' },
     },
   },
 }

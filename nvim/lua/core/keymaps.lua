@@ -1,6 +1,6 @@
 -- Set `mapleader` and `maplocalleader` before
 -- running lazy.nvim so that mappings are correct.
-vim.g.mapleader      = ' ' -- <space>
+vim.g.mapleader = ' ' -- <space>
 vim.g.maplocalleader = '\\'
 
 function map(mode, shortcut, command, opts)
@@ -21,7 +21,7 @@ end
 -- use jj to exit insert mode (not present in English)
 imap('jj', '<Esc>')
 
-imap('<C-H>', '<C-W>')   -- Ctrl-Backspace that I am used to (learn to use <C-W?)
+imap('<C-H>', '<C-W>') -- Ctrl-Backspace that I am used to (learn to use <C-W?)
 imap('<C-b>', '<C-o>db') -- Delete word backward (same as above)
 imap('<C-e>', '<C-o>de') -- Delete word forward
 
@@ -58,7 +58,7 @@ nmap('<leader>bs', ':source %<cr>', { desc = 'Source Buffer' })
 -- Tabs
 nmap('<leader>tn', ':tabnew<cr>', { desc = 'Open new tab' })
 nmap('<leader>tx', ':tabclose<cr>', { desc = 'Close current tab' })
-nmap('<leader>tf', ':tabnew %<cr>', { desc= 'Open current buffer in new tab' })
+nmap('<leader>tf', ':tabnew %<cr>', { desc = 'Open current buffer in new tab' })
 -- g<Tab>, gt, and gT already navigate between tabs
 
 -- Nvim Options and Commands
