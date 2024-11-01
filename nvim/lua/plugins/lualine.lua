@@ -1,6 +1,7 @@
 -- Statusline plugin
 return {
   'nvim-lualine/lualine.nvim',
+  branch = 'master',
   event = 'BufEnter',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   opts = {
