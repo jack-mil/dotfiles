@@ -18,8 +18,17 @@ function imap(shortcut, command, opts)
   map('i', shortcut, command, opts)
 end
 
+function vmap(shortcut, command, opts)
+  map('v', shortcut, command, opts)
+end
+
 -- use jj to exit insert mode (not present in English)
 imap('jj', '<Esc>')
+
+-- move up/down by displayed lines (wrapped) if no count given
+-- in visual and normal mode
+map({ 'n', 'v' }, 'j', [[v:count == 0 ? 'gj' : 'j']], { expr = true })
+map({ 'n', 'v' }, 'k', [[v:count == 0 ? 'gk' : 'k']], { expr = true })
 
 imap('<C-H>', '<C-W>') -- Ctrl-Backspace that I am used to (learn to use <C-W?)
 imap('<C-b>', '<C-o>db') -- Delete word backward (same as above)
@@ -54,6 +63,7 @@ nmap('<leader>bp', ':bprevious<cr>', { desc = 'Previous Buffer' })
 nmap('<leader>bl', ':blast<cr>', { desc = 'Last Buffer' })
 nmap('<leader>bx', ':bdelete<cr>', { desc = 'Last Buffer' })
 nmap('<leader>bs', ':source %<cr>', { desc = 'Source Buffer' })
+nmap('<F5>', ':buffers<cr>:buffer<space>', { desc = 'Pick buffer', silent = false })
 
 -- Tabs
 nmap('<leader>tn', ':tabnew<cr>', { desc = 'Open new tab' })
