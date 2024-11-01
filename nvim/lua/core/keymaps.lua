@@ -29,6 +29,9 @@ imap('jj', '<Esc>')
 -- in visual and normal mode
 map({ 'n', 'v' }, 'j', [[v:count == 0 ? 'gj' : 'j']], { expr = true })
 map({ 'n', 'v' }, 'k', [[v:count == 0 ? 'gk' : 'k']], { expr = true })
+-- disable navigation by arrow keys
+nmap('<up>', '<nop>')
+nmap('<down>', '<nop>')
 
 imap('<C-H>', '<C-W>') -- Ctrl-Backspace that I am used to (learn to use <C-W?)
 imap('<C-b>', '<C-o>db') -- Delete word backward (same as above)
@@ -58,6 +61,8 @@ nmap('<leader>po', ':only<CR>', { desc = 'Single Pane', silent = false })
 -- Buffers
 nmap('<Tab>', ':bnext<cr>')
 nmap('<S-Tab>', ':bprevious<cr>')
+nmap('<left>', ':bprevious<cr>')
+nmap('<right>', ':bnext<cr>')
 nmap('<leader>bn', ':bnext<cr>', { desc = 'Next Buffer' })
 nmap('<leader>bp', ':bprevious<cr>', { desc = 'Previous Buffer' })
 nmap('<leader>bl', ':blast<cr>', { desc = 'Last Buffer' })
