@@ -1,0 +1,22 @@
+$include /etc/inputrc
+$if mode=emacs
+# cycle through possible completions
+TAB: menu-complete
+set bell-style none
+# ignore case in tab completion
+set completion-ignore-case on
+# complete until the end of common prefix before cycling through possible completions
+set show-all-if-unmodified on
+# show possible completions if more than one completions are possible
+set show-all-if-ambiguous on
+# do not duplicate characters after the cursor if they consist partially of possbile completion
+set skip-completed-text on
+# display colors when doing completion as `ls` does
+set colored-stats on
+# color tab-completion matched prefix part
+set colored-completion-prefix on
+# color the common prefix in menu-complete
+set menu-complete-display-prefix on
+# enable file decorations like ls -F
+set visible-stats on
+$endif
