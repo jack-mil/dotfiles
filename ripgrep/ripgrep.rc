@@ -12,3 +12,5 @@
 web:*.{html,css,js}*
 # ignore .git directories
 --glob=!.git/*
+# Don't go to other filesystems
+--one-file-system
