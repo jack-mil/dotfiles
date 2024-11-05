@@ -3,6 +3,7 @@
 -- Detects if current media title is an episode of a show,
 -- and modfies the screenshot save template to save in a folder
 -- for each show, and extract info about the episode for filename
+-- Finely tuned for the media title set by the Jellyfin MPV Shim program
 
 local utils = require('mp.utils')
 local template = mp.get_property('screenshot-template')

@@ -1,4 +1,3 @@
-git/.config/git/user
 *.conf.bak
 .dotter/local.toml
 .dotter/cache.toml
