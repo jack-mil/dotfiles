@@ -17,7 +17,7 @@ alias sudo='sudo '
 # interactive if lots of files deleted
 alias rm='rm -vI'
 alias mv='mv -vI'
-alias cp='cp -vI'
+alias cp='cp -v'
 alias del='trash-put'
 
 # Aliases for bat
