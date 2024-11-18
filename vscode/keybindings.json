@@ -1,0 +1,87 @@
+// Override some default keybindings
+[
+    {
+        "key": "alt+`",
+        "command": "workbench.action.positionPanelBottom"
+    },
+    {
+        "key": "shift+alt+`",
+        "command": "workbench.action.positionPanelRight"
+    },
+    {
+        "key": "ctrl+f11",
+        "command": "workbench.action.toggleMaximizedPanel"
+    },
+    {
+        "key": "ctrl+n",
+        "command": "-workbench.action.files.newUntitledFile"
+    },
+    {
+        "key": "ctrl+shift+j",
+        "command": "editor.action.joinLines",
+        "when": "editorFocus"
+    },
+    {
+        "key": "ctrl+n",
+        "command": "explorer.newFile"
+    },
+    {
+        "key": "ctrl+alt+b",
+        "command": "-platformio-ide.build"
+    },
+    {
+        "key": "ctrl+alt+b",
+        "command": "workbench.action.toggleAuxiliaryBar"
+    },
+    {
+        "key": "shift+f9",
+        "command": "editor.debug.action.selectionToWatch",
+        "when": "editorHasSelection && editorFocus"
+    },
+    {
+        "key": "ctrl+shift+-",
+        "command": "workbench.action.terminal.fontZoomOut",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+shift+=",
+        "command": "workbench.action.terminal.fontZoomIn",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+shift+insert",
+        "command": "workbench.action.terminal.fontZoomReset",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+=",
+        "command": "-workbench.action.zoomIn"
+    },
+    {
+        "key": "ctrl+-",
+        "command": "-workbench.action.zoomOut"
+    },
+    {
+        "key": "ctrl+shift+=",
+        "command": "-workbench.action.zoomIn"
+    },
+    {
+        "key": "ctrl+shift+-",
+        "command": "-workbench.action.zoomOut"
+    },
+    {
+        "key": "ctrl+shift+=",
+        "command": "editor.action.fontZoomIn",
+        "when": "editorFocus"
+    },
+    {
+        "key": "ctrl+shift+-",
+        "command": "editor.action.fontZoomOut",
+        "when": "editorFocus"
+    },
+    {
+        "key": "ctrl+shift+insert",
+        "command": "editor.action.fontZoomReset",
+        "when": "editorFocus"
+    }
+]

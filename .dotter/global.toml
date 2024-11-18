@@ -42,6 +42,9 @@
 [nvim.files]
   nvim = { target = "~/.config/nvim", recurse = false, type = "symbolic" }
 
+[vscode.files]
+  "vscode/keybindings.json" = "~/.config/Code/User/keybindings.json"
+
 [sioyek.files]
   sioyek = "~/.config/sioyek"
 
