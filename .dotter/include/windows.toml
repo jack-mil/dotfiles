@@ -26,7 +26,7 @@ export PATH="/c/Windows/System32/OpenSSH/":$PATH
   type = "template"
 
 [vscode.files]
-  "vscode/keybindings.json" = '~\AppData\Roaming\Code\User\keybindings.json'
+  "vscode/keybindings-windows.json.temp" = '~\AppData\Roaming\Code\User\keybindings.json'
 
 [mpv.files]
   mpv = '~\AppData\Roaming\mpv'

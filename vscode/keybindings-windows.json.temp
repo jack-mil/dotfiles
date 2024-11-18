@@ -1,0 +1,3 @@
+[
+{{ read_to_str "vscode/keybindings-common" }}
+]
