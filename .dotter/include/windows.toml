@@ -35,4 +35,4 @@ export PATH="/c/Windows/System32/OpenSSH/":$PATH
   jpegview = '~\scoop\persist\jpegview-fork'
 
 [media]
-  depends = ["mpv", "jpegview"]
+  depends = ["jpegview", "mpv"]

@@ -10,8 +10,8 @@
 [git]
   depends = ["shell", "ssh"]
   [git.files]
-    git   = "~/.config/git"
-    jj    = { type = "symbolic", target = "~/.config/jj", if = '(is_executable "jj")' }
+    git = "~/.config/git"
+    jj  = { type = "symbolic", target = "~/.config/jj", if = '(is_executable "jj")' }
 
   [git.variables]
     #optional: signing_key

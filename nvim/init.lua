@@ -1,7 +1,7 @@
 if vim.loader then vim.loader.enable() end -- experimental loader (?)
 
 -- download lazy plugin loader
-require('core.lazy-bootstrap') 
+require('core.lazy-bootstrap')
 
 -- Configure my user settings before plugins
 require('core.settings')
