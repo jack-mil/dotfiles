@@ -16,6 +16,7 @@ return {
     term_colors = true,
     default_integrations = false,
     integrations = {
+      fzf = true,
       which_key = true,
       leap = true,
       dashboard = true,

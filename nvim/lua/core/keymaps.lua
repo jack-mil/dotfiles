@@ -88,6 +88,13 @@ nmap('<leader>op', ':pwd<cr>', { desc = 'Current Working Directory', silent = fa
 -- PLUGIN KEYMAPS
 -- =========================
 
+-- FZF bindings
+nmap('<C-O>', ':FzfLua files<cr>', { desc = 'Fuzzy select files in cwd' })
+nmap('<C-P>', ':FzfLua builtin<cr>', { desc = 'Command pallet' })
+nmap('<F1>', ':FzfLua helptags<cr>', { desc = 'Neovim Help Tags' })
+nmap('<C-\\>', ':FzfLua buffers<cr>', { desc = 'Fuzzy select open buffers' })
+nmap('<C-F>', ':FzfLua live_grep_glob<cr>', { desc = 'Grep all files in project (Glob)' })
+
 nmap('<leader>oZ', ':Trim<cr>', { desc = 'Trim Trailing Whitespace' })
 nmap('<leader>oc', ':ColorizerToggle<cr>', { desc = 'Preview Colors (toggle)' })
 nmap('<leader>L', ':Lazy<cr>', { desc = 'Lazy Dashboard' })
