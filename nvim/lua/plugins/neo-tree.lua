@@ -6,7 +6,7 @@ return {
     'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
     'MunifTanjim/nui.nvim',
   },
-
+  -- lazy load when using command
   cmd = 'Neotree',
 
   opts = {
