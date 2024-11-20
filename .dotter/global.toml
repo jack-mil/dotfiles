@@ -7,6 +7,9 @@
 [ssh]
   # meta package for now
 
+[kitty.files]
+  kitty = { type = "symbolic", target = "~/.config/kitty" }
+
 [git]
   depends = ["shell", "ssh"]
   [git.files]
