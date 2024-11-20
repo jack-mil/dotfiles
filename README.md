@@ -1,6 +1,12 @@
-# Dotfiles #
-### Dotfiles used on Arch Linux ###
+## Obsolete ##
+> :warning: Mostly incomplete/old/unused configuration left on a unused machine.
 
+> Some config ported over to `master` branch.
+
+> Only left here for posterity
+
+
+## Old README ##
 My dotfiles for Arch, managed by GNU [`stow`](https://www.gnu.org/software/stow/). May be extended to other devices/distros if I ever upgrade.  
 Mostly for backup/sync purposes  
 
