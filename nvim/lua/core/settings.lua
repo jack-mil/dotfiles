@@ -1,4 +1,4 @@
-local global = vim.g
+local g = vim.g
 local o = vim.opt
 
 
@@ -30,8 +30,10 @@ o.fixeol = true         -- Insert missing newline at end of file
 o.hidden = true         -- Buffers become hidden when abandoned.
 
 o.ttimeoutlen = 0       -- The time in milliseconds that is waited for a key code or mapped key sequence to complete.
-o.wildmenu = true       -- When 'wildmenu' is on, command-line completion operates in an enhanced mode.
 
+-- Behavior
+o.wildmenu = true       -- Command-line completion operates in an enhanced mode.
+o.wildignorecase = true -- Ignore case when completing filenames/dirs
 
 -- Window splitting
 o.splitright = true     -- When on, splitting a window will put the new window right of the current one.
@@ -65,6 +67,9 @@ o.listchars:append {
   precedes = '⟨'
 }
 
+-- Man(page) command
+g.man_hardwrap  = 0     -- use softwrapping for displaying manpages
+
 -- Terminal
 o.title         = true  -- When on, the title of the window will be set to the value of 'titlestring'
 o.termguicolors = true  -- Enable 24bit RGB color in the TUI
@@ -80,5 +85,13 @@ vim.api.nvim_create_autocmd('FileType', {
   callback = function()
     vim.opt.wrap = true
     vim.opt.linebreak = true
+  end,
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'man',
+  callback = function()
+    vim.opt.number = false
+    vim.opt.signcolumn = 'no'
   end,
 })

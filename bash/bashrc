@@ -67,10 +67,14 @@ fi
 # Optional utility section
 # ------------------------
 
-
+{{#if (is_executable "nvim")}}
+# Use `nvim` as a manpager
+function neovim_man() {
+     nvim "+hide Man $*"
+}
+alias man=neovim_man
+{{/if}}
 {{#if (is_executable "bat")}}
-# Use `bat` as a manpager
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 # replace cat with plain bat
 alias cat='bat --color always --plain'
 {{/if}}
