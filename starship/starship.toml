@@ -1,7 +1,6 @@
 '$schema' = 'https://starship.rs/config-schema.json'
 
-# Almost default (yellow & teal are swapped)
-palette = "catppuccin_frappe"
+palette = "catppuccin_macchiato"
 
 # shorter limit for scaning filesystem
 scan_timeout = 10
@@ -12,11 +11,12 @@ add_newline = true
 format = """
 [╭ ](bold subtext0)$os$username$hostname$shlvl\
 $directory$git_branch$git_commit$git_state$git_metrics$git_status\
-$fill\
 $package$c$cmake$julia$kotlin$python$rust\
 $sudo$cmd_duration\
 $line_break\
 [╰](bold subtext0)$jobs$time$status$container$shell$character"""
+
+# $fill\ # removed fill 
 
 # Starship modules
 [character]
