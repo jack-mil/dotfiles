@@ -83,15 +83,15 @@ o.cmdheight = 0         -- Save some space on the bottom below the LuaLine
 vim.api.nvim_create_autocmd('FileType', {
   pattern = 'markdown',
   callback = function()
-    vim.opt.wrap = true
-    vim.opt.linebreak = true
+    vim.opt_local.wrap = true
+    vim.opt_local.linebreak = true
   end,
 })
 
 vim.api.nvim_create_autocmd('FileType', {
   pattern = 'man',
   callback = function()
-    vim.opt.number = false
-    vim.opt.signcolumn = 'no'
+    vim.opt_local.number = false
+    vim.opt_local.signcolumn = 'no'
   end,
 })
