@@ -8,7 +8,20 @@ return {
   },
   -- lazy load when using command
   cmd = 'Neotree',
-
+  init = function() -- to allow lazy-loading + opening directories
+    vim.api.nvim_create_autocmd('BufEnter', {
+      -- make a group to be able to delete it later
+      group = vim.api.nvim_create_augroup('NeoTreeInit', { clear = true }),
+      callback = function()
+        local f = vim.fn.expand('%:p')
+        if vim.fn.isdirectory(f) ~= 0 then
+          vim.cmd('Neotree current dir=' .. f)
+          -- neo-tree is loaded now, delete the init autocmd
+          vim.api.nvim_clear_autocmds({ group = 'NeoTreeInit' })
+        end
+      end,
+    })
+  end,
   opts = {
     source_selector = {
       winbar = true,
@@ -33,7 +46,11 @@ return {
     },
 
     -- Show hidden items dimmly
-    filesystem = { filtered_items = { visible = true } },
+    filesystem = {
+      filtered_items = { visible = true },
+      hijack_netrw_behaviour = 'open_current',
+      group_empty_dirs = true,
+    },
 
     event_handlers = {
       {
@@ -51,7 +68,16 @@ return {
       system_open = function(state)
         vim.ui.open(state.tree:get_node():get_id())
       end,
-
+      -- Open files without losing focus
+      quick_open = function(state)
+        local node = state.tree:get_node()
+        if require('neo-tree.utils').is_expandable(node) then
+          state.commands['toggle_node'](state)
+        else
+          state.commands['open'](state)
+          vim.cmd('Neotree reveal')
+        end
+      end,
       -- Move up and collapse nodes
       parent_or_close = function(state)
         local node = state.tree:get_node()
@@ -68,15 +94,17 @@ return {
         if node:has_children() then
           if not node:is_expanded() then -- if unexpanded, expand
             state.commands.toggle_node(state)
-          else -- if expanded and has children, seleect the next child
+          else -- if expanded and has children, select the next child
             if node.type == 'file' then
               state.commands.open(state)
+              vim.cmd('Neotree reveal')
             else
               require('neo-tree.ui.renderer').focus_node(state, node:get_child_ids()[1])
             end
           end
         else -- if has no children
           state.commands.open(state)
+          vim.cmd('Neotree reveal')
         end
       end,
     },

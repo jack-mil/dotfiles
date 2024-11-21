@@ -29,7 +29,7 @@ config.ui = { border = 'rounded', backdrop = 80 }
 config.performance = {
   rtp = {
     disabled_plugins = {
-        'gzip', 'tarPlugin', 'tohtml', 'zipPlugin'
+        'gzip', 'tarPlugin', 'tohtml', 'zipPlugin', 'netrw', 'netrwSettings', 'netrwPlugin', 'netrwFileHandlers'
 --       '2html_plugin', 'getscript', 'getscriptPlugin', 'gzip',
 --       'logipat', 'man', 'matchit', 'matchparen', 'netrw',
 --       'netrwFileHandlers', 'netrwPlugin', 'netrwSettings',
