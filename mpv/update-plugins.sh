@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# I don't actually use this directly, legacy leftovers
+# useful to find the links at least
+
 # Optionally download https://github.com/tsl0922/mpv-debug-plugin,
 # not including it here because it is binary
 
@@ -19,7 +22,7 @@ scripts=(
 
 shaders=(
 	"https://raw.githubusercontent.com/bjin/mpv-prescalers/master/compute/nnedi3-nns128-win8x4.hook"
-	"https://raw.githubusercontent.com/Artoriuz/ArtCNN/main/ArtCNN_C4F32.glsl"
+	"https://raw.githubusercontent.com/Artoriuz/ArtCNN/refs/heads/main/GLSL/Compute/ArtCNN_C4F32_CMP.glsl"
 )
 
 mkdir -p $scripts_dir
