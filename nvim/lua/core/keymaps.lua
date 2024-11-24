@@ -25,6 +25,9 @@ end
 -- use jj to exit insert mode (not present in English)
 imap('jj', '<Esc>')
 
+-- type commands without Shift
+nmap(';', ':', { silent = false, desc = "CMD enter mode (Ex)" })
+
 -- move up/down by displayed lines (wrapped) if no count given
 -- in visual and normal mode
 map({ 'n', 'v' }, 'j', [[v:count == 0 ? 'gj' : 'j']], { expr = true })
