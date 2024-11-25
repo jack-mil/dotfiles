@@ -64,3 +64,6 @@
   depends = ["mpv"]
   [media.files]
     aria2 = "~/.config/aria2"
+
+[arch.files]
+  pacman = "~/.config/pacman"
