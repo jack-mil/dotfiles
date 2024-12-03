@@ -66,4 +66,6 @@
     aria2 = "~/.config/aria2"
 
 [arch.files]
-  pacman = "~/.config/pacman"
+  "pacman/makepkg.conf" = "~/.config/pacman/makepkg.conf"
+  "pacman/aura.toml" = "~/.config/aura/config.toml"
+  
