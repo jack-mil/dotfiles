@@ -27,7 +27,6 @@
   {{/if}}
   {{#if (eq dotter.os "windows")}}
   symlinks = true
-  autocrlf = true
   {{else}}
   autocrlf = input
   {{/if}}
