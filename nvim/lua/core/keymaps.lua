@@ -26,7 +26,7 @@ end
 imap('jj', '<Esc>')
 
 -- type commands without Shift
-nmap(';', ':', { silent = false, desc = "CMD enter mode (Ex)" })
+nmap(';', ':', { silent = false, desc = 'CMD enter mode (Ex)' })
 
 -- move up/down by displayed lines (wrapped) if no count given
 -- in visual and normal mode
