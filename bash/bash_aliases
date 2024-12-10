@@ -56,9 +56,9 @@ IGNORE='--no-permissions -I "NTUSER.*|ntuser.*|Recent|SendTo|Start Menu|My Docum
 EZA_COMMON="--group-directories-first --icons --sort Extension"
 alias l="eza $EZA_COMMON $IGNORE"
 alias la="eza -a $EZA_COMMON $IGNORE"
-alias ll="eza -l -a --links --header --group $EZA_COMMON $IGNORE"
+alias ll="eza -l -a --links --header --smart-group $EZA_COMMON $IGNORE"
 alias lt="eza --tree $EZA_COMMON $IGNORE"
-alias ltl="eza -l --links --tree --header --no-time --group --sort Extension $IGNORE"
+alias ltl="eza -l --links --tree --header --no-time --smart-group --sort Extension $IGNORE"
 {{/if}}
 
 {{#if (is_executable "docker")}}
