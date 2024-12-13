@@ -12,6 +12,7 @@ return {
       light = 'latte',
       dark = 'frappe',
     },
+    compile_path = vim.fn.stdpath('cache') .. '/catppuccin', -- enable compiling theme
     show_end_of_buffer = true, -- seems to be bugged??
     term_colors = true,
     default_integrations = false,
@@ -20,6 +21,8 @@ return {
       which_key = true,
       leap = true,
       dashboard = true,
+      semantic_tokens = true,
+      neotree = true,
       indent_blankline = {
         enabled = true,
         colored_indent_levels = true,
@@ -28,7 +31,6 @@ return {
         enabled = true,
         color = 'yellow',
       },
-      compile_path = vim.fn.stdpath('cache') .. '/catppuccin', -- enable compiling theme
     },
   },
   init = function() -- loads the colorscheme
