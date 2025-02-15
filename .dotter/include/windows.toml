@@ -21,6 +21,9 @@
   "vscode/keybindings-windows.json.temp" = '~\AppData\Roaming\Code\User\keybindings.json'
   "vscode/keybindings-linux.json.temp" = ""
 
+[npp.files]
+  "notepad++" = '~\AppData\Roaming\Notepad++'
+
 [mpv.files]
   mpv = '~\AppData\Roaming\mpv'
 
