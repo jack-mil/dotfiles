@@ -63,3 +63,11 @@ function ltl {
     )
     & eza -l --tree --no-time --sort Extension @args @IGNORE
 }
+
+function ln-s ($target, $link) {
+    New-Item -Path $link -ItemType SymbolicLink -Value $target
+}
+
+function ln ($target, $link) {
+    New-Item -Path $link -ItemType HardLink -Value $target
+}
