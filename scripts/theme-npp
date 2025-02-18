@@ -1,0 +1,86 @@
+#!/usr/bin/env python3
+
+"""
+Copies the NotePad++ themes from the Catppuccin repo
+to my dotfiles symlinks with necessary font modifications.
+
+Windows only.
+"""
+
+import shutil
+from pathlib import Path
+import xml.etree.ElementTree as ET
+import re
+
+DOTFILE_DIR = Path.home() / "Misc/dotfiles/notepad++/themes"
+
+THEME_DIR = Path.home() / "Repos/notepad-plus-plus/themes"
+
+FLAVORS = (
+    "catppuccin-frappe.xml",
+    "catppuccin-latte.xml",
+    "catppuccin-macchiato.xml",
+    "catppuccin-mocha.xml",
+)
+
+GLOBAL_RE = re.compile(
+    r'(<WidgetStyle name="Global Override" [^>]*fontName=")[^"]*(")', re.IGNORECASE
+)
+DEFAULT_RE = re.compile(
+    r'(<WidgetStyle name="Default Style" [^>]*fontName=")[^"]*(")', re.IGNORECASE
+)
+
+
+def copy_files(source_file: Path, dest_file: Path):
+    # Check if the source file exists
+    if not source_file.is_file():
+        raise FileNotFoundError(f"Source file does not exist: {source_file}")
+
+    # Create destination directory if it does not exist
+    # dest_file.parent.mkdir(parents=True, exist_ok=True)
+
+    shutil.copy2(source_file, dest_file)
+
+
+def import_theme(source_file: Path, dest_file: Path):
+    copy_files(source_file, dest_file)
+
+    # # Parse the copied XML file
+    # tree = ET.parse(dest_file)
+    # root = tree.getroot()
+
+    # # Find and modify fontname attributes
+    # for widget_style in root.findall(".//WidgetStyle"):
+    #     if widget_style.get("name").lower() == "global override":
+    #         widget_style.set("fontName", "")
+    #     elif widget_style.get("name").lower() == "default style":
+    #         widget_style.set("fontName", "CaskaydiaCove NF")
+
+    # # Save the modified theme XML
+    # tree.write(dest_file, encoding="UTF-8" ,xml_declaration=True)
+
+    with dest_file.open("r") as file:
+        content = file.read()
+
+    # Regex to find and replace fontName attributes
+    content = GLOBAL_RE.sub(r"\1\2", content)
+    content = DEFAULT_RE.sub(r"\1CaskaydiaCove NF\2", content)
+
+    # Write the modified content back to the copied file
+    with dest_file.open("w") as file:
+        file.write(content)
+
+    print(
+        f"~\\{source_file.relative_to(Path.home())} -> ~\\{dest_file.relative_to(Path.home())}"
+    )
+
+
+def main():
+    for flavor in FLAVORS:
+        src_path = THEME_DIR / flavor
+        dest_path = DOTFILE_DIR / flavor
+        import_theme(src_path, dest_path)
+
+
+if __name__ == "__main__":
+    main()

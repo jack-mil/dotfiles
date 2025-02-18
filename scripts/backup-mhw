@@ -1,0 +1,53 @@
+#!/usr/bin/env python
+
+"""
+Creates a backup of the MHW:I save file based on modification date
+Windows only
+"""
+
+import shutil
+import os
+from datetime import datetime
+from pathlib import Path
+
+SAVE_FILE = "C:\\Steam\\userdata\\167451182\\582010\\remote\\SAVEDATA1000"
+BACKUP_DIRS = (
+    Path.home() / "Documents/Saved Games/MHWI Backups",
+    "E:\\MHW Backups\\", # if external drive is available (fails safely)
+)
+
+
+def log_error(path: Path):
+    print(f"ERROR: {path.resolve()} not found")
+
+
+def make_backup(source_file: Path, dest_file: Path):
+    print(f'Copying "{source_file.resolve()}" to "{dest_file.resolve()}"')
+    shutil.copy2(source_file, dest_file)
+
+
+def main():
+    savefile = Path(SAVE_FILE)
+    if not savefile.exists():
+        log_error(savefile)
+        exit(-1)
+
+    saved_time = os.path.getmtime(savefile)
+    formatted_time = datetime.fromtimestamp(saved_time).strftime("%Y-%m-%dT%H%M")
+
+    for dir in map(Path, BACKUP_DIRS):
+        if not dir.exists() or not dir.is_dir():
+            log_error(dir)
+            continue
+
+        backup_dest = dir / (f"{savefile.name}_{formatted_time}")
+
+        if backup_dest.exists():
+            abbr_path = "/".join([backup_dest.drive, "...", *backup_dest.parts[-2:]])
+            print(f'Skipping: "{abbr_path}"')
+            continue
+        make_backup(savefile, backup_dest)
+
+
+if __name__ == "__main__":
+    main()
