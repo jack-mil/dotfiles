@@ -17,14 +17,6 @@
   bat  = '~\AppData\Roaming\bat'
   glow = { type = "symbolic", target = '~\AppData\Local\glow\Config' }
 
-[bash.files."bash/bashrc"]
-  append = """
-# use builtin ssh on windows (not from git-for-windows)
-export PATH="/c/Windows/System32/OpenSSH/":$PATH
-"""
-  target = '~\.bashrc'
-  type = "template"
-
 [vscode.files]
   "vscode/keybindings-windows.json.temp" = '~\AppData\Roaming\Code\User\keybindings.json'
   "vscode/keybindings-linux.json.temp" = ""
