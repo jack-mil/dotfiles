@@ -18,11 +18,13 @@
   glow = { type = "symbolic", target = '~\AppData\Local\glow\Config' }
 
 [vscode.files]
+  "vscode/keybindings-linux.json.temp"   = ""
   "vscode/keybindings-windows.json.temp" = '~\AppData\Roaming\Code\User\keybindings.json'
-  "vscode/keybindings-linux.json.temp" = ""
 
 [npp.files]
-  "notepad++" = '~\AppData\Roaming\Notepad++'
+  "notepad++/config.xml"  = { type = "template", target = '~\Appdata\Roaming\Notepad++\config.xml' }
+  "notepad++/themes/" = '~\AppData\Roaming\Notepad++\themes\'
+  "notepad++/shortcuts.xml" = '~\AppData\Roaming\Notepad++\shortcuts.xml'
 
 [mpv.files]
   mpv = '~\AppData\Roaming\mpv'

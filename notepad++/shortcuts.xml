@@ -1,0 +1,30 @@
+<NotepadPlus>
+    <InternalCommands>
+        <Shortcut id="42036" Ctrl="no" Alt="no" Shift="no" Key="0" />
+        <Shortcut id="42035" Ctrl="no" Alt="no" Shift="no" Key="0" />
+        <Shortcut id="42023" Ctrl="no" Alt="no" Shift="no" Key="0" />
+        <Shortcut id="42022" Ctrl="yes" Alt="no" Shift="no" Key="191" />
+        <Shortcut id="42014" Ctrl="no" Alt="yes" Shift="no" Key="38" />
+        <Shortcut id="42015" Ctrl="no" Alt="yes" Shift="no" Key="40" />
+        <Shortcut id="50010" Ctrl="no" Alt="no" Shift="no" Key="0" />
+        <Shortcut id="50011" Ctrl="no" Alt="no" Shift="no" Key="0" />
+        <Shortcut id="50002" Ctrl="yes" Alt="no" Shift="yes" Key="32" />
+        <Shortcut id="42057" Ctrl="yes" Alt="no" Shift="yes" Key="13" />
+        <Shortcut id="42058" Ctrl="yes" Alt="no" Shift="no" Key="13" />
+        <Shortcut id="50001" Ctrl="no" Alt="no" Shift="no" Key="0" />
+    </InternalCommands>
+    <Macros>
+        <Macro name="Trim Trailing Space and Save" Ctrl="no" Alt="yes" Shift="yes" Key="83">
+            <Action type="2" message="0" wParam="42024" lParam="0" sParam="" />
+            <Action type="2" message="0" wParam="41006" lParam="0" sParam="" />
+        </Macro>
+    </Macros>
+    <UserDefinedCommands />
+    <PluginCommands />
+    <ScintillaKeys>
+        <ScintKey ScintID="2338" menuCmdID="0" Ctrl="yes" Alt="no" Shift="yes" Key="75" />
+        <ScintKey ScintID="2288" menuCmdID="0" Ctrl="yes" Alt="no" Shift="yes" Key="74" />
+        <ScintKey ScintID="2390" menuCmdID="0" Ctrl="no" Alt="no" Shift="no" Key="0" />
+        <ScintKey ScintID="2391" menuCmdID="0" Ctrl="no" Alt="no" Shift="no" Key="0" />
+    </ScintillaKeys>
+</NotepadPlus>
