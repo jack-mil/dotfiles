@@ -9,8 +9,9 @@ Windows only.
 
 import shutil
 from pathlib import Path
-import xml.etree.ElementTree as ET
 import re
+
+FONT_NAME = "CaskaydiaCove NF"
 
 DOTFILE_DIR = Path.home() / "Misc/dotfiles/notepad++/themes"
 
@@ -45,26 +46,12 @@ def copy_files(source_file: Path, dest_file: Path):
 def import_theme(source_file: Path, dest_file: Path):
     copy_files(source_file, dest_file)
 
-    # # Parse the copied XML file
-    # tree = ET.parse(dest_file)
-    # root = tree.getroot()
-
-    # # Find and modify fontname attributes
-    # for widget_style in root.findall(".//WidgetStyle"):
-    #     if widget_style.get("name").lower() == "global override":
-    #         widget_style.set("fontName", "")
-    #     elif widget_style.get("name").lower() == "default style":
-    #         widget_style.set("fontName", "CaskaydiaCove NF")
-
-    # # Save the modified theme XML
-    # tree.write(dest_file, encoding="UTF-8" ,xml_declaration=True)
-
     with dest_file.open("r") as file:
         content = file.read()
 
     # Regex to find and replace fontName attributes
     content = GLOBAL_RE.sub(r"\1\2", content)
-    content = DEFAULT_RE.sub(r"\1CaskaydiaCove NF\2", content)
+    content = DEFAULT_RE.sub(f"\\1{FONT_NAME}\\2", content)
 
     # Write the modified content back to the copied file
     with dest_file.open("w") as file:
