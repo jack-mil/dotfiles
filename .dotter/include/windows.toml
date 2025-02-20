@@ -8,7 +8,7 @@
   terminal = '~\scoop\persist\windows-terminal-preview\settings'
 
 [sioyek.files]
-  sioyek = '~\scoop\persist\sioyek'
+  sioyek = '~\scoop\persist\sioyek-alpha'
 
 [git.files]
   jj = '~\AppData\Roaming\jj'
