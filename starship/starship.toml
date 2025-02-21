@@ -2,7 +2,7 @@
 
 palette = "catppuccin_macchiato"
 
-# shorter limit for scaning filesystem
+# shorter limit for scanning filesystem
 scan_timeout = 10
 
 # wrap if gets too long
@@ -26,10 +26,10 @@ $line_break\
   vimcmd_symbol = "[❮](bold peach)"
 
 [directory]
-  before_repo_root_style    = "bold sapphire"
+  before_repo_root_style    = "bold lavender"
   fish_style_pwd_dir_length = 4
   read_only                 = " 󰌾"
-  repo_root_style           = "bold italic flamingo"
+  repo_root_style           = "bold italic blue"
   style                     = "bold lavender"
   truncation_length         = 4
   use_os_path_sep           = false
@@ -45,7 +45,7 @@ $line_break\
 
 [git_branch]
   format            = '[$symbol$branch(:$remote_branch)]($style) '
-  style             = "bold pink"
+  style             = "bold mauve"
   symbol            = " "
   truncation_length = 20
 
@@ -84,17 +84,16 @@ $line_break\
 
 
 [shell]
-  disabled = false
-  bash_indicator = ''   # default, no icon
-  fish_indicator = '󰈺 '
-  pwsh_indicator = ' '
+  bash_indicator       = ''     # default, no icon
+  cmd_indicator        = ' '
+  disabled             = false
+  fish_indicator       = '󰈺 '
   powershell_indicator = "psh!"
-  zsh_indicator = "zsh"
-  cmd_indicator = ' '
+  pwsh_indicator       = ' '
+  zsh_indicator        = "zsh"
 
   format = '[$indicator]($style)'
-  style = "white bold"
-
+  style  = "white bold"
 
 
 [os]
@@ -127,8 +126,8 @@ $line_break\
   maroon    = "#ea999c"
   peach     = "#ef9f76"
   yellow    = "#e5c890"
-  teal      = "#81c8be"
   green     = "#a6d189"
+  teal      = "#81c8be"
   sky       = "#99d1db"
   sapphire  = "#85c1dc"
   blue      = "#8caaee"
