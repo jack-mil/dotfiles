@@ -13,6 +13,7 @@
         <Shortcut id="42058" Ctrl="yes" Alt="no" Shift="no" Key="13" />
         <Shortcut id="50001" Ctrl="no" Alt="no" Shift="no" Key="0" />
         <Shortcut id="42097" Ctrl="yes" Alt="no" Shift="no" Key="68" />
+        <Shortcut id="44022" Ctrl="no" Alt="yes" Shift="no" Key="87" />
     </InternalCommands>
     <Macros>
         <Macro name="Trim Trailing Space and Save" Ctrl="no" Alt="yes" Shift="yes" Key="83">
