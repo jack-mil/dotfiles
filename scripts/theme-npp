@@ -9,20 +9,19 @@ Windows only.
 
 import shutil
 from pathlib import Path
+from argparse import ArgumentParser
+import sys
 import re
 
+# Can be changed with cli args
 FONT_NAME = "CaskaydiaCove NF"
+FLAVOR = "frappe"
 
-DOTFILE_DIR = Path.home() / "Misc/dotfiles/notepad++/themes"
+DOTFILE_DIR = Path.home() / "dotfiles/notepad++"
 
-THEME_DIR = Path.home() / "Repos/notepad-plus-plus/themes"
+THEME_DIR = Path.home() / "repos/notepad-plus-plus"
 
-FLAVORS = (
-    "catppuccin-frappe.xml",
-    "catppuccin-latte.xml",
-    "catppuccin-macchiato.xml",
-    "catppuccin-mocha.xml",
-)
+FLAVORS = ("frappe", "latte", "macchiato", "mocha")
 
 GLOBAL_RE = re.compile(
     r'(<WidgetStyle name="Global Override" [^>]*fontName=")[^"]*(")', re.IGNORECASE
@@ -30,6 +29,18 @@ GLOBAL_RE = re.compile(
 DEFAULT_RE = re.compile(
     r'(<WidgetStyle name="Default Style" [^>]*fontName=")[^"]*(")', re.IGNORECASE
 )
+DARK_THEME_RE_STR = r'(<GUIConfig name="DarkMode" [^>]*darkThemeName="catppuccin-{}\.xml" [^>]*\/>)'  # needs configuration at runtime
+CONFIG_RE = re.compile(r'(<GUIConfig name="DarkMode" [^>]*\/>)', re.IGNORECASE)
+
+
+def parse_args():
+    parser = ArgumentParser()
+    parser.add_argument(
+        "-t", "--flavor", default=FLAVOR, choices=FLAVORS, required=False
+    )
+    parser.add_argument("--font", default=FONT_NAME, required=False)
+    args = parser.parse_args()
+    return args
 
 
 def copy_files(source_file: Path, dest_file: Path):
@@ -43,7 +54,7 @@ def copy_files(source_file: Path, dest_file: Path):
     shutil.copy2(source_file, dest_file)
 
 
-def import_theme(source_file: Path, dest_file: Path):
+def import_theme(source_file: Path, dest_file: Path, font: str):
     copy_files(source_file, dest_file)
 
     with dest_file.open("r") as file:
@@ -51,22 +62,53 @@ def import_theme(source_file: Path, dest_file: Path):
 
     # Regex to find and replace fontName attributes
     content = GLOBAL_RE.sub(r"\1\2", content)
-    content = DEFAULT_RE.sub(f"\\1{FONT_NAME}\\2", content)
+    content = DEFAULT_RE.sub(f"\\1{font}\\2", content)
 
     # Write the modified content back to the copied file
-    with dest_file.open("w") as file:
-        file.write(content)
+    dest_file.write_text(content)
 
     print(
         f"~\\{source_file.relative_to(Path.home())} -> ~\\{dest_file.relative_to(Path.home())}"
     )
 
 
+def set_ui_colors(src_file: Path, dest_file: Path, flavor: str):
+    with src_file.open("r") as file:
+        content = file.read()
+
+    # REGEX to pull the desired darkmode config from CTP repo
+    regex = re.compile(DARK_THEME_RE_STR.format(flavor))
+    print(regex)
+    config = regex.search(content)
+    if config is None:
+        raise ValueError(f"Could not find dark mode definition in {src_file}")
+
+    with dest_file.open("r") as file:
+        content = file.read()
+        content = CONFIG_RE.sub(config.group(), content)
+
+    dest_file.write_text(content)
+
+    print(f'Added "{flavor}" dark mode ui config')
+
+
 def main():
+    args = parse_args()
+
+    # Copy all flavors to be available
     for flavor in FLAVORS:
-        src_path = THEME_DIR / flavor
-        dest_path = DOTFILE_DIR / flavor
-        import_theme(src_path, dest_path)
+        filename = f"catppuccin-{flavor}.xml"
+        src_path = THEME_DIR / "themes" / filename
+        dest_path = DOTFILE_DIR / "themes" / filename
+        import_theme(src_path, dest_path, args.font)
+
+    print("Copied theme files")
+
+    theme_ui = THEME_DIR / "ui-theme.md"
+    config_file = DOTFILE_DIR / "config.xml"
+
+    # set the darkmode theme to a specific flavor
+    set_ui_colors(theme_ui, config_file, args.flavor)
 
 
 if __name__ == "__main__":
