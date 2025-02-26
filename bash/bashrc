@@ -79,10 +79,6 @@ alias man=neovim_man
 alias cat='bat --color always --plain'
 {{/if}}
 
-{{#if (is_executable "zoxide")}}
-eval "$(zoxide init --cmd cd bash)"
-{{/if}}
-
 {{#if (is_executable "yazi")}}
 {{#if (eq dotter.os "windows")}}
 export YAZI_FILE_ONE=/usr/bin/file.exe
@@ -141,12 +137,16 @@ _fzf_compgen_dir() {
 export RIPGREP_CONFIG_PATH="${HOME}/.config/ripgrep.rc"
 {{/if}}
 
+{{#if (is_executable "gh")}}
+# github-cli completions
+eval "$(gh completion -s bash)"
+{{/if}}
+
 {{#if (is_executable "starship")}}
 # Prompt setup
 eval -- "$(starship init bash --print-full-init)"
 {{/if}}
 
-{{#if (is_executable "gh")}}
-# github-cli completions
-eval "$(gh completion -s bash)"
+{{#if (is_executable "zoxide")}}
+eval "$(zoxide init --cmd cd bash)"
 {{/if}}
