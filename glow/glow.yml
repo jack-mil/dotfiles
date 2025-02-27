@@ -1,8 +1,10 @@
 # style name or JSON path (default "auto")
-style: "dracula"
+style: "{{#if (eq dotter.os 'windows')}}~\\AppData\\Local\\glow\\Config\\\{{else}}~/.config/glow/{{/if}}catppuccin-macchiato.json"
 # mouse wheel support (TUI-mode only)
 mouse: true
 # use pager to display markdown
-pager: true
+pager: false
+# use the tui
+tui: true
 # at which column should we word wrap?
 width: 80

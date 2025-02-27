@@ -28,10 +28,11 @@
 
 # other interactive stuff here? install utils?
 [shell.files]
-  bat      = "~/.config/bat"
-  bottom   = "~/.config/bottom"
-  glow     = { type = "symbolic", target = "~/.config/glow" }
-  starship = "~/.config/"
+  bat             = "~/.config/bat"
+  bottom          = "~/.config/bottom"
+  glow            = { type = "symbolic", target = "~/.config/glow" }
+  "glow/glow.yml" = "~/.config/glow/glow.yml"
+  starship        = "~/.config/"
 
   ripgrep = "~/.config/"
 
@@ -66,6 +67,5 @@
     aria2 = "~/.config/aria2"
 
 [arch.files]
+  "pacman/aura.toml"    = "~/.config/aura/config.toml"
   "pacman/makepkg.conf" = "~/.config/pacman/makepkg.conf"
-  "pacman/aura.toml" = "~/.config/aura/config.toml"
-  

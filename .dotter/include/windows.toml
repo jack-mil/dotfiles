@@ -16,6 +16,7 @@
 [shell.files]
   bat  = '~\AppData\Roaming\bat'
   glow = { type = "symbolic", target = '~\AppData\Local\glow\Config' }
+  "glow/glow.yml" = '~\AppData\Local\glow\Config\glow.yml'
 
 [vscode.files]
   "vscode/keybindings-linux.json.temp"   = ""
