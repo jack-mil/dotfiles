@@ -21,7 +21,7 @@ $line_break\
 # Starship modules
 [character]
   error_symbol   = "[❯](bold red)"
-  success_symbol = "[❯](bold peach)"
+  success_symbol = "[❯](bold green)"
   # For use with zsh-vi-mode
   vimcmd_symbol = "[❮](bold peach)"
 
