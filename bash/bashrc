@@ -3,150 +3,18 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-mkdir -p "${XDG_CACHE_HOME:-$HOME/.cache}"/bash
-HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}"/bash/history
+source_conf_in() {
+  local dir="$1"
 
-# don't put duplicate lines or lines starting with space in the history.
-HISTCONTROL=ignoreboth
-HISTSIZE=1000
-HISTFILESIZE=10000
-# append to the history file, don't overwrite it
-shopt -s histappend
-# correct minor spelling (case) when using cd
-shopt -s cdspell
-# expand paths when using tab completion
-shopt -s direxpand
-# prevent exit when background jobs running, list them
-shopt -s checkjobs
-# preview history shortcut commands before running
-shopt -s histverify
-# limits recursive functions, see 'man bash'
-[[ -z "$FUNCNEST" ]] && export FUNCNEST=100          
+  # source files alpha-numeric order
+  if [[ -d "$dir" ]]; then
+    for f in "$dir"/*; do
+      [[ -f "$f" && -r "$f" ]] && source "$f" && echo "Loaded $f"
+    done
+  fi
 
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_CACHE_HOME="$HOME/.cache"
-export XDG_DATA_HOME="$HOME/.local/share"
-export XDG_STATE_HOME="$HOME/.local/state"
-export XDG_DOWNLOAD_DIR="$HOME/downloads"
-export XDG_DOCUMENTS_DIR="$HOME/documents"
-export XDG_MUSIC_DIR="$HOME/music"
-export XDG_PICTURES_DIR="$HOME/pictures"
-export XDG_VIDEOS_DIR="$HOME/videos"
-
-export EDITOR=nvim
-export VISUAL=nvim
-export PIP_REQUIRE_VIRTUALENV=true
-
-# source cargo environment
-if [ -f $HOME/.cargo/env ]; then
-  export BINSTALL_DISABLE_TELEMETRY=true
-  . $HOME/.cargo/env
-fi
-
-# add local bin in front of path
-if [ -d "$HOME/.local/bin" ] ; then
-    export PATH="$HOME/.local/bin:$PATH"
-fi
-
-# setup colors for ls/grep/dir...etc
-if [[ -x "$(command -v vivid)" ]]; then
-    export LS_COLORS="$(vivid generate catppuccin-frappe)"
-elif [[ -x /usr/bin/dircolors ]]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-fi
-# colored GCC warnings and errors
-export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
-
-# Source aliases
-# -------
-if [ -f ~/.bash_aliases ]; then
-  . ~/.bash_aliases
-fi
-
-# Optional utility section
-# ------------------------
-
-{{#if (is_executable "nvim")}}
-# Use `nvim` as a manpager
-function neovim_man() {
-     nvim "+hide Man $*"
-}
-alias man=neovim_man
-{{/if}}
-{{#if (is_executable "bat")}}
-# replace cat with plain bat
-alias cat='bat --color always --plain'
-{{/if}}
-
-{{#if (is_executable "yazi")}}
-{{#if (eq dotter.os "windows")}}
-export YAZI_FILE_ONE=/usr/bin/file.exe
-{{/if}}
-export YAZI_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/yazi"
-function y() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
-	yazi "$@" --cwd-file="$tmp"
-	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		builtin cd -- "$cwd"
-	fi
-	rm -f -- "$tmp"
-}
-{{/if}}
-
-{{#if (and (is_executable "fzf") (is_executable "fd") (is_executable "rg"))}}
-# source fzf shell integration
-eval "$(fzf --bash)"
-
-# set options
-export FZF_CTRL_T_OPTS=" \
-  --preview 'bat --color=always --style=plain --line-range :300 {}' \
-  --preview-window right,60%,border-vertical"
-export FZF_DEFAULT_COMMAND="fd --type f --strip-cwd-prefix --hidden --exclude .git"
-
-FZF_MOVEMENT="--bind='alt-]:preview-page-down' \
-              --bind='alt-[:preview-page-up' \
-              --bind='alt-p:toggle-preview'"
-# Catppuccin colors
-FZF_COLORS=" \
-  --color=bg+:#414559,spinner:#f2d5cf,hl:#a6d189 \
-  --color=fg:#c6d0f5,header:#e78284,info:#85c1dc,pointer:#ef9f76 \
-  --color=marker:#babbf1,fg+:#c6d0f5,prompt:#ef9f76,hl+:#e78284 \
-  --color=selected-bg:#51576d"
-  
-export FZF_DEFAULT_OPTS=" \
-  $FZF_MOVEMENT \
-  $FZF_COLORS \
-  --height=50% --info=inline \
-  --border=rounded \
-  --cycle --multi"
-
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-# Use fd (https://github.com/sharkdp/fd) instead of the default find
-# command for listing path candidates.
-_fzf_compgen_path() {
-  fd --hidden --follow --exclude ".git" . "$1"
 }
 
-# Use fd to generate the list for directory completion
-_fzf_compgen_dir() {
-  fd --type d --hidden --follow --exclude ".git" . "$1"
-}
+alias reload_config='source_conf_in "$HOME/.config/bashrc.d"'
 
-# Provide default options for ripgrep
-export RIPGREP_CONFIG_PATH="${HOME}/.config/ripgrep.rc"
-{{/if}}
-
-{{#if (is_executable "gh")}}
-# github-cli completions
-eval "$(gh completion -s bash)"
-{{/if}}
-
-{{#if (is_executable "starship")}}
-# Prompt setup
-eval -- "$(starship init bash --print-full-init)"
-{{/if}}
-
-{{#if (is_executable "zoxide")}}
-eval "$(zoxide init --cmd cd bash)"
-{{/if}}
+reload_config

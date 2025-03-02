@@ -32,16 +32,15 @@
   bottom          = "~/.config/bottom"
   glow            = { type = "symbolic", target = "~/.config/glow" }
   "glow/glow.yml" = "~/.config/glow/glow.yml"
+  ripgrep  = "~/.config/"
   starship        = "~/.config/"
-
-  ripgrep = "~/.config/"
 
 [bash]
   depends = ["scripts", "shell"]
   [bash.files]
-    "bash/bash_aliases" = "~/.bash_aliases"
-    "bash/bashrc"       = "~/.bashrc"
-    "bash/inputrc"      = "~/.inputrc"
+    "bash/bashrc"   = "~/.bashrc"
+    "bash/bashrc.d" = "~/.config/bashrc.d"
+    "bash/inputrc"  = "~/.inputrc"
 
 [nvim.files]
   nvim = { target = "~/.config/nvim", recurse = false, type = "symbolic" }

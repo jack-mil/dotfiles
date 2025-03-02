@@ -1,18 +1,15 @@
-# vim: ft=sh
+# Command and convenience aliases for bash interactive sessions
 
-# auto color common utilities
-alias dir='dir --color=auto'
-alias vdir='vdir --color=auto'
-
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
+# Move up quickly
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
 
 # always display diff when deploying dotfiles
 alias dotter='dotter -v'
 
 # weird hack to use sudo with aliases...
-alias sudo='sudo '
+# alias sudo='sudo '
 
 # interactive if lots of files deleted
 alias rm='rm -vI'
@@ -25,15 +22,18 @@ help() (
     set -o pipefail
     "$@" --help 2>&1 | bh
 )
+# replace cat with plain bat
+[[ -x "$(command -v bat)" ]] && alias cat='bat --color always --plain'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-# Move up quickly
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
+# Use `nvim` as a manpager
+function neovim_man() {
+     nvim "+hide Man $*"
+}
+[[ -x "$(command -v nvim)" ]] && alias man=neovim_man
 
 # configure default ls (and eza) arguments
 LS_COMMON="-hGF --color=auto"
@@ -61,7 +61,6 @@ alias lt="eza --tree $EZA_COMMON $IGNORE"
 alias ltl="eza -l --links --tree --header --no-time --smart-group --sort Extension $IGNORE"
 {{/if}}
 
-{{#if (is_executable "docker")}}
 # Docker shortcuts
 alias dc='docker compose'
 alias dcup='docker compose up'
@@ -72,11 +71,6 @@ alias dcl='docker compose logs'
 alias dclf='docker compose logs -f'
 alias dcstop='docker compose stop'
 alias dcstart='docker compose start'
-{{/if}}
-
-# utility for home-lab machine management
-alias fixperms='chmod a=,a+rX,u+w,g+w'
-alias hgit='GIT_DIR=$HOME/.home GIT_WORK_TREE=$HOME git'
 
 # utility function to unarchive anything
 extract () {
@@ -100,7 +94,12 @@ extract () {
      fi
 }
 
-{{#if dotter.packages.media}}
+# utility for home-lab machine management
+alias fixperms='chmod a=,a+rX,u+w,g+w'
+alias hgit='GIT_DIR=$HOME/.home GIT_WORK_TREE=$HOME git'
+
+# Utilities for working with media files and ffmpeg
+# -------------------------------------------------
 function webm2gif() {
     ffmpeg -y -i "$1" -vf palettegen _tmp_palette.png
     ffmpeg -y -i "$1" -i _tmp_palette.png -filter_complex paletteuse -r 10  "${1%.webm}.gif"
@@ -114,4 +113,3 @@ function mkgifski() {
   ffmpeg -i "$1" -f yuv4mpegpipe - | gifski.exe --fps=${FPS:=${2:-10}} --height=${H:=${3:-540}} --quality=${Q:=${4:-80}} -o "${1%.*}-r${FPS}-h${H}-q${Q}.gif" -
 }
 alias ytdlp="yt-dlp --remux-video mkv --no-continue --no-cache-dir --add-metadata --all-subs --embed-subs --embed-thumbnail"
-{{/if}}
