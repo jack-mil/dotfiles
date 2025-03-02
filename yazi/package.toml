@@ -1,17 +1,49 @@
-[plugin]
-  deps = [
-    { use = "Reledia/glow", rev = "4e016fa" },
-    { use = "Reledia/miller", rev = "40e0265" },
-    { use = "sharklasers996/eza-preview", rev = "7ca4c25" },
-    { use = "yazi-rs/plugins:full-border", rev = "49137fe" },
-    { use = "yazi-rs/plugins:hide-preview", rev = "49137fe" },
-    { use = "yazi-rs/plugins:jump-to-char", rev = "49137fe" },
-    { use = "yazi-rs/plugins:max-preview", rev = "49137fe" },
-  ]
+[[plugin.deps]]
+use = "Reledia/glow"
+rev = "c76bf4f"
+hash = "a6b78bf9af5390e3a85a6951fbb7b93"
 
-[flavor]
-  deps = [
-    { use = "dangooddd/kanagawa", rev = "b32f205" },
-    { use = "yazi-rs/flavors:catppuccin-frappe", rev = "d479f67" },
-    { use = "yazi-rs/flavors:catppuccin-mocha", rev = "d479f67" },
-  ]
+[[plugin.deps]]
+use = "Reledia/miller"
+rev = "40e0265"
+hash = "2d6d77583162aaf0a599e7a3091b5878"
+
+[[plugin.deps]]
+use = "sharklasers996/eza-preview"
+rev = "7ca4c25"
+hash = "d1efd1931dd738af0d6e4f41dd491313"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:full-border"
+rev = "3d0c7c6"
+hash = "9dce00232a0e0e2502565c7aa2b0ed4e"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:hide-preview"
+rev = "3d0c7c6"
+hash = "53f826884e2c7e521cecc492a7f31d7e"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:jump-to-char"
+rev = "3d0c7c6"
+hash = "a670c03eb3760812e044a24f94cedc55"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:max-preview"
+rev = "3d0c7c6"
+hash = "a8025f2bb311e869069364fba01abffc"
+
+[[flavor.deps]]
+use = "dangooddd/kanagawa"
+rev = "31167ed"
+hash = "a04e157148549bacbb2831aab0e6e8cb"
+
+[[flavor.deps]]
+use = "yazi-rs/flavors:catppuccin-frappe"
+rev = "c023460"
+hash = "7780fbbc8965da5a31a76a0dcd4d1216"
+
+[[flavor.deps]]
+use = "yazi-rs/flavors:catppuccin-mocha"
+rev = "c023460"
+hash = "2ac87e1b3a61f5887472899e86535d29"
