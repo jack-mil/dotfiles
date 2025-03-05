@@ -41,7 +41,10 @@ export FZF_DEFAULT_OPTS=" \
   $FZF_COLORS \
   --height=50% \
   --border=rounded \
-  --preview-border \
+  --preview-border=rounded \
+  --list-border=rounded \
+  --header-border=rounded \
+  --input-border=rounded \
   --cycle --multi"
 
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
