@@ -17,7 +17,7 @@
     {
         "key": "ctrl+shift+j",
         "command": "editor.action.joinLines",
-        "when": "editorFocus"
+        "when": "editorFocus && editor.hasSelection"
     },
     {
         "key": "ctrl+n",
