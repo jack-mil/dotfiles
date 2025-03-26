@@ -32,7 +32,6 @@ DEFAULT_RE = re.compile(
 DARK_THEME_RE_STR = r'(<GUIConfig name="DarkMode" [^>]*darkThemeName="catppuccin-{}\.xml" [^>]*\/>)'  # needs configuration at runtime
 CONFIG_RE = re.compile(r'(<GUIConfig name="DarkMode" [^>]*\/>)', re.IGNORECASE)
 
-
 def parse_args():
     parser = ArgumentParser()
     parser.add_argument(
@@ -78,7 +77,6 @@ def set_ui_colors(src_file: Path, dest_file: Path, flavor: str):
 
     # REGEX to pull the desired darkmode config from CTP repo
     regex = re.compile(DARK_THEME_RE_STR.format(flavor))
-    print(regex)
     config = regex.search(content)
     if config is None:
         raise ValueError(f"Could not find dark mode definition in {src_file}")
