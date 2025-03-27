@@ -54,6 +54,9 @@
 [yazi.files]
   yazi = "~/.config/yazi"
 
+[tmux.files]
+  "tmux" = { target = "~/.config/tmux", recurse = false, type = "symbolic" }
+
 # meta package(s) for now
 [graphics]
 
