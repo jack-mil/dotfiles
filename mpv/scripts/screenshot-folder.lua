@@ -1,12 +1,14 @@
 -- My (jack-mil) custom screenshot organization solution
 
 -- Detects if current media title is an episode of a show,
--- and modfies the screenshot save template to save in a folder
+-- and modifies the screenshot save template to save in a folder
 -- for each show, and extract info about the episode for filename
 -- Finely tuned for the media title set by the Jellyfin MPV Shim program
 
+-- TODO: Reset template to default if show doesn't match
+
 local utils = require('mp.utils')
-local template = mp.get_property('screenshot-template')
+local orig_template = mp.get_property('screenshot-template')
 
 -- string v is empty
 local function empty(v)
@@ -27,7 +29,10 @@ local function folder_screenshot(name, media_title)
   mp.msg.info('media_title(' .. utils.to_string(media_title) .. ')')
 
   -- don't modify save path if not using special jellyfin title
-  if not is_valid_title(media_title) then return end
+  if not is_valid_title(media_title) then
+    mp.set_property('screenshot-template', orig_template) -- reset if new-title doesn't match
+    return
+  end
 
   -- assume format NAME - SxxExx - EPISODE TITLE
   _, _, show, ep, title = media_title:find('^(.-)%s%-%s(%w+)%s%-%s(.+)$')

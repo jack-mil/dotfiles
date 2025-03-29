@@ -2,6 +2,6 @@
 bash/bashrc.d/*_fzf-git.sh  linguist-vendored
 mpv/shaders/**              linguist-generated
 mpv/scripts/**              linguist-vendored
-mpv/scripts/show-folder-screenshot.lua  -linguist-vendored
+mpv/scripts/screenshot-folder.lua  -linguist-vendored
 
 # vim: sw=8
