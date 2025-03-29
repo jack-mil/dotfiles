@@ -9,7 +9,7 @@ alias ....="cd ../../.."
 alias dotter='dotter -v'
 
 # weird hack to use sudo with aliases...
-# alias sudo='sudo '
+alias sudo='sudo '
 
 # interactive if lots of files deleted
 alias rm='rm -vI'
@@ -56,9 +56,9 @@ IGNORE='--no-permissions -I "NTUSER.*|ntuser.*|Recent|SendTo|Start Menu|My Docum
 EZA_COMMON="--group-directories-first --icons --sort Extension"
 alias l="eza $EZA_COMMON $IGNORE"
 alias la="eza -a $EZA_COMMON $IGNORE"
-alias ll="eza -l -a --links --header --groups $EZA_COMMON $IGNORE"
+alias ll="eza -l -a --links --header --group $EZA_COMMON $IGNORE"
 alias lt="eza --tree $EZA_COMMON $IGNORE"
-alias ltl="eza -l --links --tree --header --no-time --groups --sort Extension $IGNORE"
+alias ltl="eza -l --links --tree --header --no-time --group --sort Extension $IGNORE"
 {{/if}}
 
 # Docker shortcuts
