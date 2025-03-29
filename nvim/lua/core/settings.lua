@@ -43,7 +43,7 @@ o.inccommand = 'split'  -- When nonempty, shows the effects of :substitute, :sma
 
 -- Appearance
 o.wrap       = false    -- Line wrapping off by default (toggle with <leader>ow)
-o.linebreak  = true     -- Break lines at resonable place.
+o.linebreak  = true     -- Break lines at reasonable place.
 o.number     = true     -- Print the line number in front of each line
 o.relativenumber = true -- Show the line number relative to the line with the cursor in front of each line.
 o.signcolumn = 'number' -- Put signs (icons from plugins) in the number column, if present.
