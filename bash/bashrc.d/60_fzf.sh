@@ -9,12 +9,22 @@ eval "$(fzf --bash)"
 # set options
 export FZF_CTRL_T_OPTS=" \
   --style=full \
-  --input-label ' Search ' \
-  --border=none \
+  --input-label ' Find File ' \
   --preview 'bat --color=always --style=plain --line-range :300 {}' \
-  --preview-window right,60%"
-
-export FZF_DEFAULT_COMMAND="fd --type f --strip-cwd-prefix --hidden --exclude .git"
+  --preview-window right,70%"
+export FZF_ALT_C_OPTS=" \
+  --style=full \
+  --input-label ' Change Directory ' \
+  --preview 'eza --tree --level 3 --color=always --group-directories-first --icons --sort Extension {} | head -200' \
+  --preview-window right,50%"
+export FZF_CTRL_R_OPTS=" \
+  --style=full \
+  --input-label ' Command History [?]:preview' \
+  --preview 'echo {}' \
+  --preview-window down:3:hidden:wrap \
+  --bind '?:toggle-preview'"
+# replaces default --walker command
+export FZF_DEFAULT_COMMAND="fd --type f --strip-cwd-prefix --hidden --exclude .git --exclude node_modules"
 
 FZF_MOVEMENT="--bind='alt-]:preview-page-down' \
               --bind='alt-[:preview-page-up' \
@@ -28,19 +38,20 @@ FZF_MOVEMENT="--bind='alt-]:preview-page-down' \
   
 FZF_COLORS=" \
 --color=bg+:#363a4f,spinner:#f4dbd6,hl:#ed8796 \
---color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6 \
+--color=fg:#cad3f5,header:#ed8796,info:#eed49f,pointer:#f4dbd6 \
 --color=marker:#b7bdf8,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796 \
 --color=selected-bg:#494d64 \
---color=list-border:#a6da95,list-label:#a6da95 \
---color=preview-border:#ed8796,preview-label:#ed8796 \
---color=input-border:#c6a0f6,input-label:#c6a0f6 \
---color=header-border:#8aadf4,header-label:#8aadf4"
+--color=list-border:#a6da95,list-label:#a6da95:italic \
+--color=preview-border:#ed8796,preview-label:#ed8796:italic \
+--color=input-border:#c6a0f6,input-label:#c6a0f6:italic \
+--color=header-border:#8aadf4,header-label:#8aadf4:italic"
 
 export FZF_DEFAULT_OPTS=" \
   $FZF_MOVEMENT \
   $FZF_COLORS \
-  --height=50% \
-  --border=rounded \
+  --height=40% \
+  --tmux=bottom,40% \
+  --border=none \
   --preview-border=rounded \
   --list-border=rounded \
   --header-border=rounded \
