@@ -50,4 +50,4 @@ vim.opt.completeopt:append('noselect')
 
 -- rounded floating windows (might be default?)
 -- Only V0.11
-o.winborder = 'rounded'
+vim.opt.winborder = 'rounded'
