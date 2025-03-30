@@ -3,7 +3,10 @@
 # This sets up environment variables, theming, and bash shell integration
 # This configuration assumes installation with the fd utility (github.com/sharkdp/fd)
 
-# setup fzf shell integration
+# don't load this file if fzf not installed
+[[ ! -x "$(command -v fzf)" ]] && return
+
+# setup shell-integration
 eval "$(fzf --bash)"
 
 # set options

@@ -14,12 +14,10 @@ export EDITOR=nvim
 export VISUAL=nvim
 export PIP_REQUIRE_VIRTUALENV=true
 
-# source cargo environment
 # add local bin in front of path
-if [ -d "$HOME/.local/bin" ] ; then
-    export PATH="$HOME/.local/bin:$PATH"
-fi
+prepend_path "$HOME/.local/bin"
 
+# source cargo environment
 if [ -f "$HOME/.cargo/env" ]; then
   export BINSTALL_DISABLE_TELEMETRY=true
   source $HOME/.cargo/env
