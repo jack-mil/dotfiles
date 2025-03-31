@@ -14,8 +14,8 @@
   jj = '~\AppData\Roaming\jj'
 
 [shell.files]
-  bat  = '~\AppData\Roaming\bat'
-  glow = { type = "symbolic", target = '~\AppData\Local\glow\Config' }
+  bat             = '~\AppData\Roaming\bat'
+  glow            = { type = "symbolic", target = '~\AppData\Local\glow\Config' }
   "glow/glow.yml" = '~\AppData\Local\glow\Config\glow.yml'
 
 [vscode.files]
@@ -23,9 +23,9 @@
   "vscode/keybindings-windows.json.temp" = '~\AppData\Roaming\Code\User\keybindings.json'
 
 [npp.files]
-  "notepad++/config.xml"  = { type = "template", target = '~\Appdata\Roaming\Notepad++\config.xml' }
-  "notepad++/themes/" = '~\AppData\Roaming\Notepad++\themes\'
+  "notepad++/config.xml"    = { type = "template", target = '~\Appdata\Roaming\Notepad++\config.xml' }
   "notepad++/shortcuts.xml" = '~\AppData\Roaming\Notepad++\shortcuts.xml'
+  "notepad++/themes/"       = '~\AppData\Roaming\Notepad++\themes\'
 
 [mpv.files]
   mpv = '~\AppData\Roaming\mpv'

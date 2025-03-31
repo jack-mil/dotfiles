@@ -1,29 +1,28 @@
 [general]
-cpus = 16
-editor = "nvim"
-doas = false
-language = "en-US"
-noconfirm = false
+  cpus      = 16
+  doas      = false
+  editor    = "nvim"
+  language  = "en-US"
+  noconfirm = false
 
 [aur]
-build = "/home/jackmil/.cache/aura/builds"
-cache = "/home/jackmil/.cache/aura/cache"
-clones = "/home/jackmil/.cache/aura/packages"
-hashes = "/home/jackmil/.cache/aura/hashes"
-chroot = []
-ignores = []
-git = false
-hotedit = false
-shellcheck = false
-diff = true
-delmakedeps = false
-clean = false
-warn_unknowns = true
-nocheck = false
-skipdepcheck = false
-reverse = false
+  build         = "/home/jackmil/.cache/aura/builds"
+  cache         = "/home/jackmil/.cache/aura/cache"
+  chroot        = []
+  clean         = false
+  clones        = "/home/jackmil/.cache/aura/packages"
+  delmakedeps   = false
+  diff          = true
+  git           = false
+  hashes        = "/home/jackmil/.cache/aura/hashes"
+  hotedit       = false
+  ignores       = []
+  nocheck       = false
+  reverse       = false
+  shellcheck    = false
+  skipdepcheck  = false
+  warn_unknowns = true
 
 [backups]
-snapshots = "/home/jackmil/.cache/aura/snapshots"
-automatic = true
-
+  automatic = true
+  snapshots = "/home/jackmil/.cache/aura/snapshots"

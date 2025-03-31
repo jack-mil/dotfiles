@@ -32,7 +32,7 @@
   bottom          = "~/.config/bottom"
   glow            = { type = "symbolic", target = "~/.config/glow" }
   "glow/glow.yml" = "~/.config/glow/glow.yml"
-  ripgrep  = "~/.config/"
+  ripgrep         = "~/.config/"
   starship        = "~/.config/"
 
 [bash]

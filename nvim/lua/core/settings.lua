@@ -57,15 +57,15 @@ o.laststatus = 3        -- (Single) global status bar (Lualine)
 o.list      = false
 o.showbreak = '↪ '     -- Character at the start of wrapped lines
 local space = '·'
-o.listchars:append {
+o.listchars:append({
   tab = '|-',
   multispace = space,
-  lead     = space,
-  trail    = space,
-  nbsp     = '␣',
-  extends  = '⟩',
-  precedes = '⟨'
-}
+  lead = space,
+  trail = space,
+  nbsp = '␣',
+  extends = '⟩',
+  precedes = '⟨',
+})
 
 -- Man(page) command
 g.man_hardwrap  = 0     -- use softwrapping for displaying manpages
@@ -89,11 +89,11 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = {'man','dashboard'},
+  pattern = { 'man', 'dashboard' },
   callback = function()
     vim.wo.number = false
     vim.opt_local.signcolumn = 'no'
-    vim.opt_local.fillchars:append { eob=' '}
+    vim.opt_local.fillchars:append({ eob = ' ' })
     vim.opt_local.showbreak = 'NONE'
   end,
 })
