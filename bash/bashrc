@@ -8,7 +8,7 @@ prepend_path() {
   if [[ -d "$1" ]] && [[ ! "$PATH" =~ (^|:)"$1"(:|$) ]]; then
     PATH="$1${PATH:+":$PATH"}" # handle's blank PATH (unlikely)
   else
-    return 0
+    return 1
   fi
 }
 
