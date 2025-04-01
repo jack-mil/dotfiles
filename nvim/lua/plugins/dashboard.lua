@@ -7,6 +7,7 @@ return {
     config = {
       week_header = { enable = true },
       disable_move = true,
+      packages = { enable = true },
       shortcut = {
         { desc = ' Update', group = '@property', action = 'Lazy update', key = 'u' },
         { desc = ' Lazy', group = 'Number', action = 'Lazy', key = 'l' },
@@ -29,7 +30,7 @@ return {
         --   key = 'd',
         -- },
       },
-      footer = {},
+      footer = { 'Neovim: ' .. tostring(vim.version()) },
     },
   },
   dependencies = { { 'nvim-tree/nvim-web-devicons' } },
