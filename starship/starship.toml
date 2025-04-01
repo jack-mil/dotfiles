@@ -41,6 +41,8 @@ $line_break\
   #     "Pictures"  = " "
 
 [shlvl]
+  symbol = " "
+  format = '[$shlvl$symbol]($style) '
   disabled = false
 
 [git_branch]
