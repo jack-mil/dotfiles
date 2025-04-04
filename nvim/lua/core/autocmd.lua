@@ -1,4 +1,4 @@
--- Sets up autocmd and highlight group to show trailing whitepsace
+-- Sets up autocmd and highlight group to show trailing whitespace
 vim.cmd([[match TrailingWhitespace /\s\+$/]])
 
 vim.api.nvim_set_hl(0, 'TrailingWhitespace', { link = 'Error' })

@@ -11,7 +11,7 @@ vim.lsp.config('*', {
       },
     },
   },
-  root_markers = { '.git' },
+  root_markers = { '.git/' },
 })
 
 -- enable error display
@@ -19,7 +19,15 @@ vim.diagnostic.config({
   virtual_lines = { current_line = true },
 })
 
-vim.lsp.enable('lua-language-server')
+-- enable all specifications in lsp/
+local configs = {}
+
+for _, v in ipairs(vim.api.nvim_get_runtime_file('lsp/*', true)) do
+  local name = vim.fn.fnamemodify(v, ':t:r')
+  configs[name] = true
+end
+
+vim.lsp.enable(vim.tbl_keys(configs))
 
 -- Set up LSPAttach autocommand to enable features based on client
 -- capabilities. A single autocommand can work for multiple LSP servers.
