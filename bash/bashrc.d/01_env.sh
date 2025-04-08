@@ -12,6 +12,7 @@ export XDG_VIDEOS_DIR="$HOME/videos"
 
 export EDITOR=nvim
 export VISUAL=nvim
+export PAGER=less
 export PIP_REQUIRE_VIRTUALENV=true
 
 # add local bin in front of path

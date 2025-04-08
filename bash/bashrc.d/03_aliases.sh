@@ -29,11 +29,6 @@ help() (
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-# Use `nvim` as a manpager
-function neovim_man() {
-     nvim "+hide Man $*"
-}
-[[ -x "$(command -v nvim)" ]] && alias man=neovim_man
 
 # configure default ls (and eza) arguments
 LS_COMMON="-hGF --color=auto"
