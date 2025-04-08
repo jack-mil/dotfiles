@@ -3,17 +3,12 @@
 [[manager.prepend_keymap]]
   desc = "Hide or show preview"
   on   = "<A-p>"
-  run  = "plugin --sync hide-preview"
+  run  = "plugin toggle-pane min-preview"
 
 [[manager.prepend_keymap]]
   desc = "Maximize or restore preview"
   on   = "<A-P>"
-  run  = "plugin --sync max-preview"
-
-[[manager.prepend_keymap]]
-  desc = "Toggle tree/list dir preview"
-  on   = "T"
-  run  = "plugin eza-preview"
+  run  = "plugin toggle-pane max-preview"
 
 [[manager.prepend_keymap]]
   desc = "Jump to char"
@@ -24,3 +19,23 @@
   desc = "Filer files"
   on   = "F"
   run  = "filter --smart"
+
+[[manager.prepend_keymap]]
+  # https://github.com/yazi-rs/plugins/tree/main/vcs-files.yazi
+  desc = "Show Git file changes"
+  on   = ["g", "c"]
+  run  = "plugin vcs-files"
+
+[[manager.prepend_keymap]]
+  # https://yazi-rs.github.io/docs/tips#cd-to-git-root
+  desc = "Goto git root dir"
+  for  = "unix"
+  on   = ["g", "r"]
+  run  = 'shell -- ya emit cd "$(git rev-parse --show-toplevel)"'
+
+[[manager.prepend_keymap]]
+  # https://yazi-rs.github.io/docs/tips#cd-to-git-root
+  desc = "Goto git root dir"
+  for  = "windows"
+  on   = ["g", "r"]
+  run  = '''shell -- for /f %A in ('git rev-parse --show-toplevel') do ya emit cd %A'''
