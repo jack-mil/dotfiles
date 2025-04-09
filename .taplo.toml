@@ -1,4 +1,4 @@
-exclude = ["jj/config.toml"]
+exclude = ["jj/config.toml", "yazi/package.toml"]
 
 [formatting]
   align_comments        = true
