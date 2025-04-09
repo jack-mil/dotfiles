@@ -1,4 +1,6 @@
 -- My (jack-mil) custom screenshot organization solution
+-- Copyright (c) 2024-2025 jack-mil
+-- License: MIT
 
 -- Detects if current media title is an episode of a show,
 -- and modifies the screenshot save template to save in a folder

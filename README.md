@@ -9,3 +9,8 @@ Managed with [`dotter`](https://github.com/SuperCuber/dotter)
 - `$> dotter`
 
 Links for some cli utilities: [programs.md](./programs.md)
+
+If forgot to clone submodules, use this.
+```
+git submodule update --init --recursive
+```
