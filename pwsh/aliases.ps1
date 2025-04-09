@@ -1,25 +1,22 @@
 # LS ignore list for Windows
 $LS_COMMON = @(
-    "-I NTUSER.DAT*",
-    "-I ntuser.dat*",
-    "-I ntuser.ini",
-    "-I Recent",
-    "-I SendTo",
-    "-I 'Start Menu'",
-    "-I 'My Documents'",
-    "-I ntuser.pol",
-    "-I NetHood",
-    "-I Cookies",
-    "-I Templates",
-    "-I PrintHood",
-    "-I 'Local Settings'"
+    "NTUSER.DAT*",
+    "ntuser.dat*",
+    "ntuser.ini",
+    "Recent",
+    "SendTo",
+    "'Start Menu'",
+    "'My Documents'",
+    "ntuser.pol",
+    "NetHood",
+    "Cookies",
+    "Templates",
+    "PrintHood",
+    "'Local Settings'"
 )
 
 function ls {
-    param (
-        [string[]]$args
-    )
-    & ls @args $LS_COMMON
+    Get-ChildItem -Exclude $LS_COMMON -Path @Args
 }
 
 # Eza ignore list for Windows
@@ -30,38 +27,23 @@ $IGNORE = @(
 )
 $EZA_COMMON = @("--no-permissions", "--group-directories-first", "--icons", "--sort=Extension")
 function l {
-    param (
-        [string[]]$args
-    )
-    & eza @args @EZA_COMMON @IGNORE
+    & eza @EZA_COMMON @IGNORE ${Args}
 }
 
 function la {
-    param (
-        [string[]]$args
-    )
-    & eza -a @args @EZA_COMMON @IGNORE
+    & eza -a @EZA_COMMON @IGNORE ${Args}
 }
 
 function ll {
-    param (
-        [string[]]$args
-    )
-    & eza -l -a --header --group @args @EZA_COMMON @IGNORE
+    & eza -l -a --header --group @EZA_COMMON @IGNORE ${Args}
 }
 
 function lt {
-    param (
-        [string[]]$args
-    )
-    & eza --tree @args @EZA_COMMON @IGNORE
+    & eza --tree @args @EZA_COMMON @IGNORE ${Args}
 }
 
 function ltl {
-    param (
-        [string[]]$args
-    )
-    & eza -l --tree --no-time --sort Extension @args @IGNORE
+    & eza -l --tree --no-time --sort Extension @IGNORE ${Args}
 }
 
 function ln-s ($target, $link) {
@@ -71,3 +53,17 @@ function ln-s ($target, $link) {
 function ln ($target, $link) {
     New-Item -Path $link -ItemType HardLink -Value $target
 }
+
+function func_touch {
+  $file = $args[0]
+  if($file -eq $null) {
+    throw "No filename supplied"
+  }
+  if(Test-Path $file){
+    (Get-ChildItem $file).LastWriteTime = Get-Date
+  }else{
+    echo $null > $file
+  }
+}
+New-Alias -Name "touch" -Value "func_touch"
+
