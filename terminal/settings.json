@@ -1,17 +1,96 @@
 {
     "$help": "https://aka.ms/terminal-documentation",
     "$schema": "https://aka.ms/terminal-profiles-schema-preview",
-    "actions": [],
+    "actions":
+    [
+        {
+            "command":
+            {
+                "action": "scrollToMark",
+                "direction": "next"
+            },
+            "id": "User.scrollToMark.2A0DA8E0"
+        },
+        {
+            "command":
+            {
+                "action": "scrollToMark",
+                "direction": "previous"
+            },
+            "id": "User.scrollToMark.D3F0B923"
+        },
+        {
+            "command":
+            {
+                "action": "selectCommand",
+                "direction": "next"
+            },
+            "id": "User.selectCommand.2A0DA8E0"
+        },
+        {
+            "command":
+            {
+                "action": "selectCommand",
+                "direction": "prev"
+            },
+            "id": "User.selectCommand.D3F0B923"
+        },
+        {
+            "command":
+            {
+                "action": "selectOutput",
+                "direction": "next"
+            },
+            "id": "User.selectOutput.2A0DA8E0"
+        },
+        {
+            "command":
+            {
+                "action": "selectOutput",
+                "direction": "prev"
+            },
+            "id": "User.selectOutput.D3F0B923"
+        },
+        {
+            "command":
+            {
+                "action": "showSuggestions",
+                "source": "commandHistory",
+                "useCommandline": true
+            },
+            "id": "User.showSuggestions.807E15EE"
+        },
+        {
+            "command":
+            {
+                "action": "exportBuffer"
+            },
+            "id": "Terminal.ExportBuffer"
+        }
+    ],
     "alwaysShowTabs": true,
-    "copyFormatting": "none",
+    "copyFormatting": false,
     "copyOnSelect": false,
     "defaultProfile": "{c1d97651-7bbf-4a59-8593-fe9f6846f1e5}",
-    "firstWindowPreference": "defaultProfile",
+    "disabledProfileSources":
+    [
+        "Windows.Terminal.Azure"
+    ],
+    "firstWindowPreference": "persistedWindowLayout",
     "focusFollowMouse": true,
     "initialCols": 100,
     "initialRows": 46,
-    "keybindings": [],
-    "disabledProfileSources": ["Windows.Terminal.Azure"],
+    "keybindings":
+    [
+        {
+            "id": "User.scrollToMark.D3F0B923",
+            "keys": "ctrl+up"
+        },
+        {
+            "id": "User.scrollToMark.2A0DA8E0",
+            "keys": "ctrl+down"
+        }
+    ],
     "newTabMenu":
     [
         {
@@ -23,9 +102,10 @@
     {
         "defaults":
         {
+            "autoMarkPrompts": true,
             "bellStyle": "none",
             "closeOnExit": "automatic",
-            "colorScheme": "Catppuccin Frappe",
+            "colorScheme": "Catppuccin Macchiato",
             "font":
             {
                 "face": "Monaspace Argon",
@@ -36,10 +116,11 @@
                     "ss02": 1
                 }
             },
-            "opacity": 70,
             "padding": "8",
+            "rightClickContextMenu": true,
+            "showMarksOnScrollbar": true,
             "suppressApplicationTitle": true,
-            "useAcrylic": true
+            "useAcrylic": false
         },
         "list":
         [
@@ -82,9 +163,7 @@
                 "commandline": "ssh hydrae-tmux",
                 "guid": "{e3eeb7d9-9992-4c32-9c4e-0cf8c0ccac36}",
                 "icon": "C:\\Users\\jackmil\\Pictures\\icons\\Icons\\System\\Drive Storage Spaces.ico",
-                "name": "Hydrae (media)",
-                "opacity": 69,
-                "padding": "8,8,8,4"
+                "name": "Hydrae (media)"
             },
             {
                 "commandline": "ssh lunae",
@@ -96,52 +175,6 @@
     },
     "schemes":
     [
-        {
-            "background": "#0A0E14",
-            "black": "#01060E",
-            "blue": "#53BDFA",
-            "brightBlack": "#686868",
-            "brightBlue": "#59C2FF",
-            "brightCyan": "#95E6CB",
-            "brightGreen": "#C2D94C",
-            "brightPurple": "#FFEE99",
-            "brightRed": "#F07178",
-            "brightWhite": "#FFFFFF",
-            "brightYellow": "#FFB454",
-            "cursorColor": "#FFFFFF",
-            "cyan": "#90E1C6",
-            "foreground": "#B3B1AD",
-            "green": "#91B362",
-            "name": "Ayu Dark",
-            "purple": "#FAE994",
-            "red": "#EA6C73",
-            "selectionBackground": "#FFFFFF",
-            "white": "#C7C7C7",
-            "yellow": "#F9AF4F"
-        },
-        {
-            "background": "#1F2430",
-            "black": "#191E2A",
-            "blue": "#6DCBFA",
-            "brightBlack": "#686868",
-            "brightBlue": "#73D0FF",
-            "brightCyan": "#95E6CB",
-            "brightGreen": "#BAE67E",
-            "brightPurple": "#D4BFFF",
-            "brightRed": "#F28779",
-            "brightWhite": "#FFFFFF",
-            "brightYellow": "#FFD580",
-            "cursorColor": "#FFFFFF",
-            "cyan": "#90E1C6",
-            "foreground": "#CBCCC6",
-            "green": "#A6CC70",
-            "name": "Ayu Mirage",
-            "purple": "#CFBAFA",
-            "red": "#ED8274",
-            "selectionBackground": "#FFFFFF",
-            "white": "#C7C7C7",
-            "yellow": "#FAD07B"
-        },
         {
             "background": "#303446",
             "black": "#51576D",
@@ -210,104 +243,12 @@
             "selectionBackground": "#585B70",
             "white": "#BAC2DE",
             "yellow": "#F9E2AF"
-        },
-        {
-            "background": "#282828",
-            "black": "#282828",
-            "blue": "#458588",
-            "brightBlack": "#928374",
-            "brightBlue": "#83A598",
-            "brightCyan": "#8EC07C",
-            "brightGreen": "#B8BB26",
-            "brightPurple": "#D3869B",
-            "brightRed": "#FB4934",
-            "brightWhite": "#EBDBB2",
-            "brightYellow": "#FABD2F",
-            "cursorColor": "#FFFFFF",
-            "cyan": "#689D6A",
-            "foreground": "#EBDBB2",
-            "green": "#98971A",
-            "name": "GruvboxDark",
-            "purple": "#B16286",
-            "red": "#CC241D",
-            "selectionBackground": "#FFFFFF",
-            "white": "#A89984",
-            "yellow": "#D79921"
-        },
-        {
-            "background": "#212121",
-            "black": "#000000",
-            "blue": "#82AAFF",
-            "brightBlack": "#545454",
-            "brightBlue": "#82AAFF",
-            "brightCyan": "#89DDFF",
-            "brightGreen": "#C3E88D",
-            "brightPurple": "#C792EA",
-            "brightRed": "#FF5370",
-            "brightWhite": "#FFFFFF",
-            "brightYellow": "#FFCB6B",
-            "cursorColor": "#FFFFFF",
-            "cyan": "#89DDFF",
-            "foreground": "#EEFFFF",
-            "green": "#C3E88D",
-            "name": "MaterialDarker",
-            "purple": "#C792EA",
-            "red": "#FF5370",
-            "selectionBackground": "#FFFFFF",
-            "white": "#FFFFFF",
-            "yellow": "#FFCB6B"
-        },
-        {
-            "background": "#2E3440",
-            "black": "#3B4252",
-            "blue": "#5E81AC",
-            "brightBlack": "#4C566A",
-            "brightBlue": "#77ABE7",
-            "brightCyan": "#8FBCBB",
-            "brightGreen": "#A3BE8C",
-            "brightPurple": "#CAA6EC",
-            "brightRed": "#BF616A",
-            "brightWhite": "#E5E9F0",
-            "brightYellow": "#D08770",
-            "cursorColor": "#E5E9F0",
-            "cyan": "#88C0D0",
-            "foreground": "#D8DEE9",
-            "green": "#A3BE8C",
-            "name": "Nord",
-            "purple": "#B48EAD",
-            "red": "#BF616A",
-            "selectionBackground": "#ECEFF4",
-            "white": "#D8DEE9",
-            "yellow": "#EBCB8B"
-        },
-        {
-            "background": "#300A24",
-            "black": "#171421",
-            "blue": "#0037DA",
-            "brightBlack": "#767676",
-            "brightBlue": "#08458F",
-            "brightCyan": "#2C9FB3",
-            "brightGreen": "#26A269",
-            "brightPurple": "#A347BA",
-            "brightRed": "#C01C28",
-            "brightWhite": "#F2F2F2",
-            "brightYellow": "#A2734C",
-            "cursorColor": "#FFFFFF",
-            "cyan": "#3A96DD",
-            "foreground": "#FFFFFF",
-            "green": "#26A269",
-            "name": "Ubuntu-18.04-ColorScheme",
-            "purple": "#881798",
-            "red": "#C21A23",
-            "selectionBackground": "#FFFFFF",
-            "white": "#CCCCCC",
-            "yellow": "#A2734C"
         }
     ],
     "showTerminalTitleInTitlebar": false,
     "startOnUserLogin": false,
     "tabWidthMode": "equal",
-    "theme": "Catppuccin Frappe",
+    "theme": "Catppuccin Mocha",
     "themes":
     [
         {
@@ -380,7 +321,7 @@
             }
         }
     ],
-    "useAcrylicInTabRow": true,
-    "windowingBehavior": "useNew",
+    "useAcrylicInTabRow": false,
+    "windowingBehavior": "useExisting",
     "wordDelimiters": " /\\()\"'-_.,:;<>~!@#$%^&*|+=[]{}~?\u2502"
 }
