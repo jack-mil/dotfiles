@@ -1,0 +1,17 @@
+# includes = [".dotter/include/windows.toml"]
+
+packages = [
+  "bash",
+  "git",
+  "media",
+  "nvim",
+  "pwsh",
+  "sioyek",
+  "terminal",
+  "vscode",
+  "yazi",
+  "npp"
+]
+
+[variables]
+  signing_key = "~/.ssh/id_ed25519.pub"
