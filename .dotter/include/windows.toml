@@ -6,6 +6,7 @@
 
 [terminal.files]
   terminal = '~\scoop\persist\windows-terminal-preview\settings'
+  "terminal/Fragments" = '~\AppData\Local\Microsoft\Windows Terminal\Fragments'
 
 [sioyek.files]
   sioyek = '~\scoop\persist\sioyek-alpha'
@@ -21,6 +22,7 @@
 [vscode.files]
   "vscode/keybindings-linux.json.temp"   = ""
   "vscode/keybindings-windows.json.temp" = '~\AppData\Roaming\Code\User\keybindings.json'
+  "vscode/test_settings.json.template"   = '~\AppData\Roaming\Code\User\test_settings.json'
 
 [npp.files]
   "notepad++/config.xml"    = { type = "template", target = '~\Appdata\Roaming\Notepad++\config.xml' }

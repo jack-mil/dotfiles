@@ -1,10 +1,10 @@
 {
     "$help": "https://aka.ms/terminal-documentation",
     "$schema": "https://aka.ms/terminal-profiles-schema-preview",
-    "actions":
+    "actions": 
     [
         {
-            "command":
+            "command": 
             {
                 "action": "scrollToMark",
                 "direction": "next"
@@ -12,7 +12,7 @@
             "id": "User.scrollToMark.2A0DA8E0"
         },
         {
-            "command":
+            "command": 
             {
                 "action": "scrollToMark",
                 "direction": "previous"
@@ -20,7 +20,7 @@
             "id": "User.scrollToMark.D3F0B923"
         },
         {
-            "command":
+            "command": 
             {
                 "action": "selectCommand",
                 "direction": "next"
@@ -28,7 +28,7 @@
             "id": "User.selectCommand.2A0DA8E0"
         },
         {
-            "command":
+            "command": 
             {
                 "action": "selectCommand",
                 "direction": "prev"
@@ -36,7 +36,7 @@
             "id": "User.selectCommand.D3F0B923"
         },
         {
-            "command":
+            "command": 
             {
                 "action": "selectOutput",
                 "direction": "next"
@@ -44,7 +44,7 @@
             "id": "User.selectOutput.2A0DA8E0"
         },
         {
-            "command":
+            "command": 
             {
                 "action": "selectOutput",
                 "direction": "prev"
@@ -52,7 +52,7 @@
             "id": "User.selectOutput.D3F0B923"
         },
         {
-            "command":
+            "command": 
             {
                 "action": "showSuggestions",
                 "source": "commandHistory",
@@ -61,7 +61,7 @@
             "id": "User.showSuggestions.807E15EE"
         },
         {
-            "command":
+            "command": 
             {
                 "action": "exportBuffer"
             },
@@ -69,10 +69,10 @@
         }
     ],
     "alwaysShowTabs": true,
-    "copyFormatting": false,
+    "copyFormatting": "none",
     "copyOnSelect": false,
     "defaultProfile": "{c1d97651-7bbf-4a59-8593-fe9f6846f1e5}",
-    "disabledProfileSources":
+    "disabledProfileSources": 
     [
         "Windows.Terminal.Azure"
     ],
@@ -80,7 +80,7 @@
     "focusFollowMouse": true,
     "initialCols": 100,
     "initialRows": 46,
-    "keybindings":
+    "keybindings": 
     [
         {
             "id": "User.scrollToMark.D3F0B923",
@@ -91,25 +91,25 @@
             "keys": "ctrl+down"
         }
     ],
-    "newTabMenu":
+    "newTabMenu": 
     [
         {
             "type": "remainingProfiles"
         }
     ],
     "newTabPosition": "afterCurrentTab",
-    "profiles":
+    "profiles": 
     {
-        "defaults":
+        "defaults": 
         {
             "autoMarkPrompts": true,
             "bellStyle": "none",
             "closeOnExit": "automatic",
             "colorScheme": "Catppuccin Macchiato",
-            "font":
+            "font": 
             {
                 "face": "Monaspace Argon",
-                "features":
+                "features": 
                 {
                     "calt": 1,
                     "ss01": 1,
@@ -122,7 +122,7 @@
             "suppressApplicationTitle": true,
             "useAcrylic": false
         },
-        "list":
+        "list": 
         [
             {
                 "backgroundImage": "C:\\Users\\jackmil\\Pictures\\wall\\nord\\BirdNord.png",
@@ -131,7 +131,8 @@
                 "guid": "{c1d97651-7bbf-4a59-8593-fe9f6846f1e5}",
                 "icon": "C:\\Users\\jackmil\\scoop\\apps\\git\\current\\mingw64\\share\\git\\git-for-windows.ico",
                 "name": "Git Bash",
-                "startingDirectory": "%USERPROFILE%"
+                "startingDirectory": "%USERPROFILE%",
+                "tabColor": "#a6da95"
             },
             {
                 "backgroundImage": "C:\\Users\\jackmil\\Pictures\\wall\\nord\\Nord Night.png",
@@ -140,20 +141,8 @@
                 "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
                 "hidden": false,
                 "name": "PowerShell",
-                "source": "Windows.Terminal.PowershellCore"
-            },
-            {
-                "background": "#002B36",
-                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
-                "icon": "C:\\Users\\jackmil\\Pictures\\icons\\Icons\\Terminal CMD.ico",
-                "name": "Command Prompt",
-                "tabColor": "#002B36"
-            },
-            {
-                "guid": "{8bb8a78d-6c0f-549a-ace2-c8122d08d57f}",
-                "hidden": false,
-                "name": "Ubuntu WSL",
-                "source": "Windows.Terminal.Wsl"
+                "source": "Windows.Terminal.PowershellCore",
+                "tabColor": "#7dc4e4"
             },
             {
                 "backgroundImage": "C:\\Users\\jackmil\\Pictures\\Art\\oiginal_zinbei_3.jpg",
@@ -163,109 +152,53 @@
                 "commandline": "ssh hydrae-tmux",
                 "guid": "{e3eeb7d9-9992-4c32-9c4e-0cf8c0ccac36}",
                 "icon": "C:\\Users\\jackmil\\Pictures\\icons\\Icons\\System\\Drive Storage Spaces.ico",
-                "name": "Hydrae (media)"
+                "name": "Hydrae (media)",
+                "tabColor": "#eed49f"
+            },
+            {
+                "guid": "{8bb8a78d-6c0f-549a-ace2-c8122d08d57f}",
+                "hidden": false,
+                "name": "Ubuntu WSL",
+                "source": "Windows.Terminal.Wsl",
+                "tabColor": "#f5a97f"
             },
             {
                 "commandline": "ssh lunae",
                 "guid": "{d811160c-9d7b-4eaf-bb5f-e33c755728e8}",
                 "icon": "C:\\Users\\jackmil\\Pictures\\icons\\Icons\\System\\Drive Linux.ico",
-                "name": "Lunae (mc)"
+                "name": "Lunae (mc)",
+                "tabColor": "#f0c6c6"
+            },
+            {
+                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+                "icon": "C:\\Users\\jackmil\\Pictures\\icons\\Icons\\Terminal CMD.ico",
+                "name": "Command Prompt",
+                "tabColor": "#8bd5ca"
             }
         ]
     },
-    "schemes":
-    [
-        {
-            "background": "#303446",
-            "black": "#51576D",
-            "blue": "#8CAAEE",
-            "brightBlack": "#626880",
-            "brightBlue": "#8CAAEE",
-            "brightCyan": "#81C8BE",
-            "brightGreen": "#A6D189",
-            "brightPurple": "#F4B8E4",
-            "brightRed": "#E78284",
-            "brightWhite": "#A5ADCE",
-            "brightYellow": "#E5C890",
-            "cursorColor": "#F2D5CF",
-            "cyan": "#81C8BE",
-            "foreground": "#C6D0F5",
-            "green": "#A6D189",
-            "name": "Catppuccin Frappe",
-            "purple": "#F4B8E4",
-            "red": "#E78284",
-            "selectionBackground": "#626880",
-            "white": "#B5BFE2",
-            "yellow": "#E5C890"
-        },
-        {
-            "background": "#24273A",
-            "black": "#494D64",
-            "blue": "#8AADF4",
-            "brightBlack": "#5B6078",
-            "brightBlue": "#8AADF4",
-            "brightCyan": "#8BD5CA",
-            "brightGreen": "#A6DA95",
-            "brightPurple": "#F5BDE6",
-            "brightRed": "#ED8796",
-            "brightWhite": "#A5ADCB",
-            "brightYellow": "#EED49F",
-            "cursorColor": "#F4DBD6",
-            "cyan": "#8BD5CA",
-            "foreground": "#CAD3F5",
-            "green": "#A6DA95",
-            "name": "Catppuccin Macchiato",
-            "purple": "#F5BDE6",
-            "red": "#ED8796",
-            "selectionBackground": "#5B6078",
-            "white": "#B8C0E0",
-            "yellow": "#EED49F"
-        },
-        {
-            "background": "#1E1E2E",
-            "black": "#45475A",
-            "blue": "#89B4FA",
-            "brightBlack": "#585B70",
-            "brightBlue": "#89B4FA",
-            "brightCyan": "#94E2D5",
-            "brightGreen": "#A6E3A1",
-            "brightPurple": "#F5C2E7",
-            "brightRed": "#F38BA8",
-            "brightWhite": "#A6ADC8",
-            "brightYellow": "#F9E2AF",
-            "cursorColor": "#F5E0DC",
-            "cyan": "#94E2D5",
-            "foreground": "#CDD6F4",
-            "green": "#A6E3A1",
-            "name": "Catppuccin Mocha",
-            "purple": "#F5C2E7",
-            "red": "#F38BA8",
-            "selectionBackground": "#585B70",
-            "white": "#BAC2DE",
-            "yellow": "#F9E2AF"
-        }
-    ],
+    "schemes": [],
     "showTerminalTitleInTitlebar": false,
     "startOnUserLogin": false,
     "tabWidthMode": "equal",
-    "theme": "Catppuccin Mocha",
-    "themes":
+    "theme": "Catppuccin Macchiato",
+    "themes": 
     [
         {
             "name": "Catppuccin Frappe",
-            "tab":
+            "tab": 
             {
                 "background": "#303446FF",
                 "iconStyle": "default",
                 "showCloseButton": "always",
                 "unfocusedBackground": null
             },
-            "tabRow":
+            "tabRow": 
             {
                 "background": "#292C3CFF",
                 "unfocusedBackground": "#232634FF"
             },
-            "window":
+            "window": 
             {
                 "applicationTheme": "dark",
                 "experimental.rainbowFrame": false,
@@ -276,19 +209,19 @@
         },
         {
             "name": "Catppuccin Macchiato",
-            "tab":
+            "tab": 
             {
                 "background": "#24273AFF",
                 "iconStyle": "default",
                 "showCloseButton": "always",
                 "unfocusedBackground": null
             },
-            "tabRow":
+            "tabRow": 
             {
                 "background": "#1E2030FF",
                 "unfocusedBackground": "#181926FF"
             },
-            "window":
+            "window": 
             {
                 "applicationTheme": "dark",
                 "experimental.rainbowFrame": false,
@@ -299,19 +232,19 @@
         },
         {
             "name": "Catppuccin Mocha",
-            "tab":
+            "tab": 
             {
                 "background": "#1E1E2EFF",
                 "iconStyle": "default",
                 "showCloseButton": "always",
                 "unfocusedBackground": null
             },
-            "tabRow":
+            "tabRow": 
             {
                 "background": "#181825FF",
                 "unfocusedBackground": "#11111BFF"
             },
-            "window":
+            "window": 
             {
                 "applicationTheme": "dark",
                 "experimental.rainbowFrame": false,
