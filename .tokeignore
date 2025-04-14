@@ -1,0 +1,4 @@
+# Ignore generated and vendored code from line counts
+mpv/shaders/**             
+mpv/scripts/**
+!mpv/scripts/screenshot-folder.lua

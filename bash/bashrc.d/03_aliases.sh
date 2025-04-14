@@ -23,16 +23,19 @@ help() (
     "$@" --help 2>&1 | bh
 )
 # replace cat with plain bat
-[[ -x "$(command -v bat)" ]] && alias cat='bat --color always --plain'
+exists bat && alias cat='bat --color always --plain'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
+# Onefetch default args
+exists onefetch && alias onefetch='onefetch --nerd-fonts --true-color=never --iso-time'
 
 # configure default ls (and eza) arguments
-LS_COMMON="-hGF --color=auto"
+# ---------------------------------------
 
+LS_COMMON="-hGF --color=auto"
 {{#if (eq dotter.os "windows")}}
 # LS ignore list for Windows
 LS_COMMON=$LS_COMMON" -I NTUSER.DAT\* -I ntuser.dat\*"
@@ -42,19 +45,19 @@ LS_COMMON=$LS_COMMON" -I ntuser.pol -I NetHood -I Cookies -I Templates -I PrintH
 
 alias ls="command ls $LS_COMMON"
 
-{{#if (is_executable "eza")}}
-# use eza for file listing if available
+if exists eza; then
+  # use eza for file listing if available
   {{#if (eq dotter.os "windows")}}
-# Eza ignore list for windows
-IGNORE='--no-permissions -I "NTUSER.*|ntuser.*|Recent|SendTo|Start Menu|My Documents|NetHood|Cookies|Templates|PrintHood|Local Settings|Application Data|OneDrive*|Contacts|Saved Games|Searches"'
+  # Eza ignore list for windows
+  IGNORE='--no-permissions -I "NTUSER.*|ntuser.*|Recent|SendTo|Start Menu|My Documents|NetHood|Cookies|Templates|PrintHood|Local Settings|Application Data|OneDrive*|Contacts|Saved Games|Searches"'
   {{/if}}
-EZA_COMMON="--group-directories-first --icons --sort Extension"
-alias l="eza $EZA_COMMON $IGNORE"
-alias la="eza -a $EZA_COMMON $IGNORE"
-alias ll="eza -l -a --links --header --group $EZA_COMMON $IGNORE"
-alias lt="eza --tree $EZA_COMMON $IGNORE"
-alias ltl="eza -l --links --tree --header --no-time --group --sort Extension $IGNORE"
-{{/if}}
+  EZA_COMMON="--group-directories-first --icons --sort Extension"
+  alias l="eza $EZA_COMMON $IGNORE"
+  alias la="eza -a $EZA_COMMON $IGNORE"
+  alias ll="eza -l -a --links --header --group $EZA_COMMON $IGNORE"
+  alias lt="eza --tree $EZA_COMMON $IGNORE"
+  alias ltl="eza -l --links --tree --header --no-time --group --sort Extension $IGNORE"
+fi
 
 # Docker shortcuts
 alias dc='docker compose'
@@ -69,24 +72,24 @@ alias dcstart='docker compose start'
 
 # utility function to unarchive anything
 extract () {
-     if [ -f $1 ] ; then
-         case $1 in
-             *.tar.bz2)   tar xjf $1     ;;
-             *.tar.gz)    tar xzf $1     ;;
-             *.bz2)       bunzip2 $1     ;;
-             *.rar)       rar x $1       ;;
-             *.gz)        gunzip $1      ;;
-             *.tar)       tar xf $1      ;;
-             *.tbz2)      tar xjf $1     ;;
-             *.tgz)       tar xzf $1     ;;
-             *.zip)       unzip $1       ;;
-             *.Z)         uncompress $1  ;;
-             *.7z)        7z x $1    ;;
-             *)           echo "'$1' cannot be extracted via extract()" ;;
-         esac
-     else
-         echo "'$1' is not a valid file"
-     fi
+  if [ -f $1 ] ; then
+    case $1 in
+        *.tar.bz2)   tar xjf $1     ;;
+        *.tar.gz)    tar xzf $1     ;;
+        *.bz2)       bunzip2 $1     ;;
+        *.rar)       rar x $1       ;;
+        *.gz)        gunzip $1      ;;
+        *.tar)       tar xf $1      ;;
+        *.tbz2)      tar xjf $1     ;;
+        *.tgz)       tar xzf $1     ;;
+        *.zip)       unzip $1       ;;
+        *.Z)         uncompress $1  ;;
+        *.7z)        7z x $1    ;;
+        *)           echo "'$1' cannot be extracted via extract()" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
 }
 
 # utility for home-lab machine management

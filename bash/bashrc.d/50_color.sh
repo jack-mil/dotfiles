@@ -1,9 +1,9 @@
 # Configure ls colors and other program default color settings
 
 # setup colors for ls/grep/dir...etc
-if [[ -x "$(command -v vivid)" ]]; then
+if exists vivid; then
     export LS_COLORS="$(vivid generate catppuccin-frappe)"
-elif [[ -x /usr/bin/dircolors ]]; then
+elif exists dircolors; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 fi
 

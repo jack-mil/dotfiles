@@ -7,4 +7,4 @@ export LESS="--ignore-case --mouse"
 function neovim_man() {
      nvim "+hide Man $*"
 }
-[[ -x "$(command -v nvim)" ]] && alias man=neovim_man
+exists nvim && alias man=neovim_man

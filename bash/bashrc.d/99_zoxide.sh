@@ -2,4 +2,6 @@
 # replaces the `cd` alias
 # https://github.com/ajeetdsouza/zoxide
 
-[[ -x "$(command -v zoxide)" ]] && eval "$(zoxide init --cmd cd bash)"
+if exists zoxide; then 
+    eval "$(zoxide init --cmd cd bash)"
+fi

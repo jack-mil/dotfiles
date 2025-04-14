@@ -24,6 +24,11 @@ source_conf_in() {
 
 }
 
+exists() {
+  # type -P "$1" >/dev/null 2>&1
+  hash "$1" >/dev/null 2>&1
+}
+
 alias reload_config='source_conf_in "$HOME/.config/bashrc.d"'
 
 reload_config
