@@ -35,22 +35,23 @@ exists onefetch && alias onefetch='onefetch --nerd-fonts --true-color=never --is
 # configure default ls (and eza) arguments
 # ---------------------------------------
 
-LS_COMMON="-hGF --color=auto"
-{{#if (eq dotter.os "windows")}}
-# LS ignore list for Windows
-LS_COMMON=$LS_COMMON" -I NTUSER.DAT\* -I ntuser.dat\*"
-LS_COMMON=$LS_COMMON" -I ntuser.ini -I Recent -I SendTo -I \"Start Menu\" -I \"My Documents\""
-LS_COMMON=$LS_COMMON" -I ntuser.pol -I NetHood -I Cookies -I Templates -I PrintHood -I Local\ Settings"
-{{/if}}
+LS_COMMON="-hGF --color=auto --group-directories-first"
+
+if [[ "$OSTYPE" =~ ^msys ]]; then
+  # LS ignore list for Windows
+  LS_COMMON=$LS_COMMON" -I NTUSER.DAT\* -I ntuser.dat\*"
+  LS_COMMON=$LS_COMMON" -I ntuser.ini -I Recent -I SendTo -I \"Start Menu\" -I \"My Documents\""
+  LS_COMMON=$LS_COMMON" -I ntuser.pol -I NetHood -I Cookies -I Templates -I PrintHood -I Local\ Settings"
+fi
 
 alias ls="command ls $LS_COMMON"
 
 if exists eza; then
   # use eza for file listing if available
-  {{#if (eq dotter.os "windows")}}
-  # Eza ignore list for windows
-  IGNORE='--no-permissions -I "NTUSER.*|ntuser.*|Recent|SendTo|Start Menu|My Documents|NetHood|Cookies|Templates|PrintHood|Local Settings|Application Data|OneDrive*|Contacts|Saved Games|Searches"'
-  {{/if}}
+  if [[ "$OSTYPE" =~ ^msys ]]; then
+    # Eza ignore list for windows
+    IGNORE='--no-permissions -I "NTUSER.*|ntuser.*|Recent|SendTo|Start Menu|My Documents|NetHood|Cookies|Templates|PrintHood|Local Settings|Application Data|OneDrive*|Contacts|Saved Games|Searches"'
+  fi
   EZA_COMMON="--group-directories-first --icons --sort Extension"
   alias l="eza $EZA_COMMON $IGNORE"
   alias la="eza -a $EZA_COMMON $IGNORE"
