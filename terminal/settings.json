@@ -7,14 +7,6 @@
             "command": 
             {
                 "action": "scrollToMark",
-                "direction": "next"
-            },
-            "id": "User.scrollToMark.2A0DA8E0"
-        },
-        {
-            "command": 
-            {
-                "action": "scrollToMark",
                 "direction": "previous"
             },
             "id": "User.scrollToMark.D3F0B923"
@@ -22,18 +14,18 @@
         {
             "command": 
             {
-                "action": "selectCommand",
+                "action": "scrollToMark",
                 "direction": "next"
             },
-            "id": "User.selectCommand.2A0DA8E0"
+            "id": "User.scrollToMark.2A0DA8E0"
         },
         {
             "command": 
             {
-                "action": "selectCommand",
+                "action": "selectOutput",
                 "direction": "prev"
             },
-            "id": "User.selectCommand.D3F0B923"
+            "id": "User.selectOutput.D3F0B923"
         },
         {
             "command": 
@@ -46,10 +38,18 @@
         {
             "command": 
             {
-                "action": "selectOutput",
+                "action": "selectCommand",
                 "direction": "prev"
             },
-            "id": "User.selectOutput.D3F0B923"
+            "id": "User.selectCommand.D3F0B923"
+        },
+        {
+            "command": 
+            {
+                "action": "selectCommand",
+                "direction": "next"
+            },
+            "id": "User.selectCommand.2A0DA8E0"
         },
         {
             "command": 
@@ -102,20 +102,23 @@
     {
         "defaults": 
         {
+            "antialiasingMode": "cleartype",
             "autoMarkPrompts": true,
             "bellStyle": "none",
             "closeOnExit": "automatic",
             "colorScheme": "Catppuccin Macchiato",
             "font": 
             {
-                "face": "Monaspace Argon",
+                "face": "Cascadia Code NF",
                 "features": 
                 {
                     "calt": 1,
                     "ss01": 1,
-                    "ss02": 1
+                    "liga": 1
                 }
             },
+            "historySize": 10000,
+            "intenseTextStyle": "all",
             "padding": "8",
             "rightClickContextMenu": true,
             "showMarksOnScrollbar": true,
@@ -125,55 +128,59 @@
         "list": 
         [
             {
-                "backgroundImage": "C:\\Users\\jackmil\\Pictures\\wall\\nord\\BirdNord.png",
+                "backgroundImage": "%USERPROFILE%/Pictures/wall/nord/BirdNord.png",
                 "backgroundImageOpacity": 0.25,
-                "commandline": "C:\\Users\\jackmil\\scoop\\apps\\git\\current\\bin\\bash.exe",
+                "commandline": "%USERPROFILE%/scoop/apps/git/current/usr/bin/bash.exe -l -i",
                 "guid": "{c1d97651-7bbf-4a59-8593-fe9f6846f1e5}",
-                "icon": "C:\\Users\\jackmil\\scoop\\apps\\git\\current\\mingw64\\share\\git\\git-for-windows.ico",
+                "icon": "%USERPROFILE%/scoop/apps/git/current/usr/share/git/git-for-windows.ico",
                 "name": "Git Bash",
                 "startingDirectory": "%USERPROFILE%",
-                "tabColor": "#a6da95"
+                "tabColor": "#A6DA95"
             },
             {
-                "backgroundImage": "C:\\Users\\jackmil\\Pictures\\wall\\nord\\Nord Night.png",
+                "backgroundImage": "%USERPROFILE%/Pictures/wall/nord/Nord Night.png",
                 "backgroundImageOpacity": 0.11,
-                "commandline": "C:\\Users\\jackmil\\scoop\\apps\\pwsh\\current\\pwsh.exe",
                 "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
                 "hidden": false,
                 "name": "PowerShell",
                 "source": "Windows.Terminal.PowershellCore",
-                "tabColor": "#7dc4e4"
+                "tabColor": "#7DC4E4"
             },
             {
-                "backgroundImage": "C:\\Users\\jackmil\\Pictures\\Art\\oiginal_zinbei_3.jpg",
+                "backgroundImage": "%USERPROFILE%/Pictures/Art/oiginal_zinbei_3.jpg",
                 "backgroundImageAlignment": "top",
                 "backgroundImageOpacity": 0.2,
                 "backgroundImageStretchMode": "uniformToFill",
                 "commandline": "ssh hydrae-tmux",
                 "guid": "{e3eeb7d9-9992-4c32-9c4e-0cf8c0ccac36}",
-                "icon": "C:\\Users\\jackmil\\Pictures\\icons\\Icons\\System\\Drive Storage Spaces.ico",
+                "icon": "%USERPROFILE%/Pictures/icons/Icons/System/Drive Storage Spaces.ico",
                 "name": "Hydrae (media)",
-                "tabColor": "#eed49f"
+                "tabColor": "#EED49F"
             },
             {
                 "guid": "{8bb8a78d-6c0f-549a-ace2-c8122d08d57f}",
                 "hidden": false,
-                "name": "Ubuntu WSL",
+                "name": "WSL",
                 "source": "Windows.Terminal.Wsl",
-                "tabColor": "#f5a97f"
+                "tabColor": "#F5A97F"
             },
             {
                 "commandline": "ssh lunae",
                 "guid": "{d811160c-9d7b-4eaf-bb5f-e33c755728e8}",
-                "icon": "C:\\Users\\jackmil\\Pictures\\icons\\Icons\\System\\Drive Linux.ico",
+                "icon": "%USERPROFILE%/Pictures/icons/Icons/System/Drive Linux.ico",
                 "name": "Lunae (mc)",
-                "tabColor": "#f0c6c6"
+                "tabColor": "#F0C6C6"
             },
             {
                 "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
-                "icon": "C:\\Users\\jackmil\\Pictures\\icons\\Icons\\Terminal CMD.ico",
+                "icon": "%USERPROFILE%/Pictures/icons/Icons/Terminal CMD.ico",
                 "name": "Command Prompt",
-                "tabColor": "#8bd5ca"
+                "tabColor": "#8BD5CA"
+            },
+            {
+                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+                "hidden": false,
+                "name": "Windows PowerShell"
             }
         ]
     },
