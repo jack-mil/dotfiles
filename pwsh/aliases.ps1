@@ -65,5 +65,9 @@ function func_touch {
     echo $null > $file
   }
 }
+
 New-Alias -Name "touch" -Value "func_touch"
 
+function which([string]$cmd) {
+    Get-Command $cmd -ErrorAction SilentlyContinue -CommandType Application | Format-List Name,Version,Source
+}
