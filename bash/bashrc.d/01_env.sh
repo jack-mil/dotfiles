@@ -13,13 +13,16 @@ export XDG_VIDEOS_DIR="$HOME/videos"
 export EDITOR=nvim
 export VISUAL=nvim
 export PAGER=less
+
+# Python
 export PIP_REQUIRE_VIRTUALENV=true
+export PYTHON_HISTORY="${XDG_STATE_HOME}/python_history"
 
 # add local bin in front of path
-prepend_path "$HOME/.local/bin"
+prepend_path "${HOME}/.local/bin"
 
 # source cargo environment
-if [ -f "$HOME/.cargo/env" ]; then
+if [ -f "${HOME}/.cargo/env" ]; then
   export BINSTALL_DISABLE_TELEMETRY=true
-  source $HOME/.cargo/env
+  source ${HOME}/.cargo/env
 fi

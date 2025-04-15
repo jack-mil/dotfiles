@@ -1,7 +1,6 @@
 # Settings related to bash runtime options and history functionality
 
-mkdir -p "${XDG_CACHE_HOME:-$HOME/.cache}"/bash
-HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}"/bash/history
+HISTFILE="${XDG_STATE_HOME}/bash_history"
 
 # don't put duplicate lines or lines starting with space in the history.
 HISTCONTROL=ignoreboth

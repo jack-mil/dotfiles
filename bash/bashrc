@@ -14,14 +14,12 @@ prepend_path() {
 
 source_conf_in() {
   local dir="$1"
-
   # source files alpha-numeric order
   if [[ -d "$dir" ]]; then
     for f in "$dir"/*; do
       [[ -f "$f" && -r "$f" ]] && source "$f"  # && echo "Loaded $f"
     done
   fi
-
 }
 
 exists() {

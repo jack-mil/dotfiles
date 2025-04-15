@@ -12,16 +12,16 @@ alias dotter='dotter -v'
 alias sudo='sudo '
 
 # interactive if lots of files deleted
-alias rm='rm -vI'
+alias rm='rm -I'
 alias del='trash-put'
 
 # Aliases for bat
 alias b='bat'
 alias bh='bat --plain --language=cmd-help'  # meant for piping <cmd> --help output to
-help() (
+help() {
     set -o pipefail
     "$@" --help 2>&1 | bh
-)
+}
 # replace cat with plain bat
 exists bat && alias cat='bat --color always --plain'
 
@@ -40,8 +40,9 @@ LS_COMMON="-hGF --color=auto --group-directories-first"
 if [[ "$OSTYPE" =~ ^msys ]]; then
   # LS ignore list for Windows
   LS_COMMON=$LS_COMMON" -I NTUSER.DAT\* -I ntuser.dat\*"
-  LS_COMMON=$LS_COMMON" -I ntuser.ini -I Recent -I SendTo -I \"Start Menu\" -I \"My Documents\""
+  LS_COMMON=$LS_COMMON" -I ntuser.ini -I Recent -I SendTo -I Start\ Menu -I My\ Documents"
   LS_COMMON=$LS_COMMON" -I ntuser.pol -I NetHood -I Cookies -I Templates -I PrintHood -I Local\ Settings"
+  LS_COMMON=$LS_COMMON" -I Searches -I Links -I Saved\ Games"
 fi
 
 alias ls="command ls $LS_COMMON"
@@ -50,7 +51,7 @@ if exists eza; then
   # use eza for file listing if available
   if [[ "$OSTYPE" =~ ^msys ]]; then
     # Eza ignore list for windows
-    IGNORE='--no-permissions -I "NTUSER.*|ntuser.*|Recent|SendTo|Start Menu|My Documents|NetHood|Cookies|Templates|PrintHood|Local Settings|Application Data|OneDrive*|Contacts|Saved Games|Searches"'
+    IGNORE='--no-permissions -I "NTUSER.*|ntuser.*|Recent|SendTo|Start Menu|My Documents|NetHood|Cookies|Templates|PrintHood|Local Settings|OneDrive*|Contacts|Saved Games|Searches"'
   fi
   EZA_COMMON="--group-directories-first --icons --sort Extension"
   alias l="eza $EZA_COMMON $IGNORE"
@@ -72,7 +73,7 @@ alias dcstop='docker compose stop'
 alias dcstart='docker compose start'
 
 # utility function to unarchive anything
-extract () {
+extract() {
   if [ -f $1 ] ; then
     case $1 in
         *.tar.bz2)   tar xjf $1     ;;
