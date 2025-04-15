@@ -69,6 +69,7 @@
         }
     ],
     "alwaysShowTabs": true,
+    "compatibility.allowHeadless": true,
     "copyFormatting": "none",
     "copyOnSelect": false,
     "defaultProfile": "{c1d97651-7bbf-4a59-8593-fe9f6846f1e5}",
@@ -113,8 +114,8 @@
                 "features": 
                 {
                     "calt": 1,
-                    "ss01": 1,
-                    "liga": 1
+                    "liga": 1,
+                    "ss01": 1
                 }
             },
             "historySize": 10000,
@@ -186,7 +187,7 @@
     },
     "schemes": [],
     "showTerminalTitleInTitlebar": false,
-    "startOnUserLogin": false,
+    "startOnUserLogin": true,
     "tabWidthMode": "equal",
     "theme": "Catppuccin Macchiato",
     "themes": 
