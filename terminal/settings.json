@@ -88,8 +88,20 @@
             "keys": "ctrl+up"
         },
         {
+            "id": null,
+            "keys": "ctrl+minus"
+        },
+        {
+            "id": null,
+            "keys": "ctrl+plus"
+        },
+        {
             "id": "User.scrollToMark.2A0DA8E0",
             "keys": "ctrl+down"
+        },
+        {
+            "id": null,
+            "keys": "ctrl+0"
         }
     ],
     "newTabMenu": 
@@ -263,6 +275,6 @@
         }
     ],
     "useAcrylicInTabRow": false,
-    "windowingBehavior": "useExisting",
+    "windowingBehavior": "useNew",
     "wordDelimiters": " /\\()\"'-_.,:;<>~!@#$%^&*|+=[]{}~?\u2502"
 }
