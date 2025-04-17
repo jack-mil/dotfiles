@@ -15,7 +15,7 @@
   jj = '~\AppData\Roaming\jj'
 
 [shell.files]
-  bat             = '~\AppData\Roaming\bat'
+  bat             = '~\scoop\persist\bat'
   glow            = { type = "symbolic", target = '~\AppData\Local\glow\Config' }
   "glow/glow.yml" = '~\AppData\Local\glow\Config\glow.yml'
 

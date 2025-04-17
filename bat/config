@@ -1,6 +1,6 @@
 # vim: ft=sh
 
---theme="Catppuccin Frappe"
+--theme="Catppuccin Macchiato"
 --italic-text=always
 #--paging=never
 # can map file globs to syntax types
