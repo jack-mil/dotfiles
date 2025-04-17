@@ -17,6 +17,8 @@ shaders_dir="$DIR/shaders"
 mkdir -p "$scripts_dir"
 mkdir -p "$shaders_dir"
 
+CURLARGS="--silent --show-error --fail --location --proto '=https' --tlsv1.2"
+
 scripts=(
 	'https://raw.githubusercontent.com/mpv-player/mpv/master/TOOLS/lua/autocrop.lua'
 	'https://raw.githubusercontent.com/mpv-player/mpv/master/TOOLS/lua/autoload.lua'
@@ -44,7 +46,7 @@ function download_list { # args: 1=list of links 2=output directory
 	for url in "${list[@]}"; do
 		local filename="${url##*/}"
 		echo "Downloading => $filename"
-		curl --silent --show-error --fail -L "$url" -o "${dir}/${filename}"
+		curl $CURLARGS "$url" -o "${dir}/${filename}"
 	done
 }
 

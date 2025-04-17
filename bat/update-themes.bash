@@ -14,7 +14,7 @@ mkdir -p "$theme_dir"
 COPEN="<!--"
 CCLOSE="-->"
 
-CURLARGS="--silent --show-error --fail --location"
+CURLARGS="--silent --show-error --fail --location --proto '=https' --tlsv1.2"
 
 SOURCE="https://github.com/catppuccin/bat"
 LICENSE=$(curl $CURLARGS "https://github.com/catppuccin/bat/raw/main/LICENSE")
