@@ -1,4 +1,7 @@
 --[[
+From: The MPV repo's sample scripts
+Link: https://github.com/mpv-player/mpv/tree/master/TOOLS/lua
+
 This script uses the lavfi cropdetect filter and the video-crop property to
 automatically crop the currently playing video with appropriate parameters.
 

@@ -1,3 +1,8 @@
+--[[
+    From: https://github.com/occivink/mpv-scripts/
+    Available as Unlicense
+]]--
+
 local assdraw = require 'mp.assdraw'
 local active = false
 local cursor_position = 1
@@ -154,4 +159,3 @@ function set_inactive()
 end
 
 mp.add_key_binding(nil, "toggle-seeker", function() if active then set_inactive() else set_active() end end)
-

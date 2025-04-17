@@ -1,3 +1,9 @@
+--[[
+    From: https://github.com/occivink/mpv-scripts/
+    Available as Unlicense
+]]--
+
+
 function rotate(inc)
     if (360 + inc) % 90 ~= 0 then
         return
@@ -84,4 +90,3 @@ mp.add_key_binding(nil, "clear-filters", clear_filters)
 mp.add_key_binding(nil, "remove-last-filter", remove_last_filter)
 mp.add_key_binding(nil, "undo-filter-removal", undo_filter_removal)
 mp.add_key_binding(nil, "ab-loop", ab_loop)
-

@@ -1,5 +1,5 @@
 -- My (jack-mil) custom screenshot organization solution
--- Copyright (c) 2024-2025 jack-mil
+-- Copyright (c) 2024 jack-mil
 -- License: MIT
 
 -- Detects if current media title is an episode of a show,

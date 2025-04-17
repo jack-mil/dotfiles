@@ -1,3 +1,8 @@
+--[[
+    From: https://github.com/occivink/mpv-scripts/
+    Available as Unlicense
+]]--
+
 local options = require 'mp.options'
 
 local opts = {

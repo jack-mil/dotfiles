@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-# Copyright (c) 2024-2025 jack-mil
-# License: MIT
+# Author: jack-mil
+# License: BSD Zero Clause (0BSD)
 
 # Be careful; don't use this blindly. Check changes with git after downloading
 # Execute in the dotfiles repo, not in mpv config directory
@@ -20,7 +20,7 @@ mkdir -p "$shaders_dir"
 scripts=(
 	'https://raw.githubusercontent.com/mpv-player/mpv/master/TOOLS/lua/autocrop.lua'
 	'https://raw.githubusercontent.com/mpv-player/mpv/master/TOOLS/lua/autoload.lua'
-	'https://github.com/ekisu/mpv-webm/releases/download/latest/webm.lua'
+	'https://github.com/serenae-fansubs/mpv-webm/releases/download/latest/webm.lua'
 	'https://raw.githubusercontent.com/occivink/mpv-scripts/master/scripts/seek-to.lua'
 	'https://raw.githubusercontent.com/occivink/mpv-scripts/master/scripts/misc.lua'
 	'https://raw.githubusercontent.com/occivink/mpv-scripts/master/scripts/blur-edges.lua'
@@ -31,6 +31,7 @@ scripts=(
 
 # https://github.com/bjin/mpv-prescalers/
 # https://github.com/Artoriuz/ArtCNN
+# These have Licenses in the header, good!
 shaders=(
 	'https://raw.githubusercontent.com/bjin/mpv-prescalers/master/compute/nnedi3-nns128-win8x4.hook'
 	'https://raw.githubusercontent.com/Artoriuz/ArtCNN/refs/heads/main/GLSL/ArtCNN_C4F32.glsl'
