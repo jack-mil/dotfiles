@@ -3,14 +3,13 @@
 """
 Copies the NotePad++ themes from the Catppuccin repo
 to my dotfiles symlinks with necessary font modifications.
-
+https://github.com/jack-mil/dotfiles/
 Windows only.
 """
 
 import shutil
 from pathlib import Path
 from argparse import ArgumentParser
-import sys
 import re
 
 # Can be changed with cli args

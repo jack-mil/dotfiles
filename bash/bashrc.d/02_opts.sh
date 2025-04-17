@@ -6,6 +6,7 @@ HISTFILE="${XDG_STATE_HOME}/bash_history"
 HISTCONTROL=ignoreboth
 HISTSIZE=1000
 HISTFILESIZE=10000
+
 # append to the history file, don't overwrite it
 shopt -s histappend
 # correct minor spelling (case) when using cd
