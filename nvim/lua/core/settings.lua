@@ -32,18 +32,22 @@ o.hidden = true         -- Buffers become hidden when abandoned.
 o.ttimeoutlen = 0       -- The time in milliseconds that is waited for a key code or mapped key sequence to complete.
 
 -- Behavior
-o.wildmenu = true       -- Command-line completion operates in an enhanced mode.
+o.wildmenu       = true -- Command-line completion operates in an enhanced mode.
 o.wildignorecase = true -- Ignore case when completing filenames/dirs
+o.undofile       = true -- Save undo history to state file when writing a buffer
+
 
 -- Window splitting
-o.splitright = true     -- When on, splitting a window will put the new window right of the current one.
-o.splitbelow = true     -- When on, splitting a window will put the new window below the current one
+o.splitright = true     -- Splitting a window will put the new window right of the current one.
+o.splitbelow = true     -- Splitting a window will put the new window below the current one
 o.inccommand = 'split'  -- When nonempty, shows the effects of :substitute, :smagic, :snomagic and user commands with the :command-preview flag as you type.
 
 
 -- Appearance
 o.wrap       = false    -- Line wrapping off by default (toggle with <leader>ow)
 o.linebreak  = true     -- Break lines at reasonable place.
+o.breakindent= true     -- Preserve visual indentation on wrapped lines
+o.briopt     = "sbr"    -- Options for breakindent, puts wrap char in first col
 o.number     = true     -- Print the line number in front of each line
 o.relativenumber = true -- Show the line number relative to the line with the cursor in front of each line.
 o.signcolumn = 'number' -- Put signs (icons from plugins) in the number column, if present.

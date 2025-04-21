@@ -1,7 +1,7 @@
 -- Set `mapleader` and `maplocalleader` before
 -- running lazy.nvim so that mappings are correct.
 vim.g.mapleader = ' ' -- <space>
-vim.g.maplocalleader = '\\'
+vim.g.maplocalleader = ' ' -- <space>
 
 function map(mode, shortcut, command, opts)
   opts = opts or {} -- Use an empty table if no options are provided
