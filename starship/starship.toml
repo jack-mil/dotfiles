@@ -8,13 +8,71 @@ scan_timeout = 10
 # wrap if gets too long
 add_newline = true
 
+continuation_prompt = "[∙](dimmed flamingo) "
+
 format = """
-[╭ ](bold subtext0)$shell$username$hostname$shlvl\
-$directory$git_branch$git_commit$git_state$git_metrics$git_status\
-$package$c$cmake$julia$kotlin$python$rust\
-$sudo$cmd_duration\
+[╭ ](bold subtext0)\
+$shell\
+$shlvl\
+$username\
+$hostname\
+$localip\
+$container\
+\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+\
+$docker_context\
+$package\
+$buf\
+$bun\
+$c\
+$cmake\
+$cobol\
+$crystal\
+$dart\
+$deno\
+$dotnet\
+$elixir\
+$elm\
+$erlang\
+$fennel\
+$golang\
+$haskell\
+$haxe\
+$helm\
+$java\
+$julia\
+$kotlin\
+$lua\
+$nim\
+$nodejs\
+$ocaml\
+$perl\
+$php\
+$purescript\
+$python\
+$red\
+$ruby\
+$rust\
+$scala\
+$spack\
+$swift\
+$vagrant\
+$vlang\
+$zig\
+\
+$sudo\
+$cmd_duration\
+\
 $line_break\
-[╰](bold subtext0)$jobs$time$status$container$character"""
+\
+[╰](bold subtext0)\
+$jobs$time$status$character"""
 
 # $fill\ # removed fill 
 
@@ -41,9 +99,19 @@ $line_break\
   #     "Pictures"  = " "
 
 [shlvl]
-  symbol = " "
-  format = '[$shlvl$symbol]($style) '
+  symbol = ' '
+  # format = '[$shlvl$symbol]($style) '
   disabled = false
+
+[status]
+  disabled              = false
+  map_symbol            = true
+  not_executable_symbol = ' '
+  not_found_symbol      = ' '
+  sigint_symbol         = ' '
+  signal_symbol         = '󰞁 '
+  style                 = 'fg:yellow'
+  symbol                = ''
 
 [git_branch]
   format            = '[$symbol$branch(:$remote_branch)]($style) '
@@ -51,8 +119,26 @@ $line_break\
   symbol            = " "
   truncation_length = 20
 
+[git_commit]
+  format       = '[$tag]($style)[\($hash\)](mauve) '
+  style        = 'peach'
+  tag_disabled = false
+  tag_symbol   = ' '
+
 [git_status]
-  style = "bold yellow"
+  ahead      = ' '
+  behind     = ' '
+  conflicted = '󰩌 '
+  deleted    = '󱪢 '
+  disabled   = false
+  diverged   = '󱐎 '
+  format     = '[$all_status$ahead_behind]($style)'
+  modified   = '󱇨 '
+  renamed    = '󱀱 '
+  staged     = '󱧳 '
+  stashed    = '󱧶 '
+  style      = "peach"
+  untracked  = '󰻭 '
 
 [git_metrics]
   # too slow...
@@ -68,8 +154,9 @@ $line_break\
   style      = "bold teal"
 
 [cmd_duration]
-  format = "[󱦟 $duration]($style)"
-  style  = "bold sky"
+  format   = "[ $duration]($style)"
+  min_time = 2000
+  style    = "bold sky"
 
 [cmake]
   symbol = "󰔷 "

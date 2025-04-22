@@ -12,8 +12,8 @@ exclude = ["jj/config.toml", "yazi/package.toml"]
   reorder_inline_tables = true
   reorder_keys          = true
 
-# [[rule]]
-#   include = ["**/starship.toml"]
-#   keys    = ["palettes"]
+[[rule]]
+  include = ["**/starship.toml"]
+  keys    = ["palettes"]
 
-#   formatting.reorder_keys = false
+  formatting.reorder_keys = false
