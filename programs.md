@@ -9,6 +9,7 @@ On Windows, almost everything can be installed with [Scoop](https://scoop.sh/).
 - [eza-community/eza](https://github.com/eza-community/eza)
 - [sharkdp/fd](https://github.com/sharkdp/fd)
 - [BurntSushi/ripgrep](https://github.com/BurntSushi/ripgrep)
+- [MitMaro/git-interactive-rebase-tool](https://github.com/MitMaro/git-interactive-rebase-tool)
 - [Canop/dysk](https://github.com/Canop/dysk)
 - [dandavison/delta](https://github.com/dandavison/delta)
 - [charmbracelet/glow](https://github.com/charmbracelet/glow)

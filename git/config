@@ -28,6 +28,7 @@
   {{#if (eq dotter.os "windows")}}
   symlinks = true
   sshcommand = "C:/Windows/System32/OpenSSH/ssh.exe"
+  longpaths = true
   {{/if}}
   autocrlf = input
 [init]
@@ -83,7 +84,10 @@
   line-numbers = true
   side-by-side = false
 {{/if}}
-
+{{#if (is_executable "interactive-rebase-tool")}}
+[sequence]
+  editor = interactive-rebase-tool
+{{/if}}
 [filter "lfs"]
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge -- %f
