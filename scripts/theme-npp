@@ -3,7 +3,9 @@
 """
 Copies the NotePad++ themes from the Catppuccin repo
 to my dotfiles symlinks with necessary font modifications.
-https://github.com/jack-mil/dotfiles/
+https://github.com/jack-mil/dotfiles
+
+This was required while NPP themes were under heavy development (by me)
 Windows only.
 """
 
@@ -13,12 +15,12 @@ from argparse import ArgumentParser
 import re
 
 # Can be changed with cli args
-FONT_NAME = "CaskaydiaCove NF"
-FLAVOR = "frappe"
+FONT_NAME = "Cascadia Code NF"
+FLAVOR = "macchiato"
 
-DOTFILE_DIR = Path.home() / "dotfiles/notepad++"
+DOTFILE_DIR = Path(__file__).resolve().parent.parent / "notepad++"
 
-THEME_DIR = Path.home() / "repos/notepad-plus-plus"
+THEME_DIR = Path.home() / "Repos/notepad-plus-plus"
 
 FLAVORS = ("frappe", "latte", "macchiato", "mocha")
 
