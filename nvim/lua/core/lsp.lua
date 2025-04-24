@@ -17,11 +17,11 @@ vim.lsp.config('*', {
 -- enable error display
 vim.diagnostic.config({
   virtual_lines = { current_line = true },
+  virtual_text  = { current_line = true }
 })
 
--- enable all specifications in lsp/
+-- activate all specifications in lsp/
 local configs = {}
-
 for _, v in ipairs(vim.api.nvim_get_runtime_file('lsp/*', true)) do
   local name = vim.fn.fnamemodify(v, ':t:r')
   configs[name] = true
@@ -55,7 +55,3 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 -- Add noselect to completeopt, otherwise autocompletion is annoying
 vim.opt.completeopt:append('noselect')
-
--- rounded floating windows (might be default?)
--- Only V0.11
-vim.opt.winborder = 'rounded'

@@ -55,7 +55,7 @@ o.cursorline = true     -- Highlight the screen line of the cursor with CursorLi
 o.ruler      = true     -- Show the line and column number of the cursor position, separated by a comma.
 o.showmatch  = true     -- When a bracket is inserted, briefly jump to the matching one.
 o.laststatus = 3        -- (Single) global status bar (Lualine)
-
+o.winborder  = 'rounded'-- rounded floating windows (v0.11.0 only)
 
 -- Whitespace (toggle with <leader>oz)
 o.list      = false
