@@ -5,7 +5,7 @@
   pwsh = '~\Documents\WindowsPowerShell'
 
 [terminal.files]
-  terminal = '~\scoop\persist\windows-terminal-preview\settings'
+  terminal             = '~\scoop\persist\windows-terminal-preview\settings'
   "terminal/Fragments" = '~\AppData\Local\Microsoft\Windows Terminal\Fragments'
 
 [sioyek.files]
@@ -28,6 +28,9 @@
   "notepad++/config.xml"    = { type = "template", target = '~\Appdata\Roaming\Notepad++\config.xml' }
   "notepad++/shortcuts.xml" = '~\AppData\Roaming\Notepad++\shortcuts.xml'
   "notepad++/themes/"       = '~\AppData\Roaming\Notepad++\themes\'
+
+[filepilot.files]
+  "filepilot" = '~\AppData\Roaming\Voidstar\FilePilot'
 
 [mpv.files]
   mpv = '~\AppData\Roaming\mpv'
