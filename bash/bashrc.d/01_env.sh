@@ -2,8 +2,11 @@
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
+
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
+export XDG_BIN_HOME="$HOME/.local/bin"
+
 export XDG_DOWNLOAD_DIR="$HOME/downloads"
 export XDG_DOCUMENTS_DIR="$HOME/documents"
 export XDG_MUSIC_DIR="$HOME/music"
@@ -23,7 +26,7 @@ export UV_NO_MANAGED_PYTHON=true
 export UV_PYTHON_DOWNLOADS="never"
 
 # add local bin in front of path
-prepend_path "${HOME}/.local/bin"
+prepend_path "${XDG_BIN_HOME}"
 
 # source cargo environment
 if [ -f "${HOME}/.cargo/env" ]; then
