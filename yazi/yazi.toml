@@ -7,10 +7,10 @@
   sort_sensitive = false
 
 [preview]
-  wrap = "no"
   image_filter = "triangle"
-  max_width       = 900
-  max_height      = 900
+  max_height   = 900
+  max_width    = 900
+  wrap         = "no"
 
 [opener]
   edit = [
@@ -31,7 +31,7 @@
     { mime = "image/*", run = "image" },
     { mime = "image/{avif,hei?,jxl}", run = "noop" },
     { mime = "image/{svg+xml}", run = "code" },
-    { mime = "video/*", run = "noop" }, 
+    { mime = "video/*", run = "noop" },
     # { mime = "text/csv", run = "miller" },
     # { name = "*.md", run = "glow" },
     # { name = "*/", run = "eza-preview" },
@@ -39,7 +39,7 @@
 
   prepend_preloaders = [
     # Video
-  	{ mime = "video/*", run = "noop" },
+    { mime = "video/*", run = "noop" },
   ]
 
   # https://github.com/yazi-rs/plugins/tree/main/git.yazi

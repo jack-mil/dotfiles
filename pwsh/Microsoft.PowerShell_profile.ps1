@@ -1,5 +1,5 @@
-
 $env:XDG_CONFIG_HOME = "$env:USERPROFILE\.config"
+
 $env:EDITOR = "nvim"
 $env:VISUAL = "nvim"
 

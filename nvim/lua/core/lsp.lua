@@ -17,7 +17,7 @@ vim.lsp.config('*', {
 -- enable error display
 vim.diagnostic.config({
   virtual_lines = { current_line = true },
-  virtual_text  = { current_line = true }
+  virtual_text = { current_line = true },
 })
 
 -- activate all specifications in lsp/
