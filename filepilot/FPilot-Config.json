@@ -25,7 +25,7 @@
 		"SingleClick": false,
 		"HoverToSelect": false,
 		"ReverseScroll": false,
-		"CharacterKeyAction": "TypeInFilter",
+		"CharacterKeyAction": "TriggerHotkey",
 		"InspectorLayout": "Auto",
 		"LoadOnStartup": "LastSession",
 		"NewTabShow": "Current"
@@ -196,6 +196,7 @@
 		{ "Keys": ["F2"], "Command": "HK_SelectionRename" },
 		{ "Keys": ["I"], "Command": "HK_SelectionRename" },
 		{ "Keys": ["Alt+Enter"], "Command": "HK_SelectionInspect" },
+		{ "Keys": ["N"], "Command": "HK_CreateFile" },
 		{ "Keys": ["Ctrl+Shift+N"], "Command": "HK_CreateFolder" },
 		{ "Keys": ["Ctrl+E"], "Command": "HK_ToggleExpandFolder" },
 		{ "Keys": ["Ctrl+Shift+E"], "Command": "HK_OpenRelativePath" },
