@@ -77,7 +77,7 @@
     [
         "Windows.Terminal.Azure"
     ],
-    "firstWindowPreference": "persistedWindowLayout",
+    "firstWindowPreference": "defaultProfile",
     "focusFollowMouse": true,
     "initialCols": 100,
     "initialRows": 46,
@@ -142,32 +142,36 @@
         [
             {
                 "backgroundImageOpacity": 0.25,
+                "colorScheme": "Catppuccin Macchiato",
                 "commandline": "%USERPROFILE%/scoop/apps/git/current/usr/bin/bash.exe -l -i",
                 "guid": "{c1d97651-7bbf-4a59-8593-fe9f6846f1e5}",
                 "icon": "%USERPROFILE%/scoop/apps/git/current/usr/share/git/git-for-windows.ico",
                 "name": "Git Bash",
                 "startingDirectory": "%USERPROFILE%",
-                "colorScheme": "Catppuccin Macchiato",
                 "tabColor": "#A6DA95"
             },
             {
                 "backgroundImageOpacity": 0.11,
+                "colorScheme": "Catppuccin Frappe",
                 "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
                 "hidden": false,
                 "name": "PowerShell",
                 "source": "Windows.Terminal.PowershellCore",
-                "colorScheme": "Catppuccin Frappe",
                 "tabColor": "#7DC4E4"
             },
             {
                 "backgroundImageAlignment": "top",
                 "backgroundImageOpacity": 0.2,
                 "backgroundImageStretchMode": "uniformToFill",
+                "colorScheme": "Catppuccin Mocha",
                 "commandline": "ssh hydrae-tmux",
+                "font": 
+                {
+                    "face": "Iosevka Curly Slab, Symbols Nerd Font"
+                },
                 "guid": "{e3eeb7d9-9992-4c32-9c4e-0cf8c0ccac36}",
                 "icon": "%USERPROFILE%/Pictures/icons/Icons/System/Drive Storage Spaces.ico",
                 "name": "Hydrae (media)",
-                "colorScheme": "Catppuccin Mocha",
                 "tabColor": "#EED49F"
             },
             {
@@ -200,9 +204,9 @@
     "schemes": [],
     "searchWebDefaultQueryUrl": null,
     "showTerminalTitleInTitlebar": false,
-    "startOnUserLogin": true,
+    "startOnUserLogin": false,
     "tabWidthMode": "equal",
-    "theme": "Catppuccin Macchiato",
+    "theme": "Catppuccin Frappe",
     "themes": 
     [
         {
