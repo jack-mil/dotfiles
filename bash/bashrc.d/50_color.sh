@@ -2,7 +2,7 @@
 
 # setup colors for ls/grep/dir...etc
 if exists vivid; then
-    export LS_COLORS="$(vivid generate catppuccin-frappe)"
+    export LS_COLORS="$(vivid generate catppuccin-macchiato)"
 elif exists dircolors; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 fi

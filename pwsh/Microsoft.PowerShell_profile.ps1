@@ -21,6 +21,9 @@ if (Test-Path "$profileDir\aliases.ps1") {
     . "$profileDir\aliases.ps1"
 }
 
+# Colors for eza
+$env:LS_COLORS = "$(vivid generate catppuccin-frappe)"
+
 # Z-like traversal
 Invoke-Expression (& { (zoxide init --cmd cd powershell | Out-String) })
 
