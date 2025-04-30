@@ -3,9 +3,9 @@
 palette = "catppuccin_macchiato"
 # shorter limit for scanning filesystem
 scan_timeout = 10
-
 # wrap if gets too long
 add_newline = true
+
 
 continuation_prompt = "[∙](dimmed flamingo) "
 
@@ -173,6 +173,10 @@ $jobs$time$status$character"""
   style  = "bold yellow"
   symbol = " "
 
+[lua]
+  format = '[$symbol($version )]($style)'
+  style  = "bold sapphire"
+  symbol = " "
 
 [shell]
   bash_indicator       = ''     # default, no icon
