@@ -14,6 +14,8 @@
         <Shortcut id="50001" Ctrl="no" Alt="no" Shift="no" Key="0" />
         <Shortcut id="42097" Ctrl="yes" Alt="no" Shift="no" Key="68" />
         <Shortcut id="44022" Ctrl="no" Alt="yes" Shift="no" Key="87" />
+        <Shortcut id="42008" Ctrl="yes" Alt="no" Shift="no" Key="221" />
+        <Shortcut id="42009" Ctrl="yes" Alt="no" Shift="no" Key="219" />
     </InternalCommands>
     <Macros>
         <Macro name="Trim Trailing Space and Save" Ctrl="no" Alt="yes" Shift="yes" Key="83">
@@ -28,5 +30,9 @@
         <ScintKey ScintID="2288" menuCmdID="0" Ctrl="yes" Alt="no" Shift="yes" Key="74" />
         <ScintKey ScintID="2390" menuCmdID="0" Ctrl="no" Alt="no" Shift="no" Key="0" />
         <ScintKey ScintID="2391" menuCmdID="0" Ctrl="no" Alt="no" Shift="no" Key="0" />
+        <ScintKey ScintID="2426" menuCmdID="0" Ctrl="yes" Alt="yes" Shift="no" Key="40" />
+        <ScintKey ScintID="2427" menuCmdID="0" Ctrl="yes" Alt="yes" Shift="no" Key="38" />
+        <ScintKey ScintID="2413" menuCmdID="0" Ctrl="yes" Alt="yes" Shift="yes" Key="221" />
+        <ScintKey ScintID="2415" menuCmdID="0" Ctrl="yes" Alt="yes" Shift="yes" Key="219" />
     </ScintillaKeys>
 </NotepadPlus>
