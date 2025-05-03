@@ -10,11 +10,13 @@
   {{#if signing_key}}
   signingkey = "{{signing_key}}"
   {{#if (eq (extension signing_key) "pub")}}
+
 [gpg]
   format = ssh
 [gpg "ssh"]
   allowedSignersFile = "~/.ssh/allowed_signers"
   {{/if}}
+
 [commit]
   gpgsign = true
   {{/if}}
@@ -31,23 +33,41 @@
   longpaths = true
   {{/if}}
   autocrlf = input
+
 [init]
-	defaultBranch = master
+  defaultBranch = master
+
+[status]
+  branch = true
+  showStash = true
+  showUntrackedFiles = all # show individual untracked, not folders
+
 [merge]
   conflictstyle = diff3
+
 [pull]
-  rebase = true
+  # rebase = true # too dangerous? just use --rebase flag
+
 [diff]
   colorMoved = default
+
 [rerere]
-  enabled = true
+  enabled = true # https://git-scm.com/book/en/v2/Git-Tools-Rerere
+
 [log]
   abbrevCommit = true
+  graphColors = blue,yellow,cyan,magenta,green,red
   decorate = auto
+
+[column]
+  status = auto
+
 [pager]
   # Disable delta pager for log and status
+
 [alias]
   lol = log --graph --oneline --decorate --all
+  lt = "log --all --graph --pretty=format:'%C(yellow)%h %C(brightyellow) %an %C(brightgreen) %ah%C(auto) %D%n%s%n'"
   l1 = log --pretty=format:'%C(green)%ad%Creset %C(cyan)- %G? - %Creset%<(50,trunc)%s %C(magenta)%h' --date=short
   l2 = log --pretty=format:'%C(magenta)%h%Creset %C(bold blue)<%an> %C(cyan)-%C(auto)%d%Creset %s %C(green)(%ar) %Creset' --abbrev-commit --date=relative
   last = log -1 HEAD --format=medium
@@ -63,10 +83,10 @@
 
 # URL Shortcuts
 [url "https:github.com/"]
-  insteadOf = gh:
+  insteadOf = "gh:"
 
 [url "git@github.com:"]
-  insteadOf = gs:
+  insteadOf = "gs:"
 
 {{#if (is_executable "delta")}}
 
@@ -85,9 +105,11 @@
   side-by-side = false
 {{/if}}
 {{#if (is_executable "interactive-rebase-tool")}}
+
 [sequence]
   editor = interactive-rebase-tool
 {{/if}}
+
 [filter "lfs"]
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge -- %f
