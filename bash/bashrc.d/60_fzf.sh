@@ -36,15 +36,17 @@ FZF_MOVEMENT="--bind='alt-]:preview-page-down' \
               --bind='alt-[:preview-page-up' \
               --bind='alt-p:toggle-preview'"
 
-FZF_COLORS=" \
---color=bg+:#363a4f,spinner:#f4dbd6,hl:#ed8796 \
---color=fg:#cad3f5,header:#ed8796,info:#eed49f,pointer:#f4dbd6 \
---color=marker:#b7bdf8,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796 \
---color=selected-bg:#494d64 \
---color=list-border:#a6da95,list-label:#a6da95:italic \
---color=preview-border:#ed8796,preview-label:#ed8796:italic \
---color=input-border:#c6a0f6,input-label:#c6a0f6:italic \
---color=header-border:#8aadf4,header-label:#8aadf4:italic"
+FZF_COLORS="--color='
+fg:#cad3f5,current-fg:#cad3f5,
+bg:#24273a,current-bg:#363a4f,alt-bg:#1e2030,
+hl:#a6da95,current-hl:#eed49f,
+selected-fg:#b8c0e0,selected-bg:#494d64,selected-hl:#8bd5ca,marker:#8bd5ca,
+spinner:#f4dbd6,prompt:#c6a0f6,pointer:#f4dbd6,
+header:#ed8796,info:#f5a97f,
+list-border:#a6da95,list-label:#a6da95:italic 
+preview-border:#ed8796,preview-label:#ed8796:italic 
+input-border:#c6a0f6,input-label:#c6a0f6:italic
+header-border:#8aadf4,header-label:#8aadf4:italic'"
 
 export FZF_DEFAULT_OPTS=" \
   $FZF_MOVEMENT \
