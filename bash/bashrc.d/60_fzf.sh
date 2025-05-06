@@ -38,7 +38,7 @@ FZF_MOVEMENT="--bind='alt-]:preview-page-down' \
 
 FZF_COLORS="--color='
 fg:#cad3f5,current-fg:#cad3f5,
-bg:#24273a,current-bg:#363a4f,alt-bg:#1e2030,
+bg:-1,current-bg:#363a4f,alt-bg:#1e2030,
 hl:#a6da95,current-hl:#eed49f,
 selected-fg:#b8c0e0,selected-bg:#494d64,selected-hl:#8bd5ca,marker:#8bd5ca,
 spinner:#f4dbd6,prompt:#c6a0f6,pointer:#f4dbd6,
