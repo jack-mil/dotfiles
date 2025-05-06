@@ -80,6 +80,11 @@
   oops = "!f(){ if [ $# -eq 0 ]; then \
         git commit --amend --no-edit; else \
         git commit --amend \"$@\"; fi; }; f"
+  # Use fzf for a fancy fixup picker, used with git rebase -i --autosquash 
+  fixup = "!git log -n 15 --pretty=oneline --no-merges --color=always \
+          | fzf --accept-nth 1 --no-multi --ansi \
+          | xargs --open-tty -I% git commit --fixup=amend:%"
+    
 
 # URL Shortcuts
 [url "https:github.com/"]
