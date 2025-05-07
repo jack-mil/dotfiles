@@ -72,3 +72,13 @@ _fzf_compgen_path() {
 _fzf_compgen_dir() {
   fd --type d --hidden --follow --exclude ".git" . "$1"
 }
+
+# Redefine this function from https://github.com/junegunn/fzf-git.sh
+# to customize the appearance. Their script will use this function if defined
+_fzf_git_fzf() {
+  fzf --height 50% --tmux 90%,70% \
+    --layout reverse --multi --min-height 20+ \
+    --no-separator --header-border horizontal \
+    --preview-window 'right,50%' --preview-border line \
+    --bind 'ctrl-/:change-preview-window(down,50%|hidden|)' "$@"
+}
