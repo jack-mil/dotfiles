@@ -86,7 +86,7 @@
   fixup = "!git log --date=short -n 15 \
           --format=\"%C(brightgreen)%cd %C(auto)%h%d %s %C(magenta)(%an)%Creset\" \
           --graph --no-merges --color=always \
-          | fzf --accept-nth 1 --no-multi --ansi \
+          | fzf --accept-nth 3 --no-multi --ansi \
           | xargs --open-tty -I% git commit --fixup=amend:%"
     
 
