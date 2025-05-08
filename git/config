@@ -70,7 +70,7 @@
   lt = "log --all --graph --pretty=format:'%C(yellow)%h %C(brightyellow) %an %C(brightgreen) %ah%C(auto) %D%n%s%n'"
   l1 = "log --date=short --pretty=format:'%C(green)%ad%Creset %C(cyan)- %G? - %Creset%<(50,trunc)%s %C(magenta)%h'"
   l2 = "log --abbrev-commit --date=relative --pretty=format:'%C(magenta)%h%Creset %C(bold blue)<%an> %C(cyan)-%C(auto)%d%Creset %s %C(green)(%ar) %Creset'"
-  last = log -1 HEAD --format=medium --stat
+  last = log -1 HEAD --pretty=fuller --show-signature --stat
   pushf = push --force-with-lease
   softadd = add --intent-to-add
   unstage = reset HEAD --
