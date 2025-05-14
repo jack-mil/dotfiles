@@ -112,7 +112,10 @@ function mkgif() {
 function mkgifski() {
   ffmpeg -i "$1" -f yuv4mpegpipe - | gifski.exe --fps=${FPS:=${2:-10}} --height=${H:=${3:-540}} --quality=${Q:=${4:-80}} -o "${1%.*}-r${FPS}-h${H}-q${Q}.gif" -
 }
-alias ytdlp="yt-dlp --remux-video mkv --no-continue --no-cache-dir --add-metadata --embed-info-json --embed-chapters --embed-subs --sub-langs=all,-live_chat,-rechat --embed-thumbnail --sponsorblock-mark=all"
+
+_YTDLP_ARGS="--remux-video mkv --add-metadata --embed-info-json --embed-chapters --sponsorblock-mark=all --embed-thumbnail --embed-subs"
+alias ytdlp="yt-dlp $_YTDLP_ARGS --sub-langs=all,-live_chat,-rechat"
+alias ytdlp-playlist="yt-dlp $_YTDLP_ARGS --windows-filenames --output \"%(playlist)s/%(playlist_index)03d - %(title)s.%(ext)s\"" 
 
 function mediaprobe() {
   ffprobe -analyzeduration 200M -probesize 1G -threads 0 -show_streams -show_chapters -show_format -print_format json -loglevel error -i "$1" | bat --style=plain -ljson --pager="$LESS -X --log-file=${1}.info"
