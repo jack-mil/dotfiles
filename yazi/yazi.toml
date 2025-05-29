@@ -1,6 +1,6 @@
-"$schema" = "https://yazi-rs.github.io/schemas/yazi.json"
+# "$schema" = "https://yazi-rs.github.io/schemas/yazi.json"
 
-[manager]
+[mgr]
   linemode       = "size"
   ratio          = [1, 2, 4]
   sort_by        = "natural"
@@ -32,9 +32,9 @@
     { mime = "image/{avif,hei?,jxl}", run = "noop" },
     { mime = "image/{svg+xml}", run = "code" },
     { mime = "video/*", run = "noop" },
-    # { mime = "text/csv", run = "miller" },
-    # { name = "*.md", run = "glow" },
-    # { name = "*/", run = "eza-preview" },
+    { mime = "text/csv", run = 'piper -- bat -lcsv -p --color=always "$1"' },
+    { name = "*.md", run = 'piper -- CLICOLOR_FORCE=1 glow -w=$w -s=dark "$1"' },
+    { name = "*/", run = 'piper -- eza -TL=3 --color=always --icons=always --group-directories-first --no-quotes "$1"' },
   ]
 
   prepend_preloaders = [
