@@ -4,8 +4,9 @@ HISTFILE="${XDG_STATE_HOME}/bash_history"
 
 # don't put duplicate lines or lines starting with space in the history.
 HISTCONTROL=ignoreboth
-HISTSIZE=1000
-HISTFILESIZE=10000
+HISTSIZE=100000
+HISTFILESIZE=10000000
+HISTIGNORE='bg:fg:history'
 
 # append to the history file, don't overwrite it
 shopt -s histappend
