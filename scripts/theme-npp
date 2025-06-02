@@ -13,25 +13,29 @@ import shutil
 from pathlib import Path
 from argparse import ArgumentParser
 import re
+import sys
 
 # Can be changed with cli args
 FONT_NAME = "Cascadia Code NF"
 FLAVOR = "macchiato"
 
 DOTFILE_DIR = Path(__file__).resolve().parent.parent / "notepad++"
+# DOTFILE_DIR = Path(r"C:\Users\jackmil\AppData\Roaming\Notepad++")
+# DOTFILE_DIR = Path.home() / r"scoop/apps/notepadplusplus/current"
 
 THEME_DIR = Path.home() / "Repos/notepad-plus-plus"
 
 FLAVORS = ("frappe", "latte", "macchiato", "mocha")
 
-GLOBAL_RE = re.compile(
-    r'(<WidgetStyle name="Global Override" [^>]*fontName=")[^"]*(")', re.IGNORECASE
-)
+# GLOBAL_RE = re.compile(
+#     r'(<WidgetStyle name="Global Override" [^>]*fontName=")[^"]*(")', re.IGNORECASE
+# )
 DEFAULT_RE = re.compile(
     r'(<WidgetStyle name="Default Style" [^>]*fontName=")[^"]*(")', re.IGNORECASE
 )
 DARK_THEME_RE_STR = r'(<GUIConfig name="DarkMode" [^>]*darkThemeName="catppuccin-{}\.xml" [^>]*\/>)'  # needs configuration at runtime
 CONFIG_RE = re.compile(r'(<GUIConfig name="DarkMode" [^>]*\/>)', re.IGNORECASE)
+
 
 def parse_args():
     parser = ArgumentParser()
@@ -48,20 +52,28 @@ def copy_files(source_file: Path, dest_file: Path):
     if not source_file.is_file():
         raise FileNotFoundError(f"Source file does not exist: {source_file}")
 
+    if not dest_file.parent.exists():
+        print(
+            f"Destination directory does not exist: {dest_file.parent}",
+            "Creating it anyways...",
+            sep="\n",
+            file=sys.stderr,
+        )
+        dest_file.parent.mkdir(parents=True, exist_ok=True)
     # Create destination directory if it does not exist
-    # dest_file.parent.mkdir(parents=True, exist_ok=True)
 
     shutil.copy2(source_file, dest_file)
 
 
 def import_theme(source_file: Path, dest_file: Path, font: str):
+    """Copy the theme files into Npp config directory, and find/replace default font"""
+
     copy_files(source_file, dest_file)
 
+    # content = GLOBAL_RE.sub(r"\1\2", content)
+    # Regex to find and replace fontName attributes
     with dest_file.open("r") as file:
         content = file.read()
-
-    # Regex to find and replace fontName attributes
-    content = GLOBAL_RE.sub(r"\1\2", content)
     content = DEFAULT_RE.sub(f"\\1{font}\\2", content)
 
     # Write the modified content back to the copied file
@@ -73,6 +85,7 @@ def import_theme(source_file: Path, dest_file: Path, font: str):
 
 
 def set_ui_colors(src_file: Path, dest_file: Path, flavor: str):
+    """Extract desired UI config from repo, and insert into Npp config.xml file"""
     with src_file.open("r") as file:
         content = file.read()
 
@@ -81,6 +94,12 @@ def set_ui_colors(src_file: Path, dest_file: Path, flavor: str):
     config = regex.search(content)
     if config is None:
         raise ValueError(f"Could not find dark mode definition in {src_file}")
+
+    if not dest_file.exists():
+        raise FileNotFoundError(
+            "Notepad++ config.xml not found. "
+            "Make sure to run once to generate the default.",
+        )
 
     with dest_file.open("r") as file:
         content = file.read()
