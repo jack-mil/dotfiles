@@ -115,7 +115,7 @@ function mkgifski() {
 
 _YTDLP_ARGS="--remux-video mkv --add-metadata --embed-info-json --embed-chapters --sponsorblock-mark=all --embed-thumbnail --embed-subs"
 alias ytdlp="yt-dlp $_YTDLP_ARGS --sub-langs=all,-live_chat,-rechat"
-alias ytdlp-playlist="yt-dlp $_YTDLP_ARGS --windows-filenames --output \"%(playlist)s/%(playlist_index)03d - %(title)s.%(ext)s\"" 
+alias ytdlp-playlist="yt-dlp $_YTDLP_ARGS --windows-filenames --download-archive=ytdlp-cache.txt --output \"%(playlist)s/%(playlist_index)03d - %(title)s.%(ext)s\"" 
 
 function mediaprobe() {
   ffprobe -analyzeduration 200M -probesize 1G -threads 0 -show_streams -show_chapters -show_format -print_format json -loglevel error -i "$1" | bat --style=plain -ljson --pager="$LESS -X --log-file=${1}.info"
