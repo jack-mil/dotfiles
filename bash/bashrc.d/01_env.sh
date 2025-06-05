@@ -22,8 +22,8 @@ export PIP_REQUIRE_VIRTUALENV=true
 export PYTHON_HISTORY="${XDG_STATE_HOME}/python_history"
 
 export UV_CACHE_DIR="${XDG_CACHE_HOME}/uv"
-export UV_NO_MANAGED_PYTHON=true
-export UV_PYTHON_DOWNLOADS="never"
+# export UV_NO_MANAGED_PYTHON=true
+export UV_PYTHON_DOWNLOADS="manual"
 
 # add local bin in front of path
 prepend_path "${XDG_BIN_HOME}"
