@@ -9,11 +9,11 @@ This was required while NPP themes were under heavy development (by me)
 Windows only.
 """
 
-import shutil
-from pathlib import Path
-from argparse import ArgumentParser
 import re
+import shutil
 import sys
+from argparse import ArgumentParser
+from pathlib import Path
 
 # Can be changed with cli args
 FONT_NAME = "Cascadia Code NF"
