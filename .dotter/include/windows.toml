@@ -36,7 +36,7 @@
   mpv = '~\AppData\Roaming\mpv'
 
 [jpegview.files]
-  jpegview = '~\scoop\persist\jpegview-fork'
+  "jpegview/JPEGView.ini" = '~\scoop\persist\jpegview-fork\JPEGView.ini'
 
-[media]
-  depends = ["jpegview", "mpv"]
+[media.files]
+  gallery-dl = '~\AppData\Roaming\gallery-dl'
