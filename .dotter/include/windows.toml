@@ -29,6 +29,11 @@
   "notepad++/shortcuts.xml" = '~\AppData\Roaming\Notepad++\shortcuts.xml'
   "notepad++/themes/"       = '~\AppData\Roaming\Notepad++\themes\'
 
+[vesktop.files]
+  "vesktop/settings.json" = '~\scoop\persist\vesktop\Data\settings.json'
+  "vesktop/settings/"     = { type = "symbolic", target = '~\scoop\persist\vesktop\Data\settings\' }
+  "vesktop/themes/"       = { type = "symbolic", recurse = false, target = '~\scoop\persist\vesktop\Data\themes' }
+
 [filepilot.files]
   filepilot = '~\AppData\Roaming\Voidstar\FilePilot'
 

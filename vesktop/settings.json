@@ -1,0 +1,15 @@
+{
+    "discordBranch": "canary",
+    "minimizeToTray": true,
+    "arRPC": false,
+    "splashColor": "rgb(202, 211, 245)",
+    "splashBackground": "rgb(36, 39, 58)",
+    "staticTitle": true,
+    "enableSplashScreen": false,
+    "splashTheming": true,
+    "spellCheckLanguages": [
+        "en-US",
+        "ja"
+    ],
+    "disableMinSize": true
+}

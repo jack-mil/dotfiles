@@ -1,0 +1,18 @@
+/**
+ * @name Personal Tweaks
+ * @author jackmil
+ * @version 0.0.1
+ * @description Various changes and personal preference
+ * @website https://github.com/jack-mil/dotfiles
+ * @license 0BSD
+ */
+
+/* Hide Playing/Listening under friends in DM list (sidebar) */
+ul[aria-label="Direct Messages"] li[role="listitem"] div[class^="subText"]:has(svg[role="img"]) { display:none; }
+
+/* Hide Playing/Listening under friends in Online list (main area) */
+div[class^="userInfo"] div[class^="subtext"] > div:has(> svg[role="img"]) {
+    > svg { display:none; }
+    > svg + div { display:none; }
+    > svg + div + div { display:none; }
+}
