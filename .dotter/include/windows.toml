@@ -9,7 +9,7 @@
   "terminal/Fragments" = '~\AppData\Local\Microsoft\Windows Terminal\Fragments'
 
 [sioyek.files]
-  sioyek = '~\scoop\persist\sioyek-alpha'
+  sioyek = '~\AppData\Roaming\sioyek'
 
 [git.files]
   jj = '~\AppData\Roaming\jj'
@@ -30,7 +30,7 @@
   "notepad++/themes/"       = '~\AppData\Roaming\Notepad++\themes\'
 
 [filepilot.files]
-  "filepilot" = '~\AppData\Roaming\Voidstar\FilePilot'
+  filepilot = '~\AppData\Roaming\Voidstar\FilePilot'
 
 [mpv.files]
   mpv = '~\AppData\Roaming\mpv'
