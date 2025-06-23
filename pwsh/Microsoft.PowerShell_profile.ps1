@@ -9,8 +9,7 @@ $env:VISUAL = "nvim"
 
 $env:PIP_REQUIRE_VIRTUALENV = "true"
 $env:UV_CACHE_DIR = "$env:XDG_CACHE_HOME\uv"
-$env:UV_NO_MANAGED_PYTHON = $true
-$env:UV_PYTHON_DOWNLOADS = "never"
+$env:UV_PYTHON_DOWNLOADS = "manual"
 
 $env:YAZI_FILE_ONE = "$env:USERPROFILE\scoop\apps\git\current\usr\bin\file.exe"
 $env:YAZI_CONFIG_HOME = "$env:XDG_CONFIG_HOME\yazi"
