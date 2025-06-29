@@ -1,13 +1,13 @@
 return {
-  "folke/snacks.nvim",
+  'folke/snacks.nvim',
   opts = { explorer = {} },
   keys = {
     {
-      "<leader>e",
+      '<leader>e',
       function()
         require('snacks').explorer()
       end,
-      desc = "Explorer Snacks (cwd)",
+      desc = 'Explorer Snacks (cwd)',
     },
   },
 }

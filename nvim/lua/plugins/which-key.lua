@@ -7,31 +7,31 @@ return {
     preset = 'modern',
     spec = {
       {
-        mode = { "n", "v" },
-        { "[", group = "prev" },
-        { "]", group = "next" },
-        { "g", group = "goto" },
-        { "z", group = "fold" },
-        { "<leader>o", group = "view/options", icon = { icon = "󰙵 ", color = "cyan" } },
-        { "<leader><tab>", group = "tabs" },
-        { "<leader>x", group = "diagnostics/quickfix", icon = { icon = "󱖫 ", color = "green" } },
+        mode = { 'n', 'v' },
+        { '[', group = 'prev' },
+        { ']', group = 'next' },
+        { 'g', group = 'goto' },
+        { 'z', group = 'fold' },
+        { '<leader>o', group = 'view/options', icon = { icon = '󰙵 ', color = 'cyan' } },
+        { '<leader><tab>', group = 'tabs' },
+        { '<leader>x', group = 'diagnostics/quickfix', icon = { icon = '󱖫 ', color = 'green' } },
         {
-          "<leader>b",
-          group = "buffer",
+          '<leader>b',
+          group = 'buffer',
           expand = function()
-            return require("which-key.extras").expand.buf()
+            return require('which-key.extras').expand.buf()
           end,
         },
         {
-          "<leader>p",
-          group = "windows",
-          proxy = "<c-w>",
+          '<leader>p',
+          group = 'windows',
+          proxy = '<c-w>',
           expand = function()
-            return require("which-key.extras").expand.win()
+            return require('which-key.extras').expand.win()
           end,
         },
         -- better descriptions
-        { "gx", desc = "Open with system app" },
+        { 'gx', desc = 'Open with system app' },
       },
     },
   },

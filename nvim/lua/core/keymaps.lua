@@ -1,10 +1,10 @@
 -- Set `mapleader` and `maplocalleader` before
 -- running lazy.nvim so that mappings are correct.
-vim.g.mapleader = ' '      -- <space>
+vim.g.mapleader = ' ' -- <space>
 vim.g.maplocalleader = ' ' -- <space>
 
 function map(mode, shortcut, command, opts)
-  opts = opts or {}                                       -- Use an empty table if no options are provided
+  opts = opts or {} -- Use an empty table if no options are provided
   local default_opts = { noremap = true, silent = true }
   opts = vim.tbl_deep_extend('force', default_opts, opts) -- Merge tables, with opts taking priority
   vim.keymap.set(mode, shortcut, command, opts)
@@ -36,7 +36,7 @@ map({ 'n', 'v' }, 'k', [[v:count == 0 ? 'gk' : 'k']], { expr = true })
 nmap('<up>', '<nop>')
 nmap('<down>', '<nop>')
 
-imap('<C-H>', '<C-W>')   -- Ctrl-Backspace that I am used to (learn to use <C-W?)
+imap('<C-H>', '<C-W>') -- Ctrl-Backspace that I am used to (learn to use <C-W?)
 imap('<C-b>', '<C-o>db') -- Delete word backward (same as above)
 imap('<C-e>', '<C-o>de') -- Delete word forward
 
@@ -48,16 +48,16 @@ nmap('<C-J>', 'mao<Esc>`a')
 nmap('<C-K>', 'maO<Esc>`a')
 
 -- Move Lines
-map("n", "<A-j>", "<cmd>execute 'move .+' . v:count1<cr>==", { desc = "Move Down" })
-map("n", "<A-k>", "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = "Move Up" })
-map("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Down" })
-map("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up" })
-map("v", "<A-j>", ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", { desc = "Move Down" })
-map("v", "<A-k>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = "Move Up" })
+map('n', '<A-j>', "<cmd>execute 'move .+' . v:count1<cr>==", { desc = 'Move Down' })
+map('n', '<A-k>', "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = 'Move Up' })
+map('i', '<A-j>', '<esc><cmd>m .+1<cr>==gi', { desc = 'Move Down' })
+map('i', '<A-k>', '<esc><cmd>m .-2<cr>==gi', { desc = 'Move Up' })
+map('v', '<A-j>', ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", { desc = 'Move Down' })
+map('v', '<A-k>', ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = 'Move Up' })
 
 -- commenting
-map("n", "gco", "o<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Comment Below" })
-map("n", "gcO", "O<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Comment Above" })
+map('n', 'gco', 'o<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>', { desc = 'Add Comment Below' })
+map('n', 'gcO', 'O<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>', { desc = 'Add Comment Above' })
 
 -- buffer save/write Keymaps
 nmap('<leader>q', ':q<cr>', { desc = 'QUIT FILE' })
@@ -86,13 +86,13 @@ nmap('<leader>bs', ':source %<cr>', { desc = 'Source Buffer' })
 nmap('<F5>', ':buffers<cr>:buffer<space>', { desc = 'Pick buffer', silent = false })
 
 -- Tabs
-nmap("<leader><tab>l", "<cmd>tablast<cr>", { desc = "Last Tab" })
-nmap("<leader><tab>o", "<cmd>tabonly<cr>", { desc = "Close Other Tabs" })
-nmap("<leader><tab>f", "<cmd>tabfirst<cr>", { desc = "First Tab" })
-nmap("<leader><tab><tab>", "<cmd>tabnew<cr>", { desc = "New Tab" })
-nmap("<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
-nmap("<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
-nmap("<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
+nmap('<leader><tab>l', '<cmd>tablast<cr>', { desc = 'Last Tab' })
+nmap('<leader><tab>o', '<cmd>tabonly<cr>', { desc = 'Close Other Tabs' })
+nmap('<leader><tab>f', '<cmd>tabfirst<cr>', { desc = 'First Tab' })
+nmap('<leader><tab><tab>', '<cmd>tabnew<cr>', { desc = 'New Tab' })
+nmap('<leader><tab>]', '<cmd>tabnext<cr>', { desc = 'Next Tab' })
+nmap('<leader><tab>d', '<cmd>tabclose<cr>', { desc = 'Close Tab' })
+nmap('<leader><tab>[', '<cmd>tabprevious<cr>', { desc = 'Previous Tab' })
 -- g<Tab>, gt, and gT already navigate between tabs
 
 -- Nvim Options and Commands
@@ -104,23 +104,19 @@ nmap('<leader>os', ':set invspell<cr>', { desc = 'Toggle Spell Check' })
 nmap('<leader>op', ':pwd<cr>', { desc = 'Current Working Directory', silent = false })
 
 -- location list
-map("n", "<leader>xl", function()
+map('n', '<leader>xl', function()
   local success, err = pcall(vim.fn.getloclist(0, { winid = 0 }).winid ~= 0 and vim.cmd.lclose or vim.cmd.lopen)
-  if not success and err then
-    vim.notify(err, vim.log.levels.ERROR)
-  end
-end, { desc = "Location List" })
+  if not success and err then vim.notify(err, vim.log.levels.ERROR) end
+end, { desc = 'Location List' })
 
 -- quickfix list
-map("n", "<leader>xq", function()
+map('n', '<leader>xq', function()
   local success, err = pcall(vim.fn.getqflist({ winid = 0 }).winid ~= 0 and vim.cmd.cclose or vim.cmd.copen)
-  if not success and err then
-    vim.notify(err, vim.log.levels.ERROR)
-  end
-end, { desc = "Quickfix List" })
+  if not success and err then vim.notify(err, vim.log.levels.ERROR) end
+end, { desc = 'Quickfix List' })
 
-map("n", "[q", vim.cmd.cprev, { desc = "Previous Quickfix" })
-map("n", "]q", vim.cmd.cnext, { desc = "Next Quickfix" })
+map('n', '[q', vim.cmd.cprev, { desc = 'Previous Quickfix' })
+map('n', ']q', vim.cmd.cnext, { desc = 'Next Quickfix' })
 
 -- =========================
 -- PLUGIN KEYMAPS

@@ -14,16 +14,16 @@
 
 [opener]
   edit = [
-    { run = "%EDITOR% %*", block = true, for = "windows" },
-    { run = '$EDITOR "$@"', block = true, for = "unix" },
+    { block = true, for = "windows", run = "%EDITOR% %*" },
+    { block = true, for = "unix", run = '$EDITOR "$@"' },
   ]
   open = [
-    { run = '"code.exe" %0', orphan = true, for = "windows" },
-    { run = 'codium "$0"', orphan = true, for = "unix" },
+    { for = "windows", orphan = true, run = '"code.exe" %0' },
+    { for = "unix", orphan = true, run = 'codium "$0"' },
   ]
   play = [
-    { run = '"mpv.exe" %*', orphan = true, for = "windows" },
-    { run = 'mpv "$@"', orphan = true, for = "unix" },
+    { for = "windows", orphan = true, run = '"mpv.exe" %*' },
+    { for = "unix", orphan = true, run = 'mpv "$@"' },
   ]
 
 [plugin]

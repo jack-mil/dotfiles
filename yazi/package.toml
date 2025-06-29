@@ -1,39 +1,39 @@
 [[plugin.deps]]
 use = "yazi-rs/plugins:full-border"
-rev = "a54b96a"
+rev = "2ad42fa"
 hash = "3996fc74044bc44144b323686f887e1"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:jump-to-char"
-rev = "a54b96a"
-hash = "30fc0b37f03a597b92d387268319450f"
+rev = "2ad42fa"
+hash = "d2f04875bbd4ed3dd5696e8c4b094fde"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:toggle-pane"
-rev = "a1738e8"
-hash = "5c9dda1a587b8f5b6f63e3d5375bda88"
+rev = "2ad42fa"
+hash = "d6f60c24d8c0cf57a855bf46115b2502"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:git"
-rev = "a1738e8"
-hash = "e0ada736ea676c2bbb3ec705a49526ef"
+rev = "2ad42fa"
+hash = "e01006bfb38951ea89031bd918b20dbb"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:vcs-files"
-rev = "a1738e8"
-hash = "36405f8781fcaf33ceab24dffd5cea19"
+rev = "2ad42fa"
+hash = "cc8da55f1deda45ee3787cc97b58ffc9"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:piper"
-rev = "a54b96a"
-hash = "2bdc137505b8d9a0cc867a57d0e99b01"
+rev = "2ad42fa"
+hash = "2143a53182dbbe935a1abd1623424aa5"
 
 [[flavor.deps]]
 use = "yazi-rs/flavors:catppuccin-frappe"
-rev = "68326b4"
-hash = "7780fbbc8965da5a31a76a0dcd4d1216"
+rev = "d04a298"
+hash = "d659c6fde5148fb5c066518d7fdecddc"
 
 [[flavor.deps]]
 use = "yazi-rs/flavors:catppuccin-mocha"
-rev = "68326b4"
-hash = "2ac87e1b3a61f5887472899e86535d29"
+rev = "d04a298"
+hash = "288a0dedd5d13b28605cf82c05326dcd"

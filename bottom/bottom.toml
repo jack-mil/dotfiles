@@ -155,7 +155,7 @@
   [styles.widgets]
     border_color          = "#626880"
     selected_border_color = "#f4b8e4"
-    selected_text         = { color = "#232634", bg_color = "#ca9ee6" }
+    selected_text         = { bg_color = "#ca9ee6", color = "#232634" }
     text                  = { color = "#c6d0f5" }
     widget_title          = { color = "#eebebe" }
   [styles.graphs]

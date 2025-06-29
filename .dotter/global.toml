@@ -8,13 +8,13 @@
   # meta package for now
 
 [kitty.files]
-  kitty = { type = "symbolic", target = "~/.config/kitty" }
+  kitty = { target = "~/.config/kitty", type = "symbolic" }
 
 [git]
   depends = ["shell", "ssh"]
   [git.files]
     git = "~/.config/git"
-    jj  = { type = "symbolic", target = "~/.config/jj", if = '(is_executable "jj")' }
+    jj  = { if = '(is_executable "jj")', target = "~/.config/jj", type = "symbolic" }
 
   [git.variables]
     #optional: signing_key
@@ -30,7 +30,7 @@
 [shell.files]
   bat             = "~/.config/bat"
   bottom          = "~/.config/bottom"
-  glow            = { type = "symbolic", target = "~/.config/glow" }
+  glow            = { target = "~/.config/glow", type = "symbolic" }
   "glow/glow.yml" = "~/.config/glow/glow.yml"
   ripgrep         = "~/.config/"
   starship        = "~/.config/"
@@ -43,7 +43,7 @@
     "bash/inputrc"  = "~/.inputrc"
 
 [nvim.files]
-  nvim = { target = "~/.config/nvim", recurse = false, type = "symbolic" }
+  nvim = { recurse = false, target = "~/.config/nvim", type = "symbolic" }
 
 [vscode.files]
   "vscode/keybindings-linux.json.temp" = "~/.config/Code/User/keybindings.json"
@@ -55,7 +55,7 @@
   yazi = "~/.config/yazi"
 
 [tmux.files]
-  "tmux" = { target = "~/.config/tmux", recurse = false, type = "symbolic" }
+  "tmux" = { recurse = false, target = "~/.config/tmux", type = "symbolic" }
 
 # meta package(s) for now
 [graphics]
@@ -66,8 +66,7 @@
 [media]
   depends = ["mpv"]
   [media.files]
-    aria2      = "~/.config/aria2"
-    gallery-dl = "~/.config/gallery-dl"
+    aria2 = "~/.config/aria2"
 
 [arch.files]
   "pacman/aura.toml"    = "~/.config/aura/config.toml"

@@ -41,8 +41,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
     -- Auto-format ("lint") on save.
     -- Usually not needed if server supports "textDocument/willSaveWaitUntil".
     if
-        not client:supports_method('textDocument/willSaveWaitUntil')
-        and client:supports_method('textDocument/formatting')
+      not client:supports_method('textDocument/willSaveWaitUntil')
+      and client:supports_method('textDocument/formatting')
     then
       vim.api.nvim_create_autocmd('BufWritePre', {
         group = vim.api.nvim_create_augroup('my.lsp', { clear = false }),
@@ -61,7 +61,7 @@ vim.opt.completeopt:append('noselect')
 function Inspect_lsp_client()
   vim.ui.input({ prompt = 'Enter LSP Client name: ' }, function(client_name)
     if client_name then
-      local client = vim.lsp.get_clients { name = client_name }
+      local client = vim.lsp.get_clients({ name = client_name })
 
       if #client == 0 then
         vim.notify('No active LSP clients found with this name: ' .. client_name, vim.log.levels.WARN)
@@ -84,9 +84,7 @@ function Inspect_lsp_client()
 
       local lines = {}
       for i, this_client in ipairs(client) do
-        if i > 1 then
-          table.insert(lines, string.rep('-', 80))
-        end
+        if i > 1 then table.insert(lines, string.rep('-', 80)) end
         table.insert(lines, 'Client: ' .. this_client.name)
         table.insert(lines, 'ID: ' .. this_client.id)
         table.insert(lines, '')

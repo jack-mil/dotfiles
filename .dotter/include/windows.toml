@@ -16,7 +16,7 @@
 
 [shell.files]
   bat             = '~\scoop\persist\bat'
-  glow            = { type = "symbolic", target = '~\AppData\Local\glow\Config' }
+  glow            = { target = '~\AppData\Local\glow\Config', type = "symbolic" }
   "glow/glow.yml" = '~\AppData\Local\glow\Config\glow.yml'
 
 [vscode.files]
@@ -25,14 +25,14 @@
   "vscode/test_settings.json.template"   = '~\AppData\Roaming\Code\User\test_settings.json'
 
 [npp.files]
-  "notepad++/config.xml"    = { type = "template", target = '~\Appdata\Roaming\Notepad++\config.xml' }
+  "notepad++/config.xml"    = { target = '~\Appdata\Roaming\Notepad++\config.xml', type = "template" }
   "notepad++/shortcuts.xml" = '~\AppData\Roaming\Notepad++\shortcuts.xml'
   "notepad++/themes/"       = '~\AppData\Roaming\Notepad++\themes\'
 
 [vesktop.files]
   "vesktop/settings.json" = '~\scoop\persist\vesktop\Data\settings.json'
-  "vesktop/settings/"     = { type = "symbolic", target = '~\scoop\persist\vesktop\Data\settings\' }
-  "vesktop/themes/"       = { type = "symbolic", recurse = false, target = '~\scoop\persist\vesktop\Data\themes' }
+  "vesktop/settings/"     = { target = '~\scoop\persist\vesktop\Data\settings\', type = "symbolic" }
+  "vesktop/themes/"       = { recurse = false, target = '~\scoop\persist\vesktop\Data\themes', type = "symbolic" }
 
 [filepilot.files]
   filepilot = '~\AppData\Roaming\Voidstar\FilePilot'
