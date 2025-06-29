@@ -12,28 +12,14 @@
   max_width    = 900
   wrap         = "no"
 
-[opener]
-  edit = [
-    { block = true, for = "windows", run = "%EDITOR% %*" },
-    { block = true, for = "unix", run = '$EDITOR "$@"' },
-  ]
-  open = [
-    { for = "windows", orphan = true, run = '"code.exe" %0' },
-    { for = "unix", orphan = true, run = 'codium "$0"' },
-  ]
-  play = [
-    { for = "windows", orphan = true, run = '"mpv.exe" %*' },
-    { for = "unix", orphan = true, run = 'mpv "$@"' },
-  ]
 
 [plugin]
   prepend_previewers = [
-    { mime = "image/*", run = "image" },
     { mime = "image/{avif,hei?,jxl}", run = "noop" },
-    { mime = "image/{svg+xml}", run = "code" },
+    # { mime = "image/{svg+xml}", run = "code" },
     { mime = "video/*", run = "noop" },
     { mime = "text/csv", run = 'piper -- bat -lcsv -p --color=always "$1"' },
-    { name = "*.md", run = 'piper -- CLICOLOR_FORCE=1 glow -w=$w -s=dark "$1"' },
+    # { name = "*.md", run = 'piper -- CLICOLOR_FORCE=1 glow -w=$w "$1"' },
     { name = "*/", run = 'piper -- eza -TL=3 --color=always --icons=always --group-directories-first --no-quotes "$1"' },
   ]
 
