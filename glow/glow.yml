@@ -1,5 +1,5 @@
 # style name or JSON path (default "auto")
-style: "{{#if (eq dotter.os 'windows')}}~\\AppData\\Local\\glow\\Config\\\{{else}}~/.config/glow/{{/if}}catppuccin-macchiato.json"
+style: "{{#if (eq dotter.os 'windows')}}~\\AppData\\Local\\glow\\Config\\\{{else}}/home/jackmil/.config/glow/{{/if}}catppuccin-macchiato.json"
 # mouse wheel support (TUI-mode only)
 mouse: true
 # use pager to display markdown
