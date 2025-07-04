@@ -53,10 +53,10 @@ if exists eza; then
     # Eza ignore list for windows
     IGNORE='--no-permissions -I "NTUSER.*|ntuser.*|Recent|SendTo|Start Menu|My Documents|NetHood|Cookies|Templates|PrintHood|Local Settings|OneDrive*|Contacts|Saved Games|Searches"'
   fi
-  EZA_COMMON="--group-directories-first --icons --sort Extension"
+  EZA_COMMON="--group-directories-first --icons --smart-group --sort Extension"
   alias l="eza $EZA_COMMON $IGNORE"
   alias la="eza -a $EZA_COMMON $IGNORE"
-  alias ll="eza -l -a --links --header --group $EZA_COMMON $IGNORE"
+  alias ll="eza -l -a --git --git-repos --header $EZA_COMMON $IGNORE"
   alias lt="eza --tree $EZA_COMMON $IGNORE"
   alias ltl="eza -l --links --tree --header --no-time --group --sort Extension $IGNORE"
 fi
