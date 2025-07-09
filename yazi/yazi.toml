@@ -20,7 +20,7 @@
     { mime = "video/*", run = "noop" },
     { mime = "text/csv", run = 'piper -- bat -lcsv -p --color=always "$1"' },
     # { name = "*.md", run = 'piper -- CLICOLOR_FORCE=1 glow -w=$w "$1"' },
-    { name = "*/", run = 'piper -- eza -TL=3 --color=always --icons=always --group-directories-first --no-quotes "$1"' },
+    { name = "*/", run = 'piper -- eza -a --tree -L=1 --color=always --icons=always --group-directories-first --no-quotes "$1"' },
   ]
 
   prepend_preloaders = [
