@@ -67,7 +67,7 @@
 
 [alias]
   lol = log --graph --oneline --decorate --all
-  lt = "log --all --graph --pretty=format:'%C(yellow)%h %C(brightyellow) %an %C(brightgreen) %ah%C(auto) %D%n%s%n'"
+  lt = "log --all --graph --pretty=format:'%C(yellow)%h %C(brightgreen) %an %C(brightyellow) %ah%C(auto) %D%n%s%n'"
   l1 = "log --date=short --pretty=format:'%C(green)%ad%Creset %C(cyan)- %G? - %Creset%<(50,trunc)%s %C(magenta)%h'"
   l2 = "log --abbrev-commit --date=relative --pretty=format:'%C(magenta)%h%Creset %C(bold blue)<%an> %C(cyan)-%C(auto)%d%Creset %s %C(green)(%ar) %Creset'"
   last = log -1 HEAD --pretty=fuller --show-signature --stat
