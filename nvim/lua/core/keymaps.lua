@@ -1,8 +1,4 @@
--- Set `mapleader` and `maplocalleader` before
--- running lazy.nvim so that mappings are correct.
-vim.g.mapleader = ' ' -- <space>
-vim.g.maplocalleader = ' ' -- <space>
-
+-- Convienence function for setting all these key-bindings
 function map(mode, shortcut, command, opts)
   opts = opts or {} -- Use an empty table if no options are provided
   local default_opts = { noremap = true, silent = true }
@@ -22,6 +18,12 @@ function vmap(shortcut, command, opts)
   map('v', shortcut, command, opts)
 end
 
+-- Set `mapleader` and `maplocalleader` before
+-- running lazy.nvim so that mappings are correct.
+if vim.g.vscode then map("", "<space>", "<nop>") end
+vim.g.mapleader = ' ' -- <space>
+vim.g.maplocalleader = ' ' -- <space>
+
 -- use jj to exit insert mode (not present in English)
 imap('jj', '<Esc>')
 
@@ -39,6 +41,9 @@ nmap('<down>', '<nop>')
 imap('<C-H>', '<C-W>') -- Ctrl-Backspace that I am used to (learn to use <C-W?)
 imap('<C-b>', '<C-o>db') -- Delete word backward (same as above)
 imap('<C-e>', '<C-o>de') -- Delete word forward
+
+imap("<C-e>", "<C-o>$") -- Emacs-style end of line in insert mode
+imap("<C-a>", "<C-o>0") -- Emacs-style start of line in insert mode
 
 -- when forget to open with sudo
 map('c', 'w!!', 'execute "write !sudo tee % > /dev/null" <bar> edit!', { noremap = true, silent = false })

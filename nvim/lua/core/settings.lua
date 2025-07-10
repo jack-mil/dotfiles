@@ -84,6 +84,9 @@ o.termguicolors = true  -- Enable 24bit RGB color in the TUI
 o.showcmd   = true      -- Show (partial) command in the last line of the screen. Set this option off if your terminal is slow.
 o.showmode  = false     -- Don't show the Insert/Replace/Visual mode, because we are using Lualine plugin
 o.cmdheight = 0         -- Save some space on the bottom below the LuaLine
+if vim.g.vscode then
+  o.cmdheight = 1
+end
 
 -- Options based on filetypes
 -- Wrap markdown files by default

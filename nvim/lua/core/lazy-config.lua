@@ -4,7 +4,7 @@
 local config = {} -- to return
 
 -- import plugins from subdirectory
-config.spec = { { import = 'plugins' } }
+config.spec = { { import = 'plugins', cond = (function() return not vim.g.vscode end)} }
 
 -- I don't know what lua rocks are, disable it (undocumented (?))
 config.rocks = { enabled = false }
