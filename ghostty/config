@@ -1,0 +1,34 @@
+# Built in theme
+theme = catppuccin-macchiato
+
+font-size = 14
+
+font-family = "Sarasa Mono J"
+
+font-style = "Regular"
+font-style-italic = "Italic"
+font-style-bold = "SemiBold"
+font-style-bold-italic = "SemiBold Italic"
+
+# disable faux bold/italic
+font-synthetic-style = false
+
+mouse-hide-while-typing = true
+
+window-decoration = auto
+gtk-titlebar = false
+window-subtitle = false
+adw-toolbar-style = raised-border
+gtk-wide-tabs = false
+#gtk-tabs-location=hidden
+#window-title-font-family = "Sarasa Mono Slab J"
+window-theme = ghostty
+shell-integration-features=no-title
+
+auto-update = off
+
+window-titlebar-background = #363a4f
+split-divider-color = #8bd5ca
+
+keybind = super+grave_accent=toggle_quick_terminal
+keybind = super+shift+o=toggle_tab_overview
