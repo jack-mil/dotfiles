@@ -3,5 +3,7 @@ bash/bashrc.d/*_fzf-git.sh  linguist-vendored
 mpv/shaders/**              linguist-generated
 mpv/scripts/**              linguist-vendored
 mpv/scripts/screenshot-folder.lua  -linguist-vendored
+vesktop/themes/**           linguist-vendored
+vesktop/thems/mytheme.css   -linguist-vendored
 
 # vim: sw=8

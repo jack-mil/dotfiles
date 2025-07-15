@@ -16,8 +16,8 @@ git submodule update --init --recursive
 ```
 
 ### Attribution
-In the case that of this configuration could be considered copyright-able,
-I make everything not otherwise-marked available under the [0BSD License](./LICENSE).
+In the case that any of this configuration would be considered copyright-able,
+everything is available under the [0BSD License](./LICENSE), unless otherwise marked in the files themselves.
 You can do anything with what I wrote, and no attribution is required.
 
 This repository contains some vendored code and files from other open-source projects.
