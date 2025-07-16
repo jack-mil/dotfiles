@@ -1,0 +1,477 @@
+// vim: foldmarker={,} foldmethod=marker tabstop=4
+
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Introduction
+
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Miscellaneous
+hotkey-overlay { skip-at-startup; } // Don't show Mod+Shift+/ at startup
+
+prefer-no-csd // ask applications to omit client-side decorations
+
+overview { backdrop-color "#1d1621"; }
+
+// Environment Variables
+environment {
+  // QT on wayland
+  QT_QPA_PLATFORM "wayland;xcb"
+  QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+  //Stupid electron apps
+  ELECTRON_OZONE_PLATFORM_HINT "auto"
+  ELECTRON_ENABLEWAYLAND "1"
+  // Firefox
+  MOZ_ENABLE_WAYLAND "1" 
+  EDITOR "nvim"
+  // To handle nerd-fonts icons correctly
+  // defined here so kitty picks it up
+  LESSUTFCHARDEF "e000-e09f:w,e0a0-e0bf:p,e0c0-f8ff:w,f0001-fffff:w" 
+  // Stupid NVIDIA
+  __GL_SHADER_DISK_CACHE_PATH "~/.cache/nv"
+}
+
+// A ~ at the front will be expanded to the home directory.
+// The path is formatted with strftime(3) to give you the screenshot date and time.
+screenshot-path "~/pictures/Screenshots/screenshot-%Y-%m-%d-%H-%M-%S.png"
+
+// Input device configuration.
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Input
+input {
+    mod-key "Super"  // AKA Windows key
+    keyboard {
+        xkb {
+            // For more information, see xkeyboard-config(7).
+            // For example:
+            // options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
+            options "ctrl:nocaps"
+        }
+        // Enable numlock on startup, omitting this setting disables it.
+        numlock
+    }
+
+    // https://github.com/YaLTeR/niri/wiki/Configuration:-Input#pointing-devices
+    mouse { accel-profile "flat"; } // No mouse acceleration
+    touchpad { tap; natural-scroll; }
+    // trackpoint { }
+    
+    // Uncomment this to make the mouse warp to the center of newly focused windows.
+    warp-mouse-to-focus
+
+    // Focus windows and outputs automatically when moving the mouse into them.
+    // Setting max-scroll-amount="0%" makes it work only on windows already fully on screen.
+    focus-follows-mouse max-scroll-amount="5%"
+}
+
+// `niri msg outputs
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
+// Vizio TV
+output "HDMI-A-1" {
+    mode "3840x2160@23.976"
+    scale 1
+}
+
+// Settings that influence how windows are positioned and sized.
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Layout
+layout {
+    empty-workspace-above-first // keep free worskpace above _and_ below
+    // in logical pixels.
+    gaps 5
+
+    // Slight gaps on left/right that shows windows off-screen
+    struts {
+        left 15
+        right 15
+    }
+
+    // When to center a column when changing focus, options are:
+    // - "never", default behavior, focusing an off-screen column will keep at the left
+    //   or right edge of the screen.
+    // - "always", the focused column will always be centered.
+    // - "on-overflow", focusing a column will center it if it doesn't fit
+    //   together with the previously focused column.
+    center-focused-column "never"
+    always-center-single-column
+
+    // widths that "switch-preset-column-width" (Mod+R) toggles between.
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+    }
+
+    // heights that "switch-preset-window-height" (Mod+Shift+R) toggles between.
+    preset-window-heights {
+      proportion 0.2
+      proportion 0.4
+      proportion 0.5
+      proportion 0.8
+      proportion 1.0
+    }
+
+    focus-ring { off; }
+
+    // always visible window border + active color
+    border {
+        width 2
+        // Teal to Lavender (Macchiato)
+        active-gradient from="#8bd5ca" to="#b7bdf8" in="oklch shorter hue" angle=45 
+        // Surface 1 to Overlay 0 (Frappé)
+        inactive-gradient from="#51576d" to="#737994" angle=45 in="oklch shorter hue"
+        // Peach to Red (Macchiato)
+        urgent-gradient from="#f5a97f" to="#ed8796" in="oklch shorter hue" angle=45 
+
+        // Old defaults
+        // active-gradient from="#80c8ff" to="#bbddff" angle=45
+        // inactive-gradient from="#505050" to="#808080" angle=45 
+    }
+
+    insert-hint {
+      // Same gradient as active above (transparent 0x50)
+        gradient from="#8bd5ca50" to="#b7bdf850" in="oklch increasing hue" angle=45 
+    }
+
+    // tabbed columns with bottom indicator
+    tab-indicator {
+        // color matches border (i think) 
+        place-within-column
+        width 4
+        gap -8
+        corner-radius 2
+        length total-proportion=0.6
+        position "bottom"
+        gaps-between-tabs 4
+    }
+
+    // Shadows are disable by default (only on for floating windows)
+    // shadow { off; }
+}
+
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Window-Rules
+// Enable rounded corners for all windows.
+window-rule {
+    geometry-corner-radius 8 
+    clip-to-geometry true
+}
+
+// All floating window styling (orange border)
+window-rule {
+  match is-floating=true
+  shadow {
+    on
+    softness 10
+    spread 6
+    color "#0008"
+  }
+  border {
+    on
+    // Inherits inactive and urgent gradients from regular windows
+    // Peach to Yellow (Mocha)
+    active-gradient from="#fab387" to="#f9e2af" angle=45 in="oklch shorter hue" relative-to="workspace-view"
+  }
+}
+
+// Open the Firefox picture-in-picture player as floating by default.
+window-rule {
+  match app-id=r#"(firefox|librewolf)$"# title=r#"^Library$"#
+  open-floating true
+  // default-window-height { proportion 0.8; }
+  default-column-width { proportion 0.5; }
+}
+
+// Firefox sub windows
+window-rule {
+    match app-id=r#"(firefox|librewolf)$"# title="^Picture-in-Picture$"
+    open-floating true
+    default-floating-position x=32 y=32 relative-to="bottom-right" 
+}
+
+// Audio dialog
+window-rule {
+  match app-id=r#"(org\.pulseaudio\.pavucontrol)$"#
+  open-floating true
+}
+
+// Fullscreen apps
+window-rule {
+  match app-id="gimp"
+  default-column-width { proportion 1.0; }
+}
+
+// spotify_player TUI launched in kitty with custom app-id
+window-rule {
+  match app-id="spotify"
+  open-floating true
+  default-column-width { fixed 1280; }
+  default-window-height { fixed 648; }
+  default-floating-position x=30 y=30 relative-to="top-left"
+  open-on-output "eDP-1"
+}
+
+// Layer rules apply to shell layer (overlays, bars, backgrounds, etc)
+// Block out mako notifications from screencasts.
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Layer-Rules
+layer-rule {
+    match namespace="^notifications$"
+    block-out-from "screencast"
+}
+
+// shadow for fuzzel (launcher)
+layer-rule {
+    match namespace="^launcher$"
+    shadow { on; }
+    // Fuzzel set to 10 px rounded corners.
+    geometry-corner-radius 8
+}
+
+layer-rule {
+    match namespace="^waybar$"
+    place-within-backdrop true
+}
+
+// Animation settings.
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Animations
+animations { 
+}
+
+binds {
+    // shows a list of important hotkeys.
+    Mod+Shift+Slash { show-hotkey-overlay; }
+    
+    // Logout to session manager
+    // will show a confirmation dialog to avoid accidental exits.
+    Mod+Shift+E { quit; }
+    Ctrl+Alt+Delete { quit; }
+
+    // Powers off monitors. Any input to turn back on
+    Mod+Shift+P { power-off-monitors; }
+
+    // application launch shortcuts
+    Mod+T hotkey-overlay-title="Open kitty" { spawn "kitty" "--single-instance" "--instance-group='niri'"; }
+    Mod+Shift+T hotkey-overlay-title="Open kitty (new process)" { spawn "kitty"; }
+    Mod+B hotkey-overlay-title="Open librewolf" { spawn "librewolf"; }
+    Mod+Space hotkey-overlay-title="Application Picker" { spawn "fuzzel"; }
+    Super+Alt+L hotkey-overlay-title="Lock Screen" { spawn "swaylock"; }
+
+    Mod+Shift+F12 { spawn "sh" "-c" "if systemctl --user is-active swaybg.service ; then systemctl --user stop swaybg.service ; swaybg -i ~/pictures/Wallpaper/space_noedge.jpg & else pkill 'swaybg'; systemctl --user start swaybg.service; notify-send 'Restored'; fi"; }
+    
+    // Volumne keys
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "swayosd-client" "--output-volume" "+5"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "swayosd-client" "--output-volume" "-5"; }
+    XF86AudioMute        allow-when-locked=true { spawn "swayosd-client" "--output-volume" "mute-toggle"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+
+    // Open/close the Overview
+    Mod+O repeat=false { toggle-overview; }
+
+    Mod+Q { close-window; }
+
+    Mod+Left  { focus-column-left; }
+    Mod+Down  { focus-window-down; }
+    Mod+Up    { focus-window-up; }
+    Mod+Right { focus-column-right; }
+    Mod+H     { focus-column-left; }
+    Mod+J     { focus-window-down; }
+    Mod+K     { focus-window-up; }
+    Mod+L     { focus-column-right; }
+
+    Mod+Ctrl+Left  { move-column-left; }
+    Mod+Ctrl+Down  { move-window-down; }
+    Mod+Ctrl+Up    { move-window-up; }
+    Mod+Ctrl+Right { move-column-right; }
+    Mod+Ctrl+H     { move-column-left; }
+    Mod+Ctrl+J     { move-window-down; }
+    Mod+Ctrl+K     { move-window-up; }
+    Mod+Ctrl+L     { move-column-right; }
+
+    // Alternative commands that move across workspaces when reaching
+    // the first or last window in a column.
+    // Mod+J     { focus-window-or-workspace-down; }
+    // Mod+K     { focus-window-or-workspace-up; }
+    // Mod+Ctrl+J     { move-window-down-or-to-workspace-down; }
+    // Mod+Ctrl+K     { move-window-up-or-to-workspace-up; }
+
+    Mod+Home { focus-column-first; }
+    Mod+End  { focus-column-last; }
+    Mod+Ctrl+Home { move-column-to-first; }
+    Mod+Ctrl+End  { move-column-to-last; }
+
+    Mod+Shift+Left  { focus-monitor-left; }
+    Mod+Shift+Down  { focus-monitor-down; }
+    Mod+Shift+Up    { focus-monitor-up; }
+    Mod+Shift+Right { focus-monitor-right; }
+    Mod+Shift+H     { focus-monitor-left; }
+    Mod+Shift+J     { focus-monitor-down; }
+    Mod+Shift+K     { focus-monitor-up; }
+    Mod+Shift+L     { focus-monitor-right; }
+
+    Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+Up    { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
+    Mod+Shift+Ctrl+H     { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+J     { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
+
+    // Alternatively, there are commands to move just a single window:
+    // Mod+Shift+Ctrl+Left  { move-window-to-monitor-left; }
+    // ...
+
+    // And you can also move a whole workspace to another monitor:
+    // Mod+Shift+Ctrl+Left  { move-workspace-to-monitor-left; }
+    // ...
+
+    Mod+Page_Down      { focus-workspace-down; }
+    Mod+Page_Up        { focus-workspace-up; }
+    Mod+U              { focus-workspace-down; }
+    Mod+I              { focus-workspace-up; }
+    Mod+Ctrl+Page_Down { move-column-to-workspace-down; }
+    Mod+Ctrl+Page_Up   { move-column-to-workspace-up; }
+    Mod+Ctrl+U         { move-column-to-workspace-down; }
+    Mod+Ctrl+I         { move-column-to-workspace-up; }
+
+    // Alternatively, there are commands to move just a single window:
+    // Mod+Ctrl+Page_Down { move-window-to-workspace-down; }
+    // ...
+
+    Mod+Shift+Page_Down { move-workspace-down; }
+    Mod+Shift+Page_Up   { move-workspace-up; }
+    Mod+Shift+U         { move-workspace-down; }
+    Mod+Shift+I         { move-workspace-up; }
+
+    // You can bind mouse wheel scroll ticks using the following syntax.
+    // These binds will change direction based on the natural-scroll setting.
+    //
+    // To avoid scrolling through workspaces really fast, you can use
+    // the cooldown-ms property. The bind will be rate-limited to this value.
+    // You can set a cooldown on any bind, but it's most useful for the wheel.
+    Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
+    Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
+    Mod+Ctrl+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
+    Mod+Ctrl+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }
+
+    Mod+WheelScrollRight      { focus-column-right; }
+    Mod+WheelScrollLeft       { focus-column-left; }
+    Mod+Ctrl+WheelScrollRight { move-column-right; }
+    Mod+Ctrl+WheelScrollLeft  { move-column-left; }
+
+    // Usually scrolling up and down with Shift in applications results in
+    // horizontal scrolling; these binds replicate that.
+    Mod+Shift+WheelScrollDown      { focus-column-right; }
+    Mod+Shift+WheelScrollUp        { focus-column-left; }
+    Mod+Ctrl+Shift+WheelScrollDown { move-column-right; }
+    Mod+Ctrl+Shift+WheelScrollUp   { move-column-left; }
+
+    // Similarly, you can bind touchpad scroll "ticks".
+    // Touchpad scrolling is continuous, so for these binds it is split into
+    // discrete intervals.
+    // These binds are also affected by touchpad's natural-scroll, so these
+    // example binds are "inverted", since we have natural-scroll enabled for
+    // touchpads by default.
+    // Mod+TouchpadScrollDown { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02+"; }
+    // Mod+TouchpadScrollUp   { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02-"; }
+
+    // You can refer to workspaces by index. However, keep in mind that
+    // niri is a dynamic workspace system, so these commands are kind of
+    // "best effort". Trying to refer to a workspace index bigger than
+    // the current workspace count will instead refer to the bottommost
+    // (empty) workspace.
+    //
+    // For example, with 2 workspaces + 1 empty, indices 3, 4, 5 and so on
+    // will all refer to the 3rd workspace.
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+    Mod+Ctrl+1 { move-column-to-workspace 1; }
+    Mod+Ctrl+2 { move-column-to-workspace 2; }
+    Mod+Ctrl+3 { move-column-to-workspace 3; }
+    Mod+Ctrl+4 { move-column-to-workspace 4; }
+    Mod+Ctrl+5 { move-column-to-workspace 5; }
+    Mod+Ctrl+6 { move-column-to-workspace 6; }
+    Mod+Ctrl+7 { move-column-to-workspace 7; }
+    Mod+Ctrl+8 { move-column-to-workspace 8; }
+    Mod+Ctrl+9 { move-column-to-workspace 9; }
+
+    // Alternatively, there are commands to move just a single window:
+    // Mod+Ctrl+1 { move-window-to-workspace 1; }
+
+    // Switches focus between the current and the previous workspace.
+    Mod+Tab { focus-workspace-previous; }
+
+    // The following binds move the focused window in and out of a column.
+    // If the window is alone, they will consume it into the nearby column to the side.
+    // If the window is already in a column, they will expel it out.
+    Mod+BracketLeft  { consume-or-expel-window-left; }
+    Mod+BracketRight { consume-or-expel-window-right; }
+
+    // Consume one window from the right to the bottom of the focused column.
+    Mod+Comma  { consume-window-into-column; }
+    // Expel the bottom window from the focused column to the right.
+    Mod+Period { expel-window-from-column; }
+
+    Mod+R { switch-preset-column-width; }
+    Mod+Shift+R { switch-preset-window-height; }
+    Mod+Ctrl+R { reset-window-height; }
+    Mod+F { maximize-column; }
+    Mod+Shift+F hotkey-overlay-title="Fullscreen window" { fullscreen-window; }
+    // Expand the focused column to space not taken up by other fully visible columns.
+    // Makes the column "fill the rest of the space".
+    Mod+Ctrl+F { expand-column-to-available-width; }
+    // Fake fullscreen that remains windowed
+    Mod+Ctrl+Shift+F { toggle-windowed-fullscreen; }
+
+    Mod+C { center-column; }
+
+    // Center all fully visible columns on screen.
+    Mod+Ctrl+C { center-visible-columns; }
+
+    // Finer width adjustments.
+    // This command can also:
+    // * set width in pixels: "1000"
+    // * adjust width in pixels: "-5" or "+5"
+    // * set width as a percentage of screen width: "25%"
+    // * adjust width as a percentage of screen width: "-10%" or "+10%"
+    // Pixel sizes use logical, or scaled, pixels. I.e. on an output with scale 2.0,
+    // set-column-width "100" will make the column occupy 200 physical screen pixels.
+    Mod+Minus { set-column-width "-10%"; }
+    Mod+Equal { set-column-width "+10%"; }
+
+    // Finer height adjustments when in column with other windows.
+    Mod+Shift+Minus { set-window-height "-10%"; }
+    Mod+Shift+Equal { set-window-height "+10%"; }
+
+    // Move the focused window between the floating and the tiling layout.
+    Mod+V       { toggle-window-floating; }
+    Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+
+    // Toggle tabbed column display mode.
+    // Windows in this column will appear as vertical tabs,
+    // rather than stacked on top of each other.
+    Mod+W { toggle-column-tabbed-display; }
+
+    // Actions to switch keyboard layouts.
+    // Note: if you uncomment these, make sure you do NOT have
+    // a matching layout switch hotkey configured in xkb options above.
+    // Having both at once on the same hotkey will break the switching,
+    // since it will switch twice upon pressing the hotkey (once by xkb, once by niri).
+    // Mod+Space       { switch-layout "next"; }
+    // Mod+Shift+Space { switch-layout "prev"; }
+
+    Print { screenshot-screen write-to-disk=true show-pointer=false; }
+    Mod+Shift+S { screenshot show-pointer=false; }
+    Mod+Ctrl+Shift+S { spawn "sh" "-c" r#"niri msg action screenshot-window --id="$(niri msg --json pick-window | jq .id)""#; }
+
+    // Applications such as remote-desktop clients and software KVM switches may
+    // request that niri stops processing the keyboard shortcuts defined here
+    // so they may, for example, forward the key presses as-is to a remote machine.
+    // It's a good idea to bind an escape hatch to toggle the inhibitor,
+    // so a buggy application can't hold your session hostage.
+    //
+    // The allow-inhibiting=false property can be applied to other binds as well,
+    // which ensures niri always processes them, even when an inhibitor is active.
+    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+
+}
