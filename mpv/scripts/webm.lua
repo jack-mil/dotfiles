@@ -1792,7 +1792,7 @@ local get_sub_options
 get_sub_options = function()
   local ret = { }
   append_property(ret, "sub-ass-override")
-  append_property(ret, "sub-ass-force-style")
+  append_property(ret, "sub-ass-style-overrides")
   append_property(ret, "sub-ass-vsfilter-aspect-compat")
   append_property(ret, "sub-auto")
   append_property(ret, "sub-pos")
