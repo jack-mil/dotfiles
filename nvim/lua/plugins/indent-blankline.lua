@@ -14,6 +14,7 @@ local color_order = {
 return {
   'lukas-reineke/indent-blankline.nvim',
   main = 'ibl',
+  enabled = false, -- Disabled now, bloat
   event = 'BufReadPost',
   cmd = { 'IBLEnable', 'IBLDisable', 'IBLToggle', 'IBLEnableScope', 'IBLDisableScope', 'IBLToggleScope' },
   opts = {
@@ -21,6 +22,7 @@ return {
       char = '┊',
       highlight = color_order,
     },
+    whitespace = { remove_blankline_trail = true },
     exclude = {
       filetypes = { 'help', 'dashboard', 'lazy', 'neo-tree', 'NvimTree', 'notify', 'toggleterm' },
       buftypes = { 'nofile', 'prompt', 'quickfix', 'terminal' },

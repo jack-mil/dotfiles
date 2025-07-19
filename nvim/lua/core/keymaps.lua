@@ -20,7 +20,6 @@ end
 
 -- Set `mapleader` and `maplocalleader` before
 -- running lazy.nvim so that mappings are correct.
-if vim.g.vscode then map("", "<space>", "<nop>") end
 vim.g.mapleader = ' ' -- <space>
 vim.g.maplocalleader = ' ' -- <space>
 
@@ -34,35 +33,49 @@ nmap(';', ':', { silent = false, desc = 'CMD enter mode (Ex)' })
 -- in visual and normal mode
 map({ 'n', 'v' }, 'j', [[v:count == 0 ? 'gj' : 'j']], { expr = true })
 map({ 'n', 'v' }, 'k', [[v:count == 0 ? 'gk' : 'k']], { expr = true })
+
+-- Center screen when jumping
+nmap('n', 'nzzzv', { desc = 'Next search result (centered)' })
+nmap('N', 'Nzzzv', { desc = 'Previous search result (centered)' })
+nmap('<C-d>', '<C-d>zz', { desc = 'Half page down (centered)' })
+nmap('<C-u>', '<C-u>zz', { desc = 'Half page up (centered)' })
+
 -- disable navigation by arrow keys
 nmap('<up>', '<nop>')
 nmap('<down>', '<nop>')
 
-imap('<C-H>', '<C-W>') -- Ctrl-Backspace that I am used to (learn to use <C-W?)
-imap('<C-b>', '<C-o>db') -- Delete word backward (same as above)
-imap('<C-e>', '<C-o>de') -- Delete word forward
+imap('<A-b>', '<C-o>dw') -- Delete word forward
 
-imap("<C-e>", "<C-o>$") -- Emacs-style end of line in insert mode
-imap("<C-a>", "<C-o>0") -- Emacs-style start of line in insert mode
+imap('<C-e>', '<C-o>$') -- Emacs-style end of line in insert mode
+imap('<C-a>', '<C-o>0') -- Emacs-style start of line in insert mode
 
--- when forget to open with sudo
-map('c', 'w!!', 'execute "write !sudo tee % > /dev/null" <bar> edit!', { noremap = true, silent = false })
+nmap('<leader>c', ':nohlsearch<CR>', { desc = 'Clear search highlights' })
 
--- mapping to insert newline above/below in normal mode
-nmap('<C-J>', 'mao<Esc>`a')
-nmap('<C-K>', 'maO<Esc>`a')
+-- When forget to open with sudo
+map('c', 'w!!', 'execute "write !sudo tee % > /dev/null" <bar> edit!', { silent = false })
+
+-- Insert newline above/below in normal mode
+nmap('<A-C-J>', 'mao<Esc>`a', { desc = 'Add newline above' })
+nmap('<A-C-K>', 'maO<Esc>`a', { desc = 'Add newline below' })
 
 -- Move Lines
-map('n', '<A-j>', "<cmd>execute 'move .+' . v:count1<cr>==", { desc = 'Move Down' })
-map('n', '<A-k>', "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = 'Move Up' })
-map('i', '<A-j>', '<esc><cmd>m .+1<cr>==gi', { desc = 'Move Down' })
-map('i', '<A-k>', '<esc><cmd>m .-2<cr>==gi', { desc = 'Move Up' })
-map('v', '<A-j>', ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", { desc = 'Move Down' })
-map('v', '<A-k>', ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = 'Move Up' })
+-- (these could probably be simpler but I don't know how to parse this...)
+nmap('<A-j>', "<cmd>execute 'move .+' . v:count1<cr>==", { desc = 'Move Down' })
+nmap('<A-k>', "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = 'Move Up' })
+imap('<A-j>', '<esc><cmd>m .+1<cr>==gi', { desc = 'Move Down' })
+imap('<A-k>', '<esc><cmd>m .-2<cr>==gi', { desc = 'Move Up' })
+vmap('<A-k>', ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = 'Move Up' })
+vmap('<A-j>', ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", { desc = 'Move Down' })
 
--- commenting
-map('n', 'gco', 'o<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>', { desc = 'Add Comment Below' })
-map('n', 'gcO', 'O<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>', { desc = 'Add Comment Above' })
+nmap('J', 'mzJ`z', { desc = 'Join line below and keep cursor position' })
+
+-- Comments
+nmap('gco', 'o<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>', { desc = 'Add Comment Below' })
+nmap('gcO', 'O<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>', { desc = 'Add Comment Above' })
+
+-- Indent
+vmap('<', '<gv', { desc = 'Indent left and reselect' })
+vmap('>', '>gv', { desc = 'Indent right and reselect' })
 
 -- buffer save/write Keymaps
 nmap('<leader>q', ':q<cr>', { desc = 'QUIT FILE' })
@@ -72,6 +85,10 @@ nmap('<leader>W', ':wa<cr>', { desc = 'Force Write File' })
 nmap('<leader>M', ':messages<cr>', { desc = 'Show Messages' })
 
 -- Splits and Windows
+nmap('<C-h>', '<C-w>h', { desc = 'Move to left window' })
+nmap('<C-j>', '<C-w>j', { desc = 'Move to bottom window' })
+nmap('<C-k>', '<C-w>k', { desc = 'Move to top window' })
+nmap('<C-l>', '<C-w>l', { desc = 'Move to right window' })
 -- nmap('<leader>pv', '<C-w>v', { desc = 'Split Vertically', silent = false })
 -- nmap('<leader>ph', '<C-w>s', { desc = 'Split Horizontally', silent = false })
 -- nmap('<leader>pe', '<C-w>=', { desc = 'Equal Split', silent = false })
@@ -86,7 +103,7 @@ nmap('<right>', ':bnext<cr>')
 nmap('<leader>bn', ':bnext<cr>', { desc = 'Next Buffer' })
 nmap('<leader>bp', ':bprevious<cr>', { desc = 'Previous Buffer' })
 nmap('<leader>bl', ':blast<cr>', { desc = 'Last Buffer' })
-nmap('<leader>bx', ':bdelete<cr>', { desc = 'Last Buffer' })
+nmap('<leader>bx', ':bdelete<cr>', { desc = 'Close Buffer' })
 nmap('<leader>bs', ':source %<cr>', { desc = 'Source Buffer' })
 nmap('<F5>', ':buffers<cr>:buffer<space>', { desc = 'Pick buffer', silent = false })
 
@@ -108,6 +125,13 @@ nmap('<leader>oz', ':set invlist<cr>', { desc = 'Toggle Show Whitespace' })
 nmap('<leader>os', ':set invspell<cr>', { desc = 'Toggle Spell Check' })
 nmap('<leader>op', ':pwd<cr>', { desc = 'Current Working Directory', silent = false })
 
+-- Copy open buffer filepath
+nmap('<leader>P', function()
+  local path = vim.fn.expand('%:p')
+  vim.fn.setreg('+', path)
+  print('file:', path)
+end, { desc = 'Copy open buffer filepath' })
+
 -- location list
 map('n', '<leader>xl', function()
   local success, err = pcall(vim.fn.getloclist(0, { winid = 0 }).winid ~= 0 and vim.cmd.lclose or vim.cmd.lopen)
@@ -123,6 +147,11 @@ end, { desc = 'Quickfix List' })
 map('n', '[q', vim.cmd.cprev, { desc = 'Previous Quickfix' })
 map('n', ']q', vim.cmd.cnext, { desc = 'Next Quickfix' })
 
+-- Open/Toggle floating terminal
+require('core.terminal')
+nmap('<leader>t', ':ToggleTerminal<CR>', { desc = 'Toggle floating terminal' })
+map('t', '<Esc>', '<C-\\><C-N>:CloseTerminal<CR>', { desc = 'Close floating terminal from terminal mode' })
+
 -- =========================
 -- PLUGIN KEYMAPS
 -- =========================
@@ -137,13 +166,3 @@ nmap('<C-F>', ':FzfLua live_grep_glob<cr>', { desc = 'Grep all files in project 
 nmap('<leader>oZ', ':Trim<cr>', { desc = 'Trim Trailing Whitespace' })
 nmap('<leader>oc', ':ColorizerToggle<cr>', { desc = 'Preview Colors (toggle)' })
 nmap('<leader>L', ':Lazy<cr>', { desc = 'Lazy Dashboard' })
-
--- Neo-tree file browser panel
--- nmap('<leader>e', ':Neotree reveal toggle<cr>', { desc = 'Toggle Explorer' })
--- nmap('<leader>n', function()
---   if vim.bo.filetype == 'neo-tree' then
---     vim.cmd.wincmd('p')
---   else
---     vim.cmd.Neotree('focus')
---   end
--- end, { desc = 'Toggle Explorer Focus' })

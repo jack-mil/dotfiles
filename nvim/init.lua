@@ -13,10 +13,7 @@ require('core.keymaps')
 require('core.lazy-config')
 
 -- Setup new v11 LSP configuration
-if vim.version.ge(vim.version(), { 0, 11, 0 }) 
-  and not vim.g.vscode then 
-  require('core.lsp') 
-end
+if vim.version.ge(vim.version(), { 0, 11, 0 }) and not vim.g.vscode then require('core.lsp') end
 
 -- load other stuff (trailing whitespace auto_cmd)
 require('core.autocmd')
