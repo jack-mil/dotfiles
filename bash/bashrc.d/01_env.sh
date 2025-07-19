@@ -25,6 +25,8 @@ export UV_CACHE_DIR="${XDG_CACHE_HOME}/uv"
 # export UV_NO_MANAGED_PYTHON=true
 export UV_PYTHON_DOWNLOADS="manual"
 
+export RIPGREP_CONFIG_PATH="${XDG_CONFIG_HOME}/ripgrep.rc"
+
 # add local bin in front of path
 prepend_path "${XDG_BIN_HOME}"
 

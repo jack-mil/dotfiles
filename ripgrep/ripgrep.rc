@@ -1,3 +1,4 @@
+# vim:ft=sh
 # use color
 --color=always
 # Don't let ripgrep vomit really long lines to my terminal, and show a preview.
@@ -14,3 +15,5 @@ web:*.{html,css,js}*
 --glob=!.git/*
 # Don't go to other filesystems
 --one-file-system
+# enable hyperlinks in kitty
+--hyperlink-format=kitty
