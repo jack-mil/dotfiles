@@ -2,6 +2,8 @@
 -- Largely taken from https://github.com/radleylewis/nvim-lite/blob/youtube_demo/init.lua
 -- with modifications
 
+-- terminal module to return
+local M = {}
 -- Auto-close terminal when process exits
 vim.api.nvim_create_autocmd('TermClose', {
   group = vim.api.nvim_create_augroup('termAuGroup', { clear = true }),
@@ -10,14 +12,14 @@ vim.api.nvim_create_autocmd('TermClose', {
   end,
 })
 
--- Persistant state
+-- Persistent state
 local terminal_state = {
   buf = nil,
   win = nil,
   is_open = false,
 }
 
-local function FloatingTerminal()
+function M.toggle_term()
   -- If terminal is already open, close it (toggle behavior)
   if terminal_state.is_open and vim.api.nvim_win_is_valid(terminal_state.win) then
     vim.api.nvim_win_close(terminal_state.win, false)
@@ -65,7 +67,7 @@ local function FloatingTerminal()
 
   -- Start terminal if not already running
   local has_terminal = false
-  -- search for any non-zero line... surely there is a better way to detect
+  -- search for any non-zero line... Surely there is a better way to detect
   -- an empty buffer...
   local lines = vim.api.nvim_buf_get_lines(terminal_state.buf, 0, -1, false)
   for _, line in ipairs(lines) do
@@ -94,14 +96,11 @@ local function FloatingTerminal()
 end -- FloatingTerminal()
 
 -- Function to explicitly close the terminal
-local function CloseFloatingTerminal()
+function M.close_term()
   if terminal_state.is_open and vim.api.nvim_win_is_valid(terminal_state.win) then
     vim.api.nvim_win_close(terminal_state.win, false)
     terminal_state.is_open = false
   end
 end
 
--- Define user commands to be used from command mode (or mapped to keymaps in other config)
-vim.api.nvim_create_user_command('ToggleTerminal', FloatingTerminal, {})
-
-vim.api.nvim_create_user_command('CloseTerminal', CloseFloatingTerminal, {})
+return M

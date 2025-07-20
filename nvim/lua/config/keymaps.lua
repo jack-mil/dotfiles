@@ -1,4 +1,4 @@
--- Convienence function for setting all these key-bindings
+-- Convenience function for setting all these key-bindings
 function map(mode, shortcut, command, opts)
   opts = opts or {} -- Use an empty table if no options are provided
   local default_opts = { noremap = true, silent = true }
@@ -125,6 +125,21 @@ nmap('<leader>oz', ':set invlist<cr>', { desc = 'Toggle Show Whitespace' })
 nmap('<leader>os', ':set invspell<cr>', { desc = 'Toggle Spell Check' })
 nmap('<leader>op', ':pwd<cr>', { desc = 'Current Working Directory', silent = false })
 
+-- Less Style keybindings for help/man pages
+-- (because I can't break muscle memory)
+vim.api.nvim_create_autocmd('BufWinEnter', {
+  callback = function(args)
+    local bufnr = args.buf
+    local buf = vim.bo[bufnr]
+    if not buf.modifiable then
+      local opts = { buffer = bufnr }
+      nmap('d', '<C-d>', opts)
+      nmap('u', '<C-u>', opts)
+    end
+  end,
+  desc = 'Set less-like paging in non-modifiable buffers',
+})
+
 -- Copy open buffer filepath
 nmap('<leader>P', function()
   local path = vim.fn.expand('%:p')
@@ -144,13 +159,9 @@ map('n', '<leader>xq', function()
   if not success and err then vim.notify(err, vim.log.levels.ERROR) end
 end, { desc = 'Quickfix List' })
 
-map('n', '[q', vim.cmd.cprev, { desc = 'Previous Quickfix' })
-map('n', ']q', vim.cmd.cnext, { desc = 'Next Quickfix' })
-
 -- Open/Toggle floating terminal
-require('core.terminal')
-nmap('<leader>t', ':ToggleTerminal<CR>', { desc = 'Toggle floating terminal' })
-map('t', '<Esc>', '<C-\\><C-N>:CloseTerminal<CR>', { desc = 'Close floating terminal from terminal mode' })
+nmap('<leader>t', ':Terminal toggle<CR>', { desc = 'Toggle floating terminal' })
+map('t', '<Esc>', '<C-\\><C-N>:Terminal close<CR>', { desc = 'Close floating terminal from terminal mode' })
 
 -- =========================
 -- PLUGIN KEYMAPS
@@ -166,3 +177,15 @@ nmap('<C-F>', ':FzfLua live_grep_glob<cr>', { desc = 'Grep all files in project 
 nmap('<leader>oZ', ':Trim<cr>', { desc = 'Trim Trailing Whitespace' })
 nmap('<leader>oc', ':ColorizerToggle<cr>', { desc = 'Preview Colors (toggle)' })
 nmap('<leader>L', ':Lazy<cr>', { desc = 'Lazy Dashboard' })
+
+-- load the session for the current directory
+nmap("<leader>ls", function() require("persistence").load() end, { desc = 'Load last session for CWD' })
+
+-- select a session to load
+nmap("<leader>lS", function() require("persistence").select() end, { desc = 'Select session' })
+
+-- load the last session
+nmap("<leader>ll", function() require("persistence").load({ last = true }) end, { desc = 'Load last session' })
+
+-- stop Persistence => session won't be saved on exit
+nmap("<leader>ld", function() require("persistence").stop() end, { desc = 'Disable session saving' })

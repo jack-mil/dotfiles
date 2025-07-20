@@ -1,19 +1,24 @@
-if vim.loader then vim.loader.enable() end -- experimental loader (?)
+-- init.lua gets executed when Neovim starts
+-- This is the config entry point
 
--- TODO: autoload everything in core/ directory
+if vim.loader then vim.loader.enable({ true }) end -- experimental loader
 
--- download lazy plugin loader
-require('core.lazy-bootstrap')
+-- Bootstrap lazy.nvim (from: https://lazy.folke.io/installation)
+local lazypath = vim.env.LAZY or vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
+if not (vim.env.LAZY or (vim.uv or vim.loop).fs_stat(lazypath)) then
+  local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
+  local out = vim.fn.system({ 'git', 'clone', '--filter=blob:none', '--branch=stable', lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo(
+      { { 'Failed to clone lazy.nvim:\n', 'ErrorMsg' }, { out, 'WarningMsg' }, { '\nPress any key to exit...' } },
+      true,
+      {}
+    )
+    vim.fn.getchar()
+    os.exit(1)
+  end
+end
+vim.opt.rtp:prepend(lazypath)
 
--- Configure my user settings before plugins
-require('core.settings')
-require('core.keymaps')
-
--- Setup lazy.nvim (loads all other plugins)
-require('core.lazy-config')
-
--- Setup new v11 LSP configuration
-if vim.version.ge(vim.version(), { 0, 11, 0 }) and not vim.g.vscode then require('core.lsp') end
-
--- load other stuff (trailing whitespace auto_cmd)
-require('core.autocmd')
+-- Configure my user settings, then plugins
+require('config').setup()

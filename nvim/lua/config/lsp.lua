@@ -1,5 +1,5 @@
 -- Enable all desired language servers in the nvim/lsp directory
--- Names coorispond to filename in lsp/*.lua
+-- Names correspond to filename in lsp/*.lua
 -- Requires Neovim v0.11
 
 -- common lsp config, will be merged with everything in <rtp>/lsp/<name>.lua

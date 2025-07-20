@@ -1,9 +1,9 @@
 -- Lazy.nvim configuration options.
 -- see: https://lazy.folke.io/configuration
 
-local config = {} -- to return
+local config = {} -- Lazy config table
 
--- import plugins from subdirectory
+-- import plugins from lua/plugins
 config.spec = { {
   import = 'plugins',
   cond = function()
@@ -11,7 +11,7 @@ config.spec = { {
   end,
 } }
 
--- I don't know what lua rocks are, disable it (undocumented (?))
+-- I don't know what lua rocks are, disable it
 config.rocks = { enabled = false }
 
 -- Also remove rockspec from pkg sources
@@ -47,5 +47,5 @@ config.performance = {
 
 -- config.profiling = { require = true }
 
--- configure lazy plugin
+-- configure lazy plugins
 require('lazy').setup(config)

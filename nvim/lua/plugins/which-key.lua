@@ -13,6 +13,7 @@ return {
         { 'g', group = 'goto' },
         { 'z', group = 'fold' },
         { '<leader>o', group = 'view/options', icon = { icon = '󰙵 ', color = 'cyan' } },
+        { '<leader>l', group = 'Save/Load Sessions' },
         { '<leader><tab>', group = 'tabs' },
         { '<leader>x', group = 'diagnostics/quickfix', icon = { icon = '󱖫 ', color = 'green' } },
         {
