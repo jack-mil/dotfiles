@@ -5,10 +5,10 @@
     "themeLinks": [],
     "eagerPatches": false,
     "enabledThemes": [
-        "catppuccin-macchiato-yellow.theme.css",
         "DisblockOrigin.theme.css",
         "mytheme.css",
-        "compactplusplus-clean.theme.css"
+        "compactplusplus-clean.theme.css",
+        "catppuccin-macchiato-lavender.theme.css"
     ],
     "enableReactDevtools": false,
     "frameless": true,
@@ -76,7 +76,7 @@
             "enabled": false
         },
         "BetterFolders": {
-            "enabled": true,
+            "enabled": false,
             "sidebar": true,
             "sidebarAnim": false,
             "closeAllFolders": false,
@@ -262,7 +262,7 @@
             "enabled": true,
             "lightness": 70,
             "memberListColors": false,
-            "applyColorOnlyToUsersWithoutColor": true,
+            "applyColorOnlyToUsersWithoutColor": false,
             "applyColorOnlyInDms": false
         },
         "KeepCurrentChannel": {
@@ -608,6 +608,6 @@
         "authenticated": false,
         "url": "https://api.vencord.dev/",
         "settingsSync": false,
-        "settingsSyncVersion": 1750523115973
+        "settingsSyncVersion": 1750623083675
     }
 }
