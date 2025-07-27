@@ -34,15 +34,19 @@ vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('my.lsp', {}),
   callback = function(ev)
     local client = assert(vim.lsp.get_client_by_id(ev.data.client_id))
+
     -- Enable auto-completion. Use CTRL-Y to select an item.
     if client:supports_method('textDocument/completion') then
       vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
+      -- Add noselect to completeopt, otherwise autocompletion is annoying
+      vim.opt.completeopt:append('noselect')
     end
+
     -- Auto-format ("lint") on save.
     -- Usually not needed if server supports "textDocument/willSaveWaitUntil".
     if
-      not client:supports_method('textDocument/willSaveWaitUntil')
-      and client:supports_method('textDocument/formatting')
+        not client:supports_method('textDocument/willSaveWaitUntil')
+        and client:supports_method('textDocument/formatting')
     then
       vim.api.nvim_create_autocmd('BufWritePre', {
         group = vim.api.nvim_create_augroup('my.lsp', { clear = false }),
@@ -52,11 +56,15 @@ vim.api.nvim_create_autocmd('LspAttach', {
         end,
       })
     end
+    -- Enable folds provided by LSP
+    if client:supports_method('textDocument/foldingRange') then
+      local win = vim.api.nvim_get_current_win()
+      vim.wo[win][0].foldexpr = 'v:lua.vim.lsp.foldexpr()'
+      vim.wo[win][0].foldcolumn = 'auto'
+    end
   end,
 })
 
--- Add noselect to completeopt, otherwise autocompletion is annoying
-vim.opt.completeopt:append('noselect')
 
 function Inspect_lsp_client()
   vim.ui.input({ prompt = 'Enter LSP Client name: ' }, function(client_name)
