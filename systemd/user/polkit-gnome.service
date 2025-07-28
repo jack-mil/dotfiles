@@ -1,0 +1,14 @@
+[Unit]
+Description=Simple GTK PolicyKit GUI Authentication Agent (doesn't really depend on GNOME)
+PartOf=graphical-session.target
+After=graphical-session.target
+Requisite=graphical-session.target
+
+[Service]
+ExecStart=/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+Slice=background.slice
+TimeoutStopSec=5sec
+Restart=on-failure
+
+[Install]
+WantedBy=niri.service

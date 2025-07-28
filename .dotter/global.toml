@@ -16,9 +16,14 @@
 [ghostty.files]
   ghostty = "~/.config/ghostty"
 
-[niri.files]
-  fuzzel = "~/.config/fuzzel"
-  niri   = "~/.config/niri"
+[units.files]
+  systemd = "~/.config/systemd"
+
+[niri]
+  depends = ["units"]
+  [niri.files]
+    fuzzel = "~/.config/fuzzel"
+    niri   = "~/.config/niri"
 
 [git]
   depends = ["shell", "ssh"]
