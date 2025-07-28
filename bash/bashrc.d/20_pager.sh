@@ -2,7 +2,7 @@
 
 # set smart-case for `less` search
 export LESS="--ignore-case --mouse --quit-if-one-screen \
-             --raw-control-chars --tilde --no-histdups"
+             --RAW-CONTROL-CHARS --wordwrap --tilde --no-histdups"
 
 export LESSHISTFILE="${XDG_STATE_HOME}/less_history"
 

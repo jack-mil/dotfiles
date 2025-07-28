@@ -14,11 +14,12 @@ environment {
   // QT on wayland
   QT_QPA_PLATFORM "wayland;xcb"
   QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
-  //Stupid electron apps
+  // Stupid electron apps
   ELECTRON_OZONE_PLATFORM_HINT "auto"
   ELECTRON_ENABLEWAYLAND "1"
   // Firefox
   MOZ_ENABLE_WAYLAND "1" 
+  // Interactive
   EDITOR "nvim"
   // To handle nerd-fonts icons correctly
   // defined here so kitty picks it up

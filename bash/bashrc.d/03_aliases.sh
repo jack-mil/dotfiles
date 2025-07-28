@@ -17,11 +17,11 @@ alias del='trash-put'
 
 alias fd='fd --hyperlink=auto'
 
-# Alias for kitty ssh kitten
-alias s='kitten ssh'
-
 # Pacman utils
 alias pacview='pacman -Qq | fzf --preview "pacman -Qil {}" --layout=reverse --preview-window="right,70%" --height=~80% --bind "enter:execute(pacman -Qil {} | less)"'
+
+# Alias for kitty ssh kitten
+alias s='kitten ssh'
 
 # Aliases for bat
 alias b='bat'
