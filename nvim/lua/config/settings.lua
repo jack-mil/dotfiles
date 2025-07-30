@@ -15,24 +15,25 @@ o.autoindent = true  -- Copy indent from current line when starting a new line.
 o.expandtab = true   -- In Insert mode: Use the appropriate number of spaces to insert a <Tab>.
 
 -- Appearance
-o.wrap = false          -- Line wrapping off by default (toggle with <leader>ow)
-o.linebreak = true      -- Break lines at reasonable place.
-o.breakindent = true    -- Preserve visual indentation on wrapped lines
-o.briopt = 'sbr'        -- Options for break indent, puts wrap char in first col
-o.number = true         -- Print the line number in front of each line
-o.relativenumber = true -- Show the line number relative to the line with the cursor in front of each line.
-o.signcolumn = 'number' -- Put signs (icons from plugins) in the number column, if present.
-o.cursorline = true     -- Highlight the screen line of the cursor with CursorLine.
-o.ruler = true          -- Show the line and column number of the cursor position, separated by a comma.
-o.showmatch = true      -- When a bracket is inserted, briefly jump to the matching one.
-o.laststatus = 3        -- (Single) global status bar (LuaLine)
-o.scrolloff = 10        -- Keep 10 lines above/below cursor
-o.sidescrolloff = 8     -- Keep 8 columns left/right of cursor
+o.wrap = false              -- Line wrapping off by default (toggle with <leader>ow)
+o.linebreak = true          -- Break lines at reasonable place.
+o.breakindent = true        -- Preserve visual indentation on wrapped lines
+o.briopt = 'sbr'            -- Options for break indent, puts wrap char in first col
+o.number = true             -- Print the line number in front of each line
+o.relativenumber = true     -- Show the line number relative to the line with the cursor in front of each line.
+o.signcolumn = 'number'     -- Put signs (icons from plugins) in the number column, if present.
+o.cursorline = true         -- Highlight the screen line of the cursor with CursorLine.
+o.ruler = true              -- Show the line and column number of the cursor position, separated by a comma.
+o.showmatch = true          -- When a bracket is inserted, briefly jump to the matching one.
+o.laststatus = 3            -- (Single) global status bar (LuaLine)
+o.scrolloff = 10            -- Keep 10 lines above/below cursor
+o.sidescrolloff = 8         -- Keep 8 columns left/right of cursor
 
-o.showcmd = true        -- Show (partial) command in the last line of the screen. Set this option off if your terminal is slow.
-o.showmode = false      -- Don't show the Insert/Replace/Visual mode, because using LuaLine plugin
-o.cmdheight = 0         -- Save some space on the bottom below the LuaLine
-if vim.g.vscode then    -- Weird work-around for code plugin (rarely used)
+o.showcmd = true            -- Show (partial) command in the last line of the screen.
+o.showcmdloc = 'statusline' -- Will fill the %S placeholder (in lualine status bar)
+o.showmode = false          -- Don't show the Insert/Replace/Visual mode, because using LuaLine plugin
+o.cmdheight = 0             -- Save some space on the bottom below the LuaLine
+if vim.g.vscode then        -- Weird work-around for code plugin (rarely used)
   o.cmdheight = 1
 end
 

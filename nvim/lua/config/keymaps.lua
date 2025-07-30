@@ -1,20 +1,20 @@
 -- Convenience function for setting all these key-bindings
-function map(mode, shortcut, command, opts)
+local function map(mode, shortcut, command, opts)
   opts = opts or {} -- Use an empty table if no options are provided
   local default_opts = { noremap = true, silent = true }
   opts = vim.tbl_deep_extend('force', default_opts, opts) -- Merge tables, with opts taking priority
   vim.keymap.set(mode, shortcut, command, opts)
 end
 
-function nmap(shortcut, command, opts)
+local function nmap(shortcut, command, opts)
   map('n', shortcut, command, opts)
 end
 
-function imap(shortcut, command, opts)
+local function imap(shortcut, command, opts)
   map('i', shortcut, command, opts)
 end
 
-function vmap(shortcut, command, opts)
+local function vmap(shortcut, command, opts)
   map('v', shortcut, command, opts)
 end
 
@@ -23,8 +23,9 @@ end
 vim.g.mapleader = ' ' -- <space>
 vim.g.maplocalleader = ' ' -- <space>
 
--- use jj to exit insert mode (not present in English)
+-- use jj/jk to exit insert mode (not present in English)
 imap('jj', '<Esc>')
+imap('jk', '<Esc>')
 
 -- type commands without Shift
 nmap(';', ':', { silent = false, desc = 'CMD enter mode (Ex)' })
@@ -44,7 +45,7 @@ nmap('<C-u>', '<C-u>zz', { desc = 'Half page up (centered)' })
 nmap('<up>', '<nop>')
 nmap('<down>', '<nop>')
 
-imap('<A-b>', '<C-o>dw') -- Delete word forward
+imap('<A-b>', '<C-o>dw') -- Delete word forward in insert mode (GNU Readline)
 
 imap('<C-e>', '<C-o>$') -- Emacs-style end of line in insert mode
 imap('<C-a>', '<C-o>0') -- Emacs-style start of line in insert mode
@@ -54,18 +55,18 @@ nmap('<leader>c', ':nohlsearch<CR>', { desc = 'Clear search highlights' })
 -- When forget to open with sudo
 map('c', 'w!!', 'execute "write !sudo tee % > /dev/null" <bar> edit!', { silent = false })
 
--- Insert newline above/below in normal mode
-nmap('<A-C-J>', 'mao<Esc>`a', { desc = 'Add newline above' })
-nmap('<A-C-K>', 'maO<Esc>`a', { desc = 'Add newline below' })
+-- Move Lines or Selection Up/Down (accepts <count> modifiers)
+nmap('<A-k>', "<cmd>exec 'move .-' . (v:count1 + 1)<cr>==", { desc = 'Move Up' })
+nmap('<A-j>', "<cmd>exec 'move .+' . v:count1<cr>==", { desc = 'Move Down' })
+-- imap('<A-j>', '<esc><cmd>m .+1<cr>==gi', { desc = 'Move Down' }) -- disabled insert mode version
+-- imap('<A-k>', '<esc><cmd>m .-2<cr>==gi', { desc = 'Move Up' })
+-- is smart about preserving current selection
+vmap('<A-j>', ":<C-u>exec \"'<,'>move '>+\" . v:count1<cr>gv=gv", { desc = 'Move Down' })
+vmap('<A-k>', ":<C-u>exec \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = 'Move Up' })
 
--- Move Lines
--- (these could probably be simpler but I don't know how to parse this...)
-nmap('<A-j>', "<cmd>execute 'move .+' . v:count1<cr>==", { desc = 'Move Down' })
-nmap('<A-k>', "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = 'Move Up' })
-imap('<A-j>', '<esc><cmd>m .+1<cr>==gi', { desc = 'Move Down' })
-imap('<A-k>', '<esc><cmd>m .-2<cr>==gi', { desc = 'Move Up' })
-vmap('<A-k>', ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = 'Move Up' })
-vmap('<A-j>', ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", { desc = 'Move Down' })
+-- Copy Line or selection Up/Down (accepts <count> modifiers)
+nmap('<A-K>', "<cmd>exec 'copy .-' . v:count1<cr>", { desc = 'Copy Line Up' })
+nmap('<A-J>', "<cmd>exec 'copy .+' . (v:count1 - 1)<cr>", { desc = 'Copy Line Down' })
 
 nmap('J', 'mzJ`z', { desc = 'Join line below and keep cursor position' })
 
@@ -179,13 +180,21 @@ nmap('<leader>oc', ':ColorizerToggle<cr>', { desc = 'Preview Colors (toggle)' })
 nmap('<leader>L', ':Lazy<cr>', { desc = 'Lazy Dashboard' })
 
 -- load the session for the current directory
-nmap("<leader>ls", function() require("persistence").load() end, { desc = 'Load last session for CWD' })
+nmap('<leader>ls', function()
+  require('persistence').load()
+end, { desc = 'Load last session for CWD' })
 
 -- select a session to load
-nmap("<leader>lS", function() require("persistence").select() end, { desc = 'Select session' })
+nmap('<leader>lS', function()
+  require('persistence').select()
+end, { desc = 'Select session' })
 
 -- load the last session
-nmap("<leader>ll", function() require("persistence").load({ last = true }) end, { desc = 'Load last session' })
+nmap('<leader>ll', function()
+  require('persistence').load({ last = true })
+end, { desc = 'Load last session' })
 
 -- stop Persistence => session won't be saved on exit
-nmap("<leader>ld", function() require("persistence").stop() end, { desc = 'Disable session saving' })
+nmap('<leader>ld', function()
+  require('persistence').stop()
+end, { desc = 'Disable session saving' })

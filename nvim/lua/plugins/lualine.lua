@@ -11,7 +11,7 @@ return {
       section_separators = { left = '', right = '' },
     },
     sections = {
-      lualine_a = { { 'mode', separator = { left = '' }, right_padding = 2 } },
+      lualine_a = { { 'mode', separator = { left = '' }, right_padding = 1 } },
       lualine_b = { 'branch', 'diff', 'diagnostics' },
       lualine_c = {
         {
@@ -22,9 +22,10 @@ return {
         },
       },
       lualine_x = {
-        { 'encoding', show_bomb = true },
-        { 'fileformat', symbols = { unix = 'LF', dos = 'CRLF', mac = 'CR' } },
+        '%S',
         'filetype',
+        { 'fileformat', symbols = { unix = 'LF', dos = 'CRLF', mac = 'CR' } },
+        { 'encoding', show_bomb = true },
       },
       lualine_y = { 'progress', 'selectioncount' },
       lualine_z = { { 'location', separator = { right = '' }, left_padding = 2 } },
