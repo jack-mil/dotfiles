@@ -17,6 +17,12 @@ Custom selection and order of git-graph colors
     ]
 ```
 
+```json
+"editorGutter.addedSecondaryBackground":"#a6d189",
+"editorGutter.modifiedSecondaryBackground": "#e5c890",
+"editorGutter.deletedSecondaryBackground": "#e78284"
+```
+
 indent rainbow ctp Frappe with 50% base mix
 ```json
     "indentRainbow.colors": [

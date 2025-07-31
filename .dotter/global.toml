@@ -63,10 +63,14 @@
 [mpv.files]
   mpv = "~/.config/mpv"
 
+[aria2.files]
+  aria2 = "~/.config/aria2"
+
 [media]
-  depends = ["mpv"]
+  depends = ["mpv", "aria2"]
   [media.files]
-    aria2 = "~/.config/aria2"
+    aria2      = "~/.config/aria2"
+    gallery-dl = "~/.config/gallery-dl"
 
 [arch.files]
   "pacman/aura.toml"    = "~/.config/aura/config.toml"
