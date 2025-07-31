@@ -1,6 +1,6 @@
 -- Convenience function for setting all these key-bindings
 local function map(mode, shortcut, command, opts)
-  opts = opts or {} -- Use an empty table if no options are provided
+  opts = opts or {}                                       -- Use an empty table if no options are provided
   local default_opts = { noremap = true, silent = true }
   opts = vim.tbl_deep_extend('force', default_opts, opts) -- Merge tables, with opts taking priority
   vim.keymap.set(mode, shortcut, command, opts)
@@ -20,7 +20,7 @@ end
 
 -- Set `mapleader` and `maplocalleader` before
 -- running lazy.nvim so that mappings are correct.
-vim.g.mapleader = ' ' -- <space>
+vim.g.mapleader = ' '      -- <space>
 vim.g.maplocalleader = ' ' -- <space>
 
 -- use jj/jk to exit insert mode (not present in English)
@@ -47,8 +47,8 @@ nmap('<down>', '<nop>')
 
 imap('<A-b>', '<C-o>dw') -- Delete word forward in insert mode (GNU Readline)
 
-imap('<C-e>', '<C-o>$') -- Emacs-style end of line in insert mode
-imap('<C-a>', '<C-o>0') -- Emacs-style start of line in insert mode
+imap('<C-e>', '<C-o>$')  -- Emacs-style end of line in insert mode
+imap('<C-a>', '<C-o>0')  -- Emacs-style start of line in insert mode
 
 nmap('<leader>c', ':nohlsearch<CR>', { desc = 'Clear search highlights' })
 
@@ -178,6 +178,12 @@ nmap('<C-F>', ':FzfLua live_grep_glob<cr>', { desc = 'Grep all files in project 
 nmap('<leader>oZ', ':Trim<cr>', { desc = 'Trim Trailing Whitespace' })
 nmap('<leader>oc', ':ColorizerToggle<cr>', { desc = 'Preview Colors (toggle)' })
 nmap('<leader>L', ':Lazy<cr>', { desc = 'Lazy Dashboard' })
+
+-- Treesitter / context
+nmap('<leader>ut', '<cmd>TSContext toggle<cr>', { desc = 'Toggle Treesitter Context' })
+nmap('[c', function()
+  require('treesitter-context').go_to_context(vim.v.count1)
+end, { desc = "Jump to outer context (up)" })
 
 -- load the session for the current directory
 nmap('<leader>ls', function()

@@ -1,6 +1,8 @@
 return {
   'folke/snacks.nvim',
-  opts = { explorer = {} },
+  opts = {
+    explorer = {},
+  },
   keys = {
     {
       '<leader>e',
