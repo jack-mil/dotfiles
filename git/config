@@ -74,11 +74,13 @@
   pushf = push --force-with-lease
   softadd = add --intent-to-add
   unstage = reset HEAD --
-  s = status
+  s = -p status 
   cm = commit
   br = branch
   co = checkout
   sw = switch
+  pr = "!gh pr"
+  repo = "!gh repo"
   oops = "!f(){ if [ $# -eq 0 ]; then \
         git commit --amend --no-edit; else \
         git commit --amend \"$@\"; fi; }; f"
