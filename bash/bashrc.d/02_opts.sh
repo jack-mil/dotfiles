@@ -18,5 +18,7 @@ shopt -s direxpand
 shopt -s checkjobs
 # preview history shortcut commands before running
 shopt -s histverify
+# stop fat-fingering CTRL-D
+shopt -s -o ignoreeof
 # limits recursive functions, see 'man bash'
 [[ -z "$FUNCNEST" ]] && export FUNCNEST=100   

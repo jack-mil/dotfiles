@@ -12,7 +12,6 @@ continuation_prompt = "[∙](dimmed flamingo) "
 format = """
 [╭ ](bold subtext0)\
 $shell\
-$shlvl\
 $username\
 $hostname\
 $localip\

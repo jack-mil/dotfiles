@@ -85,11 +85,11 @@
         git commit --amend --no-edit; else \
         git commit --amend \"$@\"; fi; }; f"
   # Use fzf for a fancy fixup picker, used with git rebase -i --autosquash 
-  fixup = "!git log --date=short -n 15 \
-          --format=\"%C(brightgreen)%cd %C(auto)%h%d %s %C(magenta)(%an)%Creset\" \
-          --graph --no-merges --color=always \
-          | fzf --accept-nth 3 --no-multi --ansi \
-          | xargs --open-tty -I% git commit --fixup=amend:%"
+  fixup = "!git log --date=short -n 30 \
+    --format=\"%C(brightgreen)%cd %C(auto)%h%d %s %C(magenta)(%an)%Creset\" \
+    --graph --no-merges --color=always \
+    | fzf --height=50% --layout=reverse --accept-nth 3 --no-multi --ansi --ghost=\"Select Commit to amend\" \
+    | xargs --open-tty -I% git commit --fixup=amend:%"
     
 
 # URL Shortcuts
