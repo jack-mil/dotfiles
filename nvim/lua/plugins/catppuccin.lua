@@ -1,4 +1,5 @@
 -- Colorscheme
+-- https://github.com/catppuccin/nvim
 return {
   'catppuccin/nvim',
   name = 'catppuccin',
@@ -7,6 +8,7 @@ return {
   opts = {
     flavour = 'frappe',                 -- latte, frappe, macchiato, mocha
     transparent_background = true,      -- important
+    float = { transparent = true },
     dim_inactive = { enabled = false }, -- doesn't work with transparent bg
     background = {                      -- :h background
       light = 'latte',
@@ -17,25 +19,18 @@ return {
     term_colors = true,
     default_integrations = false,
     integrations = {
-      fzf = true,
-      which_key = true,
       leap = true,
-      dashboard = true,
+      which_key = true,
+      fzf = true,
       semantic_tokens = true,
       treesitter = true,
       treesitter_context = true,
-      neotree = false,   -- Plugin removed
-      indent_blankline = {
-        enabled = false, -- Plugin removed
-        colored_indent_levels = true,
-      },
       colorful_winsep = {
-        enabled = false, -- Plugin removed
-        color = 'yellow',
+        enabled = true,
+        color = 'sapphire',
       },
       snacks = {
         enabled = true,
-        picker_style = "nvchad",
       },
       native_lsp = {
         enabled = true,

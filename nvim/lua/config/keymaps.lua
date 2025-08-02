@@ -6,17 +6,14 @@ local function map(mode, shortcut, command, opts)
   vim.keymap.set(mode, shortcut, command, opts)
 end
 
-local function nmap(shortcut, command, opts)
-  map('n', shortcut, command, opts)
-end
+-- Normal mode
+local function nmap(...) map('n', ...) end
 
-local function imap(shortcut, command, opts)
-  map('i', shortcut, command, opts)
-end
+-- Insert mode
+local function imap(...) map('i', ...) end
 
-local function vmap(shortcut, command, opts)
-  map('v', shortcut, command, opts)
-end
+-- Visual (and select) mode
+local function vmap(...) map('v', ...) end
 
 -- Set `mapleader` and `maplocalleader` before
 -- running lazy.nvim so that mappings are correct.
@@ -26,9 +23,6 @@ vim.g.maplocalleader = ' ' -- <space>
 -- use jj/jk to exit insert mode (not present in English)
 imap('jj', '<Esc>')
 imap('jk', '<Esc>')
-
--- type commands without Shift
-nmap(';', ':', { silent = false, desc = 'CMD enter mode (Ex)' })
 
 -- move up/down by displayed lines (wrapped) if no count given
 -- in visual and normal mode
@@ -49,8 +43,6 @@ imap('<A-b>', '<C-o>dw') -- Delete word forward in insert mode (GNU Readline)
 
 imap('<C-e>', '<C-o>$')  -- Emacs-style end of line in insert mode
 imap('<C-a>', '<C-o>0')  -- Emacs-style start of line in insert mode
-
-nmap('<leader>c', ':nohlsearch<CR>', { desc = 'Clear search highlights' })
 
 -- When forget to open with sudo
 map('c', 'w!!', 'execute "write !sudo tee % > /dev/null" <bar> edit!', { silent = false })
@@ -90,11 +82,6 @@ nmap('<C-h>', '<C-w>h', { desc = 'Move to left window' })
 nmap('<C-j>', '<C-w>j', { desc = 'Move to bottom window' })
 nmap('<C-k>', '<C-w>k', { desc = 'Move to top window' })
 nmap('<C-l>', '<C-w>l', { desc = 'Move to right window' })
--- nmap('<leader>pv', '<C-w>v', { desc = 'Split Vertically', silent = false })
--- nmap('<leader>ph', '<C-w>s', { desc = 'Split Horizontally', silent = false })
--- nmap('<leader>pe', '<C-w>=', { desc = 'Equal Split', silent = false })
--- nmap('<leader>px', ':close<CR>', { desc = 'Close split', silent = false })
--- nmap('<leader>po', ':only<CR>', { desc = 'Single Pane', silent = false })
 
 -- Buffers
 nmap('<Tab>', ':bnext<cr>')
@@ -118,17 +105,17 @@ nmap('<leader><tab>d', '<cmd>tabclose<cr>', { desc = 'Close Tab' })
 nmap('<leader><tab>[', '<cmd>tabprevious<cr>', { desc = 'Previous Tab' })
 -- g<Tab>, gt, and gT already navigate between tabs
 
--- Nvim Options and Commands
-nmap('<leader>ow', ':set invwrap<cr>', { desc = 'Toggle Wrap Lines' })
-nmap('<leader>ol', ':set invlinebreak<cr>', { desc = 'Toggle Break Lines (wrap)' })
-nmap('<leader>oh', ':set invhlsearch<cr>', { desc = 'Toggle Search Highlight', silent = false })
-nmap('<leader>oz', ':set invlist<cr>', { desc = 'Toggle Show Whitespace' })
-nmap('<leader>os', ':set invspell<cr>', { desc = 'Toggle Spell Check' })
-nmap('<leader>op', ':pwd<cr>', { desc = 'Current Working Directory', silent = false })
+-- Neovim Options and Commands
+nmap('<leader>ow', '<cmd>set invwrap<cr>', { desc = 'Toggle Wrap Lines' })
+nmap('<leader>ol', '<cmd>set invlinebreak<cr>', { desc = 'Toggle Break Lines (wrap)' })
+nmap('<leader>oh', '<cmd>set invhlsearch<cr>', { desc = 'Toggle Search Highlight' })
+nmap('<leader>oz', '<cmd>set invlist<cr>', { desc = 'Toggle Show Whitespace' })
+nmap('<leader>os', '<cmd>set invspell<cr>', { desc = 'Toggle Spell Check' })
+nmap('<leader>op', '<cmd>pwd<cr>', { desc = 'Current Working Directory', silent = false })
 
 -- Less Style keybindings for help/man pages
 -- (because I can't break muscle memory)
-vim.api.nvim_create_autocmd('BufWinEnter', {
+vim.api.nvim_create_autocmd({ 'BufWinEnter' }, {
   callback = function(args)
     local bufnr = args.buf
     local buf = vim.bo[bufnr]
@@ -173,11 +160,47 @@ nmap('<C-O>', ':FzfLua files<cr>', { desc = 'Fuzzy select files in cwd' })
 nmap('<C-P>', ':FzfLua builtin<cr>', { desc = 'Command pallet' })
 nmap('<F1>', ':FzfLua helptags<cr>', { desc = 'Neovim Help Tags' })
 nmap('<C-\\>', ':FzfLua buffers<cr>', { desc = 'Fuzzy select open buffers' })
-nmap('<C-F>', ':FzfLua live_grep_glob<cr>', { desc = 'Grep all files in project (Glob)' })
+nmap('<C-F>', ':FzfLua live_grep<cr>', { desc = 'Grep all files in project' })
 
 nmap('<leader>oZ', ':Trim<cr>', { desc = 'Trim Trailing Whitespace' })
+-- RGB hex colors
 nmap('<leader>oc', ':ColorizerToggle<cr>', { desc = 'Preview Colors (toggle)' })
+
+-- Lazy dashboard
 nmap('<leader>L', ':Lazy<cr>', { desc = 'Lazy Dashboard' })
+
+
+-- leap.nvim bindings (https://github.com/ggandor/leap.nvim)
+map({ 'n', 'x', 'o' }, 's', '<Plug>(leap)', { desc = 'Leap (forward/backward)' })
+map('n', 'S', '<Plug>(leap-from-window)', { desc = 'Leap to other windows' })
+map({ 'x', 'o' }, 'x', '<Plug>(leap-forward-till)', { desc = 'Extend selection forward (leap)' })
+map({ 'x', 'o' }, 'X', '<Plug>(leap-backward-till)', { desc = 'Extend selection backward (leap)' })
+map({ 'n', 'x', 'o' }, 'gs', function() require('leap.remote').action() end, { desc = "Leap remote action" })
+do
+  -- Create remote versions of all a/i text objects by inserting `r`
+  -- into the middle (`iw` becomes `irw`, etc.).
+  -- A trick to avoid having to create separate hardcoded mappings for
+  -- each text object: when entering `ar`/`ir`, consume the next
+  -- character, and create the input from that character concatenated to
+  -- `a`/`i`.
+  local remote_text_object = function(prefix)
+    local ok, ch = pcall(vim.fn.getcharstr) -- pcall for handling <C-c>
+    if not ok or (ch == vim.keycode('<esc>')) then
+      return
+    end
+    require('leap.remote').action { input = prefix .. ch }
+  end
+  map({ 'x', 'o' }, 'ar', function() remote_text_object('a') end, { desc = "Around remote object" })
+  map({ 'x', 'o' }, 'ir', function() remote_text_object('i') end, { desc = "Inner remote object" })
+end
+map({ 'x', 'o' }, 'R', function()
+  require('leap.treesitter').select {
+    -- To increase/decrease the selection in a clever-f-like manner,
+    -- with the trigger key itself (vRRRRrr...). The default keys
+    -- (<enter>/<backspace>) also work, so feel free to skip this.
+    opts = require('leap.user').with_traversal_keys('R', 'r')
+  }
+end, { desc = "Leap treesitter nodes" })
 
 -- Treesitter / context
 nmap('<leader>ut', '<cmd>TSContext toggle<cr>', { desc = 'Toggle Treesitter Context' })

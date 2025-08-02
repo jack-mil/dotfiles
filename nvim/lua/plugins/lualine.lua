@@ -25,7 +25,7 @@ return {
         '%S',
         'filetype',
         { 'fileformat', symbols = { unix = 'LF', dos = 'CRLF', mac = 'CR' } },
-        { 'encoding', show_bomb = true },
+        { 'encoding',   show_bomb = true },
       },
       lualine_y = { 'progress', 'selectioncount' },
       lualine_z = { { 'location', separator = { right = '' }, left_padding = 2 } },
@@ -33,7 +33,7 @@ return {
 
     tabline = {
       lualine_a = { { 'buffers', use_mode_colors = true } },
-      lualine_z = { { 'tabs', use_mode_colors = true, symbols = { modified = '' } } },
+      lualine_z = { { 'tabs', use_mode_colors = true, separator = { right = '', left = '' }, symbols = { modified = '' } } },
     },
   },
 }

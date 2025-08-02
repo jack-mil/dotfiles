@@ -6,7 +6,11 @@ local mygroup = vim.api.nvim_create_augroup('UserAutoCmds', { clear = true })
 -- Set up autocmd and highlight group to show trailing whitespace
 -- Create new highlight group (inherits Error style)
 vim.api.nvim_set_hl(0, 'TrailingWhitespace', { link = 'Error' })
-vim.cmd([[match TrailingWhitespace /\_s\+$/]])
+-- vim.cmd([[match TrailingWhitespace /\_s\+$/]])
+-- Trailing whitespaces
+vim.fn.matchadd('TrailingWhitespace', '\\s\\+$')
+-- Trailing empty lines
+vim.fn.matchadd('TrailingWhitespace', '^\\_s*\\%$')
 
 -- Disable trailing space highlight when enter insert mode
 autocmd('InsertEnter', {

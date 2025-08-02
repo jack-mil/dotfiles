@@ -44,23 +44,42 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
     -- Auto-format ("lint") on save.
     -- Usually not needed if server supports "textDocument/willSaveWaitUntil".
+    -- TODO: find out what this means....?
     if
-      not client:supports_method('textDocument/willSaveWaitUntil')
-      and client:supports_method('textDocument/formatting')
+    -- not client:supports_method('textDocument/willSaveWaitUntil')
+        client:supports_method('textDocument/formatting')
     then
       vim.api.nvim_create_autocmd('BufWritePre', {
-        group = vim.api.nvim_create_augroup('my.lsp', { clear = false }),
         buffer = ev.buf,
         callback = function()
           vim.lsp.buf.format({ bufnr = ev.buf, id = client.id, timeout_ms = 1000 })
         end,
+        desc = "Format on buffer write"
       })
     end
+
     -- Enable folds provided by LSP
-    if client:supports_method('textDocument/foldingRange') then
+    if client.server_capabilities.foldingRangeProvider then
       local win = vim.api.nvim_get_current_win()
       vim.wo[win][0].foldexpr = 'v:lua.vim.lsp.foldexpr()'
       vim.wo[win][0].foldcolumn = 'auto'
+    end
+
+    -- Enable/Disable inlay hints on insert enter/leave
+    if client.server_capabilities.inlayHintProvider then
+      vim.api.nvim_create_autocmd("InsertEnter", {
+        buffer = ev.buf,
+        callback = function() vim.lsp.inlay_hint.enable(false) end
+      })
+      vim.api.nvim_create_autocmd({ "InsertLeave", "LspNotify" }, {
+        buffer = ev.buf,
+        callback = function() vim.lsp.inlay_hint.enable(true) end
+      })
+      -- Add a keymap as well
+      vim.keymap.set('n', '<leader>oi', -- group = vim.api.nvim_create_augroup('my.lsp', { clear = false }),
+        function()
+          vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ 0 }), { 0 })
+        end, { buffer = ev.buf, desc = "Toggle LSP Inlay Hints" })
     end
   end,
 })
