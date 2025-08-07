@@ -54,7 +54,8 @@ export FZF_DEFAULT_OPTS=" \
   --height=60% \
   --tmux=bottom,40% \
   --border=none \
-  --cycle --multi"
+  --cycle \
+  --multi"
   # --preview-border=rounded \
   # --list-border=rounded \
   # --header-border=rounded \
