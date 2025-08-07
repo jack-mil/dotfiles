@@ -72,13 +72,16 @@ output "HDMI-A-1" {
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Layout
 layout {
     empty-workspace-above-first // keep free worskpace above _and_ below
+
     // in logical pixels.
     gaps 5
 
     // Slight gaps on left/right that shows windows off-screen
     struts {
-        left 15
-        right 15
+        left 10
+        right 10
+        top -5
+        bottom -5
     }
 
     // When to center a column when changing focus, options are:
@@ -218,12 +221,12 @@ layer-rule {
     match namespace="^launcher$"
     shadow { on; }
     // Fuzzel set to 10 px rounded corners.
-    geometry-corner-radius 8
+    geometry-corner-radius 10
 }
 
 layer-rule {
     match namespace="^waybar$"
-    place-within-backdrop true
+    // place-within-backdrop true
 }
 
 // Animation settings.
@@ -237,7 +240,7 @@ binds {
     
     // Logout to session manager
     // will show a confirmation dialog to avoid accidental exits.
-    Mod+Shift+E { quit; }
+    Mod+Shift+E { spawn "wlogout"; }
     Ctrl+Alt+Delete { quit; }
 
     // Powers off monitors. Any input to turn back on
@@ -252,11 +255,13 @@ binds {
 
     Mod+Shift+F12 { spawn "sh" "-c" "if systemctl --user is-active swaybg.service ; then systemctl --user stop swaybg.service ; swaybg -i ~/pictures/Wallpaper/space_noedge.jpg & else pkill 'swaybg'; systemctl --user start swaybg.service; notify-send 'Restored'; fi"; }
     
-    // Volumne keys
-    XF86AudioRaiseVolume allow-when-locked=true { spawn "swayosd-client" "--output-volume" "+5"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn "swayosd-client" "--output-volume" "-5"; }
-    XF86AudioMute        allow-when-locked=true { spawn "swayosd-client" "--output-volume" "mute-toggle"; }
-    XF86AudioMicMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+    // Device keys
+    XF86AudioRaiseVolume  allow-when-locked=true { spawn "swayosd-client" "--output-volume" "+5"; }
+    XF86AudioLowerVolume  allow-when-locked=true { spawn "swayosd-client" "--output-volume" "-5"; }
+    XF86AudioMute         allow-when-locked=true { spawn "swayosd-client" "--output-volume" "mute-toggle"; }
+    XF86AudioMicMute      allow-when-locked=true { spawn "swayosd-client" "--input-volume" "mute-togge"; }
+    XF86MonBrightnessUp   allow-when-locked=true { spawn "swayosd-client" "--brightness" "raise"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "swayosd-client" "--brightness" "lower";}
 
     // Open/close the Overview
     Mod+O repeat=false { toggle-overview; }
@@ -453,18 +458,15 @@ binds {
     // rather than stacked on top of each other.
     Mod+W { toggle-column-tabbed-display; }
 
-    // Actions to switch keyboard layouts.
-    // Note: if you uncomment these, make sure you do NOT have
-    // a matching layout switch hotkey configured in xkb options above.
-    // Having both at once on the same hotkey will break the switching,
-    // since it will switch twice upon pressing the hotkey (once by xkb, once by niri).
-    // Mod+Space       { switch-layout "next"; }
-    // Mod+Shift+Space { switch-layout "prev"; }
+    // Desktop "Shell" interations and features
 
+    Mod+F12 { spawn "sh" "-c" r#"makoctl mode -t do-not-disturb && makoctl mode | rg -q 'do-not-disturb' && notify-send "Silenced notifications" || notify-send "Enabled notifications"
+      default"#; }
     Print { screenshot-screen write-to-disk=true show-pointer=false; }
     Mod+Shift+S { screenshot show-pointer=false; }
     Mod+Ctrl+Shift+S { spawn "sh" "-c" r#"niri msg action screenshot-window --id="$(niri msg --json pick-window | jq .id)""#; }
 
+    Mod+Shift+C { spawn "sh" "-c" r#"pkill hyprpicker || hyprpicker -a"#; }
     // Applications such as remote-desktop clients and software KVM switches may
     // request that niri stops processing the keyboard shortcuts defined here
     // so they may, for example, forward the key presses as-is to a remote machine.
