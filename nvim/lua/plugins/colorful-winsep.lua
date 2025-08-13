@@ -3,6 +3,7 @@
 -- https://github.com/nvim-zh/colorful-winsep.nvim
 return {
   'nvim-zh/colorful-winsep.nvim',
+  branch = 'main',
   event = { 'WinLeave' },
   config = true,
   opts = {

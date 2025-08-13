@@ -8,9 +8,9 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter",
-    enabled = false,
+    enabled = true,
     lazy = false,
-    branch = 'main', -- last release is way too old and doesn't work on Windows
+    branch = 'main',
     build = ":TSUpdate",
     keys = {
       { "<c-space>", desc = "Increment Selection" },
@@ -19,32 +19,7 @@ return {
     opts = {
       highlight = { enable = true, additional_vim_regex_highlighting = false },
       indent = { enable = true },
-      ensure_installed = {
-        "bash",
-        "c",
-        "diff",
-        "html",
-        "javascript",
-        "jsdoc",
-        "json",
-        "jsonc",
-        "lua",
-        "luadoc",
-        "luap",
-        "markdown",
-        "markdown_inline",
-        "printf",
-        "python",
-        "query",
-        "regex",
-        "toml",
-        "tsx",
-        "typescript",
-        "vim",
-        "vimdoc",
-        "xml",
-        "yaml",
-      },
+      auto_install = true,
       incremental_selection = {
         enable = true,
         keymaps = {

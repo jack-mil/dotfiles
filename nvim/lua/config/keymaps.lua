@@ -20,11 +20,15 @@ local function vmap(...) map('v', ...) end
 vim.g.mapleader = ' '      -- <space>
 vim.g.maplocalleader = ' ' -- <space>
 
+-- disable navigation by arrow keys
+nmap('<up>', '<nop>')
+nmap('<down>', '<nop>')
+
 -- use jj/jk to exit insert mode (not present in English)
 imap('jj', '<Esc>')
 imap('jk', '<Esc>')
 
--- move up/down by displayed lines (wrapped) if no count given
+-- Move up/down by displayed lines (wrapped) if no count given
 -- in visual and normal mode
 map({ 'n', 'v' }, 'j', [[v:count == 0 ? 'gj' : 'j']], { expr = true })
 map({ 'n', 'v' }, 'k', [[v:count == 0 ? 'gk' : 'k']], { expr = true })
@@ -35,17 +39,13 @@ nmap('N', 'Nzzzv', { desc = 'Previous search result (centered)' })
 nmap('<C-d>', '<C-d>zz', { desc = 'Half page down (centered)' })
 nmap('<C-u>', '<C-u>zz', { desc = 'Half page up (centered)' })
 
--- disable navigation by arrow keys
-nmap('<up>', '<nop>')
-nmap('<down>', '<nop>')
-
 imap('<A-b>', '<C-o>dw') -- Delete word forward in insert mode (GNU Readline)
 
 imap('<C-e>', '<C-o>$')  -- Emacs-style end of line in insert mode
 imap('<C-a>', '<C-o>0')  -- Emacs-style start of line in insert mode
 
--- When forget to open with sudo
-map('c', 'w!!', 'execute "write !sudo tee % > /dev/null" <bar> edit!', { silent = false })
+-- delete with 'x' without saving to register
+nmap('x', '"_x')
 
 -- Move Lines or Selection Up/Down (accepts <count> modifiers)
 nmap('<A-k>', "<cmd>exec 'move .-' . (v:count1 + 1)<cr>==", { desc = 'Move Up' })
@@ -66,16 +66,19 @@ nmap('J', 'mzJ`z', { desc = 'Join line below and keep cursor position' })
 nmap('gco', 'o<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>', { desc = 'Add Comment Below' })
 nmap('gcO', 'O<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>', { desc = 'Add Comment Above' })
 
--- Indent
+-- Retain visual selection after indent/un-indent
 vmap('<', '<gv', { desc = 'Indent left and reselect' })
 vmap('>', '>gv', { desc = 'Indent right and reselect' })
 
--- buffer save/write Keymaps
-nmap('<leader>q', ':q<cr>', { desc = 'QUIT FILE' })
-nmap('<leader>Q', ':confirm qa<cr>', { desc = 'FORCE QUIT FILE' })
-nmap('<leader>w', ':w<cr>', { desc = 'Write File' })
-nmap('<leader>W', ':wa<cr>', { desc = 'Force Write File' })
+-- Buffer save/write Keymaps
+nmap('<leader>q', ':q<cr>', { desc = 'Close Buffer' })
+nmap('<leader>Q', ':confirm qa<cr>', { desc = 'Force Close Buffer' })
+nmap('<leader>w', ':w<cr>', { desc = 'Write Buffer' })
+nmap('<leader>W', ':wa<cr>', { desc = 'Force Write Buffer' })
 nmap('<leader>M', ':messages<cr>', { desc = 'Show Messages' })
+
+-- When forget to open with sudo (should use sudoedit)
+map('c', 'w!!', 'execute "write !sudo tee % > /dev/null" <bar> edit!', { silent = false })
 
 -- Splits and Windows
 nmap('<C-h>', '<C-w>h', { desc = 'Move to left window' })
@@ -83,11 +86,15 @@ nmap('<C-j>', '<C-w>j', { desc = 'Move to bottom window' })
 nmap('<C-k>', '<C-w>k', { desc = 'Move to top window' })
 nmap('<C-l>', '<C-w>l', { desc = 'Move to right window' })
 
+-- Resize with arrows
+nmap('<Up>', ':resize -2<CR>', { desc = 'Decrease window height' })
+nmap('<Down>', ':resize +2<CR>', { desc = 'Increase window height' })
+nmap('<Left>', ':vertical resize -2<CR>', { desc = 'Decrease window width' })
+nmap('<Right>', ':vertical resize +2<CR>', { desc = 'Increase window width' })
+
 -- Buffers
 nmap('<Tab>', ':bnext<cr>')
 nmap('<S-Tab>', ':bprevious<cr>')
-nmap('<left>', ':bprevious<cr>')
-nmap('<right>', ':bnext<cr>')
 nmap('<leader>bn', ':bnext<cr>', { desc = 'Next Buffer' })
 nmap('<leader>bp', ':bprevious<cr>', { desc = 'Previous Buffer' })
 nmap('<leader>bl', ':blast<cr>', { desc = 'Last Buffer' })

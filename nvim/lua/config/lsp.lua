@@ -70,14 +70,14 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
     -- Enable/Disable inlay hints on insert enter/leave
     if client.server_capabilities.inlayHintProvider then
-      vim.api.nvim_create_autocmd("InsertEnter", {
-        buffer = ev.buf,
-        callback = function() vim.lsp.inlay_hint.enable(false) end
-      })
-      vim.api.nvim_create_autocmd({ "InsertLeave", "LspNotify" }, {
-        buffer = ev.buf,
-        callback = function() vim.lsp.inlay_hint.enable(true) end
-      })
+      -- vim.api.nvim_create_autocmd("InsertEnter", {
+      --   buffer = ev.buf,
+      --   callback = function() vim.lsp.inlay_hint.enable(false) end
+      -- })
+      -- vim.api.nvim_create_autocmd("InsertLeave" , {
+      --   buffer = ev.buf,
+      --   callback = function() vim.lsp.inlay_hint.enable(true) end
+      -- })
       -- Add a keymap as well
       vim.keymap.set('n', '<leader>oi', -- group = vim.api.nvim_create_augroup('my.lsp', { clear = false }),
         function()
