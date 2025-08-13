@@ -6,6 +6,7 @@ return {
   event = { 'WinLeave' },
   config = true,
   opts = {
-    only_line_seq = false, -- highlight top if left window selected
+    border = "single",
+    animate = { enabled = false },
   },
 }

@@ -113,6 +113,8 @@ nmap('<leader>oz', '<cmd>set invlist<cr>', { desc = 'Toggle Show Whitespace' })
 nmap('<leader>os', '<cmd>set invspell<cr>', { desc = 'Toggle Spell Check' })
 nmap('<leader>op', '<cmd>pwd<cr>', { desc = 'Current Working Directory', silent = false })
 
+nmap('<leader>d', vim.diagnostic.open_float, { desc = "Open diagnostic floating window" })
+
 -- Less Style keybindings for help/man pages
 -- (because I can't break muscle memory)
 vim.api.nvim_create_autocmd({ 'BufWinEnter' }, {

@@ -27,7 +27,7 @@ return {
       treesitter_context = true,
       colorful_winsep = {
         enabled = true,
-        color = 'sapphire',
+        color = 'mauve',
       },
       snacks = {
         enabled = true,
