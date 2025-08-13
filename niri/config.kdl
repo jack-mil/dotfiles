@@ -52,7 +52,7 @@ input {
     touchpad { tap; natural-scroll; }
     // trackpoint { }
     
-    // Uncomment this to make the mouse warp to the center of newly focused windows.
+    // Make the mouse warp to the center of newly focused windows.
     warp-mouse-to-focus
 
     // Focus windows and outputs automatically when moving the mouse into them.
@@ -74,14 +74,14 @@ layout {
     empty-workspace-above-first // keep free worskpace above _and_ below
 
     // in logical pixels.
-    gaps 5
-
+    gaps 10
+    
     // Slight gaps on left/right that shows windows off-screen
     struts {
         left 10
         right 10
-        top -5
-        bottom -5
+        top -10
+        bottom -10
     }
 
     // When to center a column when changing focus, options are:
@@ -150,8 +150,9 @@ layout {
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Window-Rules
 // Enable rounded corners for all windows.
 window-rule {
-    geometry-corner-radius 8 
+    geometry-corner-radius 6 
     clip-to-geometry true
+    draw-border-with-background false
 }
 
 // All floating window styling (orange border)
