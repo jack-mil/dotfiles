@@ -84,8 +84,6 @@
 [media]
   depends = ["mpv", "aria2"]
   [media.files]
-    aria2      = "~/.config/aria2"
-    gallery-dl = "~/.config/gallery-dl"
 
 [arch.files]
   "pacman/aura.toml"    = "~/.config/aura/config.toml"

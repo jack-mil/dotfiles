@@ -63,9 +63,9 @@ input {
 // `niri msg outputs
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
 // Vizio TV
-output "HDMI-A-1" {
+output "DP-3" {
     mode "3840x2160@23.976"
-    scale 1
+    scale 2
 }
 
 // Settings that influence how windows are positioned and sized.
@@ -74,14 +74,14 @@ layout {
     empty-workspace-above-first // keep free worskpace above _and_ below
 
     // in logical pixels.
-    gaps 10
+    gaps 8
     
     // Slight gaps on left/right that shows windows off-screen
     struts {
         left 10
         right 10
-        top -10
-        bottom -10
+        top -8
+        bottom -8
     }
 
     // When to center a column when changing focus, options are:
@@ -187,9 +187,10 @@ window-rule {
     default-floating-position x=32 y=32 relative-to="bottom-right" 
 }
 
-// Audio dialog
+// Small applets
 window-rule {
   match app-id=r#"(org\.pulseaudio\.pavucontrol)$"#
+  match app-id=r#"(org\.gnome\.Calculator)$"#
   open-floating true
 }
 
@@ -197,6 +198,15 @@ window-rule {
 window-rule {
   match app-id="gimp"
   default-column-width { proportion 1.0; }
+}
+
+// Kitty terminal as a popup menu
+window-rule {
+  match app-id="menu"
+  open-floating true
+  open-focused true
+  // default-window-height { proportion 0.25; }
+  default-column-width { fixed 1000; }
 }
 
 // spotify_player TUI launched in kitty with custom app-id
