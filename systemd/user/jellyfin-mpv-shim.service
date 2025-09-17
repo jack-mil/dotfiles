@@ -1,7 +1,7 @@
 [Unit]
 Description=Jellyfin MPV Shim - MPV Cast Client for Jellyfin
 StartLimitBurst=1
-StartLimitIntervalSec=30s
+StartLimitIntervalSec=20s
 Requisite=graphical-session.target
 After=graphical-session.target
 After=network-online.target
@@ -11,7 +11,7 @@ Type=simple
 ExecCondition=bash -c "jq '.[0].address' "${XDG_CONFIG_HOME:-%h/.config}"/jellyfin-mpv-shim/cred.json | xargs -- curl --head --silent --fail || exit 255"; echo $?
 ExecStart=/usr/bin/jellyfin-mpv-shim
 Restart=on-failure
-RestartSec=30
+RestartSec=20
 # Hardening
 SystemCallArchitectures=native
 NoNewPrivileges=true

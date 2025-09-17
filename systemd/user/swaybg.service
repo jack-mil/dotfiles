@@ -4,7 +4,9 @@ After=graphical-session.target
 Requisite=graphical-session.target
 
 [Service]
-ExecStart=/usr/bin/swaybg -o * -m fill -i "%h/pictures/Wallpaper/zinbei_wall_original_1920x1080_downscaled.png" -o HDMI-A-1 -m fill -i "%h/pictures/Wallpaper/art1.png"
+ExecStart=/usr/bin/swaybg -o * -m fill -i "%h/pictures/Wallpaper/art1.png"
+# -m fill -i "%h/pictures/Wallpaper/zinbei_wall_original_1920x1080_downscaled.png" 
+# -o HDMI-A-1 -m fill -i "%h/pictures/Wallpaper/art1.png"
 Restart=on-failure
 Slice=background.slice
 
