@@ -14,7 +14,7 @@
 
 [opener]
   play-inline = [
-    { block = true, desc = "mpv in terminal", for = "linux", run = 'mpv --vo=kitty --vo-kitty-use-shm=yes --really-quiet "$@"' },
+    { block = true, desc = "mpv in terminal", for = "linux", run = 'mpv --profile=sw-fast --vo=kitty --vo-kitty-use-shm=yes --really-quiet "$@"' },
   ]
 
 [open]
