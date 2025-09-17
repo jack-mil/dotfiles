@@ -1,0 +1,20 @@
+#!/usr/bin/env sh
+output_name=$(niri msg --json outputs \
+  | jq -r  'to_entries | sort_by(.key) | .[].value | [ .model, .make, .name ] | @tsv' \
+  | fzf +m +s --tac --layout=reverse --delimiter="\t" --with-nth='{1} • {2} [{3}]' --accept-nth 3)
+
+[ -z "$output_name" ] && echo "No output selected." && exit 1
+
+mode=$(niri msg --json outputs \
+  | jq -r --arg name "$output_name" '
+      .[$name].modes[]
+      | [ .width, .height, .refresh_rate/1000.000 ] 
+      | @sh' \
+  | xargs printf "%dx%d@%.3f\n" \
+  | sort -n - \
+  | fzf +m +s --tac --layout=reverse)
+
+[ -z "$mode" ] && echo "No mode selected." && exit 1
+
+notify-send "Setting mode for $output_name to $mode"
+niri msg output ${output_name} mode ${mode}
