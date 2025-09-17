@@ -9,6 +9,6 @@ return {
   root_markers = { 'zls.json', 'build.zig', '.git' },
   workspace_required = false,
   settings = {
-    zls = { semantic_tokens = 'partial', build_on_save = true }
-  }
+    zls = { semantic_tokens = 'partial', build_on_save = true },
+  },
 }

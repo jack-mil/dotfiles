@@ -9,12 +9,11 @@ return {
       sources = {
         explorer = {
           layout = {
-            layout =
-            { position = "right" }
-          }
-        }
-      }
-    }
+            layout = { position = 'right' },
+          },
+        },
+      },
+    },
   },
   keys = {
     {

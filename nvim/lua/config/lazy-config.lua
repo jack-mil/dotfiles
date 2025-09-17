@@ -4,12 +4,16 @@
 local config = {} -- Lazy config table
 
 -- import plugins from lua/plugins
-config.spec = { {
-  import = 'plugins',
-  cond = function()
-    return not vim.g.vscode
-  end,
-} }
+config.spec = {
+  {
+    import = 'plugins',
+    cond = function()
+      -- I don't really use the NVIM Code extension,
+      -- but the few times I tried, plugins caused issues...
+      return not vim.g.vscode
+    end,
+  },
+}
 
 -- I don't know what lua rocks are, disable it
 config.rocks = { enabled = false }
@@ -34,13 +38,13 @@ config.ui = { border = 'rounded', backdrop = 80 }
 config.performance = {
   rtp = {
     disabled_plugins = {
-        -- 'gzip', 'tarPlugin', 'tohtml', 'zipPlugin', 
---       '2html_plugin', 'getscript', 'getscriptPlugin', 'gzip',
---       'logipat', 'man', 'matchit', 'matchparen', 'netrw',
---       'netrwFileHandlers', 'netrwPlugin', 'netrwSettings',
---       'rplugin', 'rrhelper', 'shada', 'spellfile_plugin',
---       'tar', 'tarPlugin', 'tohtml', 'tutor', 'vimball',
---       'vimballPlugin', 'zip', 'zipPlugin',
+      -- 'gzip', 'tarPlugin', 'tohtml', 'zipPlugin',
+      --       '2html_plugin', 'getscript', 'getscriptPlugin', 'gzip',
+      --       'logipat', 'man', 'matchit', 'matchparen', 'netrw',
+      --       'netrwFileHandlers', 'netrwPlugin', 'netrwSettings',
+      --       'rplugin', 'rrhelper', 'shada', 'spellfile_plugin',
+      --       'tar', 'tarPlugin', 'tohtml', 'tutor', 'vimball',
+      --       'vimballPlugin', 'zip', 'zipPlugin',
     }
   }
 }

@@ -1,23 +1,29 @@
 -- Convenience function for setting all these key-bindings
 local function map(mode, shortcut, command, opts)
-  opts = opts or {}                                       -- Use an empty table if no options are provided
+  opts = opts or {} -- Use an empty table if no options are provided
   local default_opts = { noremap = true, silent = true }
   opts = vim.tbl_deep_extend('force', default_opts, opts) -- Merge tables, with opts taking priority
   vim.keymap.set(mode, shortcut, command, opts)
 end
 
 -- Normal mode
-local function nmap(...) map('n', ...) end
+local function nmap(...)
+  map('n', ...)
+end
 
 -- Insert mode
-local function imap(...) map('i', ...) end
+local function imap(...)
+  map('i', ...)
+end
 
 -- Visual (and select) mode
-local function vmap(...) map('v', ...) end
+local function vmap(...)
+  map('v', ...)
+end
 
 -- Set `mapleader` and `maplocalleader` before
 -- running lazy.nvim so that mappings are correct.
-vim.g.mapleader = ' '      -- <space>
+vim.g.mapleader = ' ' -- <space>
 vim.g.maplocalleader = ' ' -- <space>
 
 -- disable navigation by arrow keys
@@ -41,8 +47,8 @@ nmap('<C-u>', '<C-u>zz', { desc = 'Half page up (centered)' })
 
 imap('<A-b>', '<C-o>dw') -- Delete word forward in insert mode (GNU Readline)
 
-imap('<C-e>', '<C-o>$')  -- Emacs-style end of line in insert mode
-imap('<C-a>', '<C-o>0')  -- Emacs-style start of line in insert mode
+imap('<C-e>', '<C-o>$') -- Emacs-style end of line in insert mode
+imap('<C-a>', '<C-o>0') -- Emacs-style start of line in insert mode
 
 -- delete with 'x' without saving to register
 nmap('x', '"_x')
@@ -120,7 +126,7 @@ nmap('<leader>oz', '<cmd>set invlist<cr>', { desc = 'Toggle Show Whitespace' })
 nmap('<leader>os', '<cmd>set invspell<cr>', { desc = 'Toggle Spell Check' })
 nmap('<leader>op', '<cmd>pwd<cr>', { desc = 'Current Working Directory', silent = false })
 
-nmap('<leader>d', vim.diagnostic.open_float, { desc = "Open diagnostic floating window" })
+nmap('<leader>d', vim.diagnostic.open_float, { desc = 'Open diagnostic floating window' })
 
 -- Less Style keybindings for help/man pages
 -- (because I can't break muscle memory)
@@ -178,13 +184,14 @@ nmap('<leader>oc', ':ColorizerToggle<cr>', { desc = 'Preview Colors (toggle)' })
 -- Lazy dashboard
 nmap('<leader>L', ':Lazy<cr>', { desc = 'Lazy Dashboard' })
 
-
 -- leap.nvim bindings (https://github.com/ggandor/leap.nvim)
 map({ 'n', 'x', 'o' }, 's', '<Plug>(leap)', { desc = 'Leap (forward/backward)' })
 map('n', 'S', '<Plug>(leap-from-window)', { desc = 'Leap to other windows' })
 map({ 'x', 'o' }, 'x', '<Plug>(leap-forward-till)', { desc = 'Extend selection forward (leap)' })
 map({ 'x', 'o' }, 'X', '<Plug>(leap-backward-till)', { desc = 'Extend selection backward (leap)' })
-map({ 'n', 'x', 'o' }, 'gs', function() require('leap.remote').action() end, { desc = "Leap remote action" })
+map({ 'n', 'x', 'o' }, 'gs', function()
+  require('leap.remote').action()
+end, { desc = 'Leap remote action' })
 do
   -- Create remote versions of all a/i text objects by inserting `r`
   -- into the middle (`iw` becomes `irw`, etc.).
@@ -194,28 +201,30 @@ do
   -- `a`/`i`.
   local remote_text_object = function(prefix)
     local ok, ch = pcall(vim.fn.getcharstr) -- pcall for handling <C-c>
-    if not ok or (ch == vim.keycode('<esc>')) then
-      return
-    end
-    require('leap.remote').action { input = prefix .. ch }
+    if not ok or (ch == vim.keycode('<esc>')) then return end
+    require('leap.remote').action({ input = prefix .. ch })
   end
-  map({ 'x', 'o' }, 'ar', function() remote_text_object('a') end, { desc = "Around remote object" })
-  map({ 'x', 'o' }, 'ir', function() remote_text_object('i') end, { desc = "Inner remote object" })
+  map({ 'x', 'o' }, 'ar', function()
+    remote_text_object('a')
+  end, { desc = 'Around remote object' })
+  map({ 'x', 'o' }, 'ir', function()
+    remote_text_object('i')
+  end, { desc = 'Inner remote object' })
 end
 map({ 'x', 'o' }, 'R', function()
-  require('leap.treesitter').select {
+  require('leap.treesitter').select({
     -- To increase/decrease the selection in a clever-f-like manner,
     -- with the trigger key itself (vRRRRrr...). The default keys
     -- (<enter>/<backspace>) also work, so feel free to skip this.
-    opts = require('leap.user').with_traversal_keys('R', 'r')
-  }
-end, { desc = "Leap treesitter nodes" })
+    opts = require('leap.user').with_traversal_keys('R', 'r'),
+  })
+end, { desc = 'Leap treesitter nodes' })
 
 -- Treesitter / context
 nmap('<leader>ut', '<cmd>TSContext toggle<cr>', { desc = 'Toggle Treesitter Context' })
 nmap('[c', function()
   require('treesitter-context').go_to_context(vim.v.count1)
-end, { desc = "Jump to outer context (up)" })
+end, { desc = 'Jump to outer context (up)' })
 
 -- load the session for the current directory
 nmap('<leader>ls', function()

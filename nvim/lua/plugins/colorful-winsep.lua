@@ -7,7 +7,7 @@ return {
   event = { 'WinLeave' },
   config = true,
   opts = {
-    border = "single",
+    border = 'single',
     animate = { enabled = false },
   },
 }

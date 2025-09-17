@@ -19,8 +19,8 @@ vim.diagnostic.config({
   signs = true,
   virtual_text = false,
   virtual_lines = false,
-  float = { border = "rounded" },
-  jump = { float = true }
+  float = { border = 'rounded' },
+  jump = { float = true },
 })
 
 -- activate all specifications in lsp/*.lua files
@@ -49,15 +49,15 @@ vim.api.nvim_create_autocmd('LspAttach', {
     -- Usually not needed if server supports "textDocument/willSaveWaitUntil".
     -- TODO: find out what this means....?
     if
-    -- not client:supports_method('textDocument/willSaveWaitUntil')
-        client:supports_method('textDocument/formatting')
+      -- not client:supports_method('textDocument/willSaveWaitUntil')
+      client:supports_method('textDocument/formatting')
     then
       vim.api.nvim_create_autocmd('BufWritePre', {
         buffer = ev.buf,
         callback = function()
           vim.lsp.buf.format({ bufnr = ev.buf, id = client.id, timeout_ms = 1000 })
         end,
-        desc = "Format on buffer write"
+        desc = 'Format on buffer write',
       })
     end
 
@@ -79,10 +79,14 @@ vim.api.nvim_create_autocmd('LspAttach', {
       --   callback = function() vim.lsp.inlay_hint.enable(true) end
       -- })
       -- Add a keymap as well
-      vim.keymap.set('n', '<leader>oi', -- group = vim.api.nvim_create_augroup('my.lsp', { clear = false }),
+      vim.keymap.set(
+        'n',
+        '<leader>oi', -- group = vim.api.nvim_create_augroup('my.lsp', { clear = false }),
         function()
           vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ 0 }), { 0 })
-        end, { buffer = ev.buf, desc = "Toggle LSP Inlay Hints" })
+        end,
+        { buffer = ev.buf, desc = 'Toggle LSP Inlay Hints' }
+      )
     end
   end,
 })

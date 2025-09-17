@@ -6,16 +6,16 @@ return {
   lazy = false,
   priority = 1000,
   opts = {
-    flavour = 'frappe',                 -- latte, frappe, macchiato, mocha
-    transparent_background = true,      -- important
+    flavour = 'frappe', -- latte, frappe, macchiato, mocha
+    transparent_background = true, -- important
     float = { transparent = true },
     dim_inactive = { enabled = false }, -- doesn't work with transparent bg
-    background = {                      -- :h background
+    background = { -- :h background
       light = 'latte',
       dark = 'frappe',
     },
     compile_path = vim.fn.stdpath('cache') .. '/catppuccin', -- enable compiling theme
-    show_end_of_buffer = true,                               -- seems to be bugged??
+    show_end_of_buffer = true, -- seems to be bugged??
     term_colors = true,
     default_integrations = false,
     integrations = {
