@@ -12,8 +12,10 @@ overview { backdrop-color "#1d1621"; }
 // Environment Variables
 environment {
   // QT on wayland
-  QT_QPA_PLATFORM "wayland;xcb"
-  QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+  // QT_QPA_PLATFORM "wayland;xcb"
+  // QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+  // Because I installed KDE and used it's settings (this may break things?)
+  XDG_CURRENT_DESKTOP "KDE"
   // Stupid electron apps
   ELECTRON_OZONE_PLATFORM_HINT "auto"
   ELECTRON_ENABLEWAYLAND "1"
@@ -21,6 +23,7 @@ environment {
   MOZ_ENABLE_WAYLAND "1" 
   // Interactive
   EDITOR "nvim"
+  SSH_AUTH_SOCK "/run/user/1000/ssh-agent.socket"
   // To handle nerd-fonts icons correctly
   // defined here so kitty picks it up
   LESSUTFCHARDEF "e000-e09f:w,e0a0-e0bf:p,e0c0-f8ff:w,f0001-fffff:w" 
@@ -191,15 +194,22 @@ window-rule {
 window-rule {
   match app-id=r#"(org\.pulseaudio\.pavucontrol)$"#
   match app-id=r#"(org\.gnome\.Calculator)$"#
+  match app-id=r#"xpad"#
   open-floating true
 }
 
-// Fullscreen apps
+// Fullwidth apps
 window-rule {
   match app-id="gimp"
-  default-column-width { proportion 1.0; }
+  open-maximized true
 }
 
+// Games in fullscreen
+window-rule {
+  match app-id="Stardew Valley"
+  open-fullscreen true
+  open-floating false
+}
 // Kitty terminal as a popup menu
 window-rule {
   match app-id="menu"
@@ -261,6 +271,8 @@ binds {
     Mod+T hotkey-overlay-title="Open kitty" { spawn "kitty" "--single-instance" "--instance-group='niri'"; }
     Mod+Shift+T hotkey-overlay-title="Open kitty (new process)" { spawn "kitty"; }
     Mod+B hotkey-overlay-title="Open librewolf" { spawn "librewolf"; }
+    Mod+Shift+B hotkey-overlay-title="Open librewolf (private)" { spawn "librewolf" "--private-window"; }
+    Mod+E hotkey-overlay-title="Open files" { spawn "dolphin"; }
     Mod+Space hotkey-overlay-title="Application Picker" { spawn "fuzzel"; }
     Super+Alt+L hotkey-overlay-title="Lock Screen" { spawn "swaylock"; }
 
