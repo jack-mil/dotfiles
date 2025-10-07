@@ -188,7 +188,6 @@
             "transformCompoundSentence": false,
             "enableStreamQualityBypass": true,
             "useHyperLinks": true,
-            "hyperLinkText": "{{NAME}}",
             "disableEmbedPermissionCheck": false
         },
         "FakeProfileThemes": {
@@ -462,7 +461,8 @@
             "enabled": true,
             "mode": "user-nick",
             "displayNames": false,
-            "inReplies": true
+            "inReplies": true,
+            "friendNicknames": "dms"
         },
         "ShowTimeoutDuration": {
             "enabled": false
@@ -596,6 +596,12 @@
         },
         "WebContextMenus": {
             "enabled": true
+        },
+        "CopyStickerLinks": {
+            "enabled": false
+        },
+        "ImageFilename": {
+            "enabled": false
         }
     },
     "notifications": {
@@ -608,6 +614,6 @@
         "authenticated": false,
         "url": "https://api.vencord.dev/",
         "settingsSync": false,
-        "settingsSyncVersion": 1750623083675
+        "settingsSyncVersion": 1759873462933
     }
 }

@@ -44,10 +44,20 @@
 
 li[role="listitem"] {
   /* Hide Nitro button in Home */
-  :has(a[href="/store"]) { display: none; }
+  &:has(a[href="/store"]) { display: none; }
+
+  /* Hide quests button in Home */
+  &:has(a[href="/quest-home"]) { display: none; }
 
   /* Hide shop button in Home */
-  :has(a[href="/shop"]) { display: none; }
+  &:has(a[href="/shop"]) {
+    display: none;
+
+    /* Also hide the extra space left by these buttons */
+    ~ div[class^="sectionDivider"] {
+        margin-top: var(--space-4);
+    }
+  }
 }
 /* [Settings][Sidebar] Hide Nitro tabs */
 div[role="tablist"] {
@@ -92,6 +102,9 @@ div[class^="premiumFeatureBorder"] { display: none; }
   /* Profiles: New style ad */
   > div[class^="container"]:has(button[class*="colorBrand"]) { display: none; }
 
+  /* Orbs ad */
+  > div[class^="container"]:has(div[class*="artContainer_"]) { display: none; }
+
   /* [Settings][Profiles]: Per server avatar */
   div[class^="avatar_"]:has(path[d="M7 4a1 1 0 0 0 0 2h3a1 1 0 1 1 0 2H5.5a1 1 0 0 0 0 2H8a1 1 0 1 1 0 2H6a1 1 0 1 0 0 2h1.25A8 8 0 1 0 15 4H7Zm8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"]) {
       pointer-events: none;
@@ -108,13 +121,12 @@ div[class^="premiumFeatureBorder"] { display: none; }
 div[id="voice-&-video-tab"] div[class*="callSoundsDivider_"] ~ * { display: none; }
 
 #appearance-tab {
-  /* [Settings][Appearance] App icon and Theme upsell (old version) */
-  div[class^="selectionGroup"]:has(div[class*="appIconSelectionContainer"]):has(div[class*="premiumSubscribeButton_"]) { display: none; }
-  div[role="button"]:has(svg[class*="nitroWheel"]) { display: none;}
+  /* [Settings][Appearance] App icon and Theme upsell */
+  section[class*="basicThemeSelectors"] {
+    &+ div, &+div + div { display: none; }
+  }
 
-  /* [Settings][Appearance] App icon and Theme upsell (new version) */
-  div[class*="SelectionContainer"]:has(div[class*="lockedBadgeContainer"]) { display: none;}
-  div[class*="description"]:has(svg[class*="nitroWheel"]) { display: none;}
+  div[class*="selectionGroup"]:has(img[alt="App Icon"]) { display: none; }
 }
 
 /* Hide message size upsells */
@@ -175,15 +187,20 @@ div[class*="overlayBackground_"]:has(div[class*="contentText_"] > a[role="button
 /* Hide "sneak peek" upsell banner */
 div[class*="notice"][class*="colorPremium"] { display: none; }
 
-/* "Amp up your profile" when opening a profile */
-div[class*="username"] ~ div[class^="upsellContainer"] { display: none; }
+/* "Amp up your profile" in profile popups */
+.user-profile-popout, .user-profile-modal-v2 {
+  aside[class*=upsellContainer] { display: none; }
+}
+
+/* Hide profile shop button */
+div[class*="profileButtons"] > div:has(button:not([aria-expanded])) { display: none; }
 
 /* ------------- */
 /* Server boosts */
 /* ------------- */
 
 /* Boost progress bar */
-#channels > ul > li > div[data-list-item-id^="channels___boosts"] { display: none; }
+#channels > ul > div[class*="container__"]:has([class*="boostCountText__"]) { display: none; }
 
 /* Server Boost button in top left dropdown */
 div[id="guild-header-popout-premium-subscribe"] { display: none; }
@@ -263,6 +280,17 @@ div[class^=tags] div[role="group"] > div > a[href="https://discord.com/discovery
 /* Promoted quest inside "Active Now" friends' profiles */
 div[class^=wrapper]:has(div[class^=instructions]) { display: none; }
 
+/* Hide members list quest icon */
+div[class*="member__"] svg[class*="questsIcon_"] { display: none; }
+
+/* Hide members list quest */
+div[class*="member__"][class*="selected__"] div[class*="childContainer__"] { background-color: unset !important; }
+
+/* Hide members list quest popout */
+div[id*="popout_"]:has(div[class*="imgWrapper__"] img[src^="https://cdn.discordapp.com/quests"]) {
+  display: none;
+}
+
 /* ------------------ */
 /* General annoyances */
 /* ------------------ */
@@ -272,13 +300,13 @@ form div[class^=channelBottomBarArea_] {
   div[class^="buttons_"]
   {
     /* Send gift button (both versions) */
-    > div:has(div[class*="trinketsIcon_"]), > button { display: none; }
+    &> div:not(.expression-picker-chat-input-button) { display: none; }
 
     /* GIF picker button */
-    div[class^="expression-picker-chat-input-button"]:has( + div[class^="expression-picker-chat-input-button"] div[class*="stickerButton_"]) { display: var(--display-gif-button, flex); }
+    div.expression-picker-chat-input-button:has( + div.expression-picker-chat-input-button div[class*="stickerButton_"]) { display: var(--display-gif-button, flex); }
 
     /* Sticker picker button */
-    div[class^="expression-picker-chat-input-button"]:has(div[class*="stickerButton_"]) { display: var(--display-sticker-button, flex); }
+    div.expression-picker-chat-input-button:has(div[class*="stickerButton_"]) { display: var(--display-sticker-button, flex); }
   }
 
   /* Apps button (right) */
@@ -313,7 +341,7 @@ li[role="listitem"] > div[class*="interactive_"] > div[class^="container_"] { di
 div[aria-labelledby^="vc-activities"] { display: none; }
 
 /* Hide Help button */
-div[class^="toolbar_"] > a[href*="support.discord.com"] { display: none; }
+div[class*="bar_"] > div[class*="trailing_"] > a[href*="support.discord.com"] { display: none; }
 
 /* Hide explore servers button */
 div[class^="listItem_"]:has([data-list-item-id="guildsnav___guild-discover-button"]) { display: none; }
@@ -326,8 +354,14 @@ div[class^="listItem_"]:has([data-list-item-id=guildsnav___app-download-button])
 /* Hide Library button in Home */
 a[data-list-item-id*="___library"] { display: none; }
 
-/* Nitro and server booster profile badge */
-div[class^=tags] div[role="group"] > div:has(a[href*="/settings/premium"]) { display: var(--display-badges); }
+/* Profile badges */
+div[class^=tags] div[role="group"] {
+  /* Nitro and Server Boosting */
+  > div:has(a[href*="/settings/premium"]) { display: var(--display-badges); }
+
+  /* Orbs Apprentice */
+  > div:has(img[class*="badge_"][src*="83d8a1eb09a8d64e59233eec5d4d5c2d"]) { display: none; }
+}
 
 /* Server booster member list badge */
 div[class^="nameAndDecorators_"] > div:has(svg[class^="premiumIcon_"]) { display: var(--display-badges); }

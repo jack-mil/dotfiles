@@ -29,7 +29,6 @@
   depends = ["shell", "ssh"]
   [git.files]
     git = "~/.config/git"
-    jj  = { if = '(is_executable "jj")', target = "~/.config/jj", type = "symbolic" }
 
   [git.variables]
     #optional: signing_key
@@ -62,6 +61,9 @@
 
 [vscode.files]
   "vscode/keybindings-linux.json.temp" = "~/.config/Code/User/keybindings.json"
+
+[vesktop.files]
+  vesktop = "~/.config/vesktop"
 
 [sioyek.files]
   sioyek = "~/.config/sioyek"
