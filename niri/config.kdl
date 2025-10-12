@@ -15,7 +15,7 @@ environment {
   // QT_QPA_PLATFORM "wayland;xcb"
   // QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
   // Because I installed KDE and used it's settings (this may break things?)
-  XDG_CURRENT_DESKTOP "KDE"
+  // XDG_CURRENT_DESKTOP "KDE"
   // Stupid electron apps
   ELECTRON_OZONE_PLATFORM_HINT "auto"
   ELECTRON_ENABLEWAYLAND "1"
@@ -60,7 +60,7 @@ input {
 
     // Focus windows and outputs automatically when moving the mouse into them.
     // Setting max-scroll-amount="0%" makes it work only on windows already fully on screen.
-    focus-follows-mouse max-scroll-amount="5%"
+    // focus-follows-mouse max-scroll-amount="5%"
 }
 
 // `niri msg outputs
@@ -261,7 +261,7 @@ binds {
     
     // Logout to session manager
     // will show a confirmation dialog to avoid accidental exits.
-    Mod+Shift+E { spawn "wlogout"; }
+    Mod+Shift+E hotkey-overlay-title="System Actions" { spawn "wlogout"; }
     Ctrl+Alt+Delete { quit; }
 
     // Powers off monitors. Any input to turn back on
@@ -274,10 +274,20 @@ binds {
     Mod+Shift+B hotkey-overlay-title="Open librewolf (private)" { spawn "librewolf" "--private-window"; }
     Mod+E hotkey-overlay-title="Open files" { spawn "dolphin"; }
     Mod+Space hotkey-overlay-title="Application Picker" { spawn "fuzzel"; }
-    Super+Alt+L hotkey-overlay-title="Lock Screen" { spawn "swaylock"; }
 
-    Mod+Shift+F12 { spawn "sh" "-c" "if systemctl --user is-active swaybg.service ; then systemctl --user stop swaybg.service ; swaybg -i ~/pictures/Wallpaper/space_noedge.jpg & else pkill 'swaybg'; systemctl --user start swaybg.service; notify-send 'Restored'; fi"; }
+    // Toggle on/off waybar clock (on secondary monitors)
+    Mod+Tab hotkey-overlay-title="Toggle Clock" { spawn "killall" "-SIGUSR1" "waybar"; }
     
+    Mod+Shift+F12 hotkey-overlay-title="Switch Wallpaper" { spawn "sh" "-c" "if systemctl --user is-active swaybg.service ; then systemctl --user stop swaybg.service ; swaybg -i ~/pictures/Wallpaper/space_noedge.jpg & else pkill 'swaybg'; systemctl --user start swaybg.service; notify-send 'Restored'; fi"; }
+
+    Mod+F12 hotkey-overlay-title="Toggle Do-Not-Disturb" { spawn "sh" "-c" r#"makoctl mode -t do-not-disturb && makoctl mode | rg -q 'do-not-disturb' && notify-send 'Silenced notifications' || notify-send 'Enabled notifications' default"#; }
+
+    Print hotkey-overlay-title="Screenshot Active Display" { screenshot-screen write-to-disk=true show-pointer=false; }
+    Mod+Shift+S hotkey-overlay-title="Screenshot Region" { screenshot show-pointer=false; }
+    Mod+Ctrl+Shift+S hotkey-overlay-title="Screenshot Window" { spawn "sh" "-c" r#"niri msg action screenshot-window --id="$(niri msg --json pick-window | jq .id)""#; }
+
+    Mod+Shift+C hotkey-overlay-title="Pick color" { spawn "sh" "-c" r#"pkill hyprpicker || hyprpicker -a"#; }
+
     // Device keys
     XF86AudioRaiseVolume  allow-when-locked=true { spawn "swayosd-client" "--output-volume" "+5"; }
     XF86AudioLowerVolume  allow-when-locked=true { spawn "swayosd-client" "--output-volume" "-5"; }
@@ -427,8 +437,6 @@ binds {
     // Alternatively, there are commands to move just a single window:
     // Mod+Ctrl+1 { move-window-to-workspace 1; }
 
-    // Switches focus between the current and the previous workspace.
-    Mod+Tab { focus-workspace-previous; }
 
     // The following binds move the focused window in and out of a column.
     // If the window is alone, they will consume it into the nearby column to the side.
@@ -481,15 +489,6 @@ binds {
     // rather than stacked on top of each other.
     Mod+W { toggle-column-tabbed-display; }
 
-    // Desktop "Shell" interations and features
-
-    Mod+F12 { spawn "sh" "-c" r#"makoctl mode -t do-not-disturb && makoctl mode | rg -q 'do-not-disturb' && notify-send "Silenced notifications" || notify-send "Enabled notifications"
-      default"#; }
-    Print { screenshot-screen write-to-disk=true show-pointer=false; }
-    Mod+Shift+S { screenshot show-pointer=false; }
-    Mod+Ctrl+Shift+S { spawn "sh" "-c" r#"niri msg action screenshot-window --id="$(niri msg --json pick-window | jq .id)""#; }
-
-    Mod+Shift+C { spawn "sh" "-c" r#"pkill hyprpicker || hyprpicker -a"#; }
     // Applications such as remote-desktop clients and software KVM switches may
     // request that niri stops processing the keyboard shortcuts defined here
     // so they may, for example, forward the key presses as-is to a remote machine.

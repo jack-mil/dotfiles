@@ -1,0 +1,14 @@
+{
+  "layer": "bottom",
+  "position": "top",
+  "mode": "overlay",
+  "spacing": 0,
+  "reload_style_on_change": true,
+  "start_hidden": true,
+  "output": ["!HDMI-A-1", "*"],
+  "modules-center": ["clock"],
+
+  "clock": {
+    "format": "{:%I:%M %p — %A, %d}"
+  }
+}

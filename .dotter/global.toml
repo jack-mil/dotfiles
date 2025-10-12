@@ -24,6 +24,7 @@
   [niri.files]
     fuzzel = "~/.config/fuzzel"
     niri   = "~/.config/niri"
+    waybar = "~/.config/waybar"
 
 [git]
   depends = ["shell", "ssh"]

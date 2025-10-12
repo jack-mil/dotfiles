@@ -1,0 +1,29 @@
+/* --- Global Styles --- */
+* {
+  font-family: 'JetBrains Mono';
+  font-size: 18px;
+  font-weight: 800;
+  /* min-height: 0; */
+  /* padding-right: 0px; */
+  /* padding-left: 0px; */
+  /* padding-bottom: 0px; */
+}
+
+/* --- Waybar Container --- */
+#waybar {
+  /* background: transparent; */
+  /* margin: 0px; */
+}
+
+
+#clock {
+  background-color: #1a1b26;
+  padding: 0.3rem 0.7rem;
+  margin: 0px 0px;
+  border-radius: 6px; /* This module is always rounded */
+  /* box-shadow: 0 1px 3px rgba(153, 209, 219, 0.2); */
+  min-width: 0;
+  border: 2px solid #8bd5ca; /*linear-gradient(45deg, #8bd5ca, #b7bdf8); */
+  /* active-gradient from="#8bd5ca" to="#b7bdf8" in="oklch shorter hue" angle=45  */
+}
+
