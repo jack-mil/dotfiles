@@ -31,9 +31,10 @@ export FZF_CTRL_R_OPTS="\
 export FZF_DEFAULT_COMMAND="fd --type f --strip-cwd-prefix --hidden --exclude .git --exclude node_modules --exclude '.*cache*'"
 
 FZF_BINDS="--bind='alt-d:preview-page-down' \
-              --bind='alt-u:preview-page-up' \
-              --bind='alt-p:toggle-preview' \
-              --bind='space:jump,jump:accept,jump-cancel:abort'"
+           --bind='alt-u:preview-page-up' \
+           --bind='alt-p:toggle-preview' \
+           --bind='alt-r:toggle-raw' \
+           --bind='result:best'"  # move cursor to item with best score (for raw mode)
 
 FZF_COLORS="--color='
 fg:#cad3f5,current-fg:#cad3f5,
@@ -42,10 +43,11 @@ hl:#a6da95,current-hl:#eed49f,
 selected-fg:#b8c0e0,selected-bg:#494d64,selected-hl:#8bd5ca,marker:#8bd5ca,
 spinner:#f4dbd6,prompt:#c6a0f6,pointer:#f4dbd6,
 header:#ed8796,info:#f5a97f,
-list-border:#a6da95,list-label:#a6da95:italic 
-preview-border:#ed8796,preview-label:#ed8796:italic 
-input-border:#c6a0f6,input-label:#c6a0f6:italic
-header-border:#8aadf4,header-label:#8aadf4:italic'"
+list-border:#a6da95,list-label:#a6da95:italic,
+preview-border:#ed8796,preview-label:#ed8796:italic,
+input-border:#c6a0f6,input-label:#c6a0f6:italic,
+header-border:#8aadf4,header-label:#8aadf4:italic,
+nomatch:dim:strip'"
 
 export FZF_DEFAULT_OPTS=" \
   $FZF_BINDS \
