@@ -1,0 +1,57 @@
+// Specific application window overrides for Niri
+
+
+// Open the Firefox picture-in-picture player as floating by default.
+window-rule {
+  match app-id=r#"(firefox|librewolf)$"# title=r#"^Library$"#
+  match app-id=r#"(firefox|librewolf)$"# title=r#"^About"#
+  open-floating true
+  // default-window-height { proportion 0.8; }
+  default-column-width { proportion 0.5; }
+}
+
+// Firefox sub windows
+window-rule {
+    match app-id=r#"(firefox|librewolf)$"# title="^Picture-in-Picture$"
+    open-floating true
+    default-floating-position x=32 y=32 relative-to="bottom-right" 
+}
+
+// Small applets
+window-rule {
+  match app-id=r#"(org\.pulseaudio\.pavucontrol)$"#
+  match app-id=r#"(org\.gnome\.Calculator)$"#
+  match app-id=r#"xpad"#
+  open-floating true
+}
+
+// Fullwidth apps
+window-rule {
+  match app-id="gimp"
+  open-maximized true
+}
+
+// Games in fullscreen
+window-rule {
+  match app-id="Stardew Valley"
+  open-fullscreen true
+  open-floating false
+}
+// Kitty terminal as a popup menu
+window-rule {
+  match app-id="menu"
+  open-floating true
+  open-focused true
+  // default-window-height { proportion 0.25; }
+  default-column-width { fixed 1000; }
+}
+
+// spotify_player TUI launched in kitty with custom app-id
+window-rule {
+  match app-id="spotify"
+  open-floating true
+  default-column-width { fixed 1280; }
+  default-window-height { fixed 648; }
+  default-floating-position x=30 y=30 relative-to="top-left"
+  open-on-output "eDP-1"
+}
