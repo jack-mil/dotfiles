@@ -5,7 +5,7 @@
   "spacing": 0,
   "reload_style_on_change": true,
   "start_hidden": true,
-  "output": ["!HDMI-A-1", "*"],
+  "output": ["!DP-3", "*"],
   "expand-center": true,
   "modules-center": ["clock"],
 
