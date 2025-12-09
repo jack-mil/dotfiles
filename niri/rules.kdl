@@ -34,9 +34,17 @@ window-rule {
 // Games in fullscreen
 window-rule {
   match app-id="Stardew Valley"
+  match app-id=r#"(GT:\sNew\sHorizons\s\d.\d.\d)$"#
   open-fullscreen true
   open-floating false
 }
+
+window-rule {
+  match app-id=r#"(org\.prismlauncher\.PrismLauncher)$"#
+  default-column-width { proportion 0.333; }
+  default-window-height { proportion 0.5; }
+}
+
 // Kitty terminal as a popup menu
 window-rule {
   match app-id="menu"
@@ -55,3 +63,11 @@ window-rule {
   default-floating-position x=30 y=30 relative-to="top-left"
   open-on-output "eDP-1"
 }
+
+// shadow for fuzzel (launcher)
+layer-rule {
+  match namespace=r#"^dms:"#
+  // Fuzzel set to 10 px rounded corners.
+  geometry-corner-radius 100
+}
+

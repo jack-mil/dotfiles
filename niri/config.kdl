@@ -9,13 +9,14 @@ prefer-no-csd // ask applications to omit client-side decorations
 
 overview { backdrop-color "#1d1621"; }
 
+spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
+
 // Environment Variables
 environment {
   // QT on wayland
-  // QT_QPA_PLATFORM "wayland;xcb"
-  // QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
-  // Because I installed KDE and used it's settings (this may break things?)
-  // XDG_CURRENT_DESKTOP "KDE"
+  QT_QPA_PLATFORM "wayland"
+  QT_QPA_PLATFORMTHEME "qt6ct"
+  QT_QPA_PLATFORMTHEME_QT6 "qt6ct"
   // Stupid electron apps
   ELECTRON_OZONE_PLATFORM_HINT "auto"
   ELECTRON_ENABLEWAYLAND "1"
@@ -29,6 +30,8 @@ environment {
   LESSUTFCHARDEF "e000-e09f:w,e0a0-e0bf:p,e0c0-f8ff:w,f0001-fffff:w" 
   // Stupid NVIDIA
   __GL_SHADER_DISK_CACHE_PATH "~/.cache/nv"
+  // disable shell matugen integration
+  DMS_DISABLE_MATUGEN "1"
 }
 
 // A ~ at the front will be expanded to the home directory.
@@ -168,6 +171,7 @@ window-rule {
     geometry-corner-radius 6 
     clip-to-geometry true
     draw-border-with-background false
+    tiled-state true
 }
 
 // All floating window styling (orange border)
@@ -206,14 +210,6 @@ include "rules.kdl"
 layer-rule {
     match namespace="^notifications$"
     block-out-from "screencast"
-}
-
-// shadow for fuzzel (launcher)
-layer-rule {
-    match namespace="^launcher$"
-    shadow { on; }
-    // Fuzzel set to 10 px rounded corners.
-    geometry-corner-radius 10
 }
 
 // Animation settings.

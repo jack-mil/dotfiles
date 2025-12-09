@@ -1,49 +1,10 @@
 // Keyboard shortcuts for Niri
 // Combination of default and custom
 
+// DSM and other system shell-like actions
+include "shell-binds.kdl"
+
 binds {
-    // shows a list of important hotkeys.
-    Mod+Shift+Slash { show-hotkey-overlay; }
-    
-    // Logout to session manager
-    // will show a confirmation dialog to avoid accidental exits.
-    Mod+Shift+E hotkey-overlay-title="System Actions" { spawn "wlogout"; }
-    Ctrl+Alt+Delete { quit; }
-
-    // Powers off monitors. Any input to turn back on
-    Mod+Shift+P { power-off-monitors; }
-
-    // application launch shortcuts
-    Mod+T hotkey-overlay-title="Open kitty" { spawn "kitty" "--single-instance" "--instance-group='niri'"; }
-    Mod+Shift+T hotkey-overlay-title="Open kitty (new process)" { spawn "kitty"; }
-    Mod+B hotkey-overlay-title="Open librewolf" { spawn "librewolf"; }
-    Mod+Shift+B hotkey-overlay-title="Open librewolf (private)" { spawn "librewolf" "--private-window"; }
-    Mod+E hotkey-overlay-title="Open files" { spawn "dolphin"; }
-    Mod+Space hotkey-overlay-title="Application Picker" { spawn "fuzzel"; }
-
-    // Toggle on/off waybar clock (on secondary monitors)
-    Mod+Tab hotkey-overlay-title="Toggle Clock" { spawn "killall" "-SIGUSR1" "waybar"; }
-    
-    Mod+Shift+F12 hotkey-overlay-title="Switch Wallpaper" { spawn "sh" "-c" "if systemctl --user is-active swaybg.service ; then systemctl --user stop swaybg.service ; swaybg -i ~/pictures/Wallpaper/space_noedge.jpg & else pkill 'swaybg'; systemctl --user start swaybg.service; notify-send 'Restored'; fi"; }
-
-    Mod+F12 hotkey-overlay-title="Toggle Do-Not-Disturb" { spawn "sh" "-c" r#"makoctl mode -t do-not-disturb && makoctl mode | rg -q 'do-not-disturb' && notify-send 'Silenced notifications' || notify-send 'Enabled notifications' default"#; }
-
-    Print hotkey-overlay-title="Screenshot Active Display" { screenshot-screen write-to-disk=true show-pointer=false; }
-    Mod+Shift+S hotkey-overlay-title="Screenshot Region" { screenshot show-pointer=false; }
-    Mod+Ctrl+Shift+S hotkey-overlay-title="Screenshot Window" { spawn "sh" "-c" r#"niri msg action screenshot-window --id="$(niri msg --json pick-window | jq .id)""#; }
-
-    Mod+Shift+C hotkey-overlay-title="Pick color" { spawn "sh" "-c" r#"pkill hyprpicker || hyprpicker -a"#; }
-
-    // Device keys
-    XF86AudioRaiseVolume  allow-when-locked=true { spawn "swayosd-client" "--output-volume" "+5"; }
-    XF86AudioLowerVolume  allow-when-locked=true { spawn "swayosd-client" "--output-volume" "-5"; }
-    XF86AudioMute         allow-when-locked=true { spawn "swayosd-client" "--output-volume" "mute-toggle"; }
-    XF86AudioMicMute      allow-when-locked=true { spawn "swayosd-client" "--input-volume" "mute-togge"; }
-    XF86MonBrightnessUp   allow-when-locked=true { spawn "swayosd-client" "--brightness" "raise"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn "swayosd-client" "--brightness" "lower";}
-
-    // Open/close the Overview
-    Mod+O repeat=false { toggle-overview; }
 
     Mod+Q { close-window; }
 
@@ -243,6 +204,6 @@ binds {
     //
     // The allow-inhibiting=false property can be applied to other binds as well,
     // which ensures niri always processes them, even when an inhibitor is active.
-    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+    // Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 
 }
