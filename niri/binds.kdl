@@ -4,6 +4,7 @@
 // DSM and other system shell-like actions
 include "shell-binds.kdl"
 
+// Niri window-management and navigation binds
 binds {
 
     Mod+Q { close-window; }

@@ -1,23 +1,29 @@
 // Specific application window overrides for Niri
 
+// Generally want browser windows larger by default
+window-rule {
+    match app-id=r#"(firefox|librewolf)$"#
+    default-column-width { proportion 0.65; }
+}
 
-// Open the Firefox picture-in-picture player as floating by default.
+// Firefox sub windows
 window-rule {
   match app-id=r#"(firefox|librewolf)$"# title=r#"^Library$"#
   match app-id=r#"(firefox|librewolf)$"# title=r#"^About"#
   open-floating true
   // default-window-height { proportion 0.8; }
-  default-column-width { proportion 0.5; }
+  default-column-width { proportion 0.8; }
 }
 
-// Firefox sub windows
+// Open the Firefox picture-in-picture player as floating by default.
 window-rule {
     match app-id=r#"(firefox|librewolf)$"# title="^Picture-in-Picture$"
     open-floating true
     default-floating-position x=32 y=32 relative-to="bottom-right" 
 }
 
-// Small applets
+
+// Small applets should float
 window-rule {
   match app-id=r#"(org\.pulseaudio\.pavucontrol)$"#
   match app-id=r#"(org\.gnome\.Calculator)$"#
@@ -28,6 +34,7 @@ window-rule {
 // Fullwidth apps
 window-rule {
   match app-id="gimp"
+  // add more as needed
   open-maximized true
 }
 
@@ -45,13 +52,13 @@ window-rule {
   default-window-height { proportion 0.5; }
 }
 
-// Kitty terminal as a popup menu
+// Kitty terminal as a popup menu used by various scripts
 window-rule {
-  match app-id="menu"
+  match app-id="kitty-menu"
   open-floating true
   open-focused true
-  // default-window-height { proportion 0.25; }
-  default-column-width { fixed 1000; }
+  default-window-height { proportion 0.6; }
+  default-column-width { proportion 0.6; }
 }
 
 // spotify_player TUI launched in kitty with custom app-id
@@ -64,10 +71,10 @@ window-rule {
   open-on-output "eDP-1"
 }
 
-// shadow for fuzzel (launcher)
-layer-rule {
-  match namespace=r#"^dms:"#
-  // Fuzzel set to 10 px rounded corners.
-  geometry-corner-radius 100
+// Open DMS windows (settings panel) as floating by default
+window-rule {
+    match app-id=r#"org.quickshell$"#
+    open-floating true
+    default-column-width { proportion 0.4; }
 }
 

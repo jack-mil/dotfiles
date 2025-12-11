@@ -9,30 +9,32 @@ prefer-no-csd // ask applications to omit client-side decorations
 
 overview { backdrop-color "#1d1621"; }
 
+// For clipboard history integration with shell
 spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
 
 // Environment Variables
-environment {
-  // QT on wayland
-  QT_QPA_PLATFORM "wayland"
-  QT_QPA_PLATFORMTHEME "qt6ct"
-  QT_QPA_PLATFORMTHEME_QT6 "qt6ct"
-  // Stupid electron apps
-  ELECTRON_OZONE_PLATFORM_HINT "auto"
-  ELECTRON_ENABLEWAYLAND "1"
-  // Firefox
-  MOZ_ENABLE_WAYLAND "1" 
-  // Interactive
-  EDITOR "nvim"
-  SSH_AUTH_SOCK "/run/user/1000/ssh-agent.socket"
-  // To handle nerd-fonts icons correctly
-  // defined here so kitty picks it up
-  LESSUTFCHARDEF "e000-e09f:w,e0a0-e0bf:p,e0c0-f8ff:w,f0001-fffff:w" 
-  // Stupid NVIDIA
-  __GL_SHADER_DISK_CACHE_PATH "~/.cache/nv"
-  // disable shell matugen integration
-  DMS_DISABLE_MATUGEN "1"
-}
+// environment {
+//   // QT on wayland
+//   QT_QPA_PLATFORM "wayland"
+//   QT_QPA_PLATFORMTHEME "qt6ct"
+//   QT_QPA_PLATFORMTHEME_QT6 "qt6ct"
+//   // Stupid electron apps
+//   ELECTRON_OZONE_PLATFORM_HINT "auto"
+//   ELECTRON_ENABLEWAYLAND "1"
+//   // Firefox
+//   MOZ_ENABLE_WAYLAND "1" 
+//   // Interactive
+//   EDITOR "nvim"
+//   SSH_AUTH_SOCK "/run/user/1000/ssh-agent.socket"
+//   // To handle nerd-fonts icons correctly
+//   // defined here so kitty picks it up
+//   LESSUTFCHARDEF "e000-e09f:w,e0a0-e0bf:p,e0c0-f8ff:w,f0001-fffff:w" 
+//   // Stupid NVIDIA
+//   __GL_SHADER_DISK_CACHE_PATH "~/.cache/nv"
+//   // disable shell matugen integration
+//   DMS_DISABLE_MATUGEN "1"
+//   DMS_MODAL_LAYER "overlay"
+// }
 
 // A ~ at the front will be expanded to the home directory.
 // The path is formatted with strftime(3) to give you the screenshot date and time.
@@ -170,8 +172,6 @@ recent-windows {
 window-rule {
     geometry-corner-radius 6 
     clip-to-geometry true
-    draw-border-with-background false
-    tiled-state true
 }
 
 // All floating window styling (orange border)
@@ -206,7 +206,7 @@ include "rules.kdl"
 
 // Layer rules apply to shell layer (overlays, bars, backgrounds, etc)
 // Block out mako notifications from screencasts.
-// https://github.com/YaLTeR/niri/wiki/Configuration:-Layer-Rules
+// https://yalter.github.io/niri/Configuration%3A-Layer-Rules.html
 layer-rule {
     match namespace="^notifications$"
     block-out-from "screencast"

@@ -22,9 +22,8 @@
 [niri]
   depends = ["units"]
   [niri.files]
-    fuzzel = "~/.config/fuzzel"
     niri   = "~/.config/niri"
-    waybar = "~/.config/waybar"
+# Add DSM and enviroment configs soon
 
 [git]
   depends = ["shell", "ssh"]
