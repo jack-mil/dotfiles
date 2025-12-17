@@ -48,18 +48,18 @@ vim.api.nvim_create_autocmd('LspAttach', {
     -- Auto-format ("lint") on save.
     -- Usually not needed if server supports "textDocument/willSaveWaitUntil".
     -- TODO: find out what this means....?
-    if
-      -- not client:supports_method('textDocument/willSaveWaitUntil')
-      client:supports_method('textDocument/formatting')
-    then
-      vim.api.nvim_create_autocmd('BufWritePre', {
-        buffer = ev.buf,
-        callback = function()
-          vim.lsp.buf.format({ bufnr = ev.buf, id = client.id, timeout_ms = 1000 })
-        end,
-        desc = 'Format on buffer write',
-      })
-    end
+    -- if
+    --   -- not client:supports_method('textDocument/willSaveWaitUntil')
+    --   client:supports_method('textDocument/formatting')
+    -- then
+    --   vim.api.nvim_create_autocmd('BufWritePre', {
+    --     buffer = ev.buf,
+    --     callback = function()
+    --       vim.lsp.buf.format({ bufnr = ev.buf, id = client.id, timeout_ms = 1000 })
+    --     end,
+    --     desc = 'Format on buffer write',
+    --   })
+    -- end
 
     -- Enable folds provided by LSP
     if client.server_capabilities.foldingRangeProvider then

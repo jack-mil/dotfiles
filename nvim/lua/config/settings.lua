@@ -10,9 +10,10 @@ o.mouse = 'a' -- Enable the use of the mouse. 'a' you can use on all modes
 o.tabstop = 2        -- Number of spaces that a <Tab> in the file counts for.
 o.softtabstop = 2    -- Number of spaces that a <Tab> counts for when performing editing operations.
 o.shiftwidth = 2     -- Number of spaces to use for each step of (auto)indent.
+o.expandtab = true   -- In Insert mode: Use the appropriate number of spaces to insert a <Tab>.
+-- indent options may be overridden by LSP or TS
 o.smartindent = true -- Do smart auto indenting when starting a new line.
 o.autoindent = true  -- Copy indent from current line when starting a new line.
-o.expandtab = true   -- In Insert mode: Use the appropriate number of spaces to insert a <Tab>.
 
 -- Appearance
 o.wrap = false              -- Line wrapping off by default (toggle with <leader>ow)
@@ -80,8 +81,7 @@ o.foldlevel = 99      -- Start with all open
 o.foldlevelstart = 99
 o.foldcolumn = '0'    -- No foldcolum be default (enabled with LSP)
 o.foldtext = ''       -- Enable syntax highlighting on folds
-o.foldmethod = 'expr' -- Use expression (provided by tree-sitter)
-vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+o.foldmethod = 'syntax' -- Use syntx folding by default, my be overridded by LSP or TS
 -- These are overridden by LSP if supported foldingRange
 
 -- Window splitting
