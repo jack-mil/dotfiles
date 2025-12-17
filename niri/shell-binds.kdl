@@ -6,6 +6,7 @@ binds {
     // application launch shortcuts
     Mod+T hotkey-overlay-title="Open kitty" { spawn "kitty" "--single-instance" "--instance-group='niri'"; }
     Mod+Shift+T hotkey-overlay-title="Open kitty (new process)" { spawn "kitty"; }
+
     Mod+B hotkey-overlay-title="Open librewolf" { spawn "librewolf"; }
     Mod+Shift+B hotkey-overlay-title="Open librewolf (private)" { spawn "librewolf" "--private-window"; }
     Mod+E hotkey-overlay-title="Open files" { spawn "dolphin"; }
@@ -13,16 +14,25 @@ binds {
     Print hotkey-overlay-title="Screenshot Active Display" { screenshot-screen write-to-disk=true show-pointer=false; }
     Mod+S hotkey-overlay-title="Screenshot Region" { screenshot show-pointer=false; }
     Mod+Shift+S hotkey-overlay-title="Screenshot Region (markup)" { spawn "dms" "ipc" "call" "niri" "screenshot"; }
-    Mod+Ctrl+Shift+S hotkey-overlay-title="Screenshot Window" { spawn "sh" "-c" r#"niri msg action screenshot-window --id="$(niri msg --json pick-window | jq .id)""#; }
+    Mod+Ctrl+Shift+S hotkey-overlay-title="Screenshot Window" {
+      spawn "sh" "-c" r#"niri msg action screenshot-window --id="$(niri msg --json pick-window | jq .id)""#; 
+    }
+
+    Mod+Shift+C hotkey-overlay-title="Pick Color" { 
+      spawn "dms" "color" "pick" "--autocopy"; 
+    }
 
     // Open/close the Overview
     Mod+O repeat=false { toggle-overview; }
 
     // --- DSM IPC commands ---
     Mod+Tab hotkey-overlay-title="Toggle topbar" {
-      spawn "dms" "ipc" "call" "bar" "toggle";
+      spawn "dms" "ipc" "call" "bar" "toggle" "index" "0";
     }
 
+    Ctrl+Alt+Delete hotkey-overlay-title="Power/Lock menu" {
+      spawn "dms" "ipc" "call" "powermenu" "toggle";
+    }
     Mod+Shift+O hotkey-overlay-title="Power/Lock menu" {
       spawn "dms" "ipc" "call" "powermenu" "toggle";
     }
@@ -47,10 +57,6 @@ binds {
         spawn "dms" "ipc" "call" "notifications" "toggle"; 
     }
 
-    // Mod+Y hotkey-overlay-title="Browse Wallpapers" {
-    //     spawn "dms" "ipc" "call" "dankdash" "wallpaper";
-    // }
-
     Mod+Shift+N hotkey-overlay-title="Notepad" {
       spawn "dms" "ipc" "call" "notepad" "toggle";  
     }
@@ -58,10 +64,6 @@ binds {
     Mod+Alt+L hotkey-overlay-title="Lock Screen" { 
         spawn "dms" "ipc" "call" "lock" "lock"; 
     }
-
-    Ctrl+Alt+Delete hotkey-overlay-title="Task Manager" { 
-        spawn "dms" "ipc" "call" "processlist" "toggle"; 
-    }    
 
     // Audio
     XF86AudioRaiseVolume allow-when-locked=true {

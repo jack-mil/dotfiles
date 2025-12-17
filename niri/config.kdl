@@ -12,30 +12,6 @@ overview { backdrop-color "#1d1621"; }
 // For clipboard history integration with shell
 spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
 
-// Environment Variables
-// environment {
-//   // QT on wayland
-//   QT_QPA_PLATFORM "wayland"
-//   QT_QPA_PLATFORMTHEME "qt6ct"
-//   QT_QPA_PLATFORMTHEME_QT6 "qt6ct"
-//   // Stupid electron apps
-//   ELECTRON_OZONE_PLATFORM_HINT "auto"
-//   ELECTRON_ENABLEWAYLAND "1"
-//   // Firefox
-//   MOZ_ENABLE_WAYLAND "1" 
-//   // Interactive
-//   EDITOR "nvim"
-//   SSH_AUTH_SOCK "/run/user/1000/ssh-agent.socket"
-//   // To handle nerd-fonts icons correctly
-//   // defined here so kitty picks it up
-//   LESSUTFCHARDEF "e000-e09f:w,e0a0-e0bf:p,e0c0-f8ff:w,f0001-fffff:w" 
-//   // Stupid NVIDIA
-//   __GL_SHADER_DISK_CACHE_PATH "~/.cache/nv"
-//   // disable shell matugen integration
-//   DMS_DISABLE_MATUGEN "1"
-//   DMS_MODAL_LAYER "overlay"
-// }
-
 // A ~ at the front will be expanded to the home directory.
 // The path is formatted with strftime(3) to give you the screenshot date and time.
 screenshot-path "~/pictures/Screenshots/screenshot-%Y-%m-%d-%H-%M-%S.png"
@@ -68,11 +44,16 @@ input {
     // focus-follows-mouse max-scroll-amount="5%"
 }
 
+cursor {
+  xcursor-theme "Breeze_Light"
+  xcursor-size 28
+}
+
 // `niri msg outputs
 // https://yalter.github.io/niri/Configuration%3A-Outputs.html
 // Vizio TV
 output "HDMI-A-1" {
-    mode "3840x2160@23.976"
+    mode "3840x2160@29.970"
     scale 2
 }
 // New Acer monitor
@@ -91,7 +72,7 @@ layout {
     gaps 8
     
     // Slight gaps on left/right that shows windows off-screen
-    struts { left 10; right 10; top -8; bottom -8; }
+    struts { left 12; right 12; top -8; bottom -8; }
 
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left

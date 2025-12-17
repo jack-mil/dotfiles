@@ -1,12 +1,12 @@
 [Unit]
-PartOf=graphical-session.target
-After=graphical-session.target
+Description=Bonsai Desktop Animation
 Requisite=graphical-session.target
+After=graphical-session.target
+PartOf=graphical-session.target
 
 [Service]
 ExecStart=kitten panel --config /home/jackmil/.config/kitty/rose-pine-light.conf -o clear_all_mouse_actions=yes -o font_family="family='Cascadia Code' style='Bold'" -o font_size=10 -o background_opacity=0.0 --output-name=eDP-1 --edge=none --layer=bottom --lines=500px --columns=500px --margin-left=1420 -- cbonsai -S --multiplier 5 --time 0.8
 Slice=background.slice
-Restart=never
 
 [Install]
 WantedBy=niri.service
