@@ -207,8 +207,15 @@ $jobs$time$status$character"""
     Unknown     = " "
     Windows     = "󰍲 "
 
+[golang]
+  format = '[$symbol($version )]($style)'
+  symbol = " "
+
 [rust]
   symbol = "󱘗 "
+
+[zig]
+symbol = " "
 
 # Palette definitions
 [palettes.catppuccin_frappe]
