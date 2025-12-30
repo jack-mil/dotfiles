@@ -52,16 +52,16 @@ cursor {
 // `niri msg outputs
 // https://yalter.github.io/niri/Configuration%3A-Outputs.html
 // Vizio TV
-output "HDMI-A-1" {
-    mode "3840x2160@29.970"
-    scale 2
-}
+// output "HDMI-A-1" {
+//     mode "3840x2160@29.970"
+//     scale 2
+// }
 // New Acer monitor
-output "DP-3" {
-  mode "2560x1440@143.912"
-  // scale 1.5
-  position x=-1920 y=0
-}
+// output "DP-3" {
+//   mode "2560x1440@143.912"
+//   // scale 1.5
+//   position x=-1920 y=0
+// }
 
 // Settings that influence how windows are positioned and sized.
 // https://yalter.github.io/niri/Configuration%3A-Layout.html

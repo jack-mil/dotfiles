@@ -25,8 +25,9 @@ window-rule {
 
 // Small applets should float
 window-rule {
-  match app-id=r#"(org\.pulseaudio\.pavucontrol)$"#
-  match app-id=r#"(org\.gnome\.Calculator)$"#
+  match app-id=r#"^(org\.pulseaudio\.pavucontrol)$"#
+  match app-id=r#"^(org\.gnome\.Calculator)$"#
+  match app-id=r#"^(org\.kde\.ark)$"#
   match app-id=r#"xpad"#
   open-floating true
 }
