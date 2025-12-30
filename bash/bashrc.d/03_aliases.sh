@@ -19,8 +19,8 @@ alias fd='fd --hyperlink=auto'
 
 # Pacman utils
 alias pacview='pacman -Qq | fzf --ghost "Lookup local package" --preview "pacman -Qil {}" --layout=reverse --preview-window="right,70%" --height=~80% --bind "enter:execute(pacman -Qil {} | less -+F)"'
-alias pacadd='aura -Slq | fzf --ghost "Install Package" --multi --reverse --preview "aura -Sii {}" --preview-window=right:70% --bind "enter:become(aura -S {+})"'
-alias pacrm='(aura -Qqe; aura -Qqdt) | fzf --ghost "Remove Package" --multi --reverse --preview "aura -Qi {}" --preview-window=right:70% --bind "enter:become(aura -Rns {+})"'
+alias pacadd='pacman -Slq | fzf --ghost "Install Package" --multi --reverse --preview "pacman -Sii {}" --preview-window=right:70% --bind "enter:become(pacman -S {+})"'
+alias pacrm='(pacman -Qqe; pacman -Qqdt) | fzf --ghost "Remove Package" --multi --reverse --preview "pacman -Qi {}" --preview-window=right:70% --bind "enter:become(pacman -Rns {+})"'
 
 # Alias for kitty ssh kitten
 alias s='kitten ssh'
