@@ -4,6 +4,17 @@ require('full-border'):setup({
   type = ui.Border.ROUNDED,
 })
 
+-- https://github.com/yazi-rs/plugins/tree/main/git.yazi
+th.git = th.git or {}
+th.git.modified_sign = "M"
+th.git.deleted_sign = "D"
+th.git.untracked_sign = "U"
+th.git.added_sign = "A"
+require("git"):setup()
+
+-- https://yazi-rs.github.io/docs/tips#folder-rules
+require("folder-rules"):setup()
+
 -- In neovim, hide preview when opened
 -- https://github.com/yazi-rs/plugins/tree/main/toggle-pane.yazi
 if os.getenv('NVIM') then require('toggle-pane'):entry('min-preview') end

@@ -1,6 +1,18 @@
 "$schema" = "https://yazi-rs.github.io/schemas/keymap.json"
 
 [[mgr.prepend_keymap]]
+  desc = "Filer files"
+  on   = "F"
+  run  = "filter --smart"
+
+# https://yazi-rs.github.io/docs/tips/#close-input-by-esc
+[[input.prepend_keymap]]
+on   = "<Esc>"
+run  = "close"
+desc = "Cancel input"
+
+[[mgr.prepend_keymap]]
+  # https://github.com/yazi-rs/plugins/tree/main/toggle-pane.yazi
   desc = "Hide or show preview"
   on   = "<A-p>"
   run  = "plugin toggle-pane min-preview"
@@ -11,14 +23,36 @@
   run  = "plugin toggle-pane max-preview"
 
 [[mgr.prepend_keymap]]
+  # https://github.com/yazi-rs/plugins/tree/main/jump-to-char.yazi
   desc = "Jump to char"
   on   = "f"
   run  = "plugin jump-to-char"
 
 [[mgr.prepend_keymap]]
-  desc = "Filer files"
-  on   = "F"
-  run  = "filter --smart"
+  # https://github.com/yazi-rs/plugins/tree/main/smart-enter.yazi
+  on   = "l"
+  run  = "plugin smart-enter"
+  desc = "Enter the child directory, or open the file"
+
+# https://yazi-rs.github.io/docs/tips/#parent-arrow
+[[mgr.prepend_keymap]]
+on  = "K"
+run = "plugin parent-arrow -1"
+
+[[mgr.prepend_keymap]]
+on  = "J"
+run = "plugin parent-arrow 1"
+
+# https://github.com/yazi-rs/plugins/tree/main/zoom.yazi
+[[mgr.prepend_keymap]]
+on   = "+"
+run  = "plugin zoom 2"
+desc = "Zoom in hovered file"
+
+[[mgr.prepend_keymap]]
+on   = "_"
+run  = "plugin zoom -2"
+desc = "Zoom out hovered file"
 
 [[mgr.prepend_keymap]]
   # https://github.com/yazi-rs/plugins/tree/main/vcs-files.yazi
@@ -39,3 +73,20 @@
   for  = "windows"
   on   = ["g", "r"]
   run  = '''shell -- for /f %A in ('git rev-parse --show-toplevel') do ya emit cd %A'''
+
+[[mgr.prepend_keymap]]
+  # https://yazi-rs.github.io/docs/tips/#smart-tab
+  on   = "t"
+  run  = "plugin smart-tab"
+  desc = "Create a tab and enter the hovered directory"
+
+[[mgr.prepend_keymap]]
+  on   = "!"
+  for  = "unix"
+  run  = 'shell "$SHELL" --block'
+  desc = "Open $SHELL here"
+
+[[mgr.prepend_keymap]]
+  # https://yazi-rs.github.io/docs/tips/#selected-files-to-clipboard
+  on  = "y"
+  run = [ 'shell -- for path in %s; do echo "file://$path"; done | wl-copy -t text/uri-list', "yank" ]

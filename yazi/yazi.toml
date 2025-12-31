@@ -32,8 +32,8 @@
     { mime = "image/{svg+xml}", run = "code" },
     # { mime = "video/*", run = "noop" },
     { mime = "text/csv", run = 'piper -- bat -lcsv -p --color=always "$1"' },
-    # { name = "*.md", run = 'piper -- CLICOLOR_FORCE=1 glow -w=$w "$1"' },
-    { name = "*/", run = 'piper -- eza -a --tree -L=1 --color=always --icons=always --group-directories-first --no-quotes "$1"' },
+    { url = "*.md", run = 'piper -- CLICOLOR_FORCE=1 glow -w=$w -s=dark "$1"' },
+    { url = "*/", run = 'piper -- eza -a --tree -L=2 --color=always --icons=always --group-directories-first --no-quotes "$1"' },
   ]
 
   prepend_preloaders = [
@@ -42,7 +42,7 @@
   ]
 
   # https://github.com/yazi-rs/plugins/tree/main/git.yazi
-  # prepend_fetchers = [
-  #   { id = "git", name = "*", run = "git" },
-  #   { id = "git", name = "*/", run = "git" },
-  # ]
+  prepend_fetchers = [
+    { id = "git", url = "*", run = "git" },
+    { id = "git", url = "*/", run = "git" },
+  ]
