@@ -13,14 +13,24 @@
   wrap         = "no"
 
 [opener]
-  play-inline = [
-    { block = true, desc = "mpv in terminal", for = "linux", run = 'mpv --profile=sw-fast --vo=kitty --vo-kitty-use-shm=yes --really-quiet "$@"' },
+  edit = [
+    { block = true, desc = "Edit in Neovim", for = "unix", run = "${EDITOR:-nvim} %s" },
+  ]
+  play = [
+    { desc = "MPV", for = "linux", orphan = true, run = "mpv %s" },
+    { block = true, desc = "Inline MPV", for = "linux", run = 'mpv --profile=sw-fast --vo=kitty --vo-kitty-use-shm=yes --really-quiet --keepaspect-window=no %s' },
+    # { run = "xdg-open %s1",                desc = "Play", for = "linux" },
+    { block = true, desc = "Show media info", for = "unix", run = "mediainfo %s1; echo 'Press enter to exit'; read _" },
   ]
 
 [open]
   prepend_rules = [
-    { mime = "video/*", use = [
-      "play-inline",
+    { mime = "folder/local", use = [
+      "open",
+      "edit",
+      "reveal",
+    ] },
+    { mime = "{video,audio}/*", use = [
       "play",
       "reveal",
     ] },
@@ -28,21 +38,27 @@
 
 [plugin]
   prepend_previewers = [
+    # Replace magick, image, video with mediainfo
+    # { mime = "{audio,video,image}/*", run = "mediainfo" },
+    # { mime = "application/subrip", run = "mediainfo" },
     { mime = "image/{avif,hei?,jxl}", run = "noop" },
-    { mime = "image/{svg+xml}", run = "code" },
+    # { mime = "image/{svg+xml}", run = "code" },
     # { mime = "video/*", run = "noop" },
+
     { mime = "text/csv", run = 'piper -- bat -lcsv -p --color=always "$1"' },
-    { url = "*.md", run = 'piper -- CLICOLOR_FORCE=1 glow -w=$w -s=dark "$1"' },
-    { url = "*/", run = 'piper -- eza -a --tree -L=2 --color=always --icons=always --group-directories-first --no-quotes "$1"' },
+    { run = 'piper -- CLICOLOR_FORCE=1 glow -w=$w -s=dark "$1"', url = "*.md" },
+    { run = 'piper -- eza -a --tree -L=2 --color=always --icons=always --group-directories-first --no-quotes "$1"', url = "*/" },
   ]
 
   prepend_preloaders = [
-    # Video
+    # Replace magick, image, video with mediainfo
+    # { mime = "{audio,video,image}/*", run = "mediainfo" },
+    # { mime = "application/subrip", run = "mediainfo" },
     # { mime = "video/*", run = "noop" },
   ]
 
   # https://github.com/yazi-rs/plugins/tree/main/git.yazi
   prepend_fetchers = [
-    { id = "git", url = "*", run = "git" },
-    { id = "git", url = "*/", run = "git" },
+    { id = "git", run = "git", url = "*" },
+    { id = "git", run = "git", url = "*/" },
   ]

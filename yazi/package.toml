@@ -1,104 +1,109 @@
 [[plugin.deps]]
-use = "yazi-rs/plugins:full-border"
-rev = "398796d"
-hash = "3996fc74044bc44144b323686f887e1"
+  hash = "3996fc74044bc44144b323686f887e1"
+  rev  = "398796d"
+  use  = "yazi-rs/plugins:full-border"
 
 [[plugin.deps]]
-use = "yazi-rs/plugins:jump-to-char"
-rev = "398796d"
-hash = "ce67445ebb1bf3d97b8e44f50904b2c5"
+  hash = "ce67445ebb1bf3d97b8e44f50904b2c5"
+  rev  = "398796d"
+  use  = "yazi-rs/plugins:jump-to-char"
 
 [[plugin.deps]]
-use = "yazi-rs/plugins:toggle-pane"
-rev = "398796d"
-hash = "8a7c58225816a163a6e8730c0adafbc8"
+  hash = "8a7c58225816a163a6e8730c0adafbc8"
+  rev  = "398796d"
+  use  = "yazi-rs/plugins:toggle-pane"
 
 [[plugin.deps]]
-use = "yazi-rs/plugins:git"
-rev = "398796d"
-hash = "73788c7dc5827ef4677c502c3ea8fa19"
+  hash = "73788c7dc5827ef4677c502c3ea8fa19"
+  rev  = "398796d"
+  use  = "yazi-rs/plugins:git"
 
 [[plugin.deps]]
-use = "yazi-rs/plugins:vcs-files"
-rev = "398796d"
-hash = "4ee57085277d616acfa0ef1fef37dc00"
+  hash = "4ee57085277d616acfa0ef1fef37dc00"
+  rev  = "398796d"
+  use  = "yazi-rs/plugins:vcs-files"
 
 [[plugin.deps]]
-use = "yazi-rs/plugins:piper"
-rev = "398796d"
-hash = "2dd68af59418b631b9703a03f606b31f"
+  hash = "2dd68af59418b631b9703a03f606b31f"
+  rev  = "398796d"
+  use  = "yazi-rs/plugins:piper"
 
 [[plugin.deps]]
-use = "yazi-rs/plugins:types"
-rev = "398796d"
-hash = "a3564fe0d051557df2a191ca0b212c2d"
+  hash = "a3564fe0d051557df2a191ca0b212c2d"
+  rev  = "398796d"
+  use  = "yazi-rs/plugins:types"
 
 [[plugin.deps]]
-use = "yazi-rs/plugins:smart-enter"
-rev = "398796d"
-hash = "56fdabc96fc1f4d53c96eb884b02a5be"
+  hash = "56fdabc96fc1f4d53c96eb884b02a5be"
+  rev  = "398796d"
+  use  = "yazi-rs/plugins:smart-enter"
 
 [[plugin.deps]]
-use = "yazi-rs/plugins:smart-paste"
-rev = "398796d"
-hash = "75fd60b2df7115e0a6ca31a6a804d320"
+  hash = "75fd60b2df7115e0a6ca31a6a804d320"
+  rev  = "398796d"
+  use  = "yazi-rs/plugins:smart-paste"
 
 [[plugin.deps]]
-use = "yazi-rs/flavors:catppuccin-mocho"
-rev = "9276ffa"
-hash = "99aa06d3014798d86001c324468d497f"
+  hash = "99aa06d3014798d86001c324468d497f"
+  rev  = "9276ffa"
+  use  = "yazi-rs/flavors:catppuccin-mocho"
 
 [[plugin.deps]]
-use = "yazi-rs/plugins:chmod"
-rev = "398796d"
-hash = "8da0b15a97b5dfd13941d1ecc617ac7c"
+  hash = "8da0b15a97b5dfd13941d1ecc617ac7c"
+  rev  = "398796d"
+  use  = "yazi-rs/plugins:chmod"
 
 [[plugin.deps]]
-use = "yazi-rs/plugins:zoom"
-rev = "398796d"
-hash = "a638db397a5a41d3f3a08a7427ccead1"
+  hash = "a638db397a5a41d3f3a08a7427ccead1"
+  rev  = "398796d"
+  use  = "yazi-rs/plugins:zoom"
+
+[[plugin.deps]]
+  hash = "7a83bfab51d1d2ba6558cc56bd52539a"
+  rev  = "90a1652"
+  use  = "boydaihungst/mediainfo"
 
 [[flavor.deps]]
-use = "yazi-rs/flavors:catppuccin-mocha"
-rev = "9276ffa"
-hash = "b951d27afe197d154f6da9683b46c5f8"
+  hash = "b951d27afe197d154f6da9683b46c5f8"
+  rev  = "9276ffa"
+  use  = "yazi-rs/flavors:catppuccin-mocha"
 
 [[flavor.deps]]
-use = "yazi-rs/flavors:catppuccin-frappe"
-rev = "9276ffa"
-hash = "6f261f00e5235001b8d6bcd7464d3077"
+  hash = "6f261f00e5235001b8d6bcd7464d3077"
+  rev  = "9276ffa"
+  use  = "yazi-rs/flavors:catppuccin-frappe"
 
 [[flavor.deps]]
-use = "yazi-rs/flavors:catppuccin-latte"
-rev = "9276ffa"
-hash = "525675a9180ed23a097b07399627294a"
+  hash = "525675a9180ed23a097b07399627294a"
+  rev  = "9276ffa"
+  use  = "yazi-rs/flavors:catppuccin-latte"
 
 [[flavor.deps]]
-use = "yazi-rs/flavors:catppuccin-macchiato"
-rev = "9276ffa"
-hash = "b069dba45e199684b16fa12d385642ed"
+  hash = "b069dba45e199684b16fa12d385642ed"
+  rev  = "9276ffa"
+  use  = "yazi-rs/flavors:catppuccin-macchiato"
 
 [[flavor.deps]]
-use = "dangooddd/kanagawa"
-rev = "a0b1d9d"
-hash = "b33673cdc5d3d68b478085e3e06182d9"
+  hash = "b33673cdc5d3d68b478085e3e06182d9"
+  rev  = "a0b1d9d"
+  use  = "dangooddd/kanagawa"
 
 [[flavor.deps]]
-use = "kmlupreti/ayu-dark"
-rev = "648a178"
-hash = "97124aae31cd2a5cae41c93f804996a5"
+  hash = "97124aae31cd2a5cae41c93f804996a5"
+  rev  = "648a178"
+  use  = "kmlupreti/ayu-dark"
 
 [[flavor.deps]]
-use = "Mintass/rose-pine"
-rev = "8343340"
-hash = "d92db727dc16db9357f0dcda2758170c"
+  hash = "d92db727dc16db9357f0dcda2758170c"
+  rev  = "8343340"
+  use  = "Mintass/rose-pine"
 
 [[flavor.deps]]
-use = "Mintass/rose-pine-dawn"
-rev = "5c6d353"
-hash = "1f9b1fa79a11ae9f9255b47380b98775"
+  hash = "1f9b1fa79a11ae9f9255b47380b98775"
+  rev  = "5c6d353"
+  use  = "Mintass/rose-pine-dawn"
 
 [[flavor.deps]]
-use = "yazi-rs/flavors:dracula"
-rev = "9276ffa"
-hash = "7a870f143a4026a893ea3123be711e7a"
+  hash = "7a870f143a4026a893ea3123be711e7a"
+  rev  = "9276ffa"
+  use  = "yazi-rs/flavors:dracula"

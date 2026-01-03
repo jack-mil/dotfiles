@@ -5,11 +5,16 @@
   on   = "F"
   run  = "filter --smart"
 
+[[mgr.prepend_keymap]]
+  desc = "Toggle media preview metadata"
+  on   = "<F9>"
+  run  = "plugin mediainfo -- toggle-metadata"
+
 # https://yazi-rs.github.io/docs/tips/#close-input-by-esc
 [[input.prepend_keymap]]
-on   = "<Esc>"
-run  = "close"
-desc = "Cancel input"
+  desc = "Cancel input"
+  on   = "<Esc>"
+  run  = "close"
 
 [[mgr.prepend_keymap]]
   # https://github.com/yazi-rs/plugins/tree/main/toggle-pane.yazi
@@ -30,29 +35,29 @@ desc = "Cancel input"
 
 [[mgr.prepend_keymap]]
   # https://github.com/yazi-rs/plugins/tree/main/smart-enter.yazi
+  desc = "Enter the child directory, or open the file"
   on   = "l"
   run  = "plugin smart-enter"
-  desc = "Enter the child directory, or open the file"
 
 # https://yazi-rs.github.io/docs/tips/#parent-arrow
 [[mgr.prepend_keymap]]
-on  = "K"
-run = "plugin parent-arrow -1"
+  on  = "K"
+  run = "plugin parent-arrow -1"
 
 [[mgr.prepend_keymap]]
-on  = "J"
-run = "plugin parent-arrow 1"
+  on  = "J"
+  run = "plugin parent-arrow 1"
 
 # https://github.com/yazi-rs/plugins/tree/main/zoom.yazi
 [[mgr.prepend_keymap]]
-on   = "+"
-run  = "plugin zoom 2"
-desc = "Zoom in hovered file"
+  desc = "Zoom in hovered file"
+  on   = "+"
+  run  = "plugin zoom 2"
 
 [[mgr.prepend_keymap]]
-on   = "_"
-run  = "plugin zoom -2"
-desc = "Zoom out hovered file"
+  desc = "Zoom out hovered file"
+  on   = "_"
+  run  = "plugin zoom -2"
 
 [[mgr.prepend_keymap]]
   # https://github.com/yazi-rs/plugins/tree/main/vcs-files.yazi
@@ -76,17 +81,20 @@ desc = "Zoom out hovered file"
 
 [[mgr.prepend_keymap]]
   # https://yazi-rs.github.io/docs/tips/#smart-tab
+  desc = "Create a tab and enter the hovered directory"
   on   = "t"
   run  = "plugin smart-tab"
-  desc = "Create a tab and enter the hovered directory"
 
 [[mgr.prepend_keymap]]
-  on   = "!"
-  for  = "unix"
-  run  = 'shell "$SHELL" --block'
   desc = "Open $SHELL here"
+  for  = "unix"
+  on   = "!"
+  run  = 'shell "$SHELL" --block'
 
 [[mgr.prepend_keymap]]
   # https://yazi-rs.github.io/docs/tips/#selected-files-to-clipboard
-  on  = "y"
-  run = [ 'shell -- for path in %s; do echo "file://$path"; done | wl-copy -t text/uri-list', "yank" ]
+  on = "y"
+  run = [
+    'shell -- for path in %s; do echo "file://$path"; done | wl-copy -t text/uri-list',
+    "yank",
+  ]
