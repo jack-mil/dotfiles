@@ -1,109 +1,109 @@
 [[plugin.deps]]
-  hash = "3996fc74044bc44144b323686f887e1"
-  rev  = "398796d"
-  use  = "yazi-rs/plugins:full-border"
+use = "yazi-rs/plugins:full-border"
+rev = "de33976"
+hash = "3996fc74044bc44144b323686f887e1"
 
 [[plugin.deps]]
-  hash = "ce67445ebb1bf3d97b8e44f50904b2c5"
-  rev  = "398796d"
-  use  = "yazi-rs/plugins:jump-to-char"
+use = "yazi-rs/plugins:jump-to-char"
+rev = "de33976"
+hash = "ce67445ebb1bf3d97b8e44f50904b2c5"
 
 [[plugin.deps]]
-  hash = "8a7c58225816a163a6e8730c0adafbc8"
-  rev  = "398796d"
-  use  = "yazi-rs/plugins:toggle-pane"
+use = "yazi-rs/plugins:toggle-pane"
+rev = "de33976"
+hash = "8a7c58225816a163a6e8730c0adafbc8"
 
 [[plugin.deps]]
-  hash = "73788c7dc5827ef4677c502c3ea8fa19"
-  rev  = "398796d"
-  use  = "yazi-rs/plugins:git"
+use = "yazi-rs/plugins:git"
+rev = "de33976"
+hash = "36a484acf6a0a0219c543ccb4cee218f"
 
 [[plugin.deps]]
-  hash = "4ee57085277d616acfa0ef1fef37dc00"
-  rev  = "398796d"
-  use  = "yazi-rs/plugins:vcs-files"
+use = "yazi-rs/plugins:vcs-files"
+rev = "de33976"
+hash = "5cfd9b2bd3f8ec4e3245e3426a967f82"
 
 [[plugin.deps]]
-  hash = "2dd68af59418b631b9703a03f606b31f"
-  rev  = "398796d"
-  use  = "yazi-rs/plugins:piper"
+use = "yazi-rs/plugins:piper"
+rev = "de33976"
+hash = "76ea4ff62db6ebe62e4653c2de95cbd"
 
 [[plugin.deps]]
-  hash = "a3564fe0d051557df2a191ca0b212c2d"
-  rev  = "398796d"
-  use  = "yazi-rs/plugins:types"
+use = "yazi-rs/plugins:types"
+rev = "de33976"
+hash = "6c4759ffad7b1caef81fafed85b4a132"
 
 [[plugin.deps]]
-  hash = "56fdabc96fc1f4d53c96eb884b02a5be"
-  rev  = "398796d"
-  use  = "yazi-rs/plugins:smart-enter"
+use = "yazi-rs/plugins:smart-enter"
+rev = "de33976"
+hash = "56fdabc96fc1f4d53c96eb884b02a5be"
 
 [[plugin.deps]]
-  hash = "75fd60b2df7115e0a6ca31a6a804d320"
-  rev  = "398796d"
-  use  = "yazi-rs/plugins:smart-paste"
+use = "yazi-rs/plugins:smart-paste"
+rev = "de33976"
+hash = "75fd60b2df7115e0a6ca31a6a804d320"
 
 [[plugin.deps]]
-  hash = "99aa06d3014798d86001c324468d497f"
-  rev  = "9276ffa"
-  use  = "yazi-rs/flavors:catppuccin-mocho"
+use = "yazi-rs/flavors:catppuccin-mocho"
+rev = "ca61658"
+hash = "99aa06d3014798d86001c324468d497f"
 
 [[plugin.deps]]
-  hash = "8da0b15a97b5dfd13941d1ecc617ac7c"
-  rev  = "398796d"
-  use  = "yazi-rs/plugins:chmod"
+use = "yazi-rs/plugins:chmod"
+rev = "de33976"
+hash = "8da0b15a97b5dfd13941d1ecc617ac7c"
 
 [[plugin.deps]]
-  hash = "a638db397a5a41d3f3a08a7427ccead1"
-  rev  = "398796d"
-  use  = "yazi-rs/plugins:zoom"
+use = "yazi-rs/plugins:zoom"
+rev = "de33976"
+hash = "a638db397a5a41d3f3a08a7427ccead1"
 
 [[plugin.deps]]
-  hash = "7a83bfab51d1d2ba6558cc56bd52539a"
-  rev  = "90a1652"
-  use  = "boydaihungst/mediainfo"
+use = "boydaihungst/mediainfo"
+rev = "7cd6b04"
+hash = "98b8276aa076284f5c4a5260cbe08549"
 
 [[flavor.deps]]
-  hash = "b951d27afe197d154f6da9683b46c5f8"
-  rev  = "9276ffa"
-  use  = "yazi-rs/flavors:catppuccin-mocha"
+use = "yazi-rs/flavors:catppuccin-mocha"
+rev = "ca61658"
+hash = "8eabb4e88096f10905a6df62cfaadbf4"
 
 [[flavor.deps]]
-  hash = "6f261f00e5235001b8d6bcd7464d3077"
-  rev  = "9276ffa"
-  use  = "yazi-rs/flavors:catppuccin-frappe"
+use = "yazi-rs/flavors:catppuccin-frappe"
+rev = "ca61658"
+hash = "e25fb61c14484de843b52430a72b5196"
 
 [[flavor.deps]]
-  hash = "525675a9180ed23a097b07399627294a"
-  rev  = "9276ffa"
-  use  = "yazi-rs/flavors:catppuccin-latte"
+use = "yazi-rs/flavors:catppuccin-latte"
+rev = "ca61658"
+hash = "c6b710b2aa0fb9c6c7f1ec4db6146104"
 
 [[flavor.deps]]
-  hash = "b069dba45e199684b16fa12d385642ed"
-  rev  = "9276ffa"
-  use  = "yazi-rs/flavors:catppuccin-macchiato"
+use = "yazi-rs/flavors:catppuccin-macchiato"
+rev = "ca61658"
+hash = "2f60298d6c26b6d388c8091a9389fa8f"
 
 [[flavor.deps]]
-  hash = "b33673cdc5d3d68b478085e3e06182d9"
-  rev  = "a0b1d9d"
-  use  = "dangooddd/kanagawa"
+use = "dangooddd/kanagawa"
+rev = "04985d1"
+hash = "c69a63981e254a3a06a11c2bf0e6af1d"
 
 [[flavor.deps]]
-  hash = "97124aae31cd2a5cae41c93f804996a5"
-  rev  = "648a178"
-  use  = "kmlupreti/ayu-dark"
+use = "kmlupreti/ayu-dark"
+rev = "648a178"
+hash = "97124aae31cd2a5cae41c93f804996a5"
 
 [[flavor.deps]]
-  hash = "d92db727dc16db9357f0dcda2758170c"
-  rev  = "8343340"
-  use  = "Mintass/rose-pine"
+use = "Mintass/rose-pine"
+rev = "d91f8f2"
+hash = "87da3630653b6d272e43658418599188"
 
 [[flavor.deps]]
-  hash = "1f9b1fa79a11ae9f9255b47380b98775"
-  rev  = "5c6d353"
-  use  = "Mintass/rose-pine-dawn"
+use = "Mintass/rose-pine-dawn"
+rev = "d82f54f"
+hash = "15ae5f83d3770b9ffc276af77f642e2b"
 
 [[flavor.deps]]
-  hash = "7a870f143a4026a893ea3123be711e7a"
-  rev  = "9276ffa"
-  use  = "yazi-rs/flavors:dracula"
+use = "yazi-rs/flavors:dracula"
+rev = "ca61658"
+hash = "8589ae0231756a9daf9c072f31b1fe0"
