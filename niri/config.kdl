@@ -9,9 +9,6 @@ prefer-no-csd // ask applications to omit client-side decorations
 
 overview { backdrop-color "#1d1621"; }
 
-// For clipboard history integration with shell
-spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
-
 // A ~ at the front will be expanded to the home directory.
 // The path is formatted with strftime(3) to give you the screenshot date and time.
 screenshot-path "~/pictures/Screenshots/screenshot-%Y-%m-%d-%H-%M-%S.png"
@@ -25,7 +22,10 @@ input {
             // For more information, see xkeyboard-config(7).
             // For example:
             // options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
-            options "ctrl:nocaps"
+            options "ctrl:nocaps" // Replaces Caps with Ctrl entirely
+            // options "ctrl:swapcaps"  // Swaps LCtrl and Caps Lock
+            // options "caps:ctrl_shifted_capslock" // Make Caps Lock an additional Ctrl and Shift + Caps Lock the regular Caps Lock
+
         }
         // Enable numlock on startup, omitting this setting disables it.
         numlock
@@ -44,10 +44,11 @@ input {
     // focus-follows-mouse max-scroll-amount="5%"
 }
 
-cursor {
-  xcursor-theme "Breeze_Light"
-  xcursor-size 28
-}
+// Cursor settings configured through DMS
+include "dms/cursor.kdl"
+
+// Output settings controlled through DMS
+include "dms/outputs.kdl"
 
 // `niri msg outputs
 // https://yalter.github.io/niri/Configuration%3A-Outputs.html
