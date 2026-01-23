@@ -125,7 +125,7 @@ function mkgifski() {
 
 alias magick-webp="magick -define webp:lossless=true -define webp:exact=true -define webp:method=6 -define webp:thread-level=1"
 
-_YTDLP_ARGS="--remux-video mkv --add-metadata --embed-info-json --embed-chapters --sponsorblock-mark=all --embed-thumbnail --embed-subs"
+_YTDLP_ARGS="--remux-video mkv --add-metadata --embed-info-json --embed-chapters --sponsorblock-mark=all --embed-thumbnail --embed-subs --output \"%(title)s [%(channel)s] [%(id)s].%(ext)s\""
 alias ytdlp="yt-dlp $_YTDLP_ARGS --sub-langs=all,-live_chat,-rechat"
 alias ytdlp-playlist="yt-dlp $_YTDLP_ARGS --windows-filenames --download-archive=ytdlp-cache.txt --output \"%(playlist)s/%(playlist_index)03d - %(title)s.%(ext)s\"" 
 

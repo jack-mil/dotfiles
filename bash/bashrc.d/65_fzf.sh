@@ -9,33 +9,39 @@
 # setup shell-integration
 eval "$(fzf --bash)"
 
-# set options
+# Pick a filename and insert at cursor position
 export FZF_CTRL_T_OPTS=" \
   --ghost 'Pick File' \
   --prompt '╰❯ ' \
-  --preview 'bat --color=always --style=plain --line-range :300 {}' \
+  --preview 'fzf-preview.sh {}' \
   --preview-window right,60%"
 
+# Change to any subdir (without command line)
 export FZF_ALT_C_OPTS=" \
   --ghost 'Change Directory' \
   --preview 'eza --tree --level 3 --color=always --group-directories-first --icons --sort Extension {} | head -200' \
   --preview-window right,60%"
 
+# Search bash history and replace command line
 export FZF_CTRL_R_OPTS="\
   --input-border=rounded \
   --input-label ' Command History [A-p]:preview ' \
-  --preview 'echo {2..} | bat --style=plain --color=always --language=sh' \
+  --preview 'echo {2..} | bat --style=plain --color=always --language=bash' \
   --preview-window down:3:hidden:wrap"
 
-# replaces default --walker command
+# command executed when fzf input is tty (fast find)
 export FZF_DEFAULT_COMMAND="fd --type f --strip-cwd-prefix --hidden --exclude .git --exclude node_modules --exclude '.*cache*'"
+# use the same search for Ctrl-T picker
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
+# these binds apply to all invocations
 FZF_BINDS="--bind='alt-d:preview-page-down' \
            --bind='alt-u:preview-page-up' \
            --bind='alt-p:toggle-preview' \
            --bind='alt-r:toggle-raw' \
            --bind='result:best'"  # move cursor to item with best score (for raw mode)
 
+# Theme colors
 FZF_COLORS="--color='
 fg:#cad3f5,current-fg:#cad3f5,
 bg:-1,current-bg:#363a4f,alt-bg:#1e2030,
@@ -62,8 +68,6 @@ export FZF_DEFAULT_OPTS=" \
   # --list-border=rounded \
   # --header-border=rounded \
   # --input-border=rounded \
-
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # Use fd (https://github.com/sharkdp/fd) instead of the default find
 # command for listing path candidates.
