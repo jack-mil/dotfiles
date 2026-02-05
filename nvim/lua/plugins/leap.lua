@@ -2,7 +2,7 @@
 -- Docs say not use use lazy loading
 return {
   {
-    'ggandor/leap.nvim',
+    url = "https://codeberg.org/andyg/leap.nvim",
     lazy = false,
     config = function()
       local leap = require('leap')
