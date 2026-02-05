@@ -28,7 +28,8 @@ alias s='kitten ssh'
 # Aliases for bat
 alias b='bat'
 alias bh='bat --plain --language=cmd-help'  # meant for piping <cmd> --help output to
-help() {
+# Short for executing a command with the `--help` flag
+h() {
     set -o pipefail
     "$@" --help 2>&1 | bh
 }
